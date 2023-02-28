@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 18:53:49
+ * @LastEditTime: 2023-02-28 19:16:50
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -28,7 +28,7 @@
    - 浏览器
 3. 前端框架
    - Vue2 + Vue-Router + VueX
-   - Vue3 + Vite + Pinia
+   - Vue3 + Pinia
    - React + React Native + Redux
    - Angular
    - NodeJS + Express.js + Koa.js
@@ -45,8 +45,7 @@
    - Gulp + Grunt + Rullup
 6. 移动端
    - 移动端
-   - 小程序
-   - Uni-app
+   - 小程序 + Uni-app
 7. 工程化
    - 软件工程
    - 前端工程化
@@ -61,4 +60,4 @@
    - 微前端
    - 低代码
    - 服务器
-   - DNS
+   - 前端运维
