@@ -8,7 +8,7 @@
  * @FilePath: \interviewQuestions\JavaScript.md
 -->
 
-### JavaScript 的数据类型有哪些？
+#### JavaScript 的数据类型有哪些？
 
 JavaScript 共有 8 种数据类型，具体如下：
 
@@ -25,7 +25,7 @@ JavaScript 共有 8 种数据类型，具体如下：
 
 （回答就 0 分的有：数组、函数、日期，这些是 类 class；不是类型 type）
 
-### 判断数据类型的方法有哪些？
+#### 判断数据类型的方法有哪些？
 
 ① 判断多种数据类型
 
@@ -50,7 +50,7 @@ JavaScript 共有 8 种数据类型，具体如下：
    ```
 3. isFinite() 用来判断被传入的参数值是否为一个有限数值（finite number），如果参数是 NaN，正无穷大或者负无穷大，会返回 false，其他返回 true。
 
-### null 和 undefined 的区别是什么？
+#### null 和 undefined 的区别是什么？
 
 null：空指针对象
 undefined：未定义
@@ -60,7 +60,7 @@ undefined：未定义
 1. 变量声明了但还没有定义的时候会返回 undefined；null 主要用于赋值给一些可能会返回对象的变量，作为初始化。
 2. 使用 typeof 判断类型时 null 会返回 object；undefined 正确返回。（这是一个历史遗留的问题）
 
-### 判断数组类型有哪几种方法？
+#### 判断数组类型有哪几种方法？
 
 1. Array.isArray()：
 2. Object.peototype.toString.call()：

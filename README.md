@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 18:50:34
+ * @LastEditTime: 2023-02-28 18:53:49
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -29,8 +29,9 @@
 3. 前端框架
    - Vue2 + Vue-Router + VueX
    - Vue3 + Vite + Pinia
-   - React + Redux
+   - React + React Native + Redux
    - Angular
+   - NodeJS + Express.js + Koa.js
 4. UI 框架/库
    - Element-UI
    - Vant-UI
@@ -41,26 +42,22 @@
    - Git + SVN
    - Webpack
    - Vite
-   - Gulp
-   - Grunt
-   - Rullup
+   - Gulp + Grunt + Rullup
 6. 移动端
    - 移动端
    - 小程序
    - Uni-app
 7. 工程化
    - 软件工程
-   - 工程化
+   - 前端工程化
    - 数据结构与算法
-   - 前端测试
+   - 前端测试 + Jest
 8. 数据可视化
    - 数据可视化
    - Echarts
 9. 扩展
-   - Linux
-   - Nginx
-   - MongoDB
-   - MySQL
+   - Linux + Nginx
+   - MongoDB + MySQL
    - 微前端
    - 低代码
    - 服务器

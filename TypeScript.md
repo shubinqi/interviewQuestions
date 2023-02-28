@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 17:51:29
+ * @LastEditTime: 2023-02-28 19:07:37
  * @Description: TypeScript 面试题
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
@@ -44,22 +44,139 @@ TypeScript 相比于 JavaScript 的优势：
 
 #### TypeScript 中的类型有哪些？
 
-#### any 和 unknown 的区别？
+TypeScript 中的类型主要包括以下几类：
+
+1. **基本类型**：包括布尔型（boolean）、数字型（number）、字符串型（string）、空值（void）、未定义（undefined）和空对象（null）等。
+1. **数组类型**：可以定义数组中元素的类型和个数。
+1. **元组类型**：表示已知元素数量和类型的数组。
+1. **枚举类型**：用于定义具名常量。
+1. **对象类型**：表示一个对象，可以定义对象中属性的类型。
+1. **接口类型**：用于描述对象的形状，可以描述对象中属性的类型、方法签名等。
+1. **函数类型**：用于定义函数的参数类型和返回值类型。
+1. **类型别名**：用于给类型起一个新的名字。
+1. **联合类型和交叉类型**：用于组合多个类型。
+
+需要注意的是，TypeScript 是一种强类型语言，对变量类型有严格的限制。因此在 TypeScript 中，变量的类型必须在声明时就确定，并且一旦确定就不能改变。
+
+#### TS 中 any 和 unknown 的区别？
 
 1. any 类型可以分配给任何类型，它完全绕过了类型检查，因此它的使用会导致代码不稳定，难以维护。
 1. unknown 类型也可以分配给任何类型，但是在对 unknown 类型的值执行操作之前，我们必须进行某种形式的检查（可以通过类型断言、类型守卫和 instanceof 运算符等方式来实现。）。这是因为 unknown 类型的值是未知的，我们不能确定它们的类型。
 
 总结：any 和 unknown 都是顶级类型，但是 unknown 更加严格，不像 any 那样不做类型检查。因此，在编写 TypeScript 代码时，应该尽可能地避免使用 any 类型，而是使用更严格的类型，例如 unknown。
 
-#### never 和 void 的区别？
+#### TS 中 never 和 void 的区别？
 
-#### Interface 和 type 的区别？
+在 TypeScript 中，never 和 void 是两种不同的类型。
 
-#### 命名空间与模块的理解和区别？
+void 表示没有任何返回值的类型，通常用在函数返回值的类型注解中。例如：
+
+```
+function log(message: string): void {
+  console.log(message);
+}
+```
+
+这里 void 表示函数 log 没有返回值。
+
+而 never 表示那些永远不会返回值的类型，通常用在那些总是抛出异常或无限循环的函数中。例如：
+
+```
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+function infiniteLoop(): never {
+  while (true) {}
+}
+```
+
+这里 never 表示函数 throwError 会抛出异常并且永远不会返回，函数 infiniteLoop 则是一个无限循环的函数，也永远不会返回。
+
+因此，void 表示函数没有返回值，never 表示函数永远不会返回。
+
+#### TS 中 Interface 和 type 的区别？
+
+在 TypeScript 中，interface 和 type 都用于定义类型，它们有一些共同点，也有一些区别。
+
+共同点：
+
+1. 都可以用来定义对象类型、函数类型等。
+1. 都可以被扩展（extends）。
+
+区别：
+
+1. interface 可以被合并（merge），而 type 不行。也就是说，当你定义同名的 interface 时，它们会自动合并为一个，而当你定义同名的 type 时，它们会报错。
+1. type 可以定义更多种类型。例如，它可以定义联合类型（Union Types）、交叉类型（Intersection Types）、元组类型（Tuple Types）等，而 interface 不行。
+1. interface 可以定义类（Class）和函数（Function）类型，而 type 不行。
+
+interface 使用示例如下：
+
+```
+interface Person {
+  name: string;
+  age: number;
+  sayHello(): void;
+}
+
+interface Student extends Person {
+  grade: number;
+}
+
+const student: Student = {
+  name: 'Alice',
+  age: 18,
+  grade: 90,
+  sayHello() {
+    console.log('Hello, my name is', this.name);
+  }
+};
+```
+
+type 使用示例如下：
+
+```
+type Age = number;
+
+type Name = string;
+
+type Person = {
+  name: Name;
+  age: Age;
+  sayHello(): void;
+}
+
+type Student = Person & {
+  grade: number;
+}
+
+const student: Student = {
+  name: 'Alice',
+  age: 18,
+  grade: 90,
+  sayHello() {
+    console.log('Hello, my name is', this.name);
+  }
+};
+```
+
+一般来说，如果要定义一个对象类型，建议使用 interface；如果要定义其他类型，例如联合类型、交叉类型等，建议使用 type。不过这只是一种通用的规则，具体还要根据实际情况来选择。
+
+#### TS 中 命名空间与模块的理解和区别？
+
+在 TypeScript 中，命名空间和模块都可以用来组织代码，但它们的设计目的和使用场景不同。
+
+命名空间（Namespace）是为了解决在全局作用域内命名冲突问题而设计的，它将具有相似功能的类、接口、函数等有关联的内容包裹在一起，形成一个独立的作用域，从而避免了命名冲突的问题。
+
+模块（Module）则是为了解决代码组织和复用问题而设计的，一个模块就是一个独立的文件或文件夹，通过导入和导出暴露它的接口来实现对外部的代码复用。模块在实现上可以使用命名空间和 ES6 模块等方式来实现。
+
+在实际开发中，我们通常会使用模块来组织代码，而命名空间则主要用来解决第三方库中的命名冲突问题。
+
+需要注意的是，命名空间和模块虽然是不同的概念，但是在 TypeScript 中，命名空间也可以使用 export 关键字导出它的内容，并在其他地方使用 import 来引入这些内容，这也意味着命名空间也可以像模块一样用来组织和复用代码。但是在实际应用中，建议使用模块来组织和复用代码。
 
 #### TypeScript 支持的访问修饰符有哪些？
 
-#### 解释一下 TypeScript 中的枚举
+#### 解释一下 TypeScript 中的枚举？
 
 #### TypeScript 中的模块是什么？
 
