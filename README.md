@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 22:33:53
+ * @LastEditTime: 2023-03-01 23:55:37
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -118,3 +118,20 @@
 ### 备注
 
 #### 增加八股文文件夹
+
+- BFC（已更新）
+- 回流与重绘（已更新）
+- 闭包
+- 原型链
+- 作用域链
+- 异步编程
+- 事件循环
+- 深拷贝
+- ES6
+- 节流
+- 防抖
+- 继承
+- 双向绑定原理
+- 响应式原理 defineProperty
+- 响应式原理 Proxy
+- Diff 算法
