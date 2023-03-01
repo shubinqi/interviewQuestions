@@ -15,6 +15,8 @@
 
 #### Vue 的核心原理
 
+当一个 Vue 实例创建时，Vue 会遍历 data 中的属性，用 Object.defineProperty（Vue3.0 使用 Proxy ）将它们转为 getter/setter，并且在内部追踪相关依赖，在属性被访问和修改时通知变化。 每个组件实例都有相应的 watcher 程序实例，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。
+
 Vue 是一个流行的前端框架，其实现原理主要包括以下几个方面：
 
 1. **数据双向绑定**：Vue 通过 Object.defineProperty() 方法来实现数据双向绑定。Vue 将每个 data 中的属性转化为 getter 和 setter 方法，并在 getter 方法中收集依赖，在 setter 方法中触发更新。

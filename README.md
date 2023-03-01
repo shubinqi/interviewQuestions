@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 23:55:37
+ * @LastEditTime: 2023-03-02 00:49:01
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -106,6 +106,11 @@
 - 防抖
 - 节流
 
+#### 算法题（/Demo/Algorithm）
+
+- 两数之和（已更新）
+- 大数相加
+
 #### Demo 文件夹
 
 - Algorithm：算法题目
@@ -121,17 +126,19 @@
 
 - BFC（已更新）
 - 回流与重绘（已更新）
-- 闭包
-- 原型链
+- 清除浮动（已更新）
+- 水平垂直居中（已更新）
+- 闭包（已更新）
+- 原型链（已更新）
 - 作用域链
 - 异步编程
-- 事件循环
-- 深拷贝
-- ES6
+- 事件循环（已更新）
+- 深拷贝（已更新）
+- ES6（已更新）
 - 节流
 - 防抖
 - 继承
-- 双向绑定原理
+- 双向绑定原理（已更新）
 - 响应式原理 defineProperty
 - 响应式原理 Proxy
-- Diff 算法
+- Diff 算法（已更新）

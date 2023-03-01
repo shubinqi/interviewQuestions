@@ -453,6 +453,12 @@ JavaScript 中，函数对象具有 prototype 属性，而普通对象没有。�
 
 需要注意的是，原型链的层次越深，访问属性的速度就会越慢，因此应该尽量保持原型链的简洁。另外，由于 JavaScript 中对象是动态的，因此在运行时可以随时修改对象的原型，这也是 JavaScript 中比较灵活的特性之一。
 
+#### 原型链的终点是什么？如何打印出原型链的终点？
+
+由于 Object 是构造函数，原型链终点是 Object.prototype.\_\_proto**，而 Object.prototype.\_\_proto**=== null // true，所以，原型链的终点是 **null** 。
+
+原型链上的所有原型都是对象，所有的对象最终都是由 Object 构造的，而 Object.prototype 的下一级是 Object.prototype.\_\_proto\_\_ 。
+
 #### == 和 === 的区别？
 
 == 和 === 都是比较运算符，主要用于比较两个值的相等性。它们的区别在于以下几点：
@@ -1029,10 +1035,10 @@ xhr.send();
 
 #### ajax、axios、fetch 的区别？
 
-
 #### 取消 ajax 请求有什么意义？
 
 #### ES6 更新了哪些新语法？（从你回答的里面挑一个问详细的）
+
 1. Promise 是什么？
 1. 介绍一下 Promise 的 3 种状态，怎么改变状态？
 1. Promise 有哪些 API？
