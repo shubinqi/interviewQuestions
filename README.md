@@ -27,10 +27,10 @@
    - WEB 性能优化（更新中...）
    - 浏览器（更新中...）
 3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
-   - Vue2：/Vue/Vue2（已更新）
+   - Vue2（已更新）
+   - Vue3（已更新）
    - Vue-Router（已更新）
    - VueX（已更新）
-   - Vue3（已更新）
    - Pinia（已更新）
    - React
    - React Native
@@ -48,17 +48,19 @@
    - Bootstrap
    - jQuery
 5. 工具（/Tool）
-   - Git
-   - SVN
+   - Git：/Tool/Version
+   - SVN：/Tool/Version
    - Webpack：/Tool/Pack（已更新）
    - Vite：/Tool/Pack（已更新）
-   - Gulp
-   - Grunt
-   - Rullup
-   - Less
-   - Scss
+   - Gulp：/Tool/Pack
+   - Grunt：/Tool/Pack
+   - Rullup：/Tool/Pack
    - Tailwind CSS
-   - Lodash
+   - Lodash：/Tool/Store
+   - Babel：/Tool/Store
+   - Markdown（已更新）
+   - Less
+   - Sass
 6. 移动端（/Mobile）
    - 移动端
    - 微信小程序
@@ -117,7 +119,7 @@
 - 两数之和（已更新）
 - 大数相加
 
-#### Demo 文件夹
+#### Demo 文件夹（/Demo）
 
 - Algorithm：算法题目
 - HTML：html 测试代码
@@ -128,25 +130,25 @@
 
 ### 八股文
 
-#### 增加八股文文件夹
+#### 增加八股文文件夹（/八股文）
 
-- BFC：/八股文（已更新）
-- 回流与重绘：/八股文（已更新）
-- 清除浮动：/八股文（已更新）
-- 水平垂直居中：/八股文（已更新）
-- 闭包：/八股文（已更新）
-- 原型链：/八股文（已更新）
-- 作用域链：/八股文（已更新）
-- 异步编程：/八股文（已更新）
-- 事件循环：/八股文（已更新）
-- 深拷贝：/八股文（已更新）
-- ES6：/八股文（已更新）
-- 节流与防抖：/八股文（已更新）
-- 继承：/八股文（已更新）
-- 双向绑定原理：/八股文（已更新）
-- Diff 算法：/八股文（已更新）
-- 响应式原理 defineProperty：/八股文（已更新）
-- 响应式原理 Proxy：/八股文
-- JS 垃圾回收机制：/八股文（已更新）
-- V8 垃圾回收机制：/八股文（已更新）
+- BFC（已更新）
+- 回流与重绘（已更新）
+- 清除浮动（已更新）
+- 水平垂直居中（已更新）
+- 闭包（已更新）
+- 原型链（已更新）
+- 作用域链（已更新）
+- 异步编程（已更新）
+- 事件循环（已更新）
+- 深拷贝（已更新）
+- ES6（已更新）
+- 节流与防抖（已更新）
+- 继承（已更新）
+- 双向绑定原理（已更新）
+- Diff 算法（已更新）
+- 响应式原理 defineProperty（已更新）
+- 响应式原理 Proxy
+- JS 垃圾回收机制（已更新）
+- V8 垃圾回收机制（已更新）
 - Vue2 和 Vue3 的区别：/Vue（已更新）
