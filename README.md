@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 12:52:13
+ * @LastEditTime: 2023-03-01 14:16:19
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -17,9 +17,8 @@
 1. 前端基础
    - HTML
    - CSS
-   - JavaScript
-   - ES6
-   - TypeScript
+   - JavaScript（已更新）
+   - TypeScript（已更新）
 2. 计算机网络
    - HTTP
    - TCP/IP
@@ -28,11 +27,11 @@
    - WEB 性能优化
    - 浏览器
 3. 前端框架
-   - Vue2
-   - Vue-Router
-   - VueX
-   - Vue3
-   - Pinia
+   - Vue2：/Vue/Vue2（已更新）
+   - Vue-Router（已更新）
+   - VueX（已更新）
+   - Vue3（已更新）
+   - Pinia（已更新）
    - React
    - React Native
    - Redux
@@ -49,9 +48,10 @@
    - Bootstrap
    - jQuery
 5. 工具
-   - Git + SVN
-   - Webpack：/Tool/Pack
-   - Vite：/Tool/Pack
+   - Git
+   - SVN
+   - Webpack：/Tool/Pack（已更新）
+   - Vite：/Tool/Pack（已更新）
    - Gulp
    - Grunt
    - Rullup
@@ -82,3 +82,26 @@
    - 低代码
    - 服务器
    - 前端运维
+
+### 其他文件
+
+#### Project 文件夹
+
+- 开发环境搭建
+- 创建 Vue 项目
+- 创建 React 项目
+- 创建 Angular 项目
+
+#### JavaScript 文件夹
+
+- Ajax
+- DOM-BOM
+- ES6
+- Promise
+- 闭包
+- 原型链
+- 异步编程
+- 事件循环
+- 继承
+- 防抖
+- 节流
