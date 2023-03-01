@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:03:48
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 19:40:07
+ * @LastEditTime: 2023-02-28 21:25:16
  * @Description: HTML 面试题
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\HTML.md
@@ -71,7 +71,23 @@ HTML5 的新特性包括但不限于：
 
 使用语义化标签可以让代码更加清晰易懂，并且能够使搜索引擎更好地理解页面的结构和内容，提高网页的排名和曝光度。同时也可以让页面在无样式情况下有更好的可读性和可访问性，提高用户体验。
 
-####
+#### src 和 href 的区别？
+
+相同点：都是用来引入外部资源路径。
+
+不同点：
+
+1. src 是用于指定引入资源的路径，比如 &lt;img src="example.jpg"&gt; 表示引入一张图片。
+1. href 则是用于指定链接的 URL，比如 &lt;a href="https://example.com"&gt; 表示该链接指向 https://example.com。
+
+#### script 引用时 defer 和 async 的区别是什么？
+
+defer 和 async 都是用于异步加载脚本，不过两者的区别在于执行的时机。
+
+1. defer 会在文档解析完毕后才会执行，
+2. async 则是在下载完成后立即执行。
+
+这也意味着如果有多个 defer 脚本，它们的执行顺序是按照它们在文档中出现的顺序执行；而对于多个 async 脚本，则不能保证它们的执行顺序。
 
 1. src 和 href 的区别？
    script 引用时 defer 和 async 的区别是什么？

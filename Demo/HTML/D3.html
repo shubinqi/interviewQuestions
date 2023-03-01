@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>D3.js Bar Chart Example</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <svg id="chart" width="400" height="300"></svg>
+  <script>
+    // 数据
+    var data = [5, 10, 15, 20, 25];
+
+    // 创建一个SVG元素
+    var svg = d3.select("#chart")
+      .append("svg")
+      .attr("width", 400)
+      .attr("height", 300);
+
+    // 绘制矩形
+    svg.selectAll("rect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x", function (d, i) {
+        return i * 70;
+      })
+      .attr("y", function (d) {
+        return 300 - d * 10;
+      })
+      .attr("width", 50)
+      .attr("height", function (d) {
+        return d * 10;
+      })
+      .attr("fill", "steelblue");
+
+    // 添加文本标签
+    svg.selectAll("text")
+      .data(data)
+      .enter()
+      .append("text")
+      .text(function (d) {
+        return d;
+      })
+      .attr("x", function (d, i) {
+        return i * 70 + 25;
+      })
+      .attr("y", function (d) {
+        return 300 - d * 10 - 5;
+      })
+      .attr("text-anchor", "middle")
+      .attr("fill", "white");
+  </script>
+</body>
+
+</html>

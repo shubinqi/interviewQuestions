@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:03:56
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 19:35:10
+ * @LastEditTime: 2023-03-01 08:27:21
  * @Description: CSS 面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\CSS.md
@@ -12,6 +12,26 @@
 
 ### BFC 是什么？产生条件？作用？特性？
 
+BFC 全称为 Block Formatting Context（块级格式化上下文），是 Web 页面中的一个重要的渲染机制，用来控制块级元素的布局和定位。
+
+BFC 形成的条件有以下几种情况：
+
+1. 根元素或包含它的元素（比如 body）；
+1. 浮动元素（元素的 float 不是 none）；
+1. 绝对定位元素（元素的 position 为 absolute 或 fixed）；
+1. 行内块元素（元素的 display 为 inline-block）；
+1. 表格单元格（元素的 display 为 table-cell，HTML 表格单元格默认为该值）；
+1. 表格标题（元素的 display 为 table-caption，HTML 表格标题默认为该值）；
+1. overflow 不为 visible 的块级盒子。
+
+BFC 的作用主要有以下几个方面：
+
+1. 清除浮动：当一个元素内部有浮动元素时，该元素会发生高度塌陷，此时可以将该元素设为 BFC，使该元素的高度包含其内部浮动元素。
+1. 防止 margin 重叠：在同一个 BFC 中的相邻块级元素的 margin 会发生折叠，将元素设为 BFC 可以防止 margin 重叠。
+1. 自适应两栏布局：通过将两个元素分别设为 BFC，可以实现自适应两栏布局，一栏固定宽度，一栏自适应宽度。
+1. 防止元素被浮动元素覆盖：当一个元素内部有浮动元素时，该元素的高度会被浮动元素覆盖，将该元素设为 BFC 可以防止元素被浮动元素覆盖。
+
+总之，BFC 是一个非常重要的 Web 页面渲染机制，对于页面布局和元素定位都有着重要的作用，了解 BFC 的原理和使用可以帮助开发者更好地处理 Web 页面布局和定位问题。
 
 1. CSS3 中有哪些新特性？
 1. BFC 是什么？产生条件？特点？作用？（建议写博客）
