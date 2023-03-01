@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 00:49:01
+ * @LastEditTime: 2023-03-02 01:17:55
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -130,15 +130,16 @@
 - 水平垂直居中（已更新）
 - 闭包（已更新）
 - 原型链（已更新）
-- 作用域链
-- 异步编程
+- 作用域链（已更新）
+- 异步编程（已更新）
 - 事件循环（已更新）
 - 深拷贝（已更新）
 - ES6（已更新）
-- 节流
-- 防抖
-- 继承
+- 节流与防抖（已更新）
+- 继承（已更新）
 - 双向绑定原理（已更新）
+- Diff 算法（已更新）
 - 响应式原理 defineProperty
 - 响应式原理 Proxy
-- Diff 算法（已更新）
+- JS 垃圾回收机制（已更新）
+- V8 垃圾回收机制（已更新）
