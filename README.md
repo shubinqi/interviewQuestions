@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 14:16:19
+ * @LastEditTime: 2023-03-01 22:33:53
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -15,17 +15,17 @@
 ### 前端知识体系模块划分
 
 1. 前端基础
-   - HTML
-   - CSS
+   - HTML（已更新）
+   - CSS（已更新）
    - JavaScript（已更新）
    - TypeScript（已更新）
 2. 计算机网络
-   - HTTP
-   - TCP/IP
-   - DNS 域名解析
-   - 网络安全
-   - WEB 性能优化
-   - 浏览器
+   - HTTP（更新中...）
+   - TCP/IP（更新中...）
+   - DNS 域名解析（更新中...）
+   - 网络安全（更新中...）
+   - WEB 性能优化（更新中...）
+   - 浏览器（更新中...）
 3. 前端框架
    - Vue2：/Vue/Vue2（已更新）
    - Vue-Router（已更新）
@@ -105,3 +105,16 @@
 - 继承
 - 防抖
 - 节流
+
+#### Demo 文件夹
+
+- Algorithm：算法题目
+- HTML：html 测试代码
+- CSS：CSS 测试代码
+- JS：JS 测试代码
+- LeetCode：LeetCode 测试代码
+- Vue：Vue 测试代码
+
+### 备注
+
+#### 增加八股文文件夹

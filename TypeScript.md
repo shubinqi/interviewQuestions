@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 19:32:23
+ * @LastEditTime: 2023-03-01 20:21:30
  * @Description: TypeScript 面试题
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
@@ -62,10 +62,10 @@ TypeScript 中的类型主要包括以下几类：
 
 在 TypeScript 中，类的访问类型指的是成员属性和成员方法的访问权限。主要有以下几种访问类型：
 
-1. public：公共访问类型，默认的访问类型，没有任何限制。
-1. private：私有访问类型，只能在类内部被访问。
-1. protected：受保护访问类型，只能在类内部和继承类中被访问。
-1. readonly：只读访问类型，表示只能读取，不能修改。
+1. **public**：公共访问类型，默认的访问类型，没有任何限制。
+1. **private**：私有访问类型，只能在类内部被访问。
+1. **protected**：受保护访问类型，只能在类内部和继承类中被访问。
+1. **readonly**：只读访问类型，表示只能读取，不能修改。
 
 以下是一个示例：
 
