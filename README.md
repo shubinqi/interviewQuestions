@@ -2,31 +2,31 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 01:17:55
+ * @LastEditTime: 2023-03-02 01:46:43
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
 -->
 
-## 前端面试题汇总
+## 前端知识体系汇总
 
-> 舒彬琪的前端面试题笔记汇总。
+> 舒彬琪的前端知识体系笔记汇总。
 
-### 前端知识体系模块划分
+### 前端知识体系模块划分（面试题）
 
-1. 前端基础
+1. 前端基础（根目录）
    - HTML（已更新）
    - CSS（已更新）
    - JavaScript（已更新）
    - TypeScript（已更新）
-2. 计算机网络
+2. 计算机网络（/ComputerNetwork）
    - HTTP（更新中...）
    - TCP/IP（更新中...）
    - DNS 域名解析（更新中...）
-   - 网络安全（更新中...）
+   - 前端安全（已更新）
    - WEB 性能优化（更新中...）
    - 浏览器（更新中...）
-3. 前端框架
+3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
    - Vue2：/Vue/Vue2（已更新）
    - Vue-Router（已更新）
    - VueX（已更新）
@@ -40,14 +40,14 @@
    - Express.js
    - Koa.js
    - NextJS
-4. UI 框架/库
+4. UI 框架/库（/UI）
    - Element-UI
    - Vant-UI
    - iView
    - Ant Design
    - Bootstrap
    - jQuery
-5. 工具
+5. 工具（/Tool）
    - Git
    - SVN
    - Webpack：/Tool/Pack（已更新）
@@ -59,20 +59,23 @@
    - Scss
    - Tailwind CSS
    - Lodash
-6. 移动端
+6. 移动端（/Mobile）
    - 移动端
    - 微信小程序
    - 微信公众号
    - Uni-app
-7. 工程化
+   - Flutter（Android 开发）
+7. 工程化（/Module）
    - 软件工程
    - 前端工程化
    - 前端自动化测试
+   - 架构模式
+   - 设计模式
    - 数据结构与算法
 8. 数据可视化
    - 数据可视化
-   - Echarts
-   - D3.js
+   - Echarts（/Tool/Others）
+   - D3.js（/Tool/Store）
 9. 扩展知识
    - Linux
    - Nginx
@@ -85,26 +88,29 @@
 
 ### 其他文件
 
-#### Project 文件夹
+#### Chinese 文件夹（/Chinese）
+
+- 前端知识体系汇总
+- 前端职位分级
+- 手写代码
+- 非技术题
+- 代码输出
+- 注意事项
+- 碎碎念（零碎知识）
+
+#### Project 文件夹（/Project）
 
 - 开发环境搭建
 - 创建 Vue 项目
 - 创建 React 项目
 - 创建 Angular 项目
 
-#### JavaScript 文件夹
+#### JavaScript 文件夹（/JavaScript）
 
 - Ajax
 - DOM-BOM
 - ES6
 - Promise
-- 闭包
-- 原型链
-- 异步编程
-- 事件循环
-- 继承
-- 防抖
-- 节流
 
 #### 算法题（/Demo/Algorithm）
 
@@ -120,26 +126,27 @@
 - LeetCode：LeetCode 测试代码
 - Vue：Vue 测试代码
 
-### 备注
+### 八股文
 
 #### 增加八股文文件夹
 
-- BFC（已更新）
-- 回流与重绘（已更新）
-- 清除浮动（已更新）
-- 水平垂直居中（已更新）
-- 闭包（已更新）
-- 原型链（已更新）
-- 作用域链（已更新）
-- 异步编程（已更新）
-- 事件循环（已更新）
-- 深拷贝（已更新）
-- ES6（已更新）
-- 节流与防抖（已更新）
-- 继承（已更新）
-- 双向绑定原理（已更新）
-- Diff 算法（已更新）
-- 响应式原理 defineProperty
-- 响应式原理 Proxy
-- JS 垃圾回收机制（已更新）
-- V8 垃圾回收机制（已更新）
+- BFC：/八股文（已更新）
+- 回流与重绘：/八股文（已更新）
+- 清除浮动：/八股文（已更新）
+- 水平垂直居中：/八股文（已更新）
+- 闭包：/八股文（已更新）
+- 原型链：/八股文（已更新）
+- 作用域链：/八股文（已更新）
+- 异步编程：/八股文（已更新）
+- 事件循环：/八股文（已更新）
+- 深拷贝：/八股文（已更新）
+- ES6：/八股文（已更新）
+- 节流与防抖：/八股文（已更新）
+- 继承：/八股文（已更新）
+- 双向绑定原理：/八股文（已更新）
+- Diff 算法：/八股文（已更新）
+- 响应式原理 defineProperty：/八股文（已更新）
+- 响应式原理 Proxy：/八股文
+- JS 垃圾回收机制：/八股文（已更新）
+- V8 垃圾回收机制：/八股文（已更新）
+- Vue2 和 Vue3 的区别：/Vue（已更新）

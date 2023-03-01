@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 22:32:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 00:54:13
+ * @LastEditTime: 2023-03-02 01:28:44
  * @Description: 八股文：DIFF 算法
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\Diff算法.md
@@ -30,3 +30,22 @@ key 是为 Vue 中 vnode 的唯一标记，通过这个 key，diff 操作可以�
 
 1. 更准确：因为带 key 就不是就地复用了，在 sameNode 函数 a.key === b.key 对比中可以避免就地复用的情况。所以会更加准确。
 1. 更快速：利用 key 的唯一性生成 map 对象来获取对应节点，比遍历方式更快
+
+#### Vue3 Diff 算法和 Vue2 的区别
+
+我们知道在数据变更触发页面重新渲染，会生成虚拟 DOM 并进行 patch 过程，这一过程在 Vue3 中的优化有如下
+
+编译阶段的优化：
+
+1. **事件缓存**：将事件缓存（如: @click），可以理解为变成静态的了
+1. **静态提升**：第一次创建静态节点时保存，后续直接复用
+1. **添加静态标记**：给节点添加静态标记，以优化 Diff 过程
+
+由于编译阶段的优化，除了能更快的生成虚拟 DOM 以外，还使得 Diff 时可以跳过"永远不会变化的节点"，
+
+Diff 优化如下
+
+1. Vue2 是全量 Diff，Vue3 是静态标记 + 非全量 Diff
+1. 使用最长递增子序列优化了对比流程
+
+根据尤大公布的数据就是 Vue3 update 性能提升了 1.3~2 倍
