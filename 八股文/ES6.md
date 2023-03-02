@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 22:34:12
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 08:45:04
+ * @LastEditTime: 2023-03-02 09:29:01
  * @Description: 八股文：ES6
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\ES6.md
@@ -66,3 +66,63 @@ ES6（ECMAScript 2015）引入了许多新的语法和特性，其中一些主�
 1. for...of 用于遍历可迭代对象（如数组、Map、Set 等），它会将集合中的每一个元素作为循环变量来访问每一个元素。与 for...in 不同，for...of 遍历的是集合中的元素，而不是属性。
 
 > for...in 适用于遍历对象属性，但是不保证属性访问顺序；for...of 适用于遍历集合中的元素，比如数组、Map、Set 等。
+
+#### 什么是回调地狱？回调地狱会带来什么问题？如何解决回调地狱问题？
+
+回调地狱指的是多层嵌套的回调函数，形成代码缩进过深、难以维护和理解的情况。
+
+回调地狱会导致代码复杂度上升，难以调试和维护，同时也会影响代码的可读性和可维护性。
+
+解决回调地狱的方法有以下几种：
+
+1. **Promise**：使用 Promise 可以将异步操作封装成 Promise 实例，在 Promise 实例中链式调用 then 方法，避免了多层嵌套的回调函数，使代码更加可读且易于维护。
+1. **async/await**：async/await 是在 Promise 基础上的语法糖，可以更加优雅地处理异步操作。使用 async/await 可以将异步操作写成同步代码的形式，避免了回调地狱的问题。
+1. **发布/订阅模式**：发布/订阅模式是一种广泛使用的异步编程模式，通过发布者发布消息，订阅者订阅消息，实现了解耦和更好的可维护性。在该模式中，发布者和订阅者通过事件或消息进行交互，而不是通过直接调用回调函数。
+
+综上所述，使用 Promise、async/await 或发布/订阅模式可以避免回调地狱的问题，使代码更加易于维护和扩展。
+
+#### Promise 是什么？解决了什么问题？
+
+Promise 是一种用于异步编程的 JavaScript 对象，它可以更好地管理和组织异步操作。Promise 提供了一种解决 Ajax 回调地狱（Callback Hell）的方案，使得异步代码可以更加清晰和易于维护。
+
+Promise 具有三个状态：Pending（等待状态）、Fulfilled（已完成状态）和 Rejected（已失败状态）。
+
+1. 当异步操作尚未完成时，Promise 的状态为 Pending；
+1. 当异步操作成功完成时，Promise 的状态为 Fulfilled；
+1. 当异步操作失败时，Promise 的状态为 Rejected。
+
+使用 Promise 我们可以通过链式调用 then 方法来处理异步操作的结果，也可以使用 catch 方法来处理异步操作的错误。
+
+Promise 的出现大大简化了异步编程，使得异步代码的可读性和可维护性都有了很大的提升。
+
+例如，可以通过 Promise 实现读取文件：
+
+```
+const fs = require('fs/promises');
+
+fs.readFile('file.txt', 'utf8')
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+```
+
+#### async/await 是什么？解决了什么问题
+
+async/await 是一种异步编程的解决方案，可以让 JavaScript 代码在不阻塞其他操作的情况下等待异步操作的结果。在语言层面上，它是基于 Promise 实现的一种语法糖，可以更加方便地处理异步操作。
+
+通过使用 async/await，可以让异步操作看起来像是同步的，避免了回调地狱等问题，提高了代码的可读性和可维护性。同时，它也简化了异常处理，可以通过 try/catch 语句捕获异步操作的错误，并进行相应的处理。
+
+具体来说，async 用于定义一个异步函数，它会返回一个 Promise 对象。在异步函数中，可以使用 await 等待一个异步操作的完成，并且异步操作的结果会被解析为一个值返回。如果异步操作出现错误，则会抛出异常，可以使用 try/catch 来处理异常。
+
+总之，async/await 帮助我们更加方便地处理异步操作，避免了回调地狱和复杂的异常处理，让代码更加简洁易读。
+
+#### Promise 有哪些 API？
+
+Promise 是 JavaScript 中一种处理异步操作的方法，它可以在异步操作完成后通过回调函数来处理异步结果。以下是 Promise 的常用 API：
+
+1. **Promise.all(iterable)**：接受一个可迭代对象作为参数，返回一个新的 Promise 对象，只有所有的 Promise 都成功才会返回成功结果，否则返回失败结果。
+1. **Promise.race(iterable)**：接受一个可迭代对象作为参数，返回一个新的 Promise 对象，只要其中有一个 Promise 成功或失败，就会返回相应的结果。
+1. **Promise.resolve(value)**：将一个值包装成 Promise 对象并立即返回，返回的 Promise 对象状态为成功。
+1. **Promise.reject(reason)**：将一个错误信息包装成 Promise 对象并立即返回，返回的 Promise 对象状态为失败。
+1. **Promise.prototype.then(onFulfilled, onRejected)**：绑定成功和失败的回调函数，如果当前 Promise 对象为成功状态，执行 onFulfilled 回调函数，否则执行 onRejected 回调函数，返回一个新的 Promise 对象。
+1. **Promise.prototype.catch(onRejected)**：绑定失败的回调函数，相当于 then(null, onRejected)。
+1. **Promise.prototype.finally(onFinally)**：绑定 finally 的回调函数，无论 Promise 对象状态为成功或失败，都会执行 onFinally 回调函数，返回一个新的 Promise 对象。
