@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:05:12
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-02-28 17:42:53
- * @Description: VueX 状态管理模式
+ * @Description: VueX 面试题（15题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\VueX.md
 -->

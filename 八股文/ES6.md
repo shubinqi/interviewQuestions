@@ -3,7 +3,7 @@
  * @Date: 2023-03-01 22:34:12
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-02 09:29:01
- * @Description: 八股文：ES6
+ * @Description: 八股文：ES6（14题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\ES6.md
 -->

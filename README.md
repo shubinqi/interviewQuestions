@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 09:15:34
+ * @LastEditTime: 2023-03-03 00:41:10
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -20,9 +20,9 @@
    - JavaScript（已更新）
    - TypeScript（已更新）
 2. 计算机网络（/ComputerNetwork）
-   - HTTP（更新中...）
-   - TCP/IP（更新中...）
-   - DNS 域名解析（更新中...）
+   - HTTP（已更新）
+   - TCP/IP（已更新）
+   - DNS 域名解析（已更新）
    - 前端安全（已更新）
    - WEB 性能优化（更新中...）
    - 浏览器（更新中...）

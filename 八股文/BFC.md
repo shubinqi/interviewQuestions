@@ -3,7 +3,7 @@
  * @Date: 2023-03-01 23:28:39
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-01 23:31:37
- * @Description: 八股文：BFC（块级格式化上下文），IFC（内联格式化上下文）
+ * @Description: 八股文：BFC（块级格式化上下文），IFC（内联格式化上下文）（6题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\BFC.md
 -->

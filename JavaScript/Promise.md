@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 03:08:54
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 03:10:48
- * @Description: Promise
+ * @LastEditTime: 2023-03-03 01:34:33
+ * @Description: Promise 详解
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript\Promise.md
 -->

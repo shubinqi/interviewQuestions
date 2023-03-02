@@ -3,12 +3,12 @@
  * @Date: 2023-02-24 21:03:56
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-02 00:41:03
- * @Description: CSS 面试题汇总
+ * @Description: CSS 面试题汇总（52题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\CSS.md
 -->
 
-### CSS 3 有哪些新特性
+### CSS 3 有哪些新特性？
 
 ### BFC 是什么？产生条件？作用？特性？
 

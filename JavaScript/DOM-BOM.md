@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:18:10
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-02-28 03:22:14
- * @Description: DOM 和 BOM
+ * @Description: DOM 和 BOM 详解
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript\DOM-BOM.md
 -->

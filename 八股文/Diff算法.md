@@ -3,12 +3,12 @@
  * @Date: 2023-03-01 22:32:15
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-02 01:28:44
- * @Description: 八股文：DIFF 算法
+ * @Description: 八股文：DIFF 算法（3题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\Diff算法.md
 -->
 
-#### DIFF 算法的原理
+#### DIFF 算法的原理？
 
 在新老虚拟 DOM 对比时：
 
@@ -19,7 +19,7 @@
 
 在 diff 中，只对同层的子节点进行比较，放弃跨级的节点比较，使得时间复杂从 O(n3) 降低值 O(n)，也就是说，只有当新旧 children 都为多个子节点时才需要用核心的 Diff 算法进行同层级比较。
 
-#### Vue 中 key 的作用
+#### Vue 中 key 的作用？
 
 vue 中 key 值的作用可以分为两种情况来考虑：
 
@@ -31,7 +31,7 @@ key 是为 Vue 中 vnode 的唯一标记，通过这个 key，diff 操作可以�
 1. 更准确：因为带 key 就不是就地复用了，在 sameNode 函数 a.key === b.key 对比中可以避免就地复用的情况。所以会更加准确。
 1. 更快速：利用 key 的唯一性生成 map 对象来获取对应节点，比遍历方式更快
 
-#### Vue3 Diff 算法和 Vue2 的区别
+#### Vue3 Diff 算法和 Vue2 的区别？
 
 我们知道在数据变更触发页面重新渲染，会生成虚拟 DOM 并进行 patch 过程，这一过程在 Vue3 中的优化有如下
 

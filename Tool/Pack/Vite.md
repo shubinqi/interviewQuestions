@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:04:52
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-02-28 17:07:37
- * @Description: Vite
+ * @Description: Vite 面试题（8题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\Vite.md
 -->

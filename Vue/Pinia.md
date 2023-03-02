@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:04:58
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-02-28 17:39:40
- * @Description: Pinia 状态管理模式
+ * @Description: Pinia 状态管理模式（6题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\Pinia.md
 -->

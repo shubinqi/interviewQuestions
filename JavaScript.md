@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 08:45:34
- * @Description: JavaScript 面试题汇总
+ * @LastEditTime: 2023-03-02 22:55:20
+ * @Description: JavaScript 面试题汇总（120题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
 -->
@@ -455,25 +455,34 @@ JavaScript 中，函数对象具有 prototype 属性，而普通对象没有。�
 
 #### 原型链的终点是什么？如何打印出原型链的终点？
 
-由于 Object 是构造函数，原型链终点是 Object.prototype.\_\_proto\_\_ ，而 Object.prototype.\_\_proto\_\_ === null // true，所以，原型链的终点是 **null** 。
+在 JavaScript 中，原型链的终点是 null，因为 Object.prototype 是所有对象的基类，而 null 不是对象。因此，当一个对象的原型链上一直查找到 Object.prototype 后，再继续查找其原型链，就会返回 null。
 
-原型链上的所有原型都是对象，所有的对象最终都是由 Object 构造的，而 Object.prototype 的下一级是 Object.prototype.\_\_proto\_\_ 。
+要打印出对象的原型链的终点，可以使用以下方法：
 
-可以通过 \_\_proto\_\_ 或者 Object.getPrototypeOf() 方法来访问一个对象的原型链。我们可以在一个循环中逐级遍历，直到找到终点。
-
-需要注意的是：目前各浏览器对于原型链的定义并不统一，有的是 \_\_proto\_\_，有的是 \[\[prototype]]，需要根据实际情况进行判断，建议使用 Object.getPrototypeOf() 方法实现。
-
-举个例子，在控制台中输入以下代码可以打印出原型链的终点：
+1. 使用 while 循环和 Object.getPrototypeOf() 方法。从当前对象开始，每次通过 Object.getPrototypeOf() 获取其原型，直到获取到 null。代码示例如下：
 
 ```
 let obj = {};
-let prototype = Object.getPrototypeOf(obj);
-
-while (prototype) {
-  console.log(prototype);
-  prototype = Object.getPrototypeOf(prototype);
+while (obj !== null) {
+  console.log(obj);
+  obj = Object.getPrototypeOf(obj);
 }
 ```
+
+2. 使用递归函数，每次调用函数时传入当前对象的原型，直到传入的原型为 null。代码示例如下：
+
+```
+function printPrototypeChain(obj) {
+  console.log(obj);
+  const proto = Object.getPrototypeOf(obj);
+  if (proto !== null) {
+    printPrototypeChain(proto);
+  }
+}
+printPrototypeChain({});
+```
+
+无论是使用 while 循环还是递归函数，都会从对象本身开始打印出原型链上的所有对象，直到终点 null。
 
 如果一个对象没有原型，那么 Object.getPrototypeOf(obj) 返回的就是 null。所以循环应该在遍历到 null 之前结束。
 
@@ -851,7 +860,7 @@ JSON 的语法和 JavaScript 对象的语法非常相似，由于 JavaScript 的
 
 在 JavaScript 中，可以使用 JSON 对象的 parse() 方法将 JSON 字符串转换为 JavaScript 对象，使用 stringify() 方法将 JavaScript 对象转换为 JSON 字符串。通过使用 JSON，应用程序可以方便地传递和处理数据，与传统的 XML 数据格式相比，JSON 更加简单、轻量和易于使用。
 
-#### 什么是伪数组（类数组）？
+#### 什么是伪数组（类数组）？伪数组（类数组）和数组的区别？
 
 伪数组（或称类数组）是一种类似于数组的对象，它具有以下特点：
 
@@ -861,6 +870,18 @@ JSON 的语法和 JavaScript 对象的语法非常相似，由于 JavaScript 的
 1. 常见的伪数组包括函数的 arguments 对象、DOM 元素的 NodeList、HTMLCollection 等。
 
 尽管伪数组看起来像是数组，但它们不是真正的数组，因为它们没有数组的原型。因此，如果要对伪数组进行数组操作，需要使用一些方法将其转换为真正的数组，比如使用 Array.from 或 Array.prototype.slice.call 方法。
+
+**伪数组（类数组）和数组的区别**
+
+伪数组（类数组）是指具有数组特性，但实际上不是数组的对象，例如 DOM 元素集合、函数的参数 arguments 对象等，它们不可以使用数组的方法，也没有数组的一些属性和方法，比如 length、slice、push、pop、shift、unshift 等。可以使用 for...in 来遍历它们。
+
+数组是具有 length 属性和一系列可枚举属性的对象，可以使用数组的属性和方法，例如 push、pop、shift、unshift、slice、splice、sort 等。
+
+在 JavaScript 中，可以通过 Array.from() 或者扩展运算符 (...) 等方法将伪数组转换成真正的数组。
+
+```
+Array.prototype.slice.call(fakeArray)
+```
 
 #### 类数组转换成数组的方法有哪些？
 

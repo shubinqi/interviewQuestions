@@ -3,12 +3,12 @@
  * @Date: 2023-02-24 21:10:06
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-02-28 19:59:37
- * @Description:
+ * @Description: Git 面试题（8题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Tool\Git.md
 -->
 
-#### Git 报错： Failed to connect to github.com port 443 解决方案
+#### Git 报错： Failed to connect to github.com port 443 解决方案？
 
 两种情况：
 
@@ -50,3 +50,29 @@ git config --global --get https.proxy
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
+
+#### Git 报错：Failed to connect to 127.0.0.1 port 7890 after 2070 ms: Couldn't connect to？
+
+查看是否有代理：
+
+```
+git config --global http.proxy
+```
+
+取消代理：
+
+```
+git config --global --unset http.proxy
+```
+
+#### Git 和 SVN 有什么区别？
+
+#### 你们是怎么进行分支管理的？
+
+#### 如何解决代码冲突？
+
+#### 为什么会产生冲突？
+
+#### 如果本次提交失误，如何撤销？
+
+#### git fetch、git merge、git pull 的区别？

@@ -3,7 +3,7 @@
  * @Date: 2023-03-02 00:53:21
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-02 00:53:54
- * @Description: 八股文：虚拟 DOM
+ * @Description: 八股文：虚拟 DOM（4题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\虚拟DOM.md
 -->
@@ -16,7 +16,7 @@
 
 另外现代前端框架的一个基本要求就是无须手动操作 DOM，一方面是因为手动操作 DOM 无法保证程序性能，多人协作的项目中如果 review 不严格，可能会有开发者写出性能较低的代码，另一方面更重要的是省略手动 DOM 操作可以大大提高开发效率。
 
-#### 虚拟 DOM 的解析过程
+#### 虚拟 DOM 的解析过程？
 
 虚拟 DOM 的解析过程：
 
@@ -26,7 +26,7 @@
 
 最后将记录的有差异的地方应用到真正的 DOM 树中去，这样视图就更新了。
 
-#### 为什么要用虚拟 DOM
+#### 为什么要用虚拟 DOM？
 
 （1）保证性能下限，在不进行手动优化的情况下，提供过得去的性能看一下页面渲染的流程：解析 HTML -> 生成 DOM -> 生成 CSSOM -> Layout -> Paint -> Compiler 下面对比一下修改 DOM 时真实 DOM 操作和 Virtual DOM 的过程，来看一下它们重排重绘的性能消耗 ∶
 
@@ -40,7 +40,7 @@ Virtual DOM 的更新 DOM 的准备工作耗费更多的时间，也就是 JS �
 
 Virtual DOM 本质上是 JavaScript 的对象，它可以很方便的跨平台操作，比如服务端渲染、uniapp 等。
 
-#### 虚拟 DOM 真的比真实 DOM 性能好吗
+#### 虚拟 DOM 真的比真实 DOM 性能好吗？
 
 首次渲染大量 DOM 时，由于多了一层虚拟 DOM 的计算，会比 innerHTML 插入慢。
 

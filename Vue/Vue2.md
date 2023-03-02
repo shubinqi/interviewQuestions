@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 18:30:47
- * @Description: Vue 2.X
+ * @LastEditTime: 2023-03-02 18:16:21
+ * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\Vue2.md
 -->
@@ -454,11 +454,18 @@ Vue 3.x 相比 Vue 2.x，增加了两个生命周期钩子函数：
 
 #### keep-alive 的理解？它是如何实现的？keep-alive 的生命周期有哪些？
 
-keep-alive 是 Vue 的一个内置组件，可以将其包裹的组件缓存起来，以便下次直接渲染缓存而不是重新创建组件。这个特性对于需要频繁切换的组件来说非常有用，可以提高应用的性能和用户体验。
+&lt;keep-alive&gt; 是 Vue.js 中的一个抽象组件，它的主要作用是缓存组件。在一个有大量组件需要频繁切换的页面中，使用 &lt;keep-alive&gt; 可以提高页面的性能，减少因频繁创建和销毁组件而产生的性能消耗。
 
-keep-alive 组件的实现原理是通过在组件的生命周期钩子函数中添加标记来实现缓存的功能。具体地说，在组件被缓存前，会调用组件的 beforeUnmount 钩子函数，在组件被激活前会调用 activated 钩子函数，在组件被移除缓存后会调用 deactivated 钩子函数。这些钩子函数可以用来控制组件的行为，例如在组件被激活时加载数据。
+具体实现原理如下：
 
-keep-alive 组件的生命周期包括以下几个钩子函数：
+1. 首先在 &lt;keep-alive&gt; 组件内部创建一个 cache 对象，用于缓存组件实例。
+1. 当一个组件被包裹在 &lt;keep-alive&gt; 组件内时，会根据该组件的 name 或者组件自身的唯一标识符（如 key 属性）在 cache 对象中查找是否有缓存的实例。如果找到了缓存的实例，则直接使用缓存的实例渲染组件，并且调用其 activated 钩子函数；否则创建新的组件实例，并将其缓存到 cache 对象中。
+1. 当一个被缓存的组件再次被渲染时，会调用其 deactivated 钩子函数，并将其从 DOM 中移除，但是组件实例仍然被缓存到 cache 对象中。
+1. 如果缓存的组件实例过多，超出了设置的 max 属性值，则会按照 LRU 算法（最近最少使用算法）将最不常用的组件实例从 cache 对象中移除。
+
+总之，&lt;keep-alive&gt; 的实现原理是将缓存的组件实例存储在内存中，以达到提高页面性能的目的。
+
+keep-alive 组件经历的生命周期包括以下几个钩子函数（其中 **activated** 和 **deactivated** 是 keep-alive 独有的生命周期）：
 
 1. **beforeMount**: 在 keep-alive 组件第一次挂载时调用，此时 keep-alive 会缓存第一个子组件；
 1. **beforeUnmount**: 在 keep-alive 组件被卸载前调用，此时 keep-alive 会销毁所有缓存的子组件；
