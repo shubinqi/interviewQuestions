@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 00:41:10
+ * @LastEditTime: 2023-03-03 02:41:33
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -15,28 +15,27 @@
 ### 前端知识体系模块划分（面试题）
 
 1. 前端基础（根目录）
-   - HTML（已更新）
-   - CSS（已更新）
-   - JavaScript（已更新）
-   - TypeScript（已更新）
+   - HTML（已更新 22 题）
+   - CSS（已更新 52 题）
+   - JavaScript（已更新 120 题）
+   - TypeScript（已更新 17 题）
 2. 计算机网络（/ComputerNetwork）
-   - HTTP（已更新）
-   - TCP/IP（已更新）
-   - DNS 域名解析（已更新）
-   - 前端安全（已更新）
-   - WEB 性能优化（更新中...）
-   - 浏览器（更新中...）
+   - HTTP（已更新 35 题）
+   - TCP/IP（已更新 31 题）
+   - DNS 域名解析（已更新 5 题）
+   - 前端安全（已更新 8 题）
+   - WEB 性能优化（已更新 22 题）
+   - 浏览器（61 题，更新中...）
 3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
-   - Vue2（已更新）
-   - Vue3（已更新）
-   - Vue-Router（已更新）
-   - VueX（已更新）
-   - Pinia（已更新）
-   - React
+   - Vue2（已更新 68 题）
+   - Vue3（已更新 18 题）
+   - VueX（已更新 15 题）
+   - Pinia（已更新 6 题）
+   - React（57 题，待更新）
    - React Native
-   - Redux
+   - Redux（9 题，待更新）
    - Angular
-   - NodeJS
+   - NodeJS（27 题，待更新）
    - Express.js
    - Koa.js
    - NextJS
@@ -48,17 +47,17 @@
    - Bootstrap
    - jQuery
 5. 工具（/Tool）
-   - Git：/Tool/Version
-   - SVN：/Tool/Version
-   - Webpack：/Tool/Pack（已更新）
-   - Vite：/Tool/Pack（已更新）
+   - Git：/Tool/Version（8 题，待更新）
+   - SVN：/Tool/Version（1 题，待更新）
+   - Webpack：/Tool/Pack（已更新 13 题）
+   - Vite：/Tool/Pack（已更新 8 题）
    - Gulp：/Tool/Pack
    - Grunt：/Tool/Pack
    - Rullup：/Tool/Pack
    - Tailwind CSS
    - Lodash：/Tool/Store
    - Babel：/Tool/Store
-   - Markdown（已更新）
+   - Markdown（已更新笔记）
    - Less
    - Sass
 6. 移动端（/Mobile）
@@ -76,17 +75,22 @@
    - 数据结构与算法
 8. 数据可视化
    - 数据可视化
-   - Echarts（/Tool/Others）
-   - D3.js（/Tool/Store）
+   - Echarts：/Tool/Others
+   - D3.js：/Tool/Store
 9. 扩展知识
    - Linux
    - Nginx
    - MongoDB
    - MySQL
-   - 微前端
+   - 微前端：/Pc（3 题，待更新）
    - 低代码
    - 服务器
    - 前端运维
+10. 其他面试题
+
+- 非技术题：/Chinese（11 题，已更新 1 题）
+- 手写代码：/Chinese（8 题，待更新）
+- 代码输出：/Chinese（0 题，待更新）
 
 ### 其他文件
 
@@ -152,5 +156,5 @@
 - JS 垃圾回收机制（已更新）
 - V8 垃圾回收机制（已更新）
 - Vue2 和 Vue3 的区别：/Vue（已更新）
-- 浏览器从输入URL到页面显示发生了什么（已更新）
-- TCP三次握手四次挥手（已更新）
+- 浏览器从输入 URL 到页面显示发生了什么（已更新）
+- TCP 三次握手四次挥手（已更新）

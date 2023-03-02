@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 23:28:39
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 23:31:37
+ * @LastEditTime: 2023-03-03 02:51:14
  * @Description: 八股文：BFC（块级格式化上下文），IFC（内联格式化上下文）（6题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\BFC.md
@@ -20,7 +20,14 @@ BFC 的产生条件包括：
 1. 行内块元素（display 为 inline-block）。
 1. 表格单元格（table-cell）。
 1. 弹性盒子容器（display 为 flex 或 inline-flex）。
-1. overflow 值不为 visible 的块元素。
+1. overflow 值不为 visible、clip 的块元素。。
+
+BFC 的触发方式包括（格式化上下文影响布局，通常，我们会为定位和清除浮动创建新的 BFC，而不是更改布局）：
+
+1. float
+1. position（除了 static）
+1. display（除了 inline）
+1. overflow（除了 visible）
 
 BFC 的特点包括：
 
@@ -29,16 +36,16 @@ BFC 的特点包括：
 1. BFC 中的元素可以清除浮动，避免浮动元素对其他元素的影响。
 1. BFC 中的元素可以包含浮动元素，防止父元素高度塌陷。
 
-BFC 的作用包括：
+BFC 的作用包括（主要是**清除浮动**和**防止 margin 重叠**）：
 
-1. 清除浮动，避免浮动元素对其他元素的影响。
-1. 防止 margin 重叠，让元素按照预期的方式进行布局。
+1. **清除浮动**，避免浮动元素对其他元素的影响。
+1. **防止 margin 重叠**，让元素按照预期的方式进行布局。
 1. 创建独立的渲染区域，防止元素的样式受到外部元素的影响。
 1. 解决父元素高度塌陷的问题。
 
 总的来说，BFC 是 CSS 中的一个重要概念，它可以有效地解决一些常见的布局问题，并提高网页的性能和稳定性。
 
-#### IFC（内联格式化上下文）是什么？特点？作用？
+#### IFC（内联格式化上下文）是什么？特点？使用场景？
 
 **IFC（内联格式化上下文）**是 CSS 中的一个概念，指的是一个内联元素的渲染区域，与块级元素的 BFC 相对应。IFC 中的元素按照一定的规则排列布局，且不会影响到 IFC 外部的元素。
 
