@@ -459,7 +459,23 @@ JavaScript 中，函数对象具有 prototype 属性，而普通对象没有。�
 
 原型链上的所有原型都是对象，所有的对象最终都是由 Object 构造的，而 Object.prototype 的下一级是 Object.prototype.\_\_proto\_\_ 。
 
-需要注意的是：目前各浏览器对于原型链的定义并不统一，有的是 \_\_proto\_\_，有的是 \[\[prototype]]，需要根据实际情况进行判断。
+可以通过 \_\_proto\_\_ 或者 Object.getPrototypeOf() 方法来访问一个对象的原型链。我们可以在一个循环中逐级遍历，直到找到终点。
+
+需要注意的是：目前各浏览器对于原型链的定义并不统一，有的是 \_\_proto\_\_，有的是 \[\[prototype]]，需要根据实际情况进行判断，建议使用 Object.getPrototypeOf() 方法实现。
+
+举个例子，在控制台中输入以下代码可以打印出原型链的终点：
+
+```
+let obj = {};
+let prototype = Object.getPrototypeOf(obj);
+
+while (prototype) {
+  console.log(prototype);
+  prototype = Object.getPrototypeOf(prototype);
+}
+```
+
+如果一个对象没有原型，那么 Object.getPrototypeOf(obj) 返回的就是 null。所以循环应该在遍历到 null 之前结束。
 
 #### == 和 === 的区别？
 

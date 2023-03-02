@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 01:46:43
+ * @LastEditTime: 2023-03-02 09:15:34
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -152,4 +152,5 @@
 - JS 垃圾回收机制（已更新）
 - V8 垃圾回收机制（已更新）
 - Vue2 和 Vue3 的区别：/Vue（已更新）
-- 浏览器从输入URL到页面显示发生了什么
+- 浏览器从输入URL到页面显示发生了什么（已更新）
+- TCP三次握手四次挥手（已更新）
