@@ -3,7 +3,7 @@
  * @Date: 2023-03-03 22:10:05
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-03 22:10:15
- * @Description: 八股文：封装 axios
+ * @Description: 八股文：封装 axios（2题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\Vue\封装Axios.md
 -->

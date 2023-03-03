@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 17:51:34
+ * @LastEditTime: 2023-03-04 00:15:28
  * @Description: JavaScript 面试题汇总（120题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
@@ -1129,48 +1129,1152 @@ xhr.send();
 
 #### 请介绍一下 XMLHTTPRequest 对象？
 
+XMLHttpRequest 对象是 JavaScript 的一个核心 API，用于在浏览器中发起 HTTP 请求，并获取服务器返回的数据，实现异步数据交换（AJAX）。
+
+XMLHttpRequest 对象的基本用法如下：
+
+1. **创建 XMLHttpRequest 实例**：通过 new XMLHttpRequest() 创建 XMLHttpRequest 对象。
+1. **配置请求参数**：通过 open() 方法设置请求的方法、URL 和是否异步等。
+1. **发送请求**：通过 send() 方法发送请求。
+1. **监听状态变化**：通过 onreadystatechange 属性指定当 readyState 属性发生变化时的回调函数，可以在回调函数中通过 status 和 responseText 等属性获取服务器返回的数据。
+
+XMLHttpRequest 对象的常见用法包括：
+
+1. 发送 GET 请求：通过将请求参数拼接在 URL 后面，然后调用 send() 方法发送 GET 请求，如：xhr.open('GET', 'https://example.com/api/data?id=1', true); xhr.send();
+1. 发送 POST 请求：通过设置请求头和请求体，然后调用 send() 方法发送 POST 请求，如：
+
+```
+xhr.open('POST', 'https://example.com/api/data', true);
+xhr.setRequestHeader('Content-type', 'application/json');
+xhr.send(JSON.stringify({id: 1, name: 'example'}));
+```
+
+XMLHttpRequest 对象的属性和方法比较多，还包括 abort()、getAllResponseHeaders()、getResponseHeader()、timeout 等。
+
 #### ajax、axios、fetch 的区别？
+
+Ajax、Axios 和 Fetch 都是用于发送异步请求的 JavaScript 库。
+
+Ajax 是一种基于原生 XMLHttpRequest 对象实现的技术，用于在不刷新页面的情况下与服务器进行数据交互。
+
+Axios 是一个基于 Promise 的 HTTP 库，可以用于浏览器和 Node.js，支持拦截请求和响应，自动转换 JSON 数据，取消请求等特性。
+
+Fetch 是浏览器原生提供的一个基于 Promise 的网络请求 API，支持 Request 和 Response 对象，可以更灵活地控制请求和响应。相比于 Ajax 和 Axios，Fetch 更加简洁，并且默认不会发送或接收任何 cookies。
+
+它们的主要区别在于实现方式、特性支持和兼容性等方面。Ajax 是比较老的技术，虽然功能强大但需要手动处理请求和响应等细节，而 Axios 和 Fetch 对这些细节进行了更好的封装和处理，使用起来更加方便快捷。但 Fetch 在某些浏览器上的兼容性不如 Ajax 和 Axios，所以需要在具体场景下进行选择和使用。
 
 #### 取消 ajax 请求有什么意义？
 
+取消 ajax 请求的主要目的是避免不必要的资源浪费和提升用户体验。在网络不稳定或者用户操作频繁的情况下，可能会发生多次请求的情况，而这些请求并不一定都是有用的。如果不及时取消这些无用请求，就会浪费网络资源和服务器资源，导致应用的响应速度变慢，用户体验下降。同时，如果请求是基于用户的操作触发的，用户可能会感到困惑或者不满意，因为他们并不知道这些无用请求会占用他们的带宽或者延长应用的响应时间。因此，及时取消无用请求可以减少不必要的资源浪费和提升用户体验。
+
 #### ES6 更新了哪些新语法？（从你回答的里面挑一个问详细的）
 
-1. Promise 是什么？
-1. 介绍一下 Promise 的 3 种状态，怎么改变状态？
-1. Promise 有哪些 API？
-1. Promise.all、Promise.race、Promise.any 的区别？
-1. Promise 有什么缺点？
-1. 对 async await 的理解？
-1. await 到底在等待啥？
-1. await 如何捕获异常？
-1. async/await 对比 Promise 的优势
-1. 对浅拷贝深拷贝的理解？
-1. JSON.stringify 深拷贝的缺点
-1. 怎么实现深拷贝？（建议写博客）
-1. Object.assign 和扩展运算符是深拷贝还是浅拷贝，两者区别？
-1. 深度遍历广度遍历的区别？
-1. 知道 lodash 吗？它有哪些常见的 API ？
-1. (a == 1 && a == 2 && a == 3) 有可能是 true 吗？
-1. 后端返回 1 万条数据，你要怎么进行渲染？
-1. 你对虚拟列表的理解？
-1. JS 中的数组和函数在内存中是如何存储的？
-1. 什么是函数式编程？
-1. 函数式编程的优缺点？
-1. 什么是纯函数，它有什么优点？
-1. 什么是组合函数（compose）？
-1. 什么是惰性函数？
-1. 什么是高阶函数？
-1. 说说你对函数柯里化的理解？
-1. 什么是箭头函数，有什么特征？
-1. 说说你对递归函数的理解？
-1. 什么是尾递归？
-1. 函数传参，传递复杂数据类型和简单数据类型有什么区别？
-1. 函数声明与函数表达式的区别？
-1. 什么是函数缓存，如何实现？
-1. 说说面向对象的特性与特点？
-1. 说说你对工厂模式的理解？
-1. 创建对象有哪几种方式？
-1. 宿主对象和原生对象的区别？
-1. 说一下 hasOwnProperty、instanceof 方法？
-1. 如何实现类？（建议写博客）
-1. 如何实现继承？（建议写博客，ES5、ES6 各至少一种）
+ES6（ECMAScript 2015）引入了许多新的语法和特性，其中一些主要的包括：
+
+1. **块级作用域**：使用 let 和 const 声明变量时可以创建块级作用域。
+1. **箭头函数**：使用 => 语法定义匿名函数。
+1. **解构赋值**：可以从数组和对象中提取值并将其赋给变量。
+1. **模板字符串**：使用反引号 `` 来创建多行字符串，并且可以在字符串中插入表达式。
+1. **默认参数**：定义函数参数的默认值。
+1. **展开运算符**：使用 ... 语法来展开数组或对象。
+1. **类和继承**：使用 class 和 extends 关键字来定义类和继承。
+1. **模块化**：使用 import 和 export 关键字来导入和导出模块。
+1. **Promise**：处理异步操作的一种方法，可以通过链式调用来组合多个异步操作。
+1. **Symbol**：引入了一种新的原始数据类型，用于创建唯一的标识符。
+1. **Map 和 WeakMap**：字典，一种新的集合类型，为 ECMAScript 语言带来了真正的键/值存储机制
+1. **Set 和 WeakSet**：集合，一种新的数据结构，类似于数组，但成员是唯一且无序的，没有重复的值。
+1. **迭代器和生成器**：迭代器是一种对象，可以通过 next() 方法按顺序返回值，而生成器是一种函数，可以使用 yield 关键字来定义迭代器。
+1. **for...in**：用于遍历对象中的属性，它会将对象的属性名称作为循环变量来访问对象的每一个属性。
+1. **for...of**：用于遍历可迭代对象（如数组、Map、Set 等），它会将集合中的每一个元素作为循环变量来访问每一个元素。
+
+#### Promise 是什么？有哪几种状态？怎么改变状态？
+
+Promise 是 JavaScript 中的一种异步编程解决方案，可以避免回调地狱，简化异步操作的代码编写和维护。
+
+Promise 有三种状态：pending（等待）、fulfilled（已完成）和 rejected（已拒绝）。Promise 对象的状态只能由 pending 转变为 fulfilled 或 rejected，一旦状态变化，就不会再改变。
+
+Promise 对象的状态转变由 resolve 和 reject 函数来改变。resolve 函数用于将 Promise 对象的状态从 pending 转变为 fulfilled，reject 函数用于将 Promise 对象的状态从 pending 转变为 rejected。可以将 resolve 和 reject 函数作为参数传递给 Promise 构造函数。
+
+例如，下面的代码演示了如何创建一个 Promise 对象，并使用 resolve 和 reject 函数改变其状态：
+
+```
+let promise = new Promise((resolve, reject) => {
+  // 异步操作
+  setTimeout(() => {
+    // 异步操作成功
+    resolve('成功');
+  }, 1000);
+});
+
+promise.then(value => {
+  console.log(value); // 输出：成功
+});
+```
+
+在上面的代码中，Promise 构造函数接受一个回调函数作为参数，该回调函数有两个参数，分别是 resolve 和 reject 函数。在回调函数中，进行了一个异步操作，当异步操作成功时，调用 resolve 函数将 Promise 对象的状态从 pending 转变为 fulfilled，并将操作结果作为参数传递给 then 方法；当异步操作失败时，调用 reject 函数将 Promise 对象的状态从 pending 转变为 rejected，并将错误信息作为参数传递给 catch 方法。
+
+Promise 对象的状态一旦改变，就不会再次改变。因此，可以通过链式调用 then 和 catch 方法，依次处理异步操作成功和失败的情况。例如：
+
+```
+let promise = new Promise((resolve, reject) => {
+  // 异步操作
+  setTimeout(() => {
+    // 异步操作成功
+    resolve('成功');
+  }, 1000);
+});
+
+promise.then(value => {
+  console.log(value); // 输出：成功
+  return value.toUpperCase();
+}).then(value => {
+  console.log(value); // 输出：成功
+}).catch(error => {
+  console.error(error);
+});
+```
+
+在上面的代码中，通过链式调用 then 方法，依次处理异步操作成功的情况，并将操作结果转换为大写字母。如果链式调用 then 方法时出现异常，会立即调用 catch 方法。
+
+#### Promise 有哪些 API？
+
+Promise 是 ES6 中新增的一种异步编程解决方案，提供了更加简洁、直观的异步编程写法，并且也为异步编程的错误处理提供了更好的支持。
+
+Promise 提供了一些 API 来处理异步操作的状态和结果：
+
+1. **Promise.prototype.then()**：注册异步操作成功时的回调函数，可以链式调用多个 then() 方法；
+1. **Promise.prototype.catch()**：注册异步操作失败时的回调函数，可以捕获异步操作过程中的错误；
+1. **Promise.prototype.finally()**：无论异步操作成功或失败，都会执行的回调函数；
+1. **Promise.all(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中所有的 Promise 实例都成功执行时，返回的 Promise 实例才会成功执行，否则失败；
+1. **Promise.race(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中任意一个 Promise 实例执行成功或失败时，返回的 Promise 实例就会立即执行并返回这个 Promise 实例的状态和结果。
+
+除了以上几个 API，Promise 还提供了一些静态方法来创建 Promise 实例或执行 Promise 相关操作：
+
+1. **Promise.resolve(value)**：返回一个 Promise 实例，状态为已解决，结果为指定的值；
+1. **Promise.reject(reason)**：返回一个 Promise 实例，状态为已拒绝，结果为指定的错误原因；
+1. **Promise.allSettled(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中所有的 Promise 实例都执行完毕时，返回一个 Promise 实例，其状态总是已解决，结果是一个对象数组，数组中每个对象表示一个 Promise 实例的状态和结果；
+1. **Promise.any(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中任意一个 Promise 实例成功执行时，返回的 Promise 实例就会立即执行并返回这个 Promise 实例的状态和结果，如果可迭代对象中所有 Promise 实例都失败，则返回的 Promise 实例也失败。
+
+#### Promise.all、Promise.race、Promise.any 的区别？
+
+Promise.all、Promise.race、Promise.any 都是 Promise 提供的方法，它们的区别如下：
+
+1. **Promise.all**：接收一个可迭代对象，比如数组，里面的所有 Promise 对象都 fulfilled 后才会将所有的结果封装成一个新的数组返回，如果有一个 Promise 被 rejected，那么 Promise.all 返回的 Promise 对象也会 reject，并且 reject 的是第一个被 reject 的 Promise 的返回值。
+1. **Promise.race**：和 Promise.all 一样，接收一个可迭代对象，但是它的返回值是第一个完成的 Promise 对象的返回值，不管是 fulfilled 还是 rejected。
+1. **Promise.any**：和 Promise.all 类似，接收一个可迭代对象，只要其中一个 Promise 对象状态变为 fulfilled，就会将这个 Promise 对象的返回值封装成一个新的 Promise 对象返回，如果所有的 Promise 对象都是 rejected 状态，则返回的 Promise 对象也是 rejected，返回的是所有 rejected 的 Promise 对象的返回值数组。
+
+需要注意的是，Promise.any 是 ES2021 新增的方法，在一些浏览器或环境中可能不支持。
+
+#### Promise 有什么优缺点？
+
+Promise 是 JavaScript 中处理异步编程的一种解决方案，它具有以下优点和缺点：
+
+优点：
+
+1. **简化异步编程流程**：Promise 使得异步操作可以像同步操作一样流程化，提高代码可读性。
+1. **避免回调地狱**：Promise 的链式调用可以避免回调地狱，使代码更加易于理解和维护。
+1. **可以进行错误处理**：通过 .catch() 方法或者 Promise 的第二个参数，可以捕获异常并进行处理。
+1. **支持并发**：可以使用 Promise.all() 方法将多个异步操作并发执行，并在所有操作完成后获取结果。
+
+缺点：
+
+1. **学习成本高**：Promise 作为一种异步编程解决方案，需要一定的学习成本和适应时间。
+1. **无法取消 Promise**：一旦 Promise 被创建，就无法取消它，这可能会导致资源的浪费。
+1. **不支持同步操作**：Promise 只支持异步操作，无法处理同步操作，这可能会导致一些问题。
+1. **无法捕获 Promise 中的异常**：如果在 Promise 中抛出异常，而没有进行处理，可能会导致程序的崩溃。
+
+#### async/await 是什么？解决了什么问题？
+
+async/await 是一种异步编程的解决方案，可以让 JavaScript 代码在不阻塞其他操作的情况下等待异步操作的结果。在语言层面上，它是基于 Promise 实现的一种语法糖，可以更加方便地处理异步操作。
+
+通过使用 async/await，可以让异步操作看起来像是同步的，避免了回调地狱等问题，提高了代码的可读性和可维护性。同时，它也简化了异常处理，可以通过 try/catch 语句捕获异步操作的错误，并进行相应的处理。
+
+具体来说，async 用于定义一个异步函数，它会返回一个 Promise 对象。在异步函数中，可以使用 await 等待一个异步操作的完成，并且异步操作的结果会被解析为一个值返回。如果异步操作出现错误，则会抛出异常，可以使用 try/catch 来处理异常。
+
+总之，async/await 帮助我们更加方便地处理异步操作，避免了回调地狱和复杂的异常处理，让代码更加简洁易读。
+
+#### await 到底在等待啥？await 如何捕获异常？
+
+在使用 await 关键字时，它会等待一个 Promise 对象（或者任何值都可以，但是如果不是 Promise 对象，那么它就会立即 resolve 成这个值）。当 Promise 对象 resolve 后，await 关键字会返回 Promise resolve 的值。
+
+在 async/await 中捕获异常的方式，可以使用 try/catch 语句块。当使用 await 等待的 Promise 对象 reject 时，会抛出一个异常，然后这个异常会被传递给下一个可以捕获它的 catch 语句块，从而进行错误处理。例如：
+
+```
+async function example() {
+  try {
+    const result = await someAsyncFunction();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+在上面的例子中，await 关键字等待 someAsyncFunction() 的结果，如果该函数 resolve，那么结果会被赋值给 result 变量，否则会抛出一个异常，然后被 catch 语句块捕获并打印出来。
+
+#### async/await 对比 Promise 的优势？
+
+async/await 相比 Promise 有以下几个优势：
+
+1. **更直观**：async/await 更加直观和易于理解，代码的可读性更好。
+1. **更简洁**：async/await 可以用更少的代码实现 Promise 的功能，避免了 Promise 的回调地狱问题。
+1. **更易于调试**：async/await 可以像同步代码一样使用调试工具进行调试，方便定位问题。
+1. **更易于捕获错误**：使用 try/catch 可以很方便地捕获错误，而使用 Promise 时需要通过 .catch() 处理错误。
+
+需要注意的是，async/await 是基于 Promise 实现的，实质上也是一种 Promise 的语法糖，但可以更方便地编写异步代码。
+
+#### 对浅拷贝深拷贝的理解？
+
+在 JavaScript 中，对象和数组都是引用类型，也就是说，对对象和数组的操作会对其原始引用进行更改。当我们想要对一个对象或者数组进行拷贝时，会有浅拷贝和深拷贝两种方式。
+
+浅拷贝是指复制对象或者数组本身，而不是复制对象或者数组中所包含的所有元素。当我们进行浅拷贝时，被拷贝的对象或数组中的基本数据类型元素会被复制，而引用类型的元素仍然指向原始的引用。这意味着，如果我们对原始对象或数组进行更改，浅拷贝后的对象或数组也会受到影响。常见的浅拷贝方式有对象展开运算符（{...obj}）和 Object.assign()方法。
+
+深拷贝是指复制对象或者数组以及其中的所有元素。当我们进行深拷贝时，被拷贝的对象或数组中的所有基本数据类型元素和引用类型元素都会被复制，从而得到一个全新的对象或数组。这样就不会影响原始对象或数组的值。常见的深拷贝方式有递归复制、JSON.parse(JSON.stringify())、lodash 库中的深拷贝方法等。
+
+浅拷贝的优点是效率高，缺点是不够完整，容易出现问题。深拷贝的优点是能够完整复制对象或数组以及其中的所有元素，缺点是效率比浅拷贝低。在实际开发中，我们应该根据具体的情况来选择浅拷贝还是深拷贝。
+
+#### Object.assign 是深拷贝吗？JSON.stringify 深拷贝的缺点？
+
+Object.assign 不是深拷贝，它是浅拷贝，即只会拷贝对象的第一层属性。如果对象中某个属性的值是一个对象或数组，那么只会拷贝这个对象或数组的引用，而不是实际的值。这意味着如果原对象和拷贝后的对象中的引用类型属性被修改，两个对象中的对应属性都会被修改。
+
+JSON.stringify 可以将一个 JavaScript 对象序列化为一个 JSON 字符串，实现简单方便。但是它有一些缺点：
+
+1. 不能处理循环引用的对象，会抛出异常。
+1. 不能序列化函数、正则表达式等特殊类型。
+1. 对于 Date 类型，只能序列化为 ISO 格式字符串，不能还原为 Date 对象。
+1. 对于 NaN、Infinity、-Infinity 和 undefined，序列化后的结果都是 null。
+
+因此，当需要深拷贝一个对象时，通常需要使用其他方式，比如递归拷贝。
+
+#### 怎么实现深拷贝？（建议写博客）
+
+实现深拷贝有多种方法，以下是其中几种：
+
+1. **递归实现**：遍历源对象的每一个属性，如果是对象或数组，递归调用深拷贝函数。
+
+```
+function deepClone(obj) {
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  const newObj = obj instanceof Array ? [] : {};
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      newObj[key] = deepClone(obj[key]);
+    }
+  }
+  return newObj;
+}
+```
+
+2. **JSON.parse(JSON.stringify(obj))**：将源对象序列化成 JSON 字符串，再通过 JSON.parse() 方法解析成一个新对象，这样可以实现深拷贝。但是，这种方法也有一些缺点，比如无法拷贝函数、循环引用会出错等。
+
+```
+const newObj = JSON.parse(JSON.stringify(obj));
+```
+
+2. **使用第三方库**：比如 Lodash 中的 \_.cloneDeep() 方法，可以实现深拷贝。
+
+```
+const newObj = _.cloneDeep(obj);
+```
+
+需要注意的是，在实际使用中，应该根据需求选择合适的深拷贝方法，比如对于需要拷贝函数、循环引用等情况，递归实现可能更适合。同时，深拷贝也可能导致性能问题，应该谨慎使用。
+
+#### Object.assign 和扩展运算符是深拷贝还是浅拷贝，两者区别？
+
+Object.assign 和扩展运算符都是浅拷贝。
+
+浅拷贝指的是只拷贝对象的第一层属性，如果对象中的属性是引用类型，则只是将这个属性的引用拷贝了一份。因此，如果原对象中的引用类型属性被修改，拷贝后的对象中对应的属性也会被修改。
+
+深拷贝则是将原对象的所有属性全部拷贝到新对象中，包括引用类型属性。因此，深拷贝不会改变原对象或拷贝对象中的属性，即它们是独立的。
+
+如果需要进行深拷贝操作，可以使用 JSON.parse(JSON.stringify(object)) 或第三方库（如 lodash 的 cloneDeep 方法等）来实现。但是需要注意，使用 JSON.parse(JSON.stringify(object)) 进行深拷贝的时候，对象中不能有循环引用，否则会出现无限递归的问题。
+
+#### 深度优先遍历、广度优先遍历的区别？
+
+深度优先遍历和广度优先遍历都是常用的遍历算法，它们的区别在于遍历的顺序和策略。
+
+1. **深度优先遍历**（Depth First Search，DFS）是一种优先遍历策略，从起点开始一直走到最深处，直到无法继续为止，然后返回上一个分叉点，再继续尝试走其他分支。具体来说，DFS 从一个起点开始，先访问它的一个相邻节点，然后递归地访问该节点的相邻节点，直到没有未访问的相邻节点，然后返回上一层继续遍历其他相邻节点。
+1. **广度优先遍历**（Breadth First Search，BFS）是一种平等遍历策略，按照从起点开始，先访问起点的所有相邻节点，然后再访问这些节点相邻的所有节点，依此类推，直到遍历完所有可到达的节点。具体来说，BFS 从一个起点开始，先访问它的所有相邻节点，然后依次访问这些节点的相邻节点，直到遍历完所有可到达的节点。
+
+总的来说，DFS 的优点在于能够深入探索每个节点，适合用于寻找目标节点深处的情况，缺点是可能会陷入无限循环中。而 BFS 的优点在于能够按照距离优先遍历节点，适合用于寻找目标节点离起点比较近的情况，缺点是空间复杂度较高。
+
+#### 知道 lodash 吗？它有哪些常见的 API ？
+
+是的，我知道 Lodash。Lodash 是一个 JavaScript 工具库，提供了很多方便的函数，用于简化 JavaScript 编程。以下是 Lodash 常见的 API：
+
+1. **集合处理函数**：each、map、filter、reduce 等；
+1. **数组处理函数**：chunk、difference、flatten、uniq 等；
+1. **字符串处理函数**：trim、toUpper、snakeCase、kebabCase 等；
+1. **对象处理函数**：get、set、omit、merge 等；
+1. **函数处理函数**：debounce、throttle、memoize、curry 等；
+1. **工具函数**：isEqual、cloneDeep、isEmpty、isNil 等。
+
+这些函数涵盖了很多常见的编程场景，可以大大提高 JavaScript 编程效率。
+
+#### (a == 1 && a == 2 && a == 3) 有可能是 true 吗？
+
+在 JavaScript 中，由于类型的隐式转换，我们可以通过自定义对象的 valueOf() 或 toString() 方法来改变对象与原始类型的比较行为。因此，可以构造一个对象，使得在逻辑表达式中看起来像是 a 变量分别等于 1、2、3。
+
+例如：
+
+```
+const a = {
+  value: 1,
+  valueOf: function() {
+    return this.value++;
+  }
+};
+
+console.log(a == 1 && a == 2 && a == 3); // true
+```
+
+这里的 valueOf() 方法会在 a 被用于与原始类型进行比较时自动调用。每次调用时，value 的值会自增 1。因此，在逻辑表达式中，第一次比较时，a 被转换成了 1，第二次比较时，a 被转换成了 2，第三次比较时，a 被转换成了 3，因此整个逻辑表达式的结果是 true。
+
+虽然这种技巧可以被用来构造一些奇怪的行为，但在实际开发中并不应该使用，因为这种行为容易引起代码维护上的困扰。
+
+#### 后端返回 1 万条数据，你要怎么进行渲染？
+
+如果后端返回的数据量较大，直接进行渲染会影响页面性能，可能导致页面卡顿甚至崩溃。因此需要进行分页和懒加载等优化。
+
+具体的方案可以有以下几种：
+
+1. **分页**：将数据分为多个页面进行展示，每次只加载一页的数据，当用户需要查看其他页面时再去加载，这样可以减轻页面渲染的压力，提高页面的性能。
+1. **懒加载**：先渲染当前视窗中的部分数据，当用户滚动页面到底部时，再异步加载下一批数据并渲染，这样可以避免一次性加载过多数据对页面性能的影响。
+1. **虚拟滚动**：通过动态计算并渲染页面上展示的数据，而非全部的数据，从而提高页面性能，避免页面卡顿。
+1. **数据分块**：将大量数据分为多个块进行渲染，可以通过分块、分段的方式来减少页面的渲染压力。例如，可以先渲染前面几百条数据，当用户滚动到底部时再渲染后面的数据。
+
+总之，针对不同的应用场景和数据量大小，可以采用不同的方案进行优化，以提高页面性能和用户体验。
+
+#### 你对虚拟列表的理解？怎么实现虚拟列表？
+
+虚拟列表是一种优化长列表渲染性能的技术，通过只渲染当前视图区域内的列表项，减少不必要的 DOM 操作和渲染次数，从而提高性能和用户体验。
+
+虚拟列表的实现方式一般有两种：
+
+1. 根据滚动位置计算可视区域内需要渲染的列表项，仅渲染这些列表项，非可视区域的列表项不进行渲染。
+1. 将整个列表分为多个等高的块（block），只渲染当前可视块及其相邻的一些块，非当前可视块的块不进行渲染。同时，使用占位符（placeholder）占据非可视块的位置，保持整个列表的高度不变。
+
+在 Vue 中实现虚拟列表可以使用第一种方式。可以使用 scroll 事件监听滚动位置的变化，根据滚动位置计算当前可视区域内需要渲染的列表项，然后只渲染这些列表项。
+
+以下是一个简单的实现示例：
+
+具体实现方式如下：
+
+1. 获取列表容器的高度和每个元素的高度。
+1. 计算列表容器可显示的元素个数。
+1. 根据可显示元素个数动态计算容器的高度，避免容器滚动条出现或者空白区域出现。
+1. 监听滚动事件，计算当前可视区域的数据范围。
+1. 将可视区域的数据渲染到 DOM 中，同时移除不可视区域的数据。
+1. 列表容器滚动时，重新计算当前可视区域的数据范围，并更新可视区域的数据。
+
+实现虚拟列表的关键在于计算可视区域的数据范围，这可以通过列表容器的 scrollTop 和每个元素的高度来计算得出。同时，还需要在列表容器滚动时实时更新可视区域的数据，保证数据的正确性和完整性。
+
+```
+<template>
+  <div class="list-container" ref="listContainer" @scroll="handleScroll">
+    <div class="list-item" v-for="item in visibleList" :key="item.id">
+      {{ item.text }}
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      list: [], // 所有列表项数据
+      visibleList: [], // 可视区域内渲染的列表项
+      startIndex: 0, // 可视区域内第一个列表项的索引
+      endIndex: 0, // 可视区域内最后一个列表项的索引
+      itemHeight: 50, // 单个列表项的高度
+      containerHeight: 0, // 可视区域的高度
+    }
+  },
+  mounted() {
+    // 初始化列表数据，这里假设有 10000 条数据
+    for (let i = 0; i < 10000; i++) {
+      this.list.push({
+        id: i,
+        text: `Item ${i}`,
+      })
+    }
+
+    // 获取可视区域的高度
+    this.containerHeight = this.$refs.listContainer.clientHeight
+
+    // 初始化可视区域内的列表项
+    this.updateVisibleList()
+  },
+  methods: {
+    handleScroll() {
+      // 计算可视区域内的起始索引和结束索引
+      const scrollTop = this.$refs.listContainer.scrollTop
+      const start = Math.floor(scrollTop / this.itemHeight)
+      const end = start + Math.ceil(this.containerHeight / this.itemHeight)
+
+      // 如果起始索引和结束索引发生变化，更新可视区域内的列表项
+      if (start !== this.startIndex || end !== this.endIndex) {
+        this.startIndex = start
+        this.endIndex = end
+        this.updateVisibleList()
+      }
+    },
+    updateVisibleList() {
+      // 根据起始索引和结束索引截取可视区域内的列表项
+      this.visibleList = this.list.slice(this.startIndex, this.endIndex);
+    }
+  }
+}
+</script>
+
+<style>
+.list-container {
+  height: 500px;
+  overflow: auto;
+}
+.list-item {
+  height: 500px;
+}
+</style>
+```
+
+#### JS 中的数组和函数在内存中是如何存储的？
+
+在 JavaScript 中，数组和函数是两种不同的数据类型，它们在内存中的存储方式也不同。
+
+数组是一个有序的数据集合，它在内存中的存储方式是连续的，即数组中的元素在内存中是连续存储的，每个元素占用相同的空间大小。这种存储方式使得数组在访问元素时具有 O(1) 的时间复杂度，但是在插入、删除元素时需要移动其他元素，时间复杂度为 O(n)。
+
+函数是一段可执行的代码，它在内存中的存储方式是以函数对象的形式存在。函数对象包含了函数的代码和相关的属性，如函数名、参数列表、作用域链等。当函数被调用时，会创建一个执行上下文（Execution Context），该执行上下文会在内存中分配一块区域，用来保存函数的局部变量、函数参数、函数调用堆栈等信息。
+
+总的来说，数组和函数在内存中的存储方式是不同的，数组是连续的存储方式，而函数是以函数对象的形式存在。这种不同的存储方式也决定了它们在访问、修改时的时间复杂度和操作方式。
+
+#### 什么是函数式编程？
+
+函数式编程是一种编程范式，它将计算视为函数求值，通过组合函数来创建程序。函数式编程强调使用不可变数据和无副作用函数来编写程序，避免共享状态和可变数据，从而减少了程序的复杂性和出错的可能性。
+
+函数式编程的优点：
+
+1. **没有副作用**：函数不会修改传入的参数，也不会修改外部状态，这使得函数具有可预测性，方便进行调试和测试。
+1. **可复用性强**：函数式编程将复杂的问题分解成多个简单的函数，每个函数都只实现一个功能，这使得函数可以被复用，减少了代码的冗余。
+1. **可扩展性好**：函数式编程支持高阶函数、柯里化和函数组合等技术，这些技术使得函数可以被组合和重用，提高了程序的可扩展性。
+
+函数式编程的缺点：
+
+1. **性能问题**：函数式编程中常常会创建新的数据结构，这会导致频繁的内存分配和垃圾回收，影响程序的性能。
+1. **学习成本高**：函数式编程需要使用新的语言特性和函数库，需要学习新的概念和语法，学习成本较高。
+1. **可读性差**：函数式编程中使用匿名函数和函数组合等技术，代码可读性较差，不易于理解和维护。
+
+#### 什么是纯函数，它有什么优点？
+
+纯函数是指输入相同，输出也必定相同，并且没有副作用的函数。也就是说，纯函数不会修改传入的参数，也不会对程序的状态造成任何影响。
+
+纯函数的优点如下：
+
+1. **可缓存性**：由于纯函数对于给定的输入总是返回相同的输出，因此可以将其结果缓存起来，避免重复计算，提高性能。
+1. **可测试性**：由于纯函数没有副作用，所以可以轻松地编写测试用例来验证其正确性，减少测试的成本。
+1. **并行代码**：由于纯函数没有副作用，可以并行地执行，因此可以更好地利用多核 CPU 的性能。
+1. **可移植性**：由于纯函数不依赖于外部状态，所以可以在不同的环境中进行移植，例如客户端和服务器端。
+1. **可组合性**：由于纯函数没有副作用，因此可以方便地组合成更复杂的函数，提高代码的可复用性。
+
+总之，纯函数具有可预测性、可重用性和可维护性等优点。但是，由于纯函数不能修改传入的参数和程序状态，因此不能用来实现一些需要修改状态的功能，例如 IO 操作和事件处理等。
+
+#### 什么是组合函数（compose）？
+
+组合函数，也称为函数组合，是指将多个函数组合成一个新的函数。它可以让我们在编程过程中更加模块化和抽象化，使代码更加简洁、易于阅读和维护。
+
+函数组合有两种实现方式：从左到右和从右到左。从左到右的组合函数称为 compose，从右到左的组合函数称为 pipe。
+
+在函数式编程中，组合函数是一个很重要的概念，它可以将多个小函数组合成一个更加复杂的函数，并且保证整个过程是无副作用的。这使得代码更加简洁、可读性更强，也更加容易测试和调试。
+
+组合函数的优点包括：
+
+1. **简化代码**：通过将多个小函数组合成一个更加复杂的函数，可以使代码更加简洁、易于维护和阅读。
+1. **减少副作用**：组合函数可以保证整个过程是无副作用的，这使得代码更加可靠、可测试和可调试。
+1. **提高代码复用性**：组合函数可以将多个函数抽象成一个函数，这提高了代码的复用性和可扩展性。
+1. 可以用于实现函数式编程中的一些常见模式，例如函数柯里化、函数节流、函数防抖等。
+
+总之，组合函数是函数式编程中非常重要的概念，可以使我们更加方便地编写高质量、可读性高的代码。
+
+#### 什么是惰性函数？
+
+惰性函数是指在函数第一次被调用时才进行初始化并执行计算的函数。它通常用于在需要多次调用的情况下避免重复计算和多余的初始化，以提高性能。
+
+一般来说，惰性函数的特点包括：
+
+1. 只有在必要时才会进行初始化和计算，以避免不必要的计算和内存消耗。
+1. 会缓存计算结果以供下一次调用使用，以避免重复计算。
+1. 通常使用闭包或函数属性来保存状态或缓存结果，以避免对全局变量的污染。
+
+例如，下面的代码展示了一个简单的惰性函数实现，它将一个对象的属性名列表缓存起来，在后续的调用中直接使用缓存结果：
+
+```
+function getPropertyNames(obj) {
+  if (!getPropertyNames.namesCache) {
+    console.log('Initializing property names cache...');
+    getPropertyNames.namesCache = Object.keys(obj);
+  }
+  return getPropertyNames.namesCache;
+}
+```
+
+在第一次调用 getPropertyNames() 时，函数会初始化缓存并执行计算，然后将结果保存在 namesCache 属性中。在后续的调用中，函数会直接使用缓存结果，而不必重新计算。这种方式可以有效地减少不必要的计算和内存消耗，提高代码的性能和可维护性。
+
+#### 什么是高阶函数？
+
+高阶函数指的是可以接收一个或多个函数作为参数，或者返回一个函数的函数。这意味着在高阶函数中，函数可以作为值进行传递和操作，而不仅仅是简单的数据类型。
+
+JavaScript 中的许多内置函数就是高阶函数，比如 Array.prototype.map()、Array.prototype.filter()、Array.prototype.reduce() 等等。在使用这些函数时，我们可以将其它函数传递作为参数，或者将其作为返回值进行使用。
+
+使用高阶函数的优点包括：
+
+1. **增强代码的复用性**：通过接收或返回函数，高阶函数可以更加灵活地处理数据，从而增强代码的复用性。
+1. **使代码更加简洁**：高阶函数可以使代码更加简洁，减少冗余代码的编写。
+1. **更加灵活地处理数据**：高阶函数可以接收不同类型的函数作为参数，从而使得数据处理更加灵活，可以根据具体情况进行动态调整。
+
+总之，高阶函数是函数式编程中非常重要的概念，能够使代码更加灵活、可复用、简洁。
+
+#### 说说你对函数柯里化的理解？
+
+函数柯里化是一种将接受多个参数的函数转换为接受单一参数的函数并返回新函数的技术。柯里化的过程是不断地将原函数分解为多个只有一个参数的函数。这个过程可以通过返回一个嵌套的函数来实现，每次嵌套函数只接受一个参数，最后一个嵌套函数执行并返回最终的结果。
+
+函数柯里化的优点在于：
+
+1. **增加代码的复用性**：柯里化可以将一个函数转换成一个接受单一参数的函数，这样可以将通用部分的代码抽离出来，实现代码的复用。
+1. **函数参数的延迟计算**：柯里化可以将函数参数的计算延迟到函数调用时进行，可以灵活地控制参数的计算时机，提高程序的性能。
+1. **提高代码的可读性**：柯里化将复杂的函数拆分成一系列简单的函数，提高了代码的可读性。
+
+函数柯里化在实际开发中的应用比较广泛，比如对于一个需要传入多个参数的函数，我们可以先通过柯里化将其转换成接受单一参数的函数，然后将其保存下来，以后再次使用时直接传入需要的参数即可。
+
+#### 什么是箭头函数，有什么特点？
+
+箭头函数是 ES6 中的一种新的函数声明方式，它有以下特点：
+
+1. 箭头函数使用箭头 (=>) 来代替传统的 function 关键字声明函数。
+1. 箭头函数是匿名函数，可以通过变量或者作为参数传递给其他函数使用。
+1. 箭头函数没有自己的 this 对象，它的 this 对象是继承而来的，指向函数被创建时的上下文对象。
+1. 箭头函数不能用作构造函数，不能使用 new 关键字调用，否则会抛出错误。
+1. 箭头函数省略了函数体的花括号 {}，如果函数体只有一条语句，则连同该语句的分号 ; 也可以省略。
+
+箭头函数相对于传统函数的优点是简洁和方便，可以更好地处理 this 作用域和避免了不必要的代码。
+
+#### 说说你对递归函数的理解？
+
+递归函数是指在函数内部调用自身的一种函数，通常适用于需要重复执行相同或类似操作的场景。递归函数在代码实现上比较简单，可以让代码更加优雅、简洁，并且对于一些算法问题，使用递归函数更加符合数学模型，更容易理解。
+
+递归函数通常分为两种，一种是“线性递归”，另一种是“尾递归”。
+
+线性递归是指在递归过程中每次都需要重新分配内存空间，存储函数的参数、返回地址等信息，这样的递归函数容易导致内存溢出，影响程序的性能。而尾递归则是一种特殊的递归方式，它是指递归函数在递归过程中不会再产生新的函数调用，因此不会出现内存溢出的问题。
+
+递归函数的实现需要注意的问题包括：
+
+1. 定义好递归的结束条件，否则递归可能会无限执行下去；
+1. 递归函数的参数和返回值应该明确，避免出现不必要的错误；
+1. 对于线性递归函数，需要考虑如何优化代码，避免内存溢出。
+
+在实际开发中，递归函数可以用于实现一些树形结构的数据操作，例如文件目录、网站导航、组织结构等，也可以用于解决一些算法问题，例如斐波那契数列、汉诺塔等。
+
+#### 什么是尾递归？有什么作用？
+
+尾递归是指在函数的最后一步操作是调用自身函数的递归形式。在尾递归中，递归调用是函数的最后一条语句，因此不会再次创建新的堆栈帧，从而减少了堆栈帧的数量，避免了爆栈的情况，提高了代码的执行效率。
+
+尾递归的作用主要在于优化递归算法的性能，能够有效地减少堆栈的开销。在一些需要大量递归计算的场景中，使用尾递归可以大大减少堆栈的使用，从而提高程序的运行效率。
+
+需要注意的是，并非所有的递归函数都可以转化为尾递归形式。只有在满足尾递归的条件下，才能够使用尾递归来优化算法性能。
+
+#### 函数传参，传递复杂数据类型和简单数据类型有什么区别？
+
+函数传参时，传递的是变量的值，而不是变量本身。对于简单数据类型（如数字、字符串、布尔值等），传递的是变量的值，这些值是直接存储在栈中的简单数据类型值。而对于复杂数据类型（如对象、数组等），传递的是变量的引用，实际上传递的是指向存储在堆内存中的对象的指针。
+
+因此，对于简单数据类型，函数内部修改参数的值不会影响外部变量的值，因为传递的是值的副本，而非原值；而对于复杂数据类型，函数内部修改参数的值会影响外部变量的值，因为传递的是指向对象的指针，指向的是同一个对象。这就是简单数据类型和复杂数据类型之间的区别。
+
+需要注意的是，在 JavaScript 中，字符串、数字和布尔值也是对象，但它们被称为原始值，它们并不是对象。虽然原始值在传递时也是传递副本，但它们是不可变的，因此函数内部不能改变它们的值。
+
+#### 函数声明与函数表达式的区别？
+
+在 JavaScript 中，函数可以通过函数声明和函数表达式来创建。它们有以下区别：
+
+1. 语法上的区别：
+
+函数声明语法：
+
+```
+function functionName(parameter1, parameter2, parameter3) {
+  // function body
+}
+```
+
+函数表达式语法：
+
+```
+var functionName = function(parameter1, parameter2, parameter3) {
+  // function body
+};
+```
+
+2. **变量提升**：函数声明会被提升到作用域的顶部，可以在声明之前调用函数。而函数表达式不会被提升，只有在定义之后才能调用函数。
+3. **函数名**：函数声明会自动获得函数名，并且该函数名可以在整个作用域中使用。而函数表达式需要通过变量名来调用函数。
+4. **用法**：函数声明适用于需要在整个作用域中使用函数的情况。函数表达式适用于只在某个表达式中需要使用函数的情况。
+5. **匿名函数**：函数表达式可以是匿名的，即没有函数名。而函数声明必须要有函数名。
+
+总之，函数声明与函数表达式都可以创建函数，但它们在语法、变量提升、函数名和用法等方面有所不同。
+
+#### 什么是函数缓存，如何实现？
+
+函数缓存指的是缓存函数的计算结果，以便在下一次同样的输入时能够直接返回缓存结果，避免重复计算。这种技术通常被用于提高函数执行的效率。
+
+实现函数缓存的一种简单方法是使用闭包。我们可以将函数的参数作为缓存结果的键，将计算结果作为值存储在一个对象中，并返回一个新的函数，该函数会首先检查缓存是否存在相应的结果，如果存在则直接返回缓存结果，否则计算函数的值并将结果存储在缓存中。下面是一个使用闭包实现函数缓存的例子：
+
+```
+function memoize(func) {
+  const cache = {};
+  return function(...args) {
+    const key = JSON.stringify(args);
+    if (cache[key]) {
+      return cache[key];
+    }
+    const result = func.apply(this, args);
+    cache[key] = result;
+    return result;
+  };
+}
+
+// 示例函数
+function add(x, y) {
+  console.log('calculating...');
+  return x + y;
+}
+
+const memoizedAdd = memoize(add);
+
+console.log(memoizedAdd(2, 3)); // "calculating..." 输出 5
+console.log(memoizedAdd(2, 3)); // 直接输出 5，不再计算
+```
+
+在这个例子中，memoize 函数接收一个函数作为参数，并返回一个新的函数。新函数使用闭包来维护一个缓存对象 cache，存储计算结果。新函数首先将参数转换成一个唯一的键 key，然后检查缓存中是否存在相应的结果，如果存在则直接返回缓存结果，否则调用原始函数 func 计算结果，并将结果存储在缓存中。这样，在下一次调用相同参数的函数时，就可以直接返回缓存结果，避免重复计算，提高函数执行效率。
+
+需要注意的是，这种方法只适用于参数为简单类型的函数，如果函数的参数是复杂类型，如对象或数组，需要使用特殊的方法来转换参数为字符串键。此外，使用函数缓存可能会占用较多的内存，因此需要注意缓存的大小和清理策略。
+
+#### 说说面向对象的特性与特点？
+
+面向对象编程（Object-Oriented Programming，OOP）是一种编程范式，它将数据和操作数据的方法封装在一起，通过创建对象来表示现实世界中的事物。面向对象编程有以下特性和特点：
+
+1. **封装**（Encapsulation）：将数据和操作数据的方法封装在一起，隐藏对象的内部细节，只暴露必要的接口给外部使用。这样可以提高代码的可维护性和复用性。
+1. **继承**（Inheritance）：定义一个基类（父类），派生出子类。子类可以继承父类的属性和方法，也可以覆盖或扩展父类的方法，减少了代码的重复。
+1. **多态**（Polymorphism）：不同对象对同一消息的响应方式不同，即同一个方法可以有不同的实现方式。这样可以提高代码的灵活性和可扩展性。
+1. **抽象**（Abstraction）：抽象出对象共同的特征和行为，形成一个抽象类或接口，减少代码的冗余和耦合性。
+
+面向对象编程强调的是对象和对象之间的交互和合作，使得程序结构更加清晰，可读性和可维护性更好。但也存在一些缺点，如代码量大、执行效率低等。
+
+#### 说说你对工厂模式的理解？
+
+工厂模式是一种创建对象的设计模式，它通过一个工厂方法来创建对象，而不是直接使用 new 操作符去创建对象。它将对象的创建与使用分离开来，从而使得代码更加灵活，能够应对不同的需求。
+
+在工厂模式中，我们通常会定义一个工厂函数，该函数接受一些参数，并根据这些参数来创建相应的对象。例如，我们可以定义一个汽车工厂，它接受一个型号参数，然后根据不同的型号来创建不同的汽车对象。
+
+工厂模式有以下几个优点：
+
+1. 可以将对象的创建和使用分离开来，从而使得代码更加灵活。
+1. 可以根据不同的参数来创建不同的对象，从而实现对象的定制化。
+1. 可以封装对象的创建过程，从而提高代码的复用性和可维护性。
+
+当然，工厂模式也有一些缺点：
+
+1. 工厂模式会增加代码的复杂度，需要定义多个工厂函数。
+1. 工厂模式会增加代码的抽象程度，可能会使得代码更难理解和调试。
+
+总的来说，工厂模式是一种非常实用的设计模式，它可以帮助我们更好地组织和管理对象的创建过程。
+
+#### 创建对象有哪几种方式？
+
+在 JavaScript 中，创建对象有多种方式，常见的包括：
+
+1. 使用对象字面量 {}，例如：
+
+```
+const person = { name: 'Alice', age: 25 };
+```
+
+2. 使用 new Object()，例如：
+
+```
+const person = new Object();
+person.name = 'Bob';
+person.age = 30;
+```
+
+3. 使用构造函数模式（constructor），例如：
+
+```
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const person = new Person('Charlie', 35);
+```
+
+4. 使用原型模式（prototype），例如：
+
+```
+function Person() {}
+Person.prototype.name = 'David';
+Person.prototype.age = 40;
+const person = new Person();
+```
+
+5. 使用 ES6 的 class 关键字，例如：
+
+```
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+const person = new Person('Eve', 45);
+```
+
+还有一些不常用的方式，如工厂模式、动态原型、寄生构造函数、稳妥构造函数等。每种方式都有其适用的场景，需要根据具体的需求选择合适的方式。
+
+#### 宿主对象和原生对象的区别？
+
+- 原生对象是独立于宿主环境的 ECMAScript 实现提供的对象，而宿主对象则是由 ECMAScript 实现的宿主环境提供的对象。
+- 原生对象包含的对象有：Object、Function、String、Array、Boolean、Number、Date、RegExp、Promise、Map、WeakMap、Set、WeakSet、XMLHttpRequest、Error、EvalError、RangeError、ReferenceError、SyntaxError、TypeError、URIError。内置对象就是原生对象，但是 ECMA-262 只定义了两个内置对象，即 Global 和 Math。
+- 宿主对象包含的对象有：所有非内置对象，即由 ECMAScript 实现的宿主环境提供的对象。所有 BOM 和 DOM 对象都是宿主对象。宿主对象的具体内容因不同的宿主环境而异。例如在浏览器环境中，window 对象就是宿主对象之一。
+- ECMAScript 中的本地对象是指独立于宿主环境的 ECMAScript 实现提供的对象，包括原生对象和内置对象。本地对象的具体内容包括：Object、Function、Array、String、Boolean、Number、Date、RegExp、Error、EvalError、RangeError、ReferenceError、SyntaxError、TypeError、URIError。
+
+总的来说，原生对象和内置对象都是本地对象的一种，而宿主对象则是 ECMAScript 实现的宿主环境提供的对象。需要特别注意的是，宿主对象的具体内容因不同的宿主环境而异，而本地对象的内容是固定的。
+
+#### 说一下 hasOwnProperty、instanceof 方法？
+
+hasOwnProperty 和 instanceof 是 JavaScript 中两个常用的方法，用于判断对象的属性和类型。hasOwnProperty 用于判断某个属性是否属于自身对象，该方法仅用于判断自身对象，不会查找原型链。instanceof 是从原型链上寻找是否有此实例，返回的是原型链最顶点的数据类型。下面是一些具体的解释和使用方法：
+
+hasOwnProperty 方法
+
+hasOwnProperty 方法是用来判断某个属性是否是属于自身对象的，该方法仅用于判断自身对象，不会查找原型链。
+
+示例：
+
+```
+var obj = {a: 1, b: 2};
+console.log(obj.hasOwnProperty('a'));  // true
+console.log(obj.hasOwnProperty('toString'));  // false
+```
+
+注意：即使属性的值是 null 或 undefined，只要属性存在，hasOwnProperty 依旧会返回 true。
+
+示例：
+
+```
+var o = new Object();
+o.lisi = null;
+o.hasOwnProperty('lisi'); // 返回 true
+o.lizi = undefined;
+o.hasOwnProperty('lizi'); // 返回 true
+```
+
+示例：
+
+```
+var o = new Object();
+o.hasOwnProperty('prop'); // 返回 false
+o.prop = 'exists';
+o.hasOwnProperty('prop'); // 返回 true
+delete o.prop;
+o.hasOwnProperty('prop'); // 返回 false
+```
+
+示例：
+
+```
+var o = new Object();
+o.prop = 'exists';
+o.hasOwnProperty('prop');             // 返回 true
+o.hasOwnProperty('toString');         // 返回 false
+o.hasOwnProperty('hasOwnProperty');   // 返回 false
+```
+
+示例：
+
+```
+var foo = {
+  hasOwnProperty: function() {
+    return false;
+  },
+  bar: 'Here be dragons'
+};
+foo.hasOwnProperty('bar'); // 始终返回 false
+// 如果担心这种情况，
+// 可以直接使用原型链上真正的 hasOwnProperty 方法
+({}).hasOwnProperty.call(foo, 'bar'); // true
+// 也可以使用 Object 原型上的 hasOwnProperty 属性
+Object.prototype.hasOwnProperty.call(foo, 'bar'); // true
+```
+
+instanceof 方法
+
+instanceof 是从原型链上寻找是否有此实例，返回的是原型链最顶点的数据类型。
+
+示例：
+
+```
+function Foo() {}
+var f = new Foo();
+console.log(f instanceof Foo); // true
+console.log(f instanceof Object); // true
+```
+
+注意：instanceof 是不能判断基本类型的，例如：
+
+```
+var str = "hello world";
+console.log(str instanceof String); // false
+```
+
+另外，instanceof 也不能判断 null 和 undefined 类型，会抛出异常：
+
+```
+var a = null;
+console.log(a instanceof Object); // TypeError
+```
+
+以上是 hasOwnProperty 和 instanceof 方法的基本概念和使用方法。此外，还有其他的继承和构造函数的相关知识，例如原型链继承
+
+#### 如何实现类？（建议写博客）
+
+JavaScript 是一种基于对象的语言，但是它没有提供传统面向对象语言中的类的概念。但是，JavaScript 中可以使用闭包和原型链来模拟类的概念。下面是一些实现类的方法：
+
+1. 使用构造函数和原型链
+
+- 定义一个构造函数，使用 this 关键字来定义实例变量和方法。
+- 使用 prototype 关键字来定义类的共有属性和方法。
+
+例如:
+
+```
+function Shape(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Shape.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+};
+
+var shape = new Shape(1, 2);
+shape.move(2, 3);
+```
+
+2. 使用 ES6 的 class 关键字
+
+- 使用 class 关键字来定义类。
+- 使用 constructor 方法来定义类的构造函数。
+- 使用 extends 关键字来继承一个类。
+
+例如：
+
+```
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name);
+  }
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+let d = new Dog('Mitzie');
+d.speak(); // 'Mitzie barks.'
+```
+
+3. 使用静态方法
+
+使用 static 关键字来定义静态方法。
+
+- 静态方法只能被类本身调用，而不能被类的实例调用。
+
+例如：
+
+```
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  static displayName = "Point";
+  static distance(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.hypot(dx, dy);
+  }
+}
+const p1 = new Point(5, 5);
+const p2 = new Point(10,10);
+console.log(Point.displayName);
+console.log(Point.distance(p1, p2));
+```
+
+4. 使用匿名类
+
+使用 let 或 const 关键字创建一个匿名类。
+
+例如：
+
+```
+let Rectangle = class {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+
+let Rectangle = class Rectangle2 {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+```
+
+#### 如何实现继承？（建议写博客，ES5、ES6 各至少一种）
+
+1. **原型链继承**
+
+关键：子类构造函数的原型为父类构造函数的实例对象
+
+缺点：
+
+- 子类构造函数无法向父类构造函数传参。
+- 所有的子类实例共享着一个原型对象，一旦原型对象的属性发生改变，所有子类的实例对象都会收影响
+- 如果要给子类的原型上添加方法，必须放在 Son.prototype = new Father() 语句后面
+
+```
+function Father(name) {
+  this.name = name
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+function Son(age) {
+  this.age = 20
+}
+// 原型链继承，将子函数的原型绑定到父函数的实例上，子函数可以通过原型链查找到复函数的原型，实现继承
+Son.prototype = new Father()
+// 将 Son 原型的构造函数指回 Son，否则 Son 实例的 constructor 会指向 Father
+Son.prototype.constructor = Son
+Son.prototype.showAge = function () {
+  console.log(this.age);
+}
+let son = new Son(20, '张三') // 无法向父构造函数里传参
+// 子类构造函数的实例继承了父类构造函数原型的属性,所以可以访问到父类构造函数原型里的 showName 方法
+// 子类构造函数的实例继承了父类构造函数的属性,但是无法传参赋值,所以是 this.name 是 undefined
+son.showName() // undefined
+son.showAge()  // 20
+```
+
+2. **借用构造函数继承**
+
+关键：用 .call() 和 .apply() 方法，在子类构造函数中，调用父类构造函数
+
+缺点：
+
+- 只继承了父类构造函数的属性，没有继承父类原型的属性。
+- 无法实现函数复用，如果父类构造函数里面有一个方法，会导致每一个子类实例上面都有相同的方法。
+
+```
+function Father(name) {
+  this.name = name
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+function Son(name, age) {
+  Father.call(this, name) // 在 Son 中借用了 Father 函数,只继承了父类构造函数的属性，没有继承父类原型的属性。
+  // 相当于 this.name = name
+  this.age = age
+}
+let s = new Son('张三', 20) // 可以给父构造函数传参
+console.log(s.name); // '张三'
+console.log(s.showName); // undefined
+```
+
+3. **组合继承**
+
+关键：原型链继承+借用构造函数继承
+
+缺点：使用组合继承时，父类构造函数会被调用两次，子类实例对象与子类的原型上会有相同的方法与属性，浪费内存。
+
+```
+function Father(name) {
+  this.name = name
+  this.say = function () {
+    console.log('hello,world');
+  }
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+function Son(name, age) {
+  Father.call(this, name) // 借用构造函数继承
+  this.age = age
+}
+// 原型链继承
+Son.prototype = new Father()  // Son 实例的原型上,会有同样的属性,父类构造函数相当于调用了两次
+// 将 Son 原型的构造函数指回 Son, 否则 Son 实例的 constructor 会指向 Father
+Son.prototype.constructor = Son
+Son.prototype.showAge = function () {
+  console.log(this.age);
+}
+let p = new Son('张三', 20) // 可以向父构造函数里传参
+// 也继承了父函数原型上的方法
+console.log(p);
+p.showName() // '张三'
+p.showAge()  // 20
+```
+
+4. **原型式继承**
+
+关键：创建一个函数，将要继承的对象通过参数传递给这个函数，最终返回一个对象，它的隐式原型指向传入的对象。 (Object.create()方法的底层就是原型式继承)
+
+缺点：只能继承父类函数原型对象上的属性和方法，无法给父类构造函数传参
+
+```
+function createObj(obj) {
+  function F() { }   // 声明一个构造函数
+  F.prototype = obj   // 将这个构造函数的原型指向传入的对象
+  F.prototype.construct = F   // construct 属性指回子类构造函数
+  return new F        // 返回子类构造函数的实例
+}
+function Father() {
+  this.name = '张三'
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+const son = createObj(Father.prototype)
+son.showName() // undefined  继承了原型上的方法，但是没有继承构造函数里的 name 属性
+```
+
+5. **寄生式继承**
+
+关键：在原型式继承的函数里，给继承的对象上添加属性和方法，增强这个对象
+
+缺点：只能继承父类函数原型对象上的属性和方法，无法给父类构造函数传参
+
+```
+function createObj(obj) {
+  function F() { }
+  F.prototype = obj
+  F.prototype.construct = F
+  F.prototype.age = 20  // 给 F 函数的原型添加属性和方法,增强对象
+  F.prototype.showAge = function () {
+    console.log(this.age);
+  }
+  return new F
+}
+function Father() {
+  this.name = '张三'
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+const son = createObj(Father.prototype)
+son.showName() // undefined
+son.showAge()  // 20
+```
+
+6. **寄生组合继承**
+
+关键：原型式继承 + 构造函数继承
+
+Js 最佳的继承方式，只调用了一次父类构造函数
+
+```
+function Father(name) {
+  this.name = name
+  this.say = function () {
+    console.log('hello,world');
+  }
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+function Son(name, age) {
+  Father.call(this, name)
+  this.age = age
+}
+Son.prototype = Object.create(Father.prototype) // Object.create 方法返回一个对象，它的隐式原型指向传入的对象。
+Son.prototype.constructor = Son
+const son = new Son('张三', 20)
+console.log(son.prototype.name); // 原型上已经没有 name 属性了,所以这里会报错
+```
+
+7. **混入继承**
+
+关键：利用 Object.assign 的方法多个父类函数的原型拷贝给子类原型
+
+```
+function Father(name) {
+  this.name = name
+}
+Father.prototype.showName = function () {
+  console.log(this.name);
+}
+function Mather(color) {
+  this.color = color
+}
+Mather.prototype.showColor = function () {
+  console.log(this.color);
+}
+function Son(name, color, age) {
+  // 调用两个父类函数
+  Father.call(this, name)
+  Mather.call(this, color)
+  this.age = age
+}
+Son.prototype = Object.create(Father.prototype)
+Object.assign(Son.prototype, Mather.prototype)  // 将 Mather 父类函数的原型拷贝给子类函数
+const son = new Son('张三', 'red', 20)
+son.showColor()  // red
+```
+
+8. **class 继承**
+
+关键：class 里的 extends 和 super 关键字，继承效果与寄生组合继承一样
+
+```
+class Father {
+  constructor(name) {
+    this.name = name
+  }
+  showName() {
+    console.log(this.name);
+  }
+}
+class Son extends Father {  // 子类通过 extends 继承父类
+  constructor(name, age) {
+    super(name)    // 调用父类里的 constructor 函数,等同于 Father.call(this,name)
+    this.age = age
+  }
+  showAge() {
+    console.log(this.age);
+  }
+}
+const son = new Son('张三', 20)
+son.showName()  // '张三'
+son.showAge()   // 20
+```

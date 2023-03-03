@@ -105,7 +105,103 @@ fs.readFile('file.txt', 'utf8')
   .catch(err => console.error(err));
 ```
 
-#### async/await 是什么？解决了什么问题
+#### Promise 是什么？有哪几种状态？怎么改变状态？
+
+Promise 是 JavaScript 中的一种异步编程解决方案，可以避免回调地狱，简化异步操作的代码编写和维护。
+
+Promise 有三种状态：pending（等待）、fulfilled（已完成）和 rejected（已拒绝）。Promise 对象的状态只能由 pending 转变为 fulfilled 或 rejected，一旦状态变化，就不会再改变。
+
+Promise 对象的状态转变由 resolve 和 reject 函数来改变。resolve 函数用于将 Promise 对象的状态从 pending 转变为 fulfilled，reject 函数用于将 Promise 对象的状态从 pending 转变为 rejected。可以将 resolve 和 reject 函数作为参数传递给 Promise 构造函数。
+
+例如，下面的代码演示了如何创建一个 Promise 对象，并使用 resolve 和 reject 函数改变其状态：
+
+```
+let promise = new Promise((resolve, reject) => {
+  // 异步操作
+  setTimeout(() => {
+    // 异步操作成功
+    resolve('成功');
+  }, 1000);
+});
+
+promise.then(value => {
+  console.log(value); // 输出：成功
+});
+```
+
+在上面的代码中，Promise 构造函数接受一个回调函数作为参数，该回调函数有两个参数，分别是 resolve 和 reject 函数。在回调函数中，进行了一个异步操作，当异步操作成功时，调用 resolve 函数将 Promise 对象的状态从 pending 转变为 fulfilled，并将操作结果作为参数传递给 then 方法；当异步操作失败时，调用 reject 函数将 Promise 对象的状态从 pending 转变为 rejected，并将错误信息作为参数传递给 catch 方法。
+
+Promise 对象的状态一旦改变，就不会再次改变。因此，可以通过链式调用 then 和 catch 方法，依次处理异步操作成功和失败的情况。例如：
+
+```
+let promise = new Promise((resolve, reject) => {
+  // 异步操作
+  setTimeout(() => {
+    // 异步操作成功
+    resolve('成功');
+  }, 1000);
+});
+
+promise.then(value => {
+  console.log(value); // 输出：成功
+  return value.toUpperCase();
+}).then(value => {
+  console.log(value); // 输出：成功
+}).catch(error => {
+  console.error(error);
+});
+```
+
+在上面的代码中，通过链式调用 then 方法，依次处理异步操作成功的情况，并将操作结果转换为大写字母。如果链式调用 then 方法时出现异常，会立即调用 catch 方法。
+
+#### Promise 有哪些 API？
+
+Promise 是 ES6 中新增的一种异步编程解决方案，提供了更加简洁、直观的异步编程写法，并且也为异步编程的错误处理提供了更好的支持。
+
+Promise 提供了一些 API 来处理异步操作的状态和结果：
+
+1. **Promise.prototype.then()**：注册异步操作成功时的回调函数，可以链式调用多个 then() 方法；
+1. **Promise.prototype.catch()**：注册异步操作失败时的回调函数，可以捕获异步操作过程中的错误；
+1. **Promise.prototype.finally()**：无论异步操作成功或失败，都会执行的回调函数；
+1. **Promise.all(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中所有的 Promise 实例都成功执行时，返回的 Promise 实例才会成功执行，否则失败；
+1. **Promise.race(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中任意一个 Promise 实例执行成功或失败时，返回的 Promise 实例就会立即执行并返回这个 Promise 实例的状态和结果。
+
+除了以上几个 API，Promise 还提供了一些静态方法来创建 Promise 实例或执行 Promise 相关操作：
+
+1. **Promise.resolve(value)**：返回一个 Promise 实例，状态为已解决，结果为指定的值；
+1. **Promise.reject(reason)**：返回一个 Promise 实例，状态为已拒绝，结果为指定的错误原因；
+1. **Promise.allSettled(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中所有的 Promise 实例都执行完毕时，返回一个 Promise 实例，其状态总是已解决，结果是一个对象数组，数组中每个对象表示一个 Promise 实例的状态和结果；
+1. **Promise.any(iterable)**：接收一个可迭代对象，返回一个 Promise 实例，当可迭代对象中任意一个 Promise 实例成功执行时，返回的 Promise 实例就会立即执行并返回这个 Promise 实例的状态和结果，如果可迭代对象中所有 Promise 实例都失败，则返回的 Promise 实例也失败。
+
+#### Promise.all、Promise.race、Promise.any 的区别？
+
+Promise.all、Promise.race、Promise.any 都是 Promise 提供的方法，它们的区别如下：
+
+1. **Promise.all**：接收一个可迭代对象，比如数组，里面的所有 Promise 对象都 fulfilled 后才会将所有的结果封装成一个新的数组返回，如果有一个 Promise 被 rejected，那么 Promise.all 返回的 Promise 对象也会 reject，并且 reject 的是第一个被 reject 的 Promise 的返回值。
+1. **Promise.race**：和 Promise.all 一样，接收一个可迭代对象，但是它的返回值是第一个完成的 Promise 对象的返回值，不管是 fulfilled 还是 rejected。
+1. **Promise.any**：和 Promise.all 类似，接收一个可迭代对象，只要其中一个 Promise 对象状态变为 fulfilled，就会将这个 Promise 对象的返回值封装成一个新的 Promise 对象返回，如果所有的 Promise 对象都是 rejected 状态，则返回的 Promise 对象也是 rejected，返回的是所有 rejected 的 Promise 对象的返回值数组。
+
+需要注意的是，Promise.any 是 ES2021 新增的方法，在一些浏览器或环境中可能不支持。
+
+#### Promise 有什么优缺点？
+
+Promise 是 JavaScript 中处理异步编程的一种解决方案，它具有以下优点和缺点：
+
+优点：
+
+1. **简化异步编程流程**：Promise 使得异步操作可以像同步操作一样流程化，提高代码可读性。
+1. **避免回调地狱**：Promise 的链式调用可以避免回调地狱，使代码更加易于理解和维护。
+1. **可以进行错误处理**：通过 .catch() 方法或者 Promise 的第二个参数，可以捕获异常并进行处理。
+1. **支持并发**：可以使用 Promise.all() 方法将多个异步操作并发执行，并在所有操作完成后获取结果。
+
+缺点：
+
+1. **学习成本高**：Promise 作为一种异步编程解决方案，需要一定的学习成本和适应时间。
+1. **无法取消 Promise**：一旦 Promise 被创建，就无法取消它，这可能会导致资源的浪费。
+1. **不支持同步操作**：Promise 只支持异步操作，无法处理同步操作，这可能会导致一些问题。
+1. **无法捕获 Promise 中的异常**：如果在 Promise 中抛出异常，而没有进行处理，可能会导致程序的崩溃。
+
+#### async/await 是什么？解决了什么问题？
 
 async/await 是一种异步编程的解决方案，可以让 JavaScript 代码在不阻塞其他操作的情况下等待异步操作的结果。在语言层面上，它是基于 Promise 实现的一种语法糖，可以更加方便地处理异步操作。
 
@@ -115,14 +211,55 @@ async/await 是一种异步编程的解决方案，可以让 JavaScript 代码�
 
 总之，async/await 帮助我们更加方便地处理异步操作，避免了回调地狱和复杂的异常处理，让代码更加简洁易读。
 
-#### Promise 有哪些 API？
+#### await 到底在等待啥？await 如何捕获异常？
 
-Promise 是 JavaScript 中一种处理异步操作的方法，它可以在异步操作完成后通过回调函数来处理异步结果。以下是 Promise 的常用 API：
+在使用 await 关键字时，它会等待一个 Promise 对象（或者任何值都可以，但是如果不是 Promise 对象，那么它就会立即 resolve 成这个值）。当 Promise 对象 resolve 后，await 关键字会返回 Promise resolve 的值。
 
-1. **Promise.all(iterable)**：接受一个可迭代对象作为参数，返回一个新的 Promise 对象，只有所有的 Promise 都成功才会返回成功结果，否则返回失败结果。
-1. **Promise.race(iterable)**：接受一个可迭代对象作为参数，返回一个新的 Promise 对象，只要其中有一个 Promise 成功或失败，就会返回相应的结果。
-1. **Promise.resolve(value)**：将一个值包装成 Promise 对象并立即返回，返回的 Promise 对象状态为成功。
-1. **Promise.reject(reason)**：将一个错误信息包装成 Promise 对象并立即返回，返回的 Promise 对象状态为失败。
-1. **Promise.prototype.then(onFulfilled, onRejected)**：绑定成功和失败的回调函数，如果当前 Promise 对象为成功状态，执行 onFulfilled 回调函数，否则执行 onRejected 回调函数，返回一个新的 Promise 对象。
-1. **Promise.prototype.catch(onRejected)**：绑定失败的回调函数，相当于 then(null, onRejected)。
-1. **Promise.prototype.finally(onFinally)**：绑定 finally 的回调函数，无论 Promise 对象状态为成功或失败，都会执行 onFinally 回调函数，返回一个新的 Promise 对象。
+在 async/await 中捕获异常的方式，可以使用 try/catch 语句块。当使用 await 等待的 Promise 对象 reject 时，会抛出一个异常，然后这个异常会被传递给下一个可以捕获它的 catch 语句块，从而进行错误处理。例如：
+
+```
+async function example() {
+  try {
+    const result = await someAsyncFunction();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+在上面的例子中，await 关键字等待 someAsyncFunction() 的结果，如果该函数 resolve，那么结果会被赋值给 result 变量，否则会抛出一个异常，然后被 catch 语句块捕获并打印出来。
+
+#### async/await 对比 Promise 的优势？
+
+async/await 相比 Promise 有以下几个优势：
+
+1. **更直观**：async/await 更加直观和易于理解，代码的可读性更好。
+1. **更简洁**：async/await 可以用更少的代码实现 Promise 的功能，避免了 Promise 的回调地狱问题。
+1. **更易于调试**：async/await 可以像同步代码一样使用调试工具进行调试，方便定位问题。
+1. **更易于捕获错误**：使用 try/catch 可以很方便地捕获错误，而使用 Promise 时需要通过 .catch() 处理错误。
+
+需要注意的是，async/await 是基于 Promise 实现的，实质上也是一种 Promise 的语法糖，但可以更方便地编写异步代码。
+
+#### 对浅拷贝深拷贝的理解？
+
+在 JavaScript 中，对象和数组都是引用类型，也就是说，对对象和数组的操作会对其原始引用进行更改。当我们想要对一个对象或者数组进行拷贝时，会有浅拷贝和深拷贝两种方式。
+
+浅拷贝是指复制对象或者数组本身，而不是复制对象或者数组中所包含的所有元素。当我们进行浅拷贝时，被拷贝的对象或数组中的基本数据类型元素会被复制，而引用类型的元素仍然指向原始的引用。这意味着，如果我们对原始对象或数组进行更改，浅拷贝后的对象或数组也会受到影响。常见的浅拷贝方式有对象展开运算符（{...obj}）和 Object.assign()方法。
+
+深拷贝是指复制对象或者数组以及其中的所有元素。当我们进行深拷贝时，被拷贝的对象或数组中的所有基本数据类型元素和引用类型元素都会被复制，从而得到一个全新的对象或数组。这样就不会影响原始对象或数组的值。常见的深拷贝方式有递归复制、JSON.parse(JSON.stringify())、lodash 库中的深拷贝方法等。
+
+浅拷贝的优点是效率高，缺点是不够完整，容易出现问题。深拷贝的优点是能够完整复制对象或数组以及其中的所有元素，缺点是效率比浅拷贝低。在实际开发中，我们应该根据具体的情况来选择浅拷贝还是深拷贝。
+
+#### Object.assign 是深拷贝吗？JSON.stringify 深拷贝的缺点？
+
+Object.assign 不是深拷贝，它是浅拷贝，即只会拷贝对象的第一层属性。如果对象中某个属性的值是一个对象或数组，那么只会拷贝这个对象或数组的引用，而不是实际的值。这意味着如果原对象和拷贝后的对象中的引用类型属性被修改，两个对象中的对应属性都会被修改。
+
+JSON.stringify 可以将一个 JavaScript 对象序列化为一个 JSON 字符串，实现简单方便。但是它有一些缺点：
+
+1. 不能处理循环引用的对象，会抛出异常。
+1. 不能序列化函数、正则表达式等特殊类型。
+1. 对于 Date 类型，只能序列化为 ISO 格式字符串，不能还原为 Date 对象。
+1. 对于 NaN、Infinity、-Infinity 和 undefined，序列化后的结果都是 null。
+
+因此，当需要深拷贝一个对象时，通常需要使用其他方式，比如递归拷贝。

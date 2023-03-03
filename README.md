@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 22:11:06
+ * @LastEditTime: 2023-03-04 00:17:41
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -17,9 +17,9 @@
 1. 前端基础（根目录）
    - HTML（已更新 22 题）
    - CSS（已更新 52 题）
-   - JavaScript（已更新 121 题）
+   - JavaScript（已更新 127 题）
    - TypeScript（已更新 17 题）
-   - 数据结构与算法
+   - 数据结构与算法（11 题，已更新 3 题）
 2. 计算机网络（/计算机网络）
    - HTTP（已更新 36 题）
    - TCP/IP（已更新 29 题）
@@ -112,14 +112,16 @@
    - ES6（已更新，增加更多内容中...）
    - JS 垃圾回收机制（已更新）
 4. Vue
-   - Vue2 和 Vue3 的区别：/Vue（已更新）
+   - Vue2 和 Vue3 的区别：/技术框架/Vue（已更新）
    - 虚拟 DOM（已更新）
    - Diff 算法（已更新）
    - 双向绑定原理（已更新）
    - 响应式原理 defineProperty（已更新）
    - 响应式原理 Proxy（已更新）
-   - 实现权限管理（已更新）
+   - 权限管理（已更新）
    - 封装 axios（已更新）
+   - 封装 keep-alive（已更新）
+   - 封装组件（已更新）
    - 生命周期
    - 组件通信
 5. React
