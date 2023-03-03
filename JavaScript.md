@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 22:55:20
+ * @LastEditTime: 2023-03-03 17:51:34
  * @Description: JavaScript 面试题汇总（120题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
@@ -1083,23 +1083,34 @@ Promise 是 JavaScript 中一种处理异步操作的方法，它可以在异步
 1. **Promise.prototype.catch(onRejected)**：绑定失败的回调函数，相当于 then(null, onRejected)。
 1. **Promise.prototype.finally(onFinally)**：绑定 finally 的回调函数，无论 Promise 对象状态为成功或失败，都会执行 onFinally 回调函数，返回一个新的 Promise 对象。
 
-#### 什么是 ajax？讲一下 ajax readyState 五种状态？
+#### 什么是 Ajax？有什么优缺点？
 
-Ajax（Asynchronous JavaScript and XML）指的是一种通过 JavaScript 和 XML 实现异步通信的技术，可以实现在不刷新页面的情况下向服务器请求数据并更新部分页面内容。
+Ajax（Asynchronous Javascript And XML），是一种用于创建交互式网页应用的技术，用于提高浏览器和服务器之间的交互效率，快速创建动态网页。Ajax 是一种在浏览器与服务器之间的异步通信方式，可以异步地向服务器发送请求，在等待响应的过程中，不会阻塞当前页面，直到成功获取响应后，浏览器才开始处理响应数据。XML 是前后端数据通信时传输数据的一种格式，而 JSON 比 XML 更加轻量，作为 Javascript 的一部分，目前 JSON 的使用比 XML 更加普遍。Ajax 可以在浏览器不重新加载网页的情况下，对页面的某部分进行更新。Ajax 的应用场景包括注册页面、搜索提示等。在 Ajax 模型中，XMLHttpRequest 是最重要的技术之一，可以使用 Fetch API 设置 XMLHttpRequest 对象的 responseType 属性以改变从服务器端获取数据的类型。Ajax 应用程序独立于浏览器和平台，使用的 Web 标准包括 JavaScript、XML、HTML 与 CSS。
+
+优点：
+
+- 实现无刷新更新数据：Ajax 可以在不刷新整个页面的情况下与服务器通信，维护数据，使得 Web 应用程序更为迅捷地响应用户交互，减少用户等待时间，带来非常好的用户体验。
+- 异步与服务器通信：Ajax 使用异步方式与服务器通信，不需要打断用户的操作，具有更加迅速的响应能力。它优化了 Browser 和 Server 之间的沟通，减少不必要的数据传输、时间及降低网络上数据流量。
+- 前端和后端负载平衡：Ajax 可以把一些服务器负担的工作转嫁到客户端，利用客户端闲置的能力来处理，减轻服务器和带宽的负担，节约空间和宽带租用成本。
+
+缺点：
+
+- 不支持浏览器 back 按钮：因为 Ajax 不会改变浏览器的 URL，所以在使用浏览器的 back 按钮时，会导致用户回到上一个页面，但是页面内容并未更新，造成用户体验上的不便。
+- 安全问题：Ajax 暴露了与服务器交互的细节，可能会被黑客利用，攻击应用程序。同时，Ajax 应用程序中的安全性较低，因为所有文件都是在客户端下载的。
+- 对搜索引擎的支持比较弱：因为 Ajax 不会改变浏览器的 URL，所以搜索引擎无法获取到 Ajax 请求的内容，影响 SEO。
+- 破坏了程序的异常机制：Ajax 的异步请求可能破坏程序的异常机制，因为它不会像同步请求一样抛出异常。
+
+总之，Ajax 技术能够带来更好的用户体验，提高性能和速度，但是也存在一些安全和兼容性问题，需要在开发过程中注意。
+
+#### 讲一下 XMLHttpRequest 对象 readyState 的五种状态？
 
 XMLHttpRequest 对象是 Ajax 技术的核心，它有五个 readyState 状态：
 
-0: (Uninitialized) the send( ) method has not yet been invoked.
-1: (Loading) the send( ) method has been invoked, request in progress.
-2: (Loaded) the send( ) method has completed, entire response received.
-3: (Interactive) the response is being parsed.
-4: (Completed) the response has been parsed, is ready for harvesting.
-
-0 － （未初始化）还没有调用 send()方法
-1 － （载入）已调用 send()方法，正在发送请求
-2 － （载入完成）send()方法执行完成，已经接收到全部响应内容
-3 － （交互）正在解析响应内容
-4 － （完成）响应内容解析完成，可以在客户端调用了
+- **0 - UNSENT**：已创建 XMLHttpRequest 对象，但尚未调用 open（）方法。这意味着对象存在，但尚未初始化。
+- **1 - OPENED**：已调用 open（）方法，XMLHttpRequest 对象已准备好向服务器发送请求。在这个阶段，您可以使用 setRequestHeader（）方法向请求添加头。
+- **2 - HEADERS_RECEIVED**：已调用 send（）方法，请求已发送到服务器。服务器已开始发回响应，并且已收到响应的标头。
+- **3 - LOADING**：正在从服务器接收响应主体。如果 responseType 属性设置为“text”或空字符串，responseText 属性将在加载时包含一些响应数据。
+- **4 - DONE**：已收到整个响应，请求已完成。在此阶段，您可以访问 XHR 对象的 responseText 或 response XML 财产以获取响应数据。
 
 每当 XMLHttpRequest.readyState 的状态改变时，都会触发 XMLHttpRequest.onreadystatechange 事件。可以根据不同的状态进行不同的操作，例如：
 
