@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:09:34
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 01:35:55
+ * @LastEditTime: 2023-03-04 03:46:24
  * @Description: 微信小程序面试题（22题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Mobile\Wxapp.md
+ * @FilePath: \interviewQuestions\移动端\Wxapp.md
 -->
 
 #### 简述小程序登录流程？
@@ -77,34 +77,338 @@
 
 #### 移动端如何实现上拉加载，下拉刷新？
 
+小程序实现上拉加载和下拉刷新通常使用的是小程序提供的相关组件或 API，具体实现如下：
+
+1. **上拉加载**：可以使用 scroll-view 组件实现。在 scroll-view 的 bindscrolltolower 事件中监听滚动到底部，触发加载更多的操作。
+
+示例代码：
+
+```
+<scroll-view scroll-y="true" bindscrolltolower="loadMore">
+  <!-- 渲染数据列表 -->
+</scroll-view>
+javascript
+Copy code
+Page({
+  data: {
+    dataList: [], // 数据列表
+    pageNum: 1, // 当前页码
+    pageSize: 10, // 每页条数
+    hasMore: true // 是否还有更多数据
+  },
+  // 加载更多数据
+  loadMore() {
+    if (this.data.hasMore) {
+      this.setData({
+        pageNum: this.data.pageNum + 1
+      }, () => {
+        // 发送请求，获取更多数据，并渲染到列表中
+      })
+    }
+  }
+})
+```
+
+2. **下拉刷新**：可以使用 scroll-view 组件的 enablePullDownRefresh 属性和 onPullDownRefresh 事件实现。当用户下拉时，触发 onPullDownRefresh 事件，在该事件中可以进行下拉刷新操作，并在数据加载完毕后调用 wx.stopPullDownRefresh() 方法停止下拉刷新动画。
+
+示例代码：
+
+```
+<scroll-view scroll-y="true" enable-pull-down-refresh="true" onPullDownRefresh="onPullDownRefresh">
+  <!-- 渲染数据列表 -->
+</scroll-view>
+javascript
+Copy code
+Page({
+  data: {
+    dataList: [], // 数据列表
+    pageNum: 1, // 当前页码
+    pageSize: 10, // 每页条数
+  },
+  // 下拉刷新数据
+  onPullDownRefresh() {
+    this.setData({
+      pageNum: 1
+    }, () => {
+      // 发送请求，获取最新数据，并渲染到列表中
+      wx.stopPullDownRefresh();
+    })
+  }
+})
+```
+
+注意：在使用 enablePullDownRefresh 属性和 onPullDownRefresh 事件时，需要将 scroll-view 的 scroll-y 属性设置为 true，否则无法触发下拉刷新事件。
+
 #### 微信小程序的优劣势？
+
+微信小程序的优劣势如下：
+
+优势：
+
+1. **无需下载**：微信小程序可以直接在微信中使用，用户无需下载、安装即可使用，提高了使用门槛。
+1. **快速启动**：微信小程序具有快速启动的特点，用户无需等待，可直接进入小程序界面。
+1. **低成本**：微信小程序开发成本相对较低，无需开发原生应用，只需要使用前端技术和微信提供的 API 即可开发。
+1. **分享传播**：微信小程序具有良好的分享功能，用户可以轻松地分享小程序给其他用户，方便传播和推广。
+1. **安全性高**：微信小程序只能在微信中使用，且必须经过微信的审核才能上线，确保了小程序的安全性。
+
+劣势：
+
+1. **限制较多**：微信小程序受到了一些限制，比如页面大小、网络请求次数、功能限制等。
+1. **兼容性问题**：微信小程序在不同的设备上可能存在兼容性问题，需要开发者做好测试和兼容性处理。
+1. **用户流失率高**：由于微信小程序无需下载，用户可能只是因为好奇尝试使用一次，而不会长期使用，用户流失率相对较高。
+1. **竞争激烈**：随着微信小程序的发展，市场上出现了越来越多的小程序，竞争激烈，需要开发者具有创新精神和市场敏感度。
 
 #### 微信小程序和 H5 的区别？
 
+微信小程序和 H5 都是移动端的应用程序，但是它们有以下区别：
+
+1. **开发语言**：微信小程序使用的是微信提供的小程序开发框架，开发语言是 JavaScript，同时可以使用 WXML 和 WXSS；而 H5 则使用 HTML、CSS 和 JavaScript 开发。
+1. **交互体验**：微信小程序更接近原生应用，可以在微信内直接使用，不需要下载安装，启动速度快，并且可以使用微信提供的 API，实现更加复杂的交互操作；而 H5 则需要通过浏览器访问，在交互体验上没有小程序优秀。
+1. **功能限制**：微信小程序提供的 API 相对有限，虽然可以通过插件和云开发来扩展功能，但是相对于 H5 还是有一定的限制。同时，微信小程序的代码量限制在 2MB 以内，过大的项目需要使用分包加载；而 H5 则没有这方面的限制。
+1. **推广方式**：微信小程序可以通过微信的社交属性，直接分享给好友，获取更多的曝光和推广；而 H5 则需要通过 SEO 等方式来推广，效果相对较差。
+
+总体来说，微信小程序适用于简单的业务场景，对于需要快速迭代、提供原生应用级别的体验的项目，小程序更加适合；而 H5 则更适用于需要大量内容展示和复杂交互的场景，同时也更加适合长期经营的项目。
+
 #### 小程序如何分包？（建议写博客）
+
+小程序支持分包加载，可以将代码、资源分别放到不同的包中进行管理，从而优化小程序的加载性能。常见的分包场景包括：
+
+1. **分包加载功能页面**：将小程序的主包中的非关键代码放到分包中，先加载关键代码，用户使用时再按需加载分包。
+1. **分包加载公共组件**：将公共组件单独打包到分包中，避免主包代码过大。
+1. **分包加载跨页面公共资源**：将跨页面公共资源（如图片、音频、视频等）单独打包到分包中，降低主包大小。
+
+小程序的分包加载可以通过 app.json 中的 subPackages 字段配置。例如，以下代码将 pages/index 和 pages/list 分别打包成一个子包：
+
+```
+{
+  "pages": [
+    "pages/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/list",
+      "pages": [
+        "list",
+        "detail"
+      ]
+    }
+  ]
+}
+```
+
+在使用分包时，需要注意以下几点：
+
+1. 分包中的页面不能设置为 tabBar 的 list 中的路径。
+1. 分包中的页面路径必须在 pages 和 subPackages 中声明过。
+1. 分包最多可以有 8 个。
+1. 分包打包后会生成独立的 wxapkg 文件，需要通过微信开发者工具上传到小程序管理后台。
 
 #### 讲一下小程序的生命周期函数？
 
+小程序的生命周期函数分为两类，一类是全局生命周期函数，一类是页面生命周期函数。
+
+全局生命周期函数：
+
+1. **onLaunch(options)**：小程序初始化时触发，options 为小程序的启动参数。
+1. **onShow(options)**：小程序启动或从后台进入前台显示时触发，options 为启动参数。
+1. **onHide()**：小程序从前台进入后台时触发。
+1. **onError(error)**：小程序发生脚本错误或者 API 调用失败时触发，error 为错误信息。
+
+页面生命周期函数：
+
+1. **onLoad(options)**：页面加载时触发，options 为页面的启动参数。
+1. **onShow()**：页面显示时触发。
+1. **onReady()**：页面初次渲染完成时触发。
+1. **onHide()**：页面从前台切换到后台时触发。
+1. **onUnload()**：页面销毁时触发。
+1. **onPullDownRefresh()**：用户下拉刷新时触发。
+1. **onReachBottom()**：页面滚动到底部时触发。
+1. **onShareAppMessage()**：用户点击分享按钮或右上角菜单“分享”时触发。
+1. **onPageScroll()**：页面滚动时触发。
+
+在使用小程序开发时，了解生命周期函数的作用可以更好地掌握小程序的运行机制和实现复杂功能。
+
 #### 你是怎么封装微信小程序的数据请求的？
+
+在微信小程序中，我们可以使用 wx.request 或 wx.fetch 方法来进行数据请求，其中 wx.request 是一个底层 API，可以发起 HTTP 请求，而 wx.fetch 是对 wx.request 进行封装后的高层 API，用起来更加方便简洁。在进行数据请求时，可以按照以下步骤进行封装：
+
+1. 封装一个 request 方法，在其中调用 wx.request 或 wx.fetch 方法，接收参数包括 URL、请求方法、请求参数等。
+1. 将请求结果进行处理，比如根据请求结果的状态码进行错误处理，或者根据业务逻辑将结果转换为需要的数据格式。
+1. 在请求成功后将处理后的数据通过 Promise 的方式返回给调用方，在请求失败时通过 reject 方法返回错误信息。
+
+以下是一个简单的数据请求封装示例：
+
+```
+const request = ({ url, method = 'GET', data = {} }) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url,
+      method,
+      data,
+      success: (res) => {
+        if (res.statusCode === 200) {
+          resolve(res.data)
+        } else {
+          reject(new Error(`请求失败，状态码：${res.statusCode}`))
+        }
+      },
+      fail: (err) => {
+        reject(new Error(`请求失败：${err.errMsg}`))
+      }
+    })
+  })
+}
+
+export default request
+```
+
+这样，我们就可以在其他页面中引入该 request 方法，来实现数据请求的封装，提高代码的复用性和可维护性。
 
 #### 怎么解决微信小程序的异步请求问题？
 
+微信小程序中的异步请求问题主要涉及到网络请求和数据处理两个方面。
+
+对于网络请求，可以使用 wx.request 函数发起异步请求，并在其回调函数中处理返回的数据。需要注意的是，在进行异步请求时，需要注意异常情况的处理，比如网络异常、请求超时等，避免程序出现异常。同时，为了提高网络请求的性能，可以使用 HTTP/2 协议、DNS 预解析等技术。
+
+对于数据处理方面，可以使用 Promise、async/await 等技术来处理异步逻辑。使用这些技术可以让代码更加清晰简洁，并且避免了回调地狱的问题。
+
+另外，为了方便管理和复用代码，可以将网络请求和数据处理封装成独立的模块或函数，并统一处理异常情况，以提高代码的可维护性和复用性。
+
 #### 如何提高微信小程序的应用速度？
+
+提高微信小程序应用速度的方法可以从以下几个方面入手：
+
+1. **减少请求次数和请求数据量**：尽量将请求数据缓存在本地或者后端缓存，使用小程序提供的 storage API 或者 wx.request 中的缓存机制可以有效地减少请求次数和请求数据量。
+1. **避免不必要的渲染**：减少页面节点数，尽量使用 CSS 动画代替 JS 动画，减少频繁的 DOM 操作。
+1. **优化图片加载**：压缩图片大小、尽量使用 webP 格式、使用图片 CDN、使用 lazyload 等方式可以提高图片加载速度。
+1. **将复杂计算和处理放到后端**：将一些复杂计算和处理放到后端，减少前端计算和处理的时间，提高前端响应速度。
+1. **避免阻塞操作**：尽量使用异步操作和 Promise，避免阻塞操作，提高应用响应速度。
+1. **使用分包加载**：使用小程序提供的分包加载机制，将不同功能的代码分别打包，按需加载，提高启动速度。
+1. **对代码进行性能优化**：使用微信开发者工具提供的性能分析工具，找出代码中的性能瓶颈，进行相应的性能优化。
+
+综上所述，提高微信小程序应用速度需要综合考虑前端和后端的优化，尽量减少请求次数和请求数据量，避免阻塞操作，优化代码性能等。
 
 #### rpx 是什么？rpx 原理？
 
+rpx（responsive pixel）是一种响应式的像素单位，是微信小程序专用的一种 CSS 单位。使用 rpx 可以方便地适配不同像素密度的设备，保证在不同设备上显示的尺寸和比例一致。
+
+rpx 的原理是将屏幕宽度分为 750 份，设计稿按照这个比例进行设计。比如 100rpx 就是表示屏幕宽度的 1/7.5，也就是相当于屏幕宽度的 13.33%。这样，无论是在 320px 宽的 iPhone5 上，还是在 1080px 宽的 iPhone6 Plus 上，都可以根据屏幕宽度自适应地显示出相应大小的元素。
+
 #### 什么情况下 wx.navigateTo 会无法打开页面？
 
-#### 简述小程序授权登录流程？（建议写博客）
+根据提供的来源，可以得出以下情况下 wx.navigateTo 会无法打开页面：
 
-#### 简述小程序支付流程？（建议写博客）
-
-#### 简述小程序的发布流程？（建议写博客）
+1. 当跳转的页面为在 app.json 中注册过的 tabBar 页面时，在跳转时跳转失败。此时需要使用 wx.switchTab 进行跳转。
+2. 当跳转的页面为 tabBar 页面时，无法使用 wx.navigateTo 进行跳转。
+   - 当当前页为插件页面时，宿主小程序或当前插件的页面不能调用该接口。
+   - 当小程序插件中使用时，只能在当前插件的页面中调用。
+3. 当页面栈已经达到最大值时，即小程序中页面栈最多十层时，也可能无法继续跳转，此时需要使用 wx.navigateBack 返回到原页面。
 
 #### 小程序有哪些传递数据的方法？
 
-#### 如何实现下拉刷新？
+微信小程序中有多种方法可以用来传递数据。下面是一些常用的方法：
+
+1. 使用路由传递数据：在跳转时将数据拼接在 URL 后面，然后在另一个页面的 onLoad()方法的参数中即可获取到传递的参数。例如：
+
+```
+// home.js
+wx.navigateTo({
+    url: `../select/select?id=${id}`,
+})
+
+//select.js
+onLoad(option){
+    const id = option.id;
+}
+```
+
+2. 全局变量：通过设置全局变量来传递数据，另一个页面可以直接获取这个全局变量的值。例如：
+
+```
+// app.js
+App({
+    globalData: {
+        userInfo: null
+    }
+})
+
+// page1.js
+const app = getApp()
+app.globalData.userInfo = {name: 'John'}
+
+// page2.js
+const app = getApp()
+const userInfo = app.globalData.userInfo
+```
+
+3. 通过 wx.navigateTo 的 success 回调函数来实现传值（可双向传值）：
+
+```
+// page1.js
+wx.navigateTo({
+    url: '/pages/page2/page2',
+    success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+    }
+})
+
+// page2.js
+Page({
+    onLoad: function(option) {
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.on('acceptDataFromOpenerPage', function(data) {
+            console.log(data)
+        })
+    }
+})
+```
+
+4. 列表 index 下标取值：在列表渲染时，可以将数据的下标传递给详情页，详情页通过下标获取对应的数据。例如：
+
+```
+// list.js
+wx.navigateTo({
+    url: `../detail/detail?index=${index}`,
+})
+
+// detail.js
+onLoad(option){
+    const index = option.index;
+    const data = this.data.list[index];
+}
+```
+
+5. 扫描二维码获取参数：当用户通过微信扫一扫功能，扫普通链接二维码打开小程序时，可以获取这个普通链接中传递的参数，然后再做进一步的操作。例如：
+
+```
+// app.js
+App({
+    onLaunch: function (option) {
+        if (option.scene == 1011 || option.scene == 1012) {
+            console.log("扫码进入")
+            console.log(option.query)
+        }
+    }
+})
+```
+
+可以根据具体需求选择合适的方法进行数据传递。在实际应用中也可以组合使用多种方式进行页面间数据传递和交互。
 
 #### 一个小程序页面分为哪几个文件？
 
+1. page.js // 功能类似 javascript，为页面添加各种监听事件
+1. page.json // 页面配置，设置 tab 栏，导航条等东西，是一个 json 文件
+1. page.wxml // 前端页面，就是 html，但语法不太一样
+1. page.wxss // 页面样式，就是 css，但语法不太一样
+
 #### 怎么优化小程序首页加载速度？
+
+为了优化小程序首页加载速度，可以考虑以下几个方面：
+
+1. **使用性能扫描工具**：微信小程序提供了一个“体验评分”的工具插件，可以使用它获得微信小程序的一些性能数据和明显的缺陷，进而根据报告进行相应的优化。
+2. **代码优化**：可以采用 Node.js 中台转移部分计算，将 JavaScript 的代码进一步简化，这样有利于对小程序的加载性能进一步优化。其次，这样也有利用扩展到其他平台，比如 H5 等。
+3. **检查图片**：检查图片包括：图片是否过大、图片懒加载、图片是否可以用 CDN 托管。
+4. **检查接口耗时**：检查首屏接口耗时，避免在小程序启动流程中使用 Sync 结尾的同步 API。
+5. **合理使用 setData**：当需要在频繁触发的用户事件(如 scroll 、 Resize 事件)中调用 setData ，合理的利用 函数防抖(debounce) 和 函数节流(throttle) 可以减少 setData 执行次数。
+6. **控制 WXML 节点数量**：建议一个页面使用少于 1000 个 WXML 节点，节点树深度少于 30 层，子节点数不大于 60 个。一个太大的 WXML 节点树会增加内存的使用，样式重排时间也会更长，影响体验。

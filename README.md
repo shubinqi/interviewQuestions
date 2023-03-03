@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 02:11:36
- * @Description: 前端面试题汇总
+ * @LastEditTime: 2023-03-04 04:07:47
+ * @Description: 前端面试题汇总（1024题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
 -->
@@ -12,7 +12,7 @@
 
 > 舒彬琪的前端知识体系笔记汇总。
 
-### 前端知识体系模块划分（面试题）
+### 一、前端知识体系模块划分（面试题）
 
 1. **前端基础**（根目录）共 **228** 题
    - **HTML**（已更新 23 题）
@@ -27,15 +27,15 @@
    - **前端安全**（已更新 8 题）
    - **WEB 性能优化**（已更新 23 题）
    - **浏览器原理**（已更新 63 题）
-3. **前端框架**（/前端框架/Vue 或者 /前端框架/React 或者 /前端框架/NodeJS）共 **227** 题
+3. **前端框架**（/前端框架/Vue 或者 /前端框架/React 或者 /前端框架/NodeJS）共 **231** 题
    - **Vue2**（已更新 81 题）
    - **Vue3**（已更新 26 题）
    - **VueX**（已更新 15 题）
    - **Pinia**（已更新 7 题）
-   - **React**（57 题，已更新 9 题）
+   - **React**（已更新 63 题）
    - **React Native**（已更新 3 题）
    - **Redux**（已更新 12 题）
-   - **NodeJS**（26 题，已更新 1 题）
+   - **NodeJS**（已更新 26 题）
    - Express.js
    - Koa.js
    - NextJS
@@ -46,10 +46,10 @@
    - Ant Design
    - Bootstrap
    - jQuery
-5. **移动端**（/移动端）共 **29** 题
-   - **微信小程序**：/移动端/Wxapp（22 题，已更新 4 题）
+5. **移动端**（/移动端）共 **25** 题
+   - **微信小程序**：/移动端/Wxapp（已更新 18 题）
    - **微信公众号**：/移动端/Wechat
-   - **Uni-app**：/移动端/Uni-app（7 题，待更新）
+   - **Uni-app**：/移动端/Uni-app（已更新 7 题）
    - **Flutter**：/移动端/Flutter（Android 开发）
 6. **软件工程**（/软件工程）共 **49** 题
    - **软件工程**（已更新 15 题）
@@ -59,8 +59,8 @@
    - **团队管理**（已更新 6 题）
    - **设计模式**（已更新 15 题）
 7. **工具**（/Tool）共 **32** 题
-   - **Git**：/Tool/Version（10 题，已更新 6 题）
-   - **SVN**：/Tool/Version（1 题，待更新）
+   - **Git**：/Tool/Version（已更新 10 题）
+   - **SVN**：/Tool/Version（已更新 2 题）
    - **Webpack**：/Tool/Pack（已更新 13 题）
    - **Vite**：/Tool/Pack（已更新 8 题）
    - Gulp：/Tool/Pack
@@ -71,9 +71,9 @@
    - **Markdown**：/Tool（已更新笔记）
    - Tailwind CSS
 8. **数据可视化**
-   - 数据可视化
-   - Echarts：/Tool/Others
-   - D3.js：/Tool/Store
+   - 数据可视化：/Tool/数据可视化
+   - Echarts：/Tool/数据可视化
+   - D3.js：/Tool/数据可视化
 9. **扩展知识**
    - Linux
    - Nginx
@@ -84,11 +84,11 @@
    - 服务器
    - 前端运维
 10. **其他面试题**（/Chinese）共 **28** 题
-    - **非技术题**：/Chinese（11 题，已更新 1 题）
+    - **非技术题**：/Chinese（已更新 11 题）
     - **手写代码**：/Chinese（8 题，待更新）
     - **代码输出**：/Chinese（0 题，待更新）
 
-### 前端八股文
+### 二、前端八股文
 
 #### 八股文文件夹说明（/八股文）
 
@@ -144,7 +144,7 @@
 11. **刁钻题**文件夹（/八股文/刁钻题）
     - **后端返回 10 万条数据如何渲染**（已更新）
 
-### 其他文件
+### 三、其他文件
 
 #### Chinese 文件夹（/Chinese）
 
@@ -192,7 +192,7 @@
 - LeetCode：LeetCode 测试代码
 - Vue：Vue 测试代码
 
-### 案例（/Demo）
+### 四、案例（/Demo）
 
 1. **算法**（/Demo/Algorithm）
    - 数组排序（已更新）
