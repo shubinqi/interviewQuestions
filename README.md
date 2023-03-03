@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 17:48:08
+ * @LastEditTime: 2023-03-03 20:26:23
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -19,22 +19,21 @@
    - CSS（已更新 52 题）
    - JavaScript（已更新 121 题）
    - TypeScript（已更新 17 题）
-2. 计算机网络（/ComputerNetwork）
+2. 计算机网络（/计算机网络）
    - HTTP（已更新 36 题）
    - TCP/IP（已更新 29 题）
    - DNS（已更新 5 题）
    - 前端安全（已更新 8 题）
    - WEB 性能优化（已更新 23 题）
    - 浏览器原理（已更新 63 题）
-3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
-   - Vue2（已更新 74 题）
+3. 前端框架（/技术框架/Vue 或者 /技术框架/React 或者 /技术框架/NodeJS）
+   - Vue2（已更新 75 题）
    - Vue3（已更新 26 题）
    - VueX（已更新 15 题）
    - Pinia（已更新 7 题）
    - React（57 题，已更新 9 题）
    - React Native（已更新 3 题）
    - Redux（已更新 12 题）
-   - Angular
    - NodeJS（26 题，已更新 1 题）
    - Express.js
    - Koa.js
@@ -46,7 +45,20 @@
    - Ant Design
    - Bootstrap
    - jQuery
-5. 工具（/Tool）
+5. 移动端（/移动端）
+   - 微信小程序：/移动端/Wxapp（22 题，已更新 4 题）
+   - 微信公众号：/移动端/Wechat
+   - Uni-app：/移动端/Uni-app（7 题，待更新）
+   - Flutter：/移动端/Flutter（Android 开发）
+6. 软件工程（/软件工程）
+   - 软件工程（已更新 13 题）
+   - 前端工程化（已更新 7 题）
+   - 前端自动化测试（已更新 5 题）
+   - 架构模式（已更新 1 题）
+   - 团队管理（已更新 6 题）
+   - 设计模式
+   - 数据结构与算法
+7. 工具（/Tool）
    - Git：/Tool/Version（10 题，已更新 6 题）
    - SVN：/Tool/Version（1 题，待更新）
    - Webpack：/Tool/Pack（已更新 13 题）
@@ -60,19 +72,6 @@
    - Markdown（已更新笔记）
    - Less
    - Sass
-6. 移动端（/Mobile）
-   - 移动端
-   - 微信小程序（22 题，已更新 4 题）
-   - 微信公众号
-   - Uni-app（7 题，待更新）
-   - Flutter（Android 开发）
-7. 工程化（/Module）
-   - 软件工程
-   - 前端工程化（已更新 5 题）
-   - 前端自动化测试（已更新 5 题）
-   - 架构模式（已更新 1 题）
-   - 设计模式
-   - 数据结构与算法
 8. 数据可视化
    - 数据可视化
    - Echarts：/Tool/Others
@@ -110,6 +109,14 @@
 - 创建 React 项目
 - 创建 Angular 项目
 
+#### PC 端 文件夹（/PC 端）
+
+- Electron
+- WebGL
+- WebRTC
+- 微前端
+- 低代码
+
 #### JavaScript 文件夹（/JavaScript）
 
 - Ajax
@@ -136,13 +143,13 @@
 #### 增加八股文文件夹（/八股文）
 
 1. HTML
-   - 语义化
+   - 语义化（已更新）
 2. CSS
    - BFC（已更新）
    - 回流与重绘（已更新）
    - 清除浮动（已更新）
    - 水平垂直居中（已更新）
-   - 盒模型
+   - 盒模型（已更新）
 3. JavaScript
    - 闭包（已更新）
    - 原型链（已更新）
@@ -156,8 +163,9 @@
    - JS 垃圾回收机制（已更新）
 4. Vue
    - Vue2 和 Vue3 的区别：/Vue（已更新）
-   - 双向绑定原理（已更新）
+   - 虚拟 DOM（已更新）
    - Diff 算法（已更新）
+   - 双向绑定原理（已更新）
    - 响应式原理 defineProperty（已更新）
    - 响应式原理 Proxy（已更新）
    - 生命周期
