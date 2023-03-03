@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 14:04:01
+ * @LastEditTime: 2023-03-03 15:32:20
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\Vue2.md
@@ -286,7 +286,7 @@ SSR 的缺点：
 
 #### 过滤器的作用？如何实现一个过滤器？
 
-过滤器(Filter)是 Vue.js 中一个非常有用的功能，它可以用来对数据进行一些特定格式的处理。通常我们使用过滤器来格式化数据的输出，比如将时间戳格式化为可读性更好的时间格式、将字符串按照一定规则转换为其他形式等等。
+过滤器（Filter）是 Vue.js 中一个非常有用的功能，它可以用来对数据进行一些特定格式的处理。通常我们使用过滤器来格式化数据的输出，比如将时间戳格式化为可读性更好的时间格式、将字符串按照一定规则转换为其他形式等等。
 
 Vue.js 的过滤器可以全局定义，也可以在组件内部定义，它的核心原理是函数式编程。一个过滤器就是一个全局可用的函数，它接收一个输入参数并返回处理后的结果。我们可以在模板中使用管道符(|)来调用过滤器，如下所示：
 
@@ -317,6 +317,84 @@ Vue.filter('capitalize', function(value) {
 需要注意的是，过滤器只能用于输出格式化，不能用于替换原有的值或者修改原有的数据。如果需要修改数据，应该使用计算属性或者方法。
 
 总之，Vue.js 的过滤器是一个非常方便的功能，可以大大简化我们对模板数据的处理和格式化工作。
+
+#### Vue 中的 mixin 是什么？如何使用？
+
+在 Vue 中，mixin 是一种可复用的组件选项。它允许在多个组件之间共享相同的选项，例如生命周期钩子、计算属性和方法等。
+
+使用 mixin 可以将一些常见的逻辑和功能抽象出来，然后混入到需要使用这些逻辑和功能的组件中，避免重复编写相似的代码，提高了代码的复用性和可维护性。
+
+在 Vue 中使用 mixin 非常简单，只需要在一个普通的 JavaScript 对象中定义你需要混入的选项，然后将这个对象传递给 Vue.mixin() 方法即可。下面是一个示例：
+
+```
+// 定义一个 mixin 对象
+const myMixin = {
+  created() {
+    console.log('mixin created');
+  },
+  methods: {
+    sayHello() {
+      console.log('hello');
+    }
+  }
+};
+
+// 使用 mixin
+Vue.mixin(myMixin);
+```
+
+通过这样的方式，我们定义了一个名为 myMixin 的 mixin 对象，并将其混入到了 Vue 中，那么这些选项就会被注入到每个新创建的组件中。在组件中，我们可以像使用普通的选项一样使用混入的选项，例如：
+
+```
+export default {
+  created() {
+    console.log('component created');
+  },
+  methods: {
+    handleClick() {
+      this.sayHello();
+    }
+  }
+};
+```
+
+这里的组件中混入了 myMixin 对象中的 created 和 methods 选项，我们可以在组件中使用 handleClick 方法来调用混入的 sayHello 方法。
+
+#### Vue 中的 extends 是什么？如何使用？
+
+在 Vue 中，extends 是一种组件的复用方式，可以让一个组件基于另一个组件进行扩展。通过使用 extends，一个组件可以继承另一个组件的所有选项，包括数据、计算属性、方法、生命周期钩子等。
+
+extends 可以让一个组件基于另一个组件进行扩展，使得代码的复用更加简单和高效。与 mixin 不同的是，extends 会继承所有选项，包括生命周期钩子，而不是只继承数据和方法。
+
+使用 extends 可以让代码更加简洁和易于维护，同时也可以提高代码的复用性和灵活性。
+
+下面是一个使用 extends 的示例：
+
+```
+<template>
+  <div>
+    <h1>{{title}}</h1>
+    <p>{{content}}</p>
+  </div>
+</template>
+
+<script>
+import BaseComponent from './BaseComponent.vue';
+
+export default {
+  extends: BaseComponent,
+  data() {
+    return {
+      content: 'This is the content of the extended component',
+    };
+  },
+};
+</script>
+```
+
+在上面的示例中，我们创建了一个名为 BaseComponent 的组件，并将其作为父组件传递给了一个名为 ExtendedComponent 的子组件。ExtendedComponent 通过 extends 继承了 BaseComponent 的所有选项，并且添加了一个新的数据项 content。
+
+在实际开发中，我们可以使用 extends 来复用和扩展组件，从而提高代码的复用性和灵活性。
 
 ### 二、Vue 生命周期
 
@@ -608,10 +686,10 @@ SPA 应用有以下几个特点：
 1. **定义组件的方法（methods）**：定义组件需要的方法，在组件中使用的方法需要定义为一个对象的方式。
 1. **注册组件（Vue.component()）**：通过调用 Vue.component() 方法注册组件，将组件注册到全局。
 1. **使用组件**：在需要使用组件的地方，使用组件名称来使用组件。
-1. **封装组件**：为了提高组件的复用性和可维护性，可以将组件进行进一步的封装。例如，将组件的样式和模板独立出来，或者将组件的逻辑代码分解为更小的模块。
+1. **细化组件**：为了提高组件的复用性和可维护性，可以将组件进行进一步的封装。例如，将组件的样式和模板独立出来，或者将组件的逻辑代码分解为更小的模块。
 1. **测试和维护**：在开发完组件后，需要进行测试和维护。测试可以使用各种测试框架进行自动化测试，维护可以包括修复组件中的 bug、添加新功能或升级组件版本等。
 
-封装 Vue 组件需要注意的事项：
+封装 Vue 组件需要注意的事项（**高复用低耦合**原则）：
 
 1. 组件名称应该是唯一的，不能与其他组件或 HTML 元素的名称相同。
 1. 组件应该具有良好的可重用性，可以在不同的场景下使用。

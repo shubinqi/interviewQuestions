@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:05:27
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 03:28:59
+ * @LastEditTime: 2023-03-03 17:45:45
  * @Description: React 面试题（57题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\React\React.md
@@ -55,11 +55,155 @@ React 17 中，onScroll 事件在 React 中不再冒泡。这与浏览器的行�
 
 #### React.Component 和 React.PureComponent 的区别？
 
-#### React 高阶组件是什么，和普通组件有什么区别，适用什么场景？
+React 中有两种组件：Component 和 PureComponent。它们的区别在于 shouldComponentUpdate 方法的实现方式不同。以下是 React.Component 和 React.PureComponent 的区别：
+
+React.Component
+
+- 继承自 React.Component 的组件需要手动实现 shouldComponentUpdate(nextProps, nextState)方法。
+- 在 shouldComponentUpdate 方法中手动比较当前 props 和 state 与下一个 props 和 state，如果有变化则返回 true，否则返回 false，以决定是否需要进行重新渲染。
+- 如果 shouldComponentUpdate 方法返回 false，则不会进行重新渲染。
+
+React.PureComponent
+
+- 继承自 React.PureComponent 的组件会自动进行浅比较（shallow comparison）。
+- 当组件的 props 或 state 发生改变时，React.PureComponent 会自动比较当前 props 和 state 与下一个 props 和 state，如果相同则不会进行重新渲染，否则会重新渲染。
+- React.PureComponent 实现了 shouldComponentUpdate 方法，但不建议在继承自 React.PureComponent 的组件中手动实现 shouldComponentUpdate 方法。
+
+浅比较是指只比较对象的引用是否相等，而不是比较对象的值是否相等。对于基本类型（如数字或布尔值），浅比较会检查它们的值是否相等。对于引用类型（如对象或数组），浅比较只会检查它们的引用地址是否相同，而不会比较对象的值是否相等。因此，如果我们只是更新了对象中的一个属性或数组中的一个元素，浅比较会认为新旧对象或数组相等，不会进行重新渲染。这也是为什么 React.PureComponent 比 React.Component 性能更好的原因。
+
+需要注意的是，继承自 React.PureComponent 的组件不建议手动实现 shouldComponentUpdate 方法，因为这样可能会破坏 React.PureComponent 的性能优化。此时，应该让 React.PureComponent 自动进行浅比较。如果需要进行深比较，则应该使用 React.Component 并手动实现 shouldComponentUpdate 方法。
+
+#### React 高阶组件是什么？和普通组件有什么区别？有什么适用场景？
+
+React 高阶组件（HOC）是一种基于 React 的组合特性而形成的设计模式，用于复用组件逻辑。HOC 是一个函数，接受一个组件作为参数并返回一个新组件。新组件可以访问被包装组件的 props，并可以在渲染过程中增强其行为。与普通组件相比，HOC 具有以下区别：
+
+- HOC 是一个函数，而不是一个组件。
+- HOC 接受一个组件作为参数，并返回一个新的组件。
+- HOC 可以访问被包装组件的 props，并可以在渲染过程中增强其行为。
+- HOC 不会修改被包装组件本身，而是通过包装来提供额外的功能。
+
+适用场景：
+
+- 代码复用，避免重复编写相似的代码。
+- 在不修改现有组件代码的情况下，增加组件的功能。
+- 在多个组件之间共享功能。
+
+以下是一个简单的示例，演示如何使用 HOC 来增强组件的功能：
+
+```
+// 定义一个高阶组件
+function withLogging(Component) {
+  class WithLogging extends React.Component {
+    componentDidMount() {
+      console.log('Component is mounted');
+    }
+
+    render() {
+      // 通过 {...this.props} 将所有 props 传递给被包装组件
+      return <Component {...this.props} />;
+    }
+  }
+
+  return WithLogging;
+}
+
+// 定义一个普通组件
+function MyComponent(props) {
+  return <div>Hello, {props.name}!</div>;
+}
+
+// 使用高阶组件增强 MyComponent 的功能
+const EnhancedComponent = withLogging(MyComponent);
+
+// 渲染增强后的组件
+ReactDOM.render(<EnhancedComponent name="World" />, document.getElementById('root'));
+```
+
+在上面的示例中，withLogging 函数是一个高阶组件，它接受一个组件作为参数，并返回一个增强了功能的新组件。EnhancedComponent 是一个增强后的组件，它可以访问 MyComponent 的 props，并且在渲染过程中增加了日志输出的功能。
 
 #### 哪些方法会触发 React 重新渲染？
 
+React 重新渲染是指在 React 应用程序中，当需要使用新数据更新 UI 时，React 会重新渲染组件。以下是一些方法会触发 React 重新渲染：
+
+- 改变组件的 state 或 props 会触发组件重新渲染。默认情况下，当组件的 state 或 props 改变时，组件将重新渲染。例如，当调用 setState()函数来更新组件的状态时，React 会在下一次渲染时更新组件。在下面的例子中，当在 onClick 事件监听器中调用 setState() 时，组件的状态将被更新，并且组件将重新渲染。
+
+```
+class App extends React.Component {
+  state = {
+    a: 1,
+  };
+  render() {
+    console.log('render');
+    return (
+      <React.Fragment>
+        <p>{this.state.a}</p>
+        <button
+          onClick={() => {
+            this.setState({ a: 1 });
+          }}
+        >
+          Click me
+        </button>
+      </React.Fragment>
+    );
+  }
+}
+```
+
+- 调用 forceUpdate() 函数可以强制组件重新渲染。如果组件的 render() 方法依赖于一些其他的数据，你可以告诉 React 组件需要通过调用 forceUpdate()重新渲染。例如，当组件的某些变量不在 state 上，但你又想达到这个变量更新的时候，刷新 render 时，可以手动调用 forceUpdate() 自动触发 render。
+- 在 React 类组件中，可以利用 shouldComponentUpdate() 或者 PureComponent 来减少因父组件更新而触发子组件的重新渲染，从而达到目的。shouldComponentUpdate() 方法可以决定是否组件是否重新渲染，如果不希望组件重新渲染，返回 false 即可。PureComponent 是一个自动实现了 shouldComponentUpdate() 的 React 组件，如果组件的 props 和 state 没有变化，PureComponent 将不会重新渲染。
+- 在 React 函数组件中，可以使用 React.memo() 来缓存组件的渲染，避免不必要的更新。React.memo() 是 React 16.6 新的一个 API，与 PureComponent 十分类似，但不同的是， React.memo() 只能用于函数组件。例如，在下面的例子中，当 count 发生变化时，TestC 组件将重新渲染。
+
+```
+let TestC = (props) => {
+    console.log('Rendering TestC :', props)
+    return (
+        <div>
+        { props.count }
+        </>
+    )
+}
+TestC = React.memo(TestC,arePropsEqual);
+function arePropsEqual(prevProps, nextProps) {
+  // your code
+  return prevProps === nextProps;
+}
+```
+
 #### 重新渲染 render 会做些什么？
+
+当 React 重新渲染时，它会经历一个称为渲染阶段的过程。以下是渲染阶段发生的情况：
+
+- React 基于 JSX 代码创建了一个新的虚拟 DOM 树。
+- React 将新的虚拟 DOM 树与旧的树进行比较，以确定需要更新的内容。
+- React 使用检测到的更改更新 DOM。
+
+当调用 setState() 时，React 通常会触发重新渲染。
+
+然而，在某些情况下，setState() 不会导致重新渲染，例如当新状态与旧状态相同时。另一方面，调用 setState(null) 不会导致重新呈现。
+
+为了优化渲染，React 提供了几种技术：
+
+1. shouldComponentUpdate() 或 PureComponent 可用于减少由父组件更新导致的重新渲染次数。
+1. React.memo() 可用于缓存功能组件的呈现，并避免不必要的更新。
+
+但是，它只能与功能组件一起使用。
+
+即使组件的状态或属性没有改变，也可以使用 forceUpdate() 手动触发重新渲染。
+
+在渲染阶段，React 使用双缓冲区技术来维护两个光纤树：当前树和正在进行的工作树。当前树表示 DOM 的当前状态，而正在进行的工作树表示需要进行的更改。在建工程树完成后，它将成为新的当前树，流程将重新开始。
+
+ReactDOM.render() 是实现 React Fiber 算法和构建 Fiber 树的核心 API。
+
+它接受一个元素和一个容器，并将该元素渲染到容器中。
+
+总之，当 React 重新渲染时，它将经历渲染阶段，该阶段包括创建一个新的虚拟 DOM 树，将其与旧树进行比较，并使用更改更新 DOM。
+
+setState() 通常会触发重新渲染，但在某些情况下不会触发。
+
+为了优化渲染，React 提供了 shouldComponentUpdate() 、React.memo() 和 forceUpdate() 等技术。
+
+在渲染阶段，React 使用双缓冲区技术来维护两个光纤树。
 
 #### React 如何判断什么时候重新渲染组件？
 

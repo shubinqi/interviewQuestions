@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-27 22:45:50
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 01:19:51
+ * @LastEditTime: 2023-03-03 17:29:22
  * @Description: TCP/IP 面试题（31题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\ComputerNetwork\TCP-IP.md
@@ -230,7 +230,7 @@ TCP 粘包问题的主要原因是 TCP 的传输是基于字节流的，而不�
 
 需要注意的是，TCP 粘包问题并不是 TCP 协议本身的问题，而是在应用层的数据处理上出现的问题。因此，处理 TCP 粘包问题的方法应该在应用层进行，而不是在 TCP 协议层面进行。
 
-#### 为什么 UDP 不会粘包？
+#### 为什么  UDP  不会粘包？
 
 UDP 是无连接的数据报协议，数据报的单位是 UDP 报文，它的长度是固定的，即使传输的数据量很小，UDP 报文头部的长度也是固定的。因此，即使 UDP 在传输时发生丢包，也不会影响其他数据包的传输，每个 UDP 报文都是独立的，不存在粘包的情况。所以 UDP 不会发生粘包问题。
 
@@ -262,10 +262,101 @@ Token 的加密过程通常采用的是对称加密和非对称加密相结合�
 
 需要注意的是，为了防止 token 的劫持和泄露，需要使用合适的加密算法进行加密，并采用 HTTPS 协议进行传输，以保障数据的安全性。
 
-#### 当在浏览器中输入 URL 并且按下回车之后发生了什么？（建议写博客）
+#### WebSocket 是什么？
 
-#### 页面有多张图片，HTTP1 和 HTTP2 分别是怎样的加载表现？
+WebSocket 是一种双向通信协议，位于 OSI 模型的应用层。与 HTTP 长连接不同，WebSocket 是真正的全双工方式，建立连接后客户端与服务器端是完全平等的，可以互相主动请求。在单个 TCP 连接上进行全双工通信，能更好地节省服务器资源和带宽并达到实时通讯。在 WebSocket 出现之前，实时 web 应用的方式为轮询，即不停地向服务器发送 HTTP 请求，问有没有数据，有数据的话服务器就用响应报文回应。如果轮询的频率比较高，那么就可以近似地实现“实时通信”的效果。但轮询的缺点也很明显，反复发送无效查询请求耗费了大量的带宽和 CPU 资源。WebSocket 的特点包括：
 
-#### 对 WebSocket 的理解？
+- 全双工：建立连接后客户端与服务器端是完全平等的，可以互相主动请求。
+- 单个 TCP 连接：能更好地节省服务器资源和带宽并达到实时通讯。
+- 只需要完成一次握手：两者之间就可以创建持久性的连接，并进行双向数据传输。
+
+WebSocket 的使用步骤包括：
+
+1. 建立连接：与服务器建立 WebSocket 连接，需要指定服务器地址和端口号。
+2. 发送数据：连接建立成功后，可以通过 send 方法向服务器发送数据。
+3. 接收数据：可以通过监听 message 事件来接收服务器返回的数据。
+4. 关闭连接：使用 close 方法关闭 WebSocket 连接。
+
+WebSocket 的 API 包括：
+
+- WebSocket 对象：用于创建 WebSocket 连接和发送和接收数据。
+- onopen 事件：连接建立成功后触发。
+- onmessage 事件：接收到服务器返回的数据时触发。
+- onclose 事件：连接关闭时触发。
+- onerror 事件：连接出错时触发。
+- send 方法：向服务器发送数据。
+- close 方法：关闭 WebSocket 连接。
+
+在建立 WebSocket 连接时，客户端需要向服务器发送一个 HTTP 请求，该请求需要包含以下头部信息：
+
+- Upgrade：指定协议升级为 WebSocket。
+- Connection：指定连接类型为 Upgrade。
+- Sec-WebSocket-Key：指定一段随机字符串。
+- Origin：指定请求的源地址。
+- Sec-WebSocket-Protocol：指定使用的子协议。
+- Sec-WebSocket-Version：指定使用的 WebSocket 版本。
+
+服务器需要响应一个 HTTP 响应，该响应需要包含以下头部信息：
+
+- Upgrade：指定协议升级为 WebSocket。
+- Connection：指定连接类型为 Upgrade。
+- Sec-WebSocket-Accept：指定一段经过计算的字符串。
+- Sec-WebSocket-Protocol：指定使用的子协议。
 
 #### 即时通讯的实现：短轮询、长轮询、SSE 和 WebSocket 间的区别？
+
+即时通讯的实现方式有四种，包括短轮询、长轮询、SSE 和 WebSocket。其中，短轮询、长轮询和 SSE 是在 HTTP 基础上实现的，而 WebSocket 不是。以下是这四种方式的区别：
+
+- **短轮询**：客户端定时向服务器发送请求，服务器立即返回响应。这种方式的缺点是，客户端需要频繁地向服务器发送请求，会造成网络资源的浪费，同时也会增加服务器的压力。
+- **长轮询（comet）**：客户端向服务器发送请求，服务器不会立即返回响应。服务器会一直等待，直到有数据可以返回给客户端时才会返回响应。客户端收到响应后再向服务器发送下一次请求。这种方式的缺点是，服务器需要维持大量的连接，会占用大量的服务器资源。
+- **SSE**：SSE（Server-Sent Events）是一种基于 HTTP 的服务器推送技术。客户端向服务器发送请求，服务器会返回一个持久化的连接，然后服务器可以向客户端推送数据。这种方式的优点是，可以实现服务器主动向客户端推送数据，不需要客户端频繁地向服务器发送请求，节省了网络资源，同时也降低了服务器的压力。
+- **WebSocket**：WebSocket 是一种基于 TCP 的协议，可以实现双向通信。客户端和服务器之间建立一个持久化的连接，可以互相发送数据。WebSocket 相对于其他三种方式的优点是，可以实现双向通信，不需要客户端频繁地向服务器发送请求，同时也减少了服务器的压力。
+
+短轮询：
+
+```
+// 客户端
+setInterval(function() {
+  $.ajax({
+    url: '/poll',
+    type: 'GET',
+    success: function(data) {
+      // 处理数据
+    }
+  });
+}, 1000);
+
+// 服务器端
+app.get('/poll', function(req, res) {
+  // 处理请求
+  res.send(data);
+});
+```
+
+长轮询：
+
+```
+// 客户端
+function longPoll() {
+  $.ajax({
+    url: '/comet',
+    type: 'GET',
+    success: function(data) {
+      // 处理数据
+      longPoll();
+    }
+  });
+}
+
+longPoll();
+
+// 服务器端
+app.get('/comet', function(req, res) {
+  // 处理请求
+  if (dataAvailable) {
+    res.send(data);
+  } else {
+    // 等待数据
+  }
+});
+```

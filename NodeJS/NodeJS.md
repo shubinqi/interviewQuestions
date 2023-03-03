@@ -12,7 +12,36 @@ https://juejin.cn/post/6844903951742025736
 
 #### 请介绍一下 Node 里的模块是什么？
 
-#### 请介绍一下 node 里的模块是什么？
+在 Node 中，模块是指一个 JavaScript 文件，它包含了一些封装好的 JavaScript 方法、JSON 数据、编译过的 C/C++拓展等。模块是 Node 的一个重要概念，用于将代码组织成可重用的单元。以下是一些要点：
+
+- 模块与文件是一一对应的，一个 Node.js 文件就是一个模块。
+- Node 中可以将模块分为三类：内置模块、自定义模块和第三方模块。内置模块是 Node 官方提供的，例如 fs、path、http 等，自定义模块是我们自己创建的.js 文件，而第三方模块是非官方提供的模块，需要通过 npm 安装后才能使用。
+- Node.js 的内置模块提供了访问网络、操作文件等核心功能，npm 里的模块库就是基于这些顶层 API 的进一步封装。
+- Node.js 中的模块可以被看作是 JavaScript 库，是整体代码中你想放在一起的某个部分（比如函数集），你会想把这部分代码相对独立于代码库中的其它部分，可以把事情区分清楚。
+- 模块可以通过 require()函数引入，并通过 module.exports 或 exports 对象导出。例如：
+
+```
+// module1.js
+exports.func1 = function(){
+        console.log('func1 from module1 called');
+}
+
+// module2.js
+var in_module1 = require('./module1.js');
+in_module1.func1();
+exports.func2 = function(){
+        console.log('func2 from module2 called');
+}
+
+// module3.js
+var in_module2 = require('./module2.js');
+in_module2.func2();
+```
+
+在这个例子中，module1.js 导出了一个名为 func1 的函数，module2.js 引入了 module1.js，并调用了其中的 func1 函数，同时还导出了一个名为 func2 的函数。module3.js 引入了 module2.js，并调用了其中的 func2 函数。最后，运行 module3.js 会输出“func1 from module1 called”和“func2 from module2 called”。
+
+- 模块在首次被引入时会被缓存，之后的引入将直接从缓存中读取。可以通过 module.cache 对象查看当前缓存的模块。
+- Node.js 12 版本开始支持 ES 模块，可以使用 import/export 语法进行模块导入导出。
 
 #### 请介绍一下 require 的模块加载机制？
 

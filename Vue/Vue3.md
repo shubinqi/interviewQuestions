@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 18:34:07
+ * @LastEditTime: 2023-03-03 15:40:34
  * @Description: Vue 3.X 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Vue\Vue3.md
@@ -52,6 +52,41 @@ Vue 3 中的 diff 算法与 Vue 2 中有很大的区别，主要体现在两个�
 
 总之，Vue 3 的 diff 算法相比于 Vue 2 更加高效和准确，能够提高应用的渲染性能。
 
+#### Vue3 中的模板语法和 Vue2 中的模板语法有什么不同？
+
+Vue3 中的模板语法和 Vue2 中的模板语法有以下不同：
+
+1. 引入了 v-bind 缩写语法 : 和 v-on 缩写语法 @，以及新的 v-model 缩写语法 v-model:prop.sync。
+1. v-for 中的 key 现在是必须的。
+1. 删除了过滤器，推荐使用计算属性代替。
+1. 删除了 .sync 修饰符，推荐使用 v-model:prop.sync 的语法糖。
+1. 删除了 .once 修饰符，推荐使用 v-once 指令。
+1. 删除了 .native 修饰符，推荐使用 v-bind="$attrs" 实现原生事件。
+1. v-bind 现在可以直接绑定对象，而不需要使用 v-bind 缩写语法 :
+1. 删除了 v-on.native 指令，推荐使用 v-bind="$listeners" 实现原生事件。
+1. 新增了 v-html 指令，以便更好地控制输出的 HTML。
+1. 删除了 v-once 指令中对表达式的支持。
+
+总的来说，Vue3 中的模板语法更加简洁，推荐使用常用的语法糖和指令，而将一些不常用的功能删除或调整。
+
+#### Vue3 中的 reactive API 是什么？如何使用它来实现响应式数据？
+
+Vue3 中的 reactive API 是用于实现响应式数据的核心 API。它可以将一个普通的 JavaScript 对象转换为响应式对象，这意味着当响应式对象发生变化时，相关的视图会自动更新。
+
+使用 reactive API 实现响应式数据非常简单，只需要在数据对象上调用 reactive 函数即可。例如：
+
+```
+import { reactive } from 'vue'
+
+const state = reactive({
+  count: 0
+})
+```
+
+在上面的代码中，state 对象被转换为了响应式对象，并包含了一个 count 属性。现在，如果在 Vue3 应用程序中使用这个 state 对象，那么当 count 发生变化时，相关的视图会自动更新。
+
+需要注意的是，Vue3 中的 reactive API 是基于 ES6 的 Proxy 实现的，因此不支持 IE11 及以下版本浏览器。
+
 #### Vue 3 的生命周期？
 
 Vue 3 的生命周期是通过 createComponentInstance 函数创建组件实例时，在组件实例上定义生命周期函数的方式来实现的。
@@ -95,7 +130,7 @@ Composition API 和 React Hook 确实有一些相似之处，它们都提供了�
 
 总之，虽然 Composition API 和 React Hook 有一些相似之处，但它们是两种不同的实现方式，它们的设计目的和使用场景也有所不同。
 
-#### 介绍一下 setup 函数？
+#### 介绍一下 setup 函数？它有什么作用？
 
 setup 函数是 Vue 3 中新增的一个组件选项，用于设置组件的初始状态和行为。它接收两个参数：`props` 和 `context`。
 
@@ -518,3 +553,57 @@ export default {
 ```
 
 这两种方式都能够实现原来过滤器的功能，但是使用计算属性的方式更加清晰和易于理解。
+
+#### Vue3 中的 Teleport 组件是什么？如何使用它？
+
+Vue3 中的 Teleport 组件是一个新的组件，用于在组件树中的任何地方渲染组件的模板内容。它是 Vue3 中的一个内置组件，用于解决 Vue2 中的 $refs 和 $el 的问题。
+
+在 Vue3 中，Teleport 组件使用了新的 v-slot API，提供了两个插槽：to 和 disabled。to 插槽用于指定 Teleport 组件要渲染的目标位置，而 disabled 插槽用于指示 Teleport 组件是否应该禁用。
+
+使用 Teleport 组件非常简单，只需要在需要渲染内容的组件中使用 &lt;Teleport&gt; 标签，然后在该标签中使用 to 插槽指定要渲染的目标位置即可。
+
+例如：
+
+```
+<template>
+  <div>
+    <button @click="showModal = true">Show Modal</button>
+    <Teleport to="body">
+      <Modal v-if="showModal" @close="showModal = false">
+        <p>This is the content of the modal!</p>
+      </Modal>
+    </Teleport>
+  </div>
+</template>
+```
+
+上面的代码中，我们在一个按钮的点击事件中打开一个 Modal 弹窗，然后使用 Teleport 组件将 Modal 渲染到页面的 body 元素中。
+
+使用 Teleport 组件可以避免因为组件嵌套层级过多导致的一些问题，同时也提高了组件的可复用性和灵活性。
+
+#### Vue3 中的 Suspense 组件是什么？如何使用它？
+
+Vue3 中的 Suspense 组件是一种异步组件加载的方式，它可以在组件还未加载完成时显示一个占位符，等组件加载完成后再替换掉占位符，从而提高应用程序的性能和用户体验。
+
+在 Vue3 中，使用 Suspense 组件需要配合一个新的内置组件 &lt;template v-slot&gt;，代码如下：
+
+```
+<template>
+  <div>
+    <Suspense>
+      <template #default>
+        <ChildComponent />
+      </template>
+
+      <template #fallback>
+        <!-- 这里是加载中的占位符 -->
+        <LoadingComponent />
+      </template>
+    </Suspense>
+  </div>
+</template>
+```
+
+在上面的例子中，当 &lt;ChildComponent /&gt; 组件正在加载时，会显示一个占位符，即 &lt;LoadingComponent /&gt; 组件，等到 &lt;ChildComponent /&gt; 组件加载完成后再替换掉占位符。
+
+需要注意的是，在 Vue3 中，&lt;template> 标签不再支持 v-if、v-for 等指令，因此需要使用 &lt;template v-slot&gt; 来代替。另外，&lt;template&gt; 标签也可以使用 ref 和 key 属性来进行组件实例的引用和复用。

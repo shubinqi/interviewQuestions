@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 14:41:15
+ * @LastEditTime: 2023-03-03 17:48:08
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -20,22 +20,22 @@
    - JavaScript（已更新 120 题）
    - TypeScript（已更新 17 题）
 2. 计算机网络（/ComputerNetwork）
-   - HTTP（已更新 35 题）
-   - TCP/IP（已更新 31 题）
-   - DNS 域名解析（已更新 5 题）
+   - HTTP（已更新 36 题）
+   - TCP/IP（已更新 29 题）
+   - DNS（已更新 5 题）
    - 前端安全（已更新 8 题）
    - WEB 性能优化（已更新 23 题）
-   - 浏览器（61 题，已更新 2 题）
+   - 浏览器原理（已更新 63 题）
 3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
-   - Vue2（已更新 70 题）
-   - Vue3（已更新 18 题）
+   - Vue2（已更新 74 题）
+   - Vue3（已更新 26 题）
    - VueX（已更新 15 题）
-   - Pinia（已更新 6 题）
-   - React（57 题，已更新 2 题）
+   - Pinia（已更新 7 题）
+   - React（57 题，已更新 9 题）
    - React Native（已更新 3 题）
-   - Redux（9 题，已更新 4 题）
+   - Redux（已更新 12 题）
    - Angular
-   - NodeJS（27 题，待更新）
+   - NodeJS（26 题，已更新 1 题）
    - Express.js
    - Koa.js
    - NextJS
