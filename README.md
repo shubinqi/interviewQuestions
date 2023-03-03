@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 20:26:23
+ * @LastEditTime: 2023-03-03 22:11:06
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -19,6 +19,7 @@
    - CSS（已更新 52 题）
    - JavaScript（已更新 121 题）
    - TypeScript（已更新 17 题）
+   - 数据结构与算法
 2. 计算机网络（/计算机网络）
    - HTTP（已更新 36 题）
    - TCP/IP（已更新 29 题）
@@ -27,7 +28,7 @@
    - WEB 性能优化（已更新 23 题）
    - 浏览器原理（已更新 63 题）
 3. 前端框架（/技术框架/Vue 或者 /技术框架/React 或者 /技术框架/NodeJS）
-   - Vue2（已更新 75 题）
+   - Vue2（已更新 81 题）
    - Vue3（已更新 26 题）
    - VueX（已更新 15 题）
    - Pinia（已更新 7 题）
@@ -38,7 +39,7 @@
    - Express.js
    - Koa.js
    - NextJS
-4. UI 框架/库（/UI）
+4. UI 框架、库（/技术框架/UI）
    - Element-UI（已更新 2 题）
    - Vant-UI（已更新 1 题）
    - iView
@@ -51,13 +52,12 @@
    - Uni-app：/移动端/Uni-app（7 题，待更新）
    - Flutter：/移动端/Flutter（Android 开发）
 6. 软件工程（/软件工程）
-   - 软件工程（已更新 13 题）
+   - 软件工程（已更新 15 题）
    - 前端工程化（已更新 7 题）
-   - 前端自动化测试（已更新 5 题）
+   - 前端自动化测试：/软件测试（已更新 5 题）
    - 架构模式（已更新 1 题）
    - 团队管理（已更新 6 题）
-   - 设计模式
-   - 数据结构与算法
+   - 设计模式（已更新 15 题）
 7. 工具（/Tool）
    - Git：/Tool/Version（10 题，已更新 6 题）
    - SVN：/Tool/Version（1 题，待更新）
@@ -66,12 +66,10 @@
    - Gulp：/Tool/Pack
    - Grunt：/Tool/Pack
    - Rullup：/Tool/Pack
-   - Tailwind CSS
    - Lodash：/Tool/Store
    - Babel：/Tool/Store
-   - Markdown（已更新笔记）
-   - Less
-   - Sass
+   - Markdown：/Tool（已更新笔记）
+   - Tailwind CSS
 8. 数据可视化
    - 数据可视化
    - Echarts：/Tool/Others
@@ -81,8 +79,8 @@
    - Nginx
    - MongoDB
    - MySQL
-   - 微前端：/Pc（3 题，待更新）
-   - 低代码：/Pc
+   - 微前端：/PC 端（已更新 3 题）
+   - 低代码：/PC 端
    - 服务器
    - 前端运维
 10. 其他面试题
@@ -90,57 +88,9 @@
     - 手写代码：/Chinese（8 题，待更新）
     - 代码输出：/Chinese（0 题，待更新）
 
-### 其他文件
-
-#### Chinese 文件夹（/Chinese）
-
-- 前端知识体系汇总
-- 前端职位分级
-- 手写代码
-- 非技术题
-- 代码输出
-- 注意事项
-- 碎碎念（零碎知识）
-
-#### Project 文件夹（/Project）
-
-- 开发环境搭建
-- 创建 Vue 项目
-- 创建 React 项目
-- 创建 Angular 项目
-
-#### PC 端 文件夹（/PC 端）
-
-- Electron
-- WebGL
-- WebRTC
-- 微前端
-- 低代码
-
-#### JavaScript 文件夹（/JavaScript）
-
-- Ajax
-- DOM-BOM
-- ES6
-- Promise
-
-#### 算法题（/Demo/Algorithm）
-
-- 两数之和（已更新）
-- 大数相加
-
-#### Demo 文件夹（/Demo）
-
-- Algorithm：算法题目
-- HTML：html 测试代码
-- CSS：CSS 测试代码
-- JS：JS 测试代码
-- LeetCode：LeetCode 测试代码
-- Vue：Vue 测试代码
-
 ### 八股文
 
-#### 增加八股文文件夹（/八股文）
+#### 八股文文件夹说明（/八股文）
 
 1. HTML
    - 语义化（已更新）
@@ -168,6 +118,8 @@
    - 双向绑定原理（已更新）
    - 响应式原理 defineProperty（已更新）
    - 响应式原理 Proxy（已更新）
+   - 实现权限管理（已更新）
+   - 封装 axios（已更新）
    - 生命周期
    - 组件通信
 5. React
@@ -189,3 +141,51 @@
     - V8 垃圾回收机制（已更新）
 11. 刁钻题
     - 后端返回 10 万条数据如何渲染
+
+### 其他文件
+
+#### Chinese 文件夹（/Chinese）
+
+- 前端知识体系汇总
+- 前端职位分级
+- 手写代码
+- 非技术题（已更新 11 题）
+- 代码输出
+- 注意事项
+- 碎碎念（零碎知识）
+
+#### Project 文件夹（/Project）
+
+- 开发环境搭建
+- 创建 Vue 项目
+- 创建 React 项目
+- 创建 Angular 项目
+
+#### PC 端 文件夹（/PC 端）
+
+- Electron
+- WebGL
+- WebRTC
+- 微前端（已更新 3 题）
+- 低代码
+
+#### JavaScript 文件夹（/JavaScript）
+
+- Ajax
+- DOM-BOM
+- ES6
+- Promise
+
+#### 算法题（/Demo/Algorithm）
+
+- 两数之和（已更新）
+- 大数相加
+
+#### Demo 文件夹（/Demo）
+
+- Algorithm：算法题目
+- HTML：html 测试代码
+- CSS：CSS 测试代码
+- JS：JS 测试代码
+- LeetCode：LeetCode 测试代码
+- Vue：Vue 测试代码

@@ -2,11 +2,13 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 19:31:30
+ * @LastEditTime: 2023-03-03 22:09:13
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Vue\Vue2.md
+ * @FilePath: \interviewQuestions\技术框架\Vue\Vue2.md
 -->
+
+Vue 面试题剖析，建议查看：https://www.bilibili.com/video/BV1YM411w7Zc
 
 ### 一、Vue 基础
 
@@ -76,6 +78,43 @@ function handleClick(event) {
   // 其他操作
 }
 ```
+
+#### .sync 的修饰符的作用是什么？实现原理？
+
+在 Vue.js 中，.sync 是一个语法糖，用于简化父组件和子组件之间双向数据绑定的写法。它的作用是在子组件中修改父组件传递过来的 props 属性时，同时也会触发一个自定义事件（事件名称为 update:propName）来通知父组件更新相应的属性值。
+
+例如，在父组件中使用子组件时，可以这样写：
+
+```
+<template>
+  <ChildComponent :foo.sync="bar" />
+</template>
+```
+
+在子组件中使用 props 来接收父组件传递的数据：
+
+```
+<template>
+  <div>
+    <input type="text" :value="foo" @input="updateFoo" />
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['foo'],
+  methods: {
+    updateFoo(e) {
+      this.$emit('update:foo', e.target.value);
+    }
+  }
+}
+</script>
+```
+
+这样，在子组件中修改 foo 属性时，会同时触发一个名为 update:foo 的自定义事件，父组件可以监听该事件来更新 bar 属性的值。
+
+.sync 的实现原理是通过自定义事件和属性的结合来实现双向数据绑定的。当子组件触发自定义事件时，父组件会通过 v-on 指令来监听该事件，并根据事件名称更新相应的属性值。由于事件名称与属性名称是相关联的，所以可以方便地进行双向数据绑定的实现。
 
 #### v-if 和 v-show 的区别？v-if 和 v-for 优先级哪个高？为什么不能连用？
 
@@ -911,6 +950,270 @@ export default {
 在组件中提供主题切换的入口，例如按钮、下拉框等。在对应的事件处理函数中，调用上述动态加载主题样式的方法即可。
 
 需要注意的是，动态加载样式文件可能会导致页面闪烁，需要根据具体情况进行优化。另外，如果需要实现全局的主题切换功能，可以将主题切换的方法定义在 Vue 的原型对象中，以便在所有组件中使用。
+
+#### Vue 项目怎么封装 axios？主要封装哪方面？
+
+在 Vue 项目中，我们可以将 axios 进行封装，以方便在不同组件中使用。主要的封装方面包括以下几个方面：
+
+1. **封装 axios 的默认配置**。可以设置一些全局的请求头、响应头等信息，减少重复代码的编写。
+1. **封装请求拦截器**。可以在请求发送之前对请求进行处理，例如在请求头中添加 token 等信息。
+1. **封装响应拦截器**。可以在响应返回后对响应进行处理，例如判断响应状态码是否正确，统一处理错误信息等。
+1. **封装公共方法**。可以将一些通用的请求方法进行封装，例如 get、post、put、delete 等方法。
+
+以下是一个简单的 axios 封装示例：
+
+```
+import axios from 'axios';
+
+const service = axios.create({
+  baseURL: process.env.VUE_APP_BASE_API, // 接口的基础路径
+  timeout: 5000, // 请求超时时间
+});
+
+// 请求拦截器
+service.interceptors.request.use(
+  config => {
+    // 在发送请求之前做些什么
+    config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+    return config;
+  },
+  error => {
+    // 处理请求错误
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+
+// 响应拦截器
+service.interceptors.response.use(
+  response => {
+    // 对响应数据进行处理
+    const res = response.data;
+    if (res.code !== 200) {
+      // 处理错误信息
+      console.log(res.msg);
+      return Promise.reject(new Error(res.msg));
+    } else {
+      return res.data;
+    }
+  },
+  error => {
+    // 处理响应错误
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+
+// 封装get请求
+export function get(url, params) {
+  return service({
+    url,
+    method: 'get',
+    params
+  })
+}
+
+// 封装post请求
+export function post(url, data) {
+  return service({
+    url,
+    method: 'post',
+    data
+  })
+}
+
+// 封装put请求
+export function put(url, data) {
+  return service({
+    url,
+    method: 'put',
+    data
+  })
+}
+
+// 封装delete请求
+export function del(url) {
+  return service({
+    url,
+    method: 'delete'
+  })
+}
+```
+
+通过这样的封装，我们可以在组件中使用封装好的方法来发送请求，例如：
+
+```
+import { get, post } from '@/api';
+
+export default {
+  methods: {
+    fetchData() {
+      get('/api/data').then(res => {
+        console.log(res);
+      }).catch(error => {
+        console.log(error);
+      });
+    },
+    postData() {
+      post('/api/data', { name: 'Tom', age: 18 }).then(res => {
+        console.log(res);
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+  }
+}
+```
+
+这样可以大大简化请求代码的编写，提高开发效率。
+
+#### Vue 项目权限管理怎么做？怎么实现控制到按钮级别的权限？
+
+在 Vue 中进行权限管理，可以采用路由拦截和动态渲染两种方式。
+
+1. **路由拦截**：路由拦截是指在路由跳转时，根据用户的角色或权限，判断该用户是否有权访问该路由。可以在路由配置文件中设置 meta 属性，用来存储该路由的访问权限信息，然后在路由跳转前，通过路由守卫进行权限验证，如果没有权限，则跳转到指定的页面。
+
+例如，可以在路由配置文件中设置 meta 属性：
+
+```
+const router = new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+      meta: {
+        requireAuth: true //需要登录才能访问
+      }
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      meta: {
+        requireAdmin: true //需要管理员权限才能访问
+      }
+    }
+  ]
+})
+```
+
+然后在路由跳转前进行权限验证：
+
+```
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) { //需要登录才能访问
+    if (user.loggedIn) { //已登录
+      next()
+    } else { //未登录
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath } //将要访问的页面路径作为参数传递给登录页面，登录成功后可以跳转到该页面
+      })
+    }
+  } else if (to.meta.requireAdmin) { //需要管理员权限才能访问
+    if (user.isAdmin) { //是管理员
+      next()
+    } else { //不是管理员
+      next({
+        path: '/403' //跳转到没有权限访问的页面
+      })
+    }
+  } else {
+    next()
+  }
+})
+```
+
+2. **动态渲染**：动态渲染是指根据用户的角色或权限，动态生成页面内容，例如隐藏某些按钮或链接。可以在组件中通过 v-if 或 v-show 指令根据用户的角色或权限控制组件的显示或隐藏。
+
+例如，在组件中可以使用 v-if 指令根据用户的角色或权限控制按钮的显示或隐藏：
+
+```
+<template>
+  <div>
+    <button v-if="user.isAdmin" @click="handleDelete">删除</button>
+    <button v-if="user.isManager" @click="handleEdit">编辑</button>
+    <button v-if="user.isMember" @click="handleAdd">添加</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        isAdmin: true,
+        isManager: false,
+        isMember: true
+      }
+    }
+  },
+  methods: {
+    handleDelete() {
+      //处理删除操作
+    },
+    handleEdit() {
+      //处理编辑操作
+    },
+    handleAdd() {
+      //处理添加操作
+    }
+  }
+}
+</script>
+```
+
+这样，根据用户的角色或权限，只有符合条件的按钮会被渲染出来，从而实现控制到按钮级别的权限，可以在每个按钮的 v-if 或者 v-show 中进行权限控制，比如：
+
+```
+<el-button v-if="$store.getters.hasPermission('addUser')">添加用户</el-button>
+```
+
+其中 $store.getters.hasPermission('addUser') 方法是从 Vuex 的 getters 中获取当前用户是否有添加用户的权限，如果有则返回 true，按钮可以展示；如果没有则返回 false，按钮就不会被渲染。
+
+在实现权限管理时，需要考虑到以下几点：
+
+1. 在登录成功后，需要获取当前用户的权限列表并保存到 Vuex 的状态中；
+1. 针对不同的路由或页面，需要判断当前用户是否有权限访问；
+1. 对于不同的操作，需要判断当前用户是否有权限执行，比如添加、编辑、删除等；
+1. 在进行权限判断时，需要考虑到细节问题，比如在路由嵌套时如何正确获取父子路由的权限等。
+
+另外，为了提高开发效率，可以封装一个基于路由的权限控制指令，在页面中使用时只需要在需要进行权限控制的元素上添加 v-permission 指令即可，比如：
+
+```
+<el-button v-permission="'addUser'">添加用户</el-button>
+```
+
+其中指令的实现可以参考以下代码：
+
+```
+import store from '@/store'
+
+export default {
+  // 指令定义
+  inserted(el, binding) {
+    const { value } = binding
+    const permissions = store.getters.permissions
+
+    if (value && value instanceof Array) {
+      if (value.length > 0) {
+        const hasPermission = permissions.some((permission) => {
+          return value.includes(permission)
+        })
+
+        if (!hasPermission) {
+          el.parentNode && el.parentNode.removeChild(el)
+        }
+      }
+    } else {
+      throw new Error('需要指定权限列表，如：v-permission="[\'addUser\', \'editUser\']"')
+    }
+  }
+}
+```
+
+在指令的 inserted 钩子函数中，获取当前用户的权限列表并与指令传递的权限列表进行比较，如果当前用户没有指定权限之一，则将元素从 DOM 中移除。这样可以使得权限控制的逻辑更加简洁易懂，避免重复的判断逻辑。
 
 ### 六、Vue 原理
 
