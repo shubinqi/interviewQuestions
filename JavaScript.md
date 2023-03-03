@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 00:15:28
- * @Description: JavaScript 面试题汇总（120题）
+ * @LastEditTime: 2023-03-04 00:35:04
+ * @Description: JavaScript 面试题汇总（128题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
 -->
@@ -919,6 +919,17 @@ const arr = Array.prototype.concat.apply([], arrayLike); // ['a', 'b', 'c']
 ```
 
 需要注意的是，以上几种方法都是将类数组对象转换成一个新的数组，原始的类数组对象并没有改变。
+
+#### Unicode 是什么？
+
+Unicode 是一种字符编码标准，它可以表示世界上绝大部分的语言文字，并且为每个字符分配了一个唯一的编码点，从而实现了不同平台、不同系统之间的字符编码统一。前端中常用的 Unicode 包括：
+
+- **ASCII 码**：ASCII 码是一种基础的字符编码标准，涵盖了英语中所有可打印字符，使用 7 位二进制数表示一个字符，最高位为 0。因为其只能表示 128 个字符，随着多语言应用的兴起，ASCII 码已经无法满足需求。
+- **UTF-8 编码**：UTF-8 是一种可变长的 Unicode 编码方案，它可以使用 1 到 4 个字节表示一个字符，其中英文字母使用 1 个字节，汉字使用 3 个字节。UTF-8 保留了 ASCII 码的编码方式，可以兼容 ASCII 码，也就是说，任何一个 ASCII 码字符，它的 UTF-8 编码和 ASCII 码是一样的。
+- **UTF-16 编码**：UTF-16 是一种 Unicode 编码方案，使用 2 或 4 个字节表示一个字符，其中字符编码范围在 0x0000-0xFFFF 之间的字符使用 2 个字节，字符编码范围在 0x10000-0x10FFFF 之间的字符使用 4 个字节。UTF-16 编码方案不支持 ASCII 码，因此不兼容 ASCII 码。
+- **UTF-32 编码**：UTF-32 是一种 Unicode 编码方案，使用 4 个字节表示一个字符。UTF-32 编码方案支持所有 Unicode 字符，但是存储空间较大，不常用于前端开发。
+
+在前端开发中，常用的 Unicode 编码方案是 UTF-8 编码。因为 UTF-8 编码是可变长的，可以节省存储空间，同时也能兼容 ASCII 码，因此在互联网上广泛使用。
 
 #### Unicode、UTF-8、UTF-16、UTF-32 的区别？
 
