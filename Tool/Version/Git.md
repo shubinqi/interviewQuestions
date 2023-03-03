@@ -2,11 +2,73 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:10:06
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 19:59:37
+ * @LastEditTime: 2023-03-03 14:13:41
  * @Description: Git 面试题（8题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Tool\Git.md
+ * @FilePath: \interviewQuestions\Tool\Version\Git.md
 -->
+
+#### Git 和 SVN 有什么区别？
+
+Git 和 SVN 都是版本控制系统，但它们之间有几个区别：
+
+1. **分布式 vs 集中式**：Git 是分布式版本控制系统，每个开发人员都可以将代码库完全克隆到本地，并在本地存储完整的代码历史记录。这使得在没有网络连接的情况下可以进行大部分开发工作。相反，SVN 是集中式版本控制系统，代码库位于中央服务器上，开发人员从服务器上检出代码，对其进行更改，然后将更改提交回服务器。
+1. **分支管理**：Git 是非常擅长分支管理的工具。Git 支持轻量级分支，开发人员可以轻松地从主分支中创建、合并和删除分支。SVN 也支持分支管理，但它的分支模型比 Git 的复杂得多。
+1. **版本号**：Git 使用 SHA-1 哈希值来标识每个提交，并且这些哈希值是唯一的。每个提交都有一个单独的 SHA-1 哈希值，以便在代码库中进行引用。SVN 使用递增的版本号来标识每个提交，版本号是整数。
+1. **性能**：Git 的性能比 SVN 要好，因为开发人员可以在本地存储完整的代码历史记录，可以快速地进行提交、分支和合并操作。
+1. **处理二进制文件**：Git 比 SVN 更擅长处理二进制文件，因为 Git 将二进制文件作为一组更改处理，而不是将整个文件视为单个更改。这意味着 Git 在处理大型二进制文件（例如图像和视频）时要快得多。
+
+总的来说，Git 和 SVN 都是优秀的版本控制系统，但是 Git 的分布式模型、分支管理和性能方面要优于 SVN。
+
+#### 介绍一下 Git 常用命令？
+
+#### 你们是怎么进行分支管理的？
+
+#### 如何解决代码冲突？
+
+#### 为什么会产生冲突？
+
+#### 如果本次提交失误，如何撤销？
+
+如果本次提交出现失误，可以使用 Git 的撤销机制进行撤销。具体操作方式如下：
+
+撤销已暂存的文件
+
+如果文件已经被 git add 添加到暂存区，可以使用 git reset HEAD <file> 命令将文件从暂存区撤销到工作区。
+
+撤销已提交的文件
+
+如果文件已经被 git commit 提交到本地仓库，可以使用以下命令进行撤销：
+
+1. 撤销本次提交：git reset --soft HEAD^
+1. 撤销本次提交并将文件撤销到工作区：git reset HEAD^
+1. 彻底撤销本次提交并删除提交的文件：git reset --hard HEAD^
+
+需要注意的是，以上操作都需要慎重使用，因为撤销操作会导致文件的版本历史被修改，如果修改不当可能会造成不可逆的损失。
+
+#### 怎么更改某次 commit 信息？
+
+如果要更改某次 commit 的信息，可以使用 git commit --amend 命令。该命令默认修改最近一条记录。
+
+具体步骤如下：
+
+1. 首先使用 git log 命令查看需要更改信息的 commit 的 SHA-1 值；
+1. 使用 git rebase -i HEAD~n 命令进入交互式的 rebase 模式，n 表示需要更改信息的 commit 之前的几个 commit；
+1. 将需要更改信息的 commit 前面的单词 pick 改为 edit；
+1. 使用 git commit --amend 命令修改 commit 的信息；
+1. 使用 git rebase --continue 命令完成操作。
+
+需要注意的是，如果该 commit 已经被推送到远程仓库，那么更改信息后需要使用 git push --force 命令来强制推送更改后的 commit。
+
+#### git fetch、git merge、git pull 的区别？
+
+git fetch、git merge、git pull 是 Git 中常用的三个命令，它们之间的主要区别如下：
+
+1. **git fetch**：从远程仓库下载最新的提交到本地，但不会将代码合并到本地代码。通常需要与其他 Git 命令（如 git diff）结合使用，以查看远程分支与本地分支之间的差异。
+1. **git merge**：将本地代码与远程分支合并。通常需要先使用 git fetch 将远程分支的最新代码更新到本地，然后使用 git merge 将代码合并到本地代码。
+1. **git pull**：相当于 git fetch 和 git merge 的组合操作，它会将远程仓库的代码更新到本地并自动合并代码。
+
+总的来说，git fetch 只是下载最新代码到本地，不会自动合并，而 git merge 和 git pull 则会将代码合并到本地代码。在协作开发中，建议使用 git fetch 和 git merge 分开使用，以便在合并代码前查看远程分支与本地分支之间的差异。
 
 #### Git 报错： Failed to connect to github.com port 443 解决方案？
 
@@ -64,15 +126,3 @@ git config --global http.proxy
 ```
 git config --global --unset http.proxy
 ```
-
-#### Git 和 SVN 有什么区别？
-
-#### 你们是怎么进行分支管理的？
-
-#### 如何解决代码冲突？
-
-#### 为什么会产生冲突？
-
-#### 如果本次提交失误，如何撤销？
-
-#### git fetch、git merge、git pull 的区别？

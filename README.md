@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 02:41:33
+ * @LastEditTime: 2023-03-03 14:17:57
  * @Description: 前端面试题汇总
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -25,29 +25,29 @@
    - DNS 域名解析（已更新 5 题）
    - 前端安全（已更新 8 题）
    - WEB 性能优化（已更新 22 题）
-   - 浏览器（61 题，更新中...）
+   - 浏览器（61 题，已更新 2 题）
 3. 前端框架（/Vue 或者 /React 或者 /NodeJS）
-   - Vue2（已更新 68 题）
+   - Vue2（已更新 70 题）
    - Vue3（已更新 18 题）
    - VueX（已更新 15 题）
    - Pinia（已更新 6 题）
-   - React（57 题，待更新）
-   - React Native
-   - Redux（9 题，待更新）
+   - React（57 题，已更新 2 题）
+   - React Native（已更新 3 题）
+   - Redux（9 题，已更新 4 题）
    - Angular
    - NodeJS（27 题，待更新）
    - Express.js
    - Koa.js
    - NextJS
 4. UI 框架/库（/UI）
-   - Element-UI
-   - Vant-UI
+   - Element-UI（已更新 2 题）
+   - Vant-UI（已更新 1 题）
    - iView
    - Ant Design
    - Bootstrap
    - jQuery
 5. 工具（/Tool）
-   - Git：/Tool/Version（8 题，待更新）
+   - Git：/Tool/Version（10 题，已更新 6 题）
    - SVN：/Tool/Version（1 题，待更新）
    - Webpack：/Tool/Pack（已更新 13 题）
    - Vite：/Tool/Pack（已更新 8 题）
@@ -62,9 +62,9 @@
    - Sass
 6. 移动端（/Mobile）
    - 移动端
-   - 微信小程序
+   - 微信小程序（22 题，已更新 4 题）
    - 微信公众号
-   - Uni-app
+   - Uni-app（7 题，待更新）
    - Flutter（Android 开发）
 7. 工程化（/Module）
    - 软件工程
@@ -83,14 +83,13 @@
    - MongoDB
    - MySQL
    - 微前端：/Pc（3 题，待更新）
-   - 低代码
+   - 低代码：/Pc
    - 服务器
    - 前端运维
 10. 其他面试题
-
-- 非技术题：/Chinese（11 题，已更新 1 题）
-- 手写代码：/Chinese（8 题，待更新）
-- 代码输出：/Chinese（0 题，待更新）
+    - 非技术题：/Chinese（11 题，已更新 1 题）
+    - 手写代码：/Chinese（8 题，待更新）
+    - 代码输出：/Chinese（0 题，待更新）
 
 ### 其他文件
 
@@ -146,15 +145,16 @@
 - 异步编程（已更新）
 - 事件循环（已更新）
 - 深拷贝（已更新）
-- ES6（已更新，增加更多内容中...）
 - 节流与防抖（已更新）
 - 继承（已更新）
-- 双向绑定原理（已更新）
-- Diff 算法（已更新）
-- 响应式原理 defineProperty（已更新）
-- 响应式原理 Proxy
+- ES6（已更新，增加更多内容中...）
 - JS 垃圾回收机制（已更新）
 - V8 垃圾回收机制（已更新）
 - Vue2 和 Vue3 的区别：/Vue（已更新）
+- 双向绑定原理（已更新）
+- Diff 算法（已更新）
+- 响应式原理 defineProperty（已更新）
+- 响应式原理 Proxy（已更新）
 - 浏览器从输入 URL 到页面显示发生了什么（已更新）
 - TCP 三次握手四次挥手（已更新）
+- 后端返回 10 万条数据如何渲染
