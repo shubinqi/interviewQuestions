@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 10:43:02
+ * @LastEditTime: 2023-03-04 18:23:17
  * @Description: 前端面试题汇总（1024题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -12,7 +12,7 @@
 
 > 舒彬琪的前端知识体系笔记汇总。
 
-### 一、前端知识体系模块划分（面试题）
+### 一、前端知识体系模块划分（面试题，共 780+ 题）
 
 1. **前端基础**（根目录）共 **230** 题
    - **HTML**（已更新 23 题）
