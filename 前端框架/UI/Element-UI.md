@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:07:13
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 13:58:18
- * @Description: Element-UI 面试题（2题）
+ * @LastEditTime: 2023-03-04 19:00:02
+ * @Description: Element-UI 面试题（3题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\UI\Element-UI.md
+ * @FilePath: \interviewQuestions\前端框架\UI\Element-UI.md
 -->
 
 #### Element-UI 怎么使用国际化功能？
@@ -115,3 +115,23 @@ $--color-primary: #409EFF;
 当主题色变量为 #409EFF 时，按钮为蓝色；当主题色变量变为其他颜色时，按钮颜色也会随之变化。
 
 通过这种方式，可以在不改变代码结构的情况下实现 Element-UI 主题切换功能。
+
+#### 使用过 Element 哪些组件？
+
+Element 是一个基于 Vue.js 的 UI 组件库，常用的组件包括按钮、表单、对话框、菜单等等。下面列出一些常见的 Element 组件：
+
+组件用法一般是 **el-组件名**。
+
+1. **Button**：按钮组件
+1. **Input**：输入框组件
+1. **Form**：表单组件
+1. **Dialog**：对话框组件
+1. **Menu**：菜单组件
+1. **Table**：表格组件
+1. **Pagination**：分页组件
+1. **Progress**：进度条组件
+1. **Select**：下拉选择框组件
+1. **Datepicker**：日期选择器组件
+1. **Cascader**：级联选择器组件
+1. **Carousel**：走马灯组件
+1. **Tooltip**：提示框组件

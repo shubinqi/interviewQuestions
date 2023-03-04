@@ -2,11 +2,13 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:03:48
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 00:39:36
+ * @LastEditTime: 2023-03-04 21:53:49
  * @Description: HTML 面试题（23题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\HTML.md
 -->
+
+### 一、HTML 基础
 
 #### HTML 5 有哪些新标签？
 
@@ -70,6 +72,12 @@ HTML5 的新特性包括但不限于：
 1. **&lt;figcaption&gt;**：定义 &lt;figure&gt; 元素的标题或说明。
 
 使用语义化标签可以让代码更加清晰易懂，并且能够使搜索引擎更好地理解页面的结构和内容，提高网页的排名和曝光度。同时也可以让页面在无样式情况下有更好的可读性和可访问性，提高用户体验。
+
+#### DOCTYPE 的作用是什么？
+
+DOCTYPE 是 Document Type 的缩写，它是 HTML 文档开头的一条声明，用来指示浏览器使用哪个 HTML 版本来解析文档。
+
+HTML 文档中的 DOCTYPE 声明，不是 HTML 标签，而是告诉浏览器页面采用的是哪种 HTML 或 XHTML 标准，以便浏览器正确地渲染页面。如果省略了 DOCTYPE 声明，浏览器在渲染页面时将会进入怪异模式，这可能导致 HTML 页面在不同的浏览器中出现不一致的效果。因此，DOCTYPE 的作用是确保 HTML 文档可以在不同的浏览器中正常显示，提高浏览器解析 HTML 文档的效率。
 
 #### src 和 href 的区别？
 
