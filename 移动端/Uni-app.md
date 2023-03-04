@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:09:51
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 03:57:00
+ * @LastEditTime: 2023-03-04 10:26:18
  * @Description: Uni-app 面试题（7题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\移动端\Uni-app.md
@@ -59,6 +59,98 @@ Uni-app 是一种跨平台开发框架，可以使用一套代码生成多端应
 除此之外，Uni-app 中还可以通过监听触摸事件来实现滑动效果。关键点在于三个事件：@touchstart、@touchmove 和@touchend。可以在这些事件的回调函数中处理滑动事件，并执行相应的操作。
 
 在具体实现中，可以根据不同的需求选择不同的方法。例如，在实现页面滚动时，可以使用 onPageScroll 方法；在实现吸顶效果时，可以通过监听滚动事件并更新组件状态来实现；在实现图片懒加载时，可以使用子组件和父组件绑定、通信的方法。
+
+#### Uni-app 如何实现上拉加载
+
+在 Uni-app 中，可以通过 onReachBottom 事件来实现上拉加载的功能。具体的实现步骤如下：
+
+在页面或组件中添加 onReachBottom 事件监听函数，例如：
+
+```
+<template>
+  <div class="list">
+    <div v-for="(item, index) in list" :key="index">{{item}}</div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      list: [],
+      pageNum: 1,
+      pageSize: 10
+    }
+  },
+  onReachBottom() {
+    this.loadMore()
+  },
+  methods: {
+    loadMore() {
+      // 上拉加载更多的处理逻辑
+      // ...
+    }
+  }
+}
+</script>
+```
+
+在 loadMore 方法中发送请求获取更多数据，并将新数据追加到 list 数组中，例如：
+
+```
+loadMore() {
+  uni.request({
+    url: 'http://example.com/api/list',
+    data: {
+      pageNum: this.pageNum,
+      pageSize: this.pageSize
+    },
+    success: (res) => {
+      this.list = this.list.concat(res.data.list)
+      this.pageNum++
+    }
+  })
+}
+```
+
+这样，当用户滑动页面到底部时，就会触发 onReachBottom 事件，从而调用 loadMore 方法进行上拉加载。新数据加载完毕后，将其追加到列表中，页面就能自动更新显示出更多的数据。
+
+#### Uni-app 如何实现下拉刷新
+
+在 uni-app 中，可以通过使用 scroll-view 组件来实现下拉刷新功能。
+
+具体实现步骤如下：
+
+1. 在 scroll-view 组件中添加 enablePullDownRefresh 属性，并将其值设置为 true，开启下拉刷新功能。
+2. 添加 bind:pullingdown 事件监听函数，该函数会在用户下拉页面时触发。在该函数中，可以执行数据请求操作并更新页面数据。
+
+示例代码如下：
+
+```
+<scroll-view :enablePullDownRefresh="true" @scrolltolower="loadData" @scroll="scrollEvent" @pullingdown="onPullDownRefresh">
+  <!-- 页面内容 -->
+</scroll-view>
+
+onPullDownRefresh() {
+  // 下拉刷新操作
+  // 更新数据
+}
+```
+
+其中，@pullingdown 监听函数中可以编写具体的下拉刷新操作，例如发送数据请求并更新页面数据。
+
+需要注意的是，在下拉刷新完成后，需要手动调用 uni.stopPullDownRefresh() 方法来停止下拉刷新动画。例如：
+
+```
+onPullDownRefresh() {
+  // 发送数据请求并更新数据
+
+  // 停止下拉刷新动画
+  uni.stopPullDownRefresh();
+}
+```
+
+另外，也可以使用一些 uni-app 的第三方插件来实现下拉刷新功能，例如 uni-pull-down-refresh 插件。
 
 #### rpx、px、em、rem、%、vh、vw 的区别是什么？
 
