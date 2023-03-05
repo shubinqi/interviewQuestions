@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:06:32
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 00:40:02
+ * @LastEditTime: 2023-03-05 23:39:14
  * @Description: HTTP 面试题（35题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\ComputerNetwork\HTTP.md
+ * @FilePath: \interviewQuestions\计算机网络\HTTP.md
 -->
 
 #### Get 和 Post 请求的区别？
@@ -40,6 +40,41 @@ GET 的长度值 = URL（2083）- （你的 Domain+Path）-2（2 是 get 请求�
 1. **Google (chrome)**：URL 最大长度限制为 8182 个字符。
 1. **Apache (Server)** server 端：能接受最大 url 长度为 8,192 个字符。
 1. **Microsoft Internet Information Server(IIS)** server 端：能接受最大 url 的长度为 16,384 个字符。
+
+#### 常见的 HTTP 请求方法？
+
+HTTP 请求方法是指在 HTTP 协议中，客户端向服务器请求资源时所采用的方法，常见的 HTTP 请求方法有以下几种：
+
+- **GET**：用于请求指定的资源。GET 请求只用于获取数据，不会对数据进行修改，请求参数会附在 URL 之后，例如：http://example.com/index.html?param1=value1&param2=value2。
+- **POST**：向指定资源提交数据，请求参数在请求正文中，POST 请求会对数据进行修改，例如：表单提交。
+- **PUT**：用于更新指定资源，客户端需要发送更新后的整个资源，如果只需要更新部分内容，可以使用 PATCH 请求。
+- **DELETE**：删除指定的资源。
+- **HEAD**：与 GET 请求类似，但是服务器在响应中只返回头信息，不返回实体的主体部分，用于获取资源的元数据。
+- **OPTIONS**：用于获取目标资源所支持的通信选项，可以查询服务器支持哪些 HTTP 方法。
+- **TRACE**：回显服务器收到的请求，主要用于测试或诊断。
+- **PATCH**：用于对资源进行部分修改。
+
+在符合 RESTful 设计规范的应用中，常用到的 HTTP 请求方法有：
+
+- **GET**：用于获取资源。
+- **POST**：用于创建资源。
+- **PUT**：用于更新资源。
+- **DELETE**：用于删除资源。
+- **PATCH**：用于对资源进行部分修改。
+
+需要注意的是，HTTP 请求方法的语义是约定的，虽然可以自定义请求方法，但是不符合 HTTP 协议规范，可能会产生不可预料的结果。
+
+#### OPTIONS 请求方法是什么？使用场景？
+
+HTTP 的 OPTIONS 方法用于获取目的资源所支持的通信选项。客户端可以对特定的 URL 使用 OPTIONS 方法，也可以对整站使用该方法。在 CORS 中，可以使用 OPTIONS 方法发起一个预检请求，以检测实际请求是否可以被服务器所接受。预检请求报文中的 Access-Control-Request-Method 首部字段告知服务器实际请求所使用的 HTTP 方法；Access-Control-Request-Headers 首部字段告知服务器实际请求所携带的自定义首部字段。服务器基于从预检请求获得的信息来判断是否接受接下来的实际请求。服务器所返回的 Access-Control-Allow-Methods 首部字段将所有允许的请求方法告知客户端。该首部字段与 Allow 类似，但只能用于涉及到 CORS 的场景中。
+
+除了用于 CORS 的预检请求，OPTIONS 方法还可以用于以下场景：
+
+- 确定服务器支持哪些 HTTP 方法；
+- 确定服务器支持哪些请求头；
+- 获取服务器支持的 MIME 类型。
+
+在 .NET Core 中，可以使用 IOptions&lt;TOptions&gt; 接口和 Options 模式来读取相关配置值。Options 模式使用类来提供强类型的访问方式，可以通过将配置设置隔离到不同的类中来实现接口隔离原则和关注点分离原则。Options 还提供了一种验证配置数据的机制。可以使用 IOptionsSnapshot&lt;TOptions&gt; 接口来获取配置文件中的配置值，且这些值会在请求时计算一次，并在请求的生命周期内缓存。IOptionsMonitor 是一个单例服务，可以在任何时候检索当前选项值，特别适用于单例依赖项。IOptionsSnapshot 是一个作用域服务，提供在构建 IOptionsSnapshot&lt;T&gt; 对象时的选项快照。选项快照适用于短暂和作用域依赖项。
 
 #### 了解哪些 HTTP 状态码？
 
@@ -150,41 +185,6 @@ HTTP 状态码 304 过程
 - **Access-Control-Allow-Origin**: 用于跨域请求，指定允许访问该资源的域名。
 - **Accept-Ranges**: 用于支持范围请求，指定支持的单位，例如 bytes。
 
-#### 常见的 HTTP 请求方法？
-
-HTTP 请求方法是指在 HTTP 协议中，客户端向服务器请求资源时所采用的方法，常见的 HTTP 请求方法有以下几种：
-
-- **GET**：用于请求指定的资源。GET 请求只用于获取数据，不会对数据进行修改，请求参数会附在 URL 之后，例如：http://example.com/index.html?param1=value1&param2=value2。
-- **POST**：向指定资源提交数据，请求参数在请求正文中，POST 请求会对数据进行修改，例如：表单提交。
-- **PUT**：用于更新指定资源，客户端需要发送更新后的整个资源，如果只需要更新部分内容，可以使用 PATCH 请求。
-- **DELETE**：删除指定的资源。
-- **HEAD**：与 GET 请求类似，但是服务器在响应中只返回头信息，不返回实体的主体部分，用于获取资源的元数据。
-- **OPTIONS**：用于获取目标资源所支持的通信选项，可以查询服务器支持哪些 HTTP 方法。
-- **TRACE**：回显服务器收到的请求，主要用于测试或诊断。
-- **PATCH**：用于对资源进行部分修改。
-
-在符合 RESTful 设计规范的应用中，常用到的 HTTP 请求方法有：
-
-- **GET**：用于获取资源。
-- **POST**：用于创建资源。
-- **PUT**：用于更新资源。
-- **DELETE**：用于删除资源。
-- **PATCH**：用于对资源进行部分修改。
-
-需要注意的是，HTTP 请求方法的语义是约定的，虽然可以自定义请求方法，但是不符合 HTTP 协议规范，可能会产生不可预料的结果。
-
-#### OPTIONS 请求方法是什么？使用场景？
-
-HTTP 的 OPTIONS 方法用于获取目的资源所支持的通信选项。客户端可以对特定的 URL 使用 OPTIONS 方法，也可以对整站使用该方法。在 CORS 中，可以使用 OPTIONS 方法发起一个预检请求，以检测实际请求是否可以被服务器所接受。预检请求报文中的 Access-Control-Request-Method 首部字段告知服务器实际请求所使用的 HTTP 方法；Access-Control-Request-Headers 首部字段告知服务器实际请求所携带的自定义首部字段。服务器基于从预检请求获得的信息来判断是否接受接下来的实际请求。服务器所返回的 Access-Control-Allow-Methods 首部字段将所有允许的请求方法告知客户端。该首部字段与 Allow 类似，但只能用于涉及到 CORS 的场景中。
-
-除了用于 CORS 的预检请求，OPTIONS 方法还可以用于以下场景：
-
-- 确定服务器支持哪些 HTTP 方法；
-- 确定服务器支持哪些请求头；
-- 获取服务器支持的 MIME 类型。
-
-在 .NET Core 中，可以使用 IOptions&lt;TOptions&gt; 接口和 Options 模式来读取相关配置值。Options 模式使用类来提供强类型的访问方式，可以通过将配置设置隔离到不同的类中来实现接口隔离原则和关注点分离原则。Options 还提供了一种验证配置数据的机制。可以使用 IOptionsSnapshot&lt;TOptions&gt; 接口来获取配置文件中的配置值，且这些值会在请求时计算一次，并在请求的生命周期内缓存。IOptionsMonitor 是一个单例服务，可以在任何时候检索当前选项值，特别适用于单例依赖项。IOptionsSnapshot 是一个作用域服务，提供在构建 IOptionsSnapshot&lt;T&gt; 对象时的选项快照。选项快照适用于短暂和作用域依赖项。
-
 #### 什么是 HTTPS 协议？和 HTTP 协议的区别？
 
 HTTP（超文本传输协议）和 HTTPS（超文本传输安全协议）都是一种用于分布式、协作式和超媒体信息系统的应用层协议。其中，HTTPS 是一种透过计算机网络进行安全通信的传输协议，经由 HTTP 进行通信，但利用 SSL/TLS 来加密数据包，提供对网站服务器的身份认证，保护交换数据的隐私与完整性，因此 HTTPS 比 HTTP 更加安全。
@@ -242,8 +242,6 @@ HTTP（超文本传输协议）是一种在 Web 世界中用于传输数据的�
 1. **HTTP/1.1**：于 1999 年发布，是 HTTP 的主流版本，引入了持久连接（keep-alive）、分块传输编码（chunked）、管道化请求（pipelining）等功能，显著提高了网络传输效率。
 1. **HTTP/2**：于 2015 年发布，是 HTTP 的最新版本，采用二进制格式传输数据，支持多路复用（multiplexing）、头部压缩（header compression）、服务器推送（server push）等功能，进一步提高了网络传输效率。
 1. **HTTP/3**：于 2020 年发布，是基于 QUIC 协议的 HTTP 版本，采用 UDP 协议进行数据传输，解决了 TCP 协议的拥塞控制和队头阻塞等问题，提高了网络传输效率。
-
-以上是 HTTP 不同版本的主要区别，每个版本都有其特点和优势，在实际开发中需要根据具体场景选择适合的版本。
 
 #### HTTP 2.0 解决了什么问题？
 
