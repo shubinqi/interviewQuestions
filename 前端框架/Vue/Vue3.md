@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 15:40:34
+ * @LastEditTime: 2023-03-06 00:21:46
  * @Description: Vue 3.X 面试题（18题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Vue\Vue3.md
+ * @FilePath: \interviewQuestions\前端框架\Vue\Vue3.md
 -->
 
 #### Vue 2.X 与 Vue 3.X 的区别？
@@ -86,6 +86,39 @@ const state = reactive({
 在上面的代码中，state 对象被转换为了响应式对象，并包含了一个 count 属性。现在，如果在 Vue3 应用程序中使用这个 state 对象，那么当 count 发生变化时，相关的视图会自动更新。
 
 需要注意的是，Vue3 中的 reactive API 是基于 ES6 的 Proxy 实现的，因此不支持 IE11 及以下版本浏览器。
+
+#### Vue3 中怎么获取元素节点？
+
+在 Vue2 中，可以使用 ref 来获取元素节点。具体步骤如下：
+
+在组件中使用 ref 来定义一个变量名，例如 myRef：
+
+```
+<template>
+  <div ref="myRef">Hello, world!</div>
+</template>
+```
+在组件中使用 this.$refs 来访问 ref 中定义的变量名：
+
+```
+<script>
+export default {
+  mounted() {
+    console.log(this.$refs.myRef); // 输出 DOM 元素
+  }
+}
+</script>
+```
+
+在 Vue3 中获取元素节点有多种方式，其中最常用的方式是使用 ref 属性。下面是获取元素节点的步骤：
+
+1. 在需要获取元素节点的组件上添加 ref 属性，ref 属性的值可以是一个字符串或一个函数。
+1. 在组件中使用 import { onMounted, ref } from "vue";导入 onMounted 和 ref 函数。
+1. 在组件中声明一个 ref 变量，变量名与 ref 属性的值相同，例如：const hello = ref&lt;any&gt;(null);
+1. 在 onMounted 函数中使用 console.log(hello.value);来获取该元素节点，注意要使用 hello.value 而不是 hello。
+1. 如果需要在 v-for 循环中获取多个元素节点，可以使用 ref 属性，并将 ref 属性的值设置为一个数组，例如：ref&lt;any&gt;([])。在 onMounted 函数中，可以使用变量名.value[index]的方式获取某个元素节点。
+1. 如果需要获取组件内部的数据和方法，可以将 ref 属性绑定在组件上。在组件外部声明一个 ref 变量，并在 onMounted 函数中使用 console.log(childRef.value)来获取该组件实例，然后就可以使用该组件实例的数据和方法了。
+   总之，使用 ref 属性是 Vue3 中获取元素节点的最常用方式，而原生 js 获取节点的方式和在 Vue 项目中引入 jquery 的方式已经不再推荐使用。同时，Vue3 中使用 ref 属性的方式和 Vue2 中有所不同，需要使用变量的方式来获取元素节点。
 
 #### Vue 3 的生命周期？
 
