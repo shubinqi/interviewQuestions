@@ -836,7 +836,7 @@ setTimeout、Promise、async/await 都是 JavaScript 中用于处理异步编程
 
 #### 有哪些方法可以改变 this 指向？call、apply 和 bind 的区别？
 
-在 JavaScript 中，有几种方法可以改变函数的 this 指向，包括 call()、apply()、bind() 和 使用变量保存 this 四种方式。
+在 JavaScript 中，有四种方法可以改变函数的 this 指向，包括 call()、apply()、bind() 和 使用变量保存 this 四种方式。
 
 call() 和 apply() 可以将函数中的 this 指向指定的对象，并立即执行函数。两者的区别在于参数传递的方式不同，call() 采用逐个传递参数，而 apply() 则通过数组的形式传递参数。
 
@@ -1231,7 +1231,9 @@ ES6（ECMAScript 2015）引入了许多新的语法和特性，其中一些主�
 1. **类和继承**：使用 class 和 extends 关键字来定义类和继承。
 1. **模块化**：使用 import 和 export 关键字来导入和导出模块。
 1. **Promise**：处理异步操作的一种方法，可以通过链式调用来组合多个异步操作。
+1. **async/await**：是 Promise 的语法糖，让异步操作更直观。
 1. **Symbol**：引入了一种新的原始数据类型，用于创建唯一的标识符。
+1. **BigInt**：
 1. **Map 和 WeakMap**：字典，一种新的集合类型，为 ECMAScript 语言带来了真正的键/值存储机制
 1. **Set 和 WeakSet**：集合，一种新的数据结构，类似于数组，但成员是唯一且无序的，没有重复的值。
 1. **迭代器和生成器**：迭代器是一种对象，可以通过 next() 方法按顺序返回值，而生成器是一种函数，可以使用 yield 关键字来定义迭代器。

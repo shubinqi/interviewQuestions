@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 22:32:47
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 01:27:24
- * @Description: 八股文：响应式原理 Proxy
+ * @LastEditTime: 2023-03-06 15:49:24
+ * @Description: 八股文：响应式原理 Proxy（4题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\八股文\响应式原理Proxy.md
+ * @FilePath: \interviewQuestions\八股文\Vue\响应式原理Proxy.md
 -->
 
 #### Vue 3 响应式原理是什么？
@@ -18,7 +18,26 @@ Vue 3 在响应式原理上做了一些优化，例如在创建 Proxy 对象时�
 
 总的来说，Vue 3 的响应式原理通过 Proxy 对象实现了数据的双向绑定，从而使得数据的变化可以自动地更新到视图中，提高了开发效率。
 
-#### defineProperty 和 proxy 的区别
+#### Proxy 是什么？有什么优缺点？
+
+在 JavaScript 中，Proxy 是 ECMAScript 6 新增的一个特性，它可以拦截对象的各种操作，比如读取属性、写入属性、删除属性、函数调用等。使用 Proxy 可以实现数据劫持，从而实现响应式数据。
+
+Proxy 的优点：
+
+1. Proxy 可以拦截对象的各种操作，比如读取属性、写入属性、删除属性、函数调用等，可以在不破坏原有逻辑的情况下增加新的逻辑。
+1. Proxy 可以在任何时候对对象进行监听，即便是对象还不存在或者已经被销毁了，也可以通过 Proxy 来监听对象的变化。
+1. Proxy 不仅可以监听对象的变化，还可以监听对象属性的变化。这样可以实现更细粒度的控制，从而提高性能。
+1. Proxy 可以监听多个对象的变化，而且监听的过程中并不会造成额外的性能开销，这是响应式框架的优势之一。
+
+Proxy 的缺点：
+
+1. Proxy 是 ES6 的新特性，不兼容旧版本的浏览器，需要使用 polyfill 或者转译器进行转换。
+1. Proxy 要比 Object.defineProperty() 代码量多一些，而且有一些复杂的语法和概念需要掌握，学习成本较高。
+1. Proxy 相比 Object.defineProperty() 在性能上稍逊一筹，但是这个差距并不是很大，可以忽略不计。
+
+总体来说，Proxy 是一个非常强大的工具，可以帮助我们实现响应式数据，但是它的学习成本和兼容性问题需要我们去权衡和考虑。
+
+#### defineProperty 和 proxy 的区别？
 
 Vue 在实例初始化时遍历 data 中的所有属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。并 劫持各个属性 getter 和 setter，在数据变化时发布消息给订阅者，触发相应的监听回调，而这之间存在几个问题
 

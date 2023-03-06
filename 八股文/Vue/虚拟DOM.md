@@ -28,11 +28,14 @@
 
 #### 为什么要用虚拟 DOM？
 
-（1）保证性能下限，在不进行手动优化的情况下，提供过得去的性能看一下页面渲染的流程：解析 HTML -> 生成 DOM -> 生成 CSSOM -> Layout -> Paint -> Compiler 下面对比一下修改 DOM 时真实 DOM 操作和 Virtual DOM 的过程，来看一下它们重排重绘的性能消耗 ∶
+（1）保证性能下限，在不进行手动优化的情况下，提供过得去的性能
 
-真实 DOM∶ 生成 HTML 字符串 ＋ 重建所有的 DOM 元素
+看一下页面渲染的流程：解析 HTML -> 生成 DOM -> 生成 CSSOM -> Layout -> Paint -> Compiler
 
-虚拟 DOM∶ 生成 vNode + DOMDiff ＋ 必要的 dom 更新
+下面对比一下修改 DOM 时真实 DOM 操作和 Virtual DOM 的过程，来看一下它们重排重绘的性能消耗 ∶
+
+1. **真实 DOM**∶ 生成 HTML 字符串 ＋ 重建所有的 DOM 元素
+1. **虚拟 DOM**∶ 生成 vNode + DOMDiff ＋ 必要的 dom 更新
 
 Virtual DOM 的更新 DOM 的准备工作耗费更多的时间，也就是 JS 层面，相比于更多的 DOM 操作它的消费是极其便宜的。尤雨溪在社区论坛中说道 ∶ 框架给你的保证是，你不需要手动优化的情况下，依然可以给你提供过得去的性能。
 

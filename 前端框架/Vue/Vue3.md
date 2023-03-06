@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-06 00:21:46
+ * @LastEditTime: 2023-03-06 16:04:12
  * @Description: Vue 3.X 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue3.md
@@ -30,6 +30,25 @@ Tree-shaking 是一种代码优化技术，它通过静态分析代码，识别�
 在 webpack 中，Tree-shaking 是通过使用 ES6 模块语法和一些工具插件来实现的。在 webpack 配置中，通过设置 mode 为 production，webpack 会自动启用 Tree-shaking 功能。此外，还需要安装 babel 和 babel-plugin-transform-es2015-modules-commonjs 插件，以将 ES6 模块语法转换成 CommonJS 模块语法，从而使 webpack 能够正确识别模块的依赖关系。
 
 总之，Tree-shaking 是一种非常有效的代码优化技术，可以显著减小打包后的文件大小，提高应用程序的性能和加载速度。
+
+#### Proxy 是什么？有什么优缺点？
+
+在 JavaScript 中，Proxy 是 ECMAScript 6 新增的一个特性，它可以拦截对象的各种操作，比如读取属性、写入属性、删除属性、函数调用等。使用 Proxy 可以实现数据劫持，从而实现响应式数据。
+
+Proxy 的优点：
+
+1. Proxy 可以拦截对象的各种操作，比如读取属性、写入属性、删除属性、函数调用等，可以在不破坏原有逻辑的情况下增加新的逻辑。
+1. Proxy 可以在任何时候对对象进行监听，即便是对象还不存在或者已经被销毁了，也可以通过 Proxy 来监听对象的变化。
+1. Proxy 不仅可以监听对象的变化，还可以监听对象属性的变化。这样可以实现更细粒度的控制，从而提高性能。
+1. Proxy 可以监听多个对象的变化，而且监听的过程中并不会造成额外的性能开销，这是响应式框架的优势之一。
+
+Proxy 的缺点：
+
+1. Proxy 是 ES6 的新特性，不兼容旧版本的浏览器，需要使用 polyfill 或者转译器进行转换。
+1. Proxy 要比 Object.defineProperty() 代码量多一些，而且有一些复杂的语法和概念需要掌握，学习成本较高。
+1. Proxy 相比 Object.defineProperty() 在性能上稍逊一筹，但是这个差距并不是很大，可以忽略不计。
+
+总体来说，Proxy 是一个非常强大的工具，可以帮助我们实现响应式数据，但是它的学习成本和兼容性问题需要我们去权衡和考虑。
 
 #### Vue 3 的 Proxy 和 Vue2 的 Object.defineProperty 比有什么优势?
 
@@ -121,27 +140,40 @@ export default {
 1. 如果需要获取组件内部的数据和方法，可以将 ref 属性绑定在组件上。在组件外部声明一个 ref 变量，并在 onMounted 函数中使用 console.log(childRef.value)来获取该组件实例，然后就可以使用该组件实例的数据和方法了。
    总之，使用 ref 属性是 Vue3 中获取元素节点的最常用方式，而原生 js 获取节点的方式和在 Vue 项目中引入 jquery 的方式已经不再推荐使用。同时，Vue3 中使用 ref 属性的方式和 Vue2 中有所不同，需要使用变量的方式来获取元素节点。
 
-#### Vue 3 的生命周期？
+#### Vue 3.X 生命周期有哪些？
 
-Vue 3 的生命周期是通过 createComponentInstance 函数创建组件实例时，在组件实例上定义生命周期函数的方式来实现的。
+- **生命周期**：从 Vue 实例创建、挂载、更新到销毁的期间，总是伴随着各种各样的事件，这些事件，统称为生命周期！
 
-在 Vue 3 中，组件实例是通过 createComponentInstance 函数创建的，该函数会在创建组件实例时，为组件实例上定义生命周期函数。在组件实例创建后，Vue 3 会根据组件的生命周期阶段依次调用这些生命周期函数。
+1. 创建（Creation）- 在组件实例被创建时调用（beforeCreate 和 created 可以被 setup 方法取代）
+2. 挂载（Mounting）- 在组件挂载到 DOM 时调用
+3. 更新（Updating）- 当响应式数据发生改变时调用
+4. 销毁（Unmounting）- 在组件被销毁时调用
 
-Vue 3 的生命周期函数包括：
+详细生命周期
 
-1. **beforeCreate**: 在实例初始化之后，数据观测和事件配置之前被调用。
-1. **created**: 在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算，watch/event 事件回调。但是 DOM 元素还未生成，可以在这个钩子函数里访问数据，进行数据请求，初始化等操作。$el 属性目前不可见。
-1. **beforeMount**: 在挂载开始之前被调用：此时 template 模板已编译成 render 函数，但是 DOM 节点还没有被创建。
-1. **mounted**: 在挂载完成之后被调用，此时组件的 DOM 节点已经生成，可以在这个钩子函数里访问 DOM 元素，进行 DOM 操作。
-1. **beforeUpdate**: 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前，可以在这个钩子函数里访问更新前的状态数据，进行一些更新前的操作。
-1. **updated**: 由于数据更改导致的虚拟 DOM 重新渲染和打补丁之后调用，可以在这个钩子函数里访问更新后的状态数据，进行一些更新后的操作。
-1. **beforeUnmount**: 组件卸载之前被调用，可以在这个钩子函数里访问组件的状态数据，进行一些清理操作。
-1. **unmounted**: 组件卸载之后被调用，组件对应的 DOM 元素已经被删除，可以在这个钩子函数里进行一些清理操作。
-1. **errorCaptured**: 当捕获一个来自子孙组件的错误时被调用。
+1. **beforeCreate** - 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用
+1. **created** - 在实例创建完成后被立即调用。在这一步，实例已完成以下配置：数据观测 (data observer)，property 和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。
+1. **beforeMount** - 在挂载开始之前被调用：相关的 render 函数首次被调用。
+1. **mounted** - el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。
+1. **beforeUpdate** - 在数据更新之前调用，发生在虚拟 DOM 重新渲染和打补丁之前。可以在该钩子中进一步地更改数据，但不会触发附加的重渲染过程。
+1. **updated** - 在由于数据更改导致的虚拟 DOM 重新渲染和打补丁之后调用。调用时，组件 DOM 已经更新，所以可以执行依赖于 DOM 的操作。
+1. **beforeUnmount** - 在卸载开始之前调用。在这一步，实例仍然完全可用。
+1. **unmounted** - 在组件实例被卸载和销毁之前调用。在这一步，实例完全被解除了对其自身属性和方法的引用。
+1. **errorCaptured** – 当捕获一个来自子孙组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。此钩子可以返回 false 以阻止该错误继续向上传播。
 
-Vue 3 生命周期的调用顺序为：beforeCreate -> created -> beforeMount -> mounted -> beforeUpdate -> updated -> beforeUnmount -> unmounted。
+当使用组合式 API 时生命周期改变如下，我们可以在 setup 方法中访问的 API 生命周期钩子有 9 个选项
 
-需要注意的是，Vue 3 生命周期中没有了 beforeDestroy 和 destroyed，取而代之的是 beforeUnmount 和 unmounted。这是因为在 Vue 3 中，组件实例被销毁时并不会立即调用 unmounted，而是先执行 beforeUnmount 钩子函数，等到组件实例被完全卸载之后才会调用 unmounted 钩子函数。
+1. beforeCreate -> 使用 setup()
+1. created -> 使用 setup()
+1. beforeMount -> onBeforeMount
+1. mounted -> onMounted
+1. beforeUpdate -> onBeforeUpdate
+1. updated -> onUpdated
+1. beforeDestroy -> onBeforeUnmount
+1. destroyed -> onUnmounted
+1. errorCaptured -> onErrorCaptured
+1. activated -> onActivated – 被 keep-alive 缓存的组件激活时调用。
+1. deactivated -> onDeactivated – 被 keep-alive 缓存的组件停用时调用。
 
 #### 组合式 API 与 选项式 API 的区别？
 
