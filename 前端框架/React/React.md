@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:05:27
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-06 14:45:00
+ * @LastEditTime: 2023-03-06 15:07:34
  * @Description: React 面试题（57题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\React\React.md
@@ -699,6 +699,25 @@ shouldComponentUpdate 的原理是对比当前组件的 props 和 state 与下�
 1. **全局变量**：可以将需要共享的数据存储在全局变量中，然后在组件中引用。
 
 在实际开发中，通常会根据具体的情况选择合适的通信方式。
+
+#### React 路由是什么？有什么优缺点？
+
+React 路由是一种实现前端路由的技术，用于控制应用程序不同 URL 路径之间的切换，让单页面应用（SPA）可以实现多个视图切换，提高用户体验。React 常用的路由有两种：
+
+1. **Hash 路由**：基于 URL 的 hash（#）部分实现，当 URL 发生变化时不会向服务器发送请求，通过监听 window 对象的 hashchange 事件来实现路由切换。优点是简单易用，缺点是 URL 中包含 hash 部分，不利于 SEO，同时可能导致浏览器前进后退操作无法使用。
+1. **History 路由**：基于 HTML5 History API 实现，通过 pushState() 和 replaceState() 方法改变 URL，同时监听 popstate 事件来实现路由切换。优点是 URL 易于理解，不包含 hash 部分，有利于 SEO，同时浏览器前进后退操作可以使用，缺点是相对于 Hash 路由来说实现更加复杂。
+
+React 路由的优点包括：
+
+1. 实现了前端路由，可以在不刷新整个页面的情况下实现多个视图之间的切换，提高了用户体验。
+1. 可以对路由进行配置，方便管理和维护，同时支持嵌套路由，可以实现更加复杂的页面结构。
+1. 可以将路由与组件解耦，实现组件的复用。
+
+React 路由的缺点包括：
+
+1. 实现相对复杂，需要对浏览器的 history API 有一定的了解。
+1. 路由信息存储在 URL 中，容易暴露敏感信息，需要进行安全控制。
+1. 路由配置过于复杂可能会导致应用性能下降。
 
 #### React-Router 的实现原理是什么？
 

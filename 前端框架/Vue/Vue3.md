@@ -98,6 +98,7 @@ const state = reactive({
   <div ref="myRef">Hello, world!</div>
 </template>
 ```
+
 在组件中使用 this.$refs 来访问 ref 中定义的变量名：
 
 ```
