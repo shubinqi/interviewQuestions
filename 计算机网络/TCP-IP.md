@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-27 22:45:50
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 17:29:22
+ * @LastEditTime: 2023-03-06 19:50:08
  * @Description: TCP/IP 面试题（31题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\ComputerNetwork\TCP-IP.md
+ * @FilePath: \interviewQuestions\计算机网络\TCP-IP.md
 -->
 
 #### OSI 七层模型是什么？
@@ -302,6 +302,18 @@ WebSocket 的 API 包括：
 - Connection：指定连接类型为 Upgrade。
 - Sec-WebSocket-Accept：指定一段经过计算的字符串。
 - Sec-WebSocket-Protocol：指定使用的子协议。
+
+#### HTTP 和 WebSocket 的区别？
+
+HTTP（超文本传输协议）和 WebSocket（Web 套接字协议）都是网络协议，但是它们有一些重要的区别。
+
+HTTP 是基于请求-响应模式的协议。在传统的 HTTP 请求中，客户端向服务器发送请求，并等待服务器返回响应。在这个过程中，客户端必须持续地向服务器发送请求以更新数据。这种轮询机制会浪费带宽和服务器资源。
+
+WebSocket 是一种基于事件的协议，它提供了在单个 TCP 连接上进行全双工通信的能力，因此可以实现实时通信。WebSocket 的一个重要特点是它可以通过服务器向客户端推送数据，而不需要客户端主动发起请求。这使得 WebSocket 比 HTTP 更适合于实时应用程序，例如聊天应用程序、游戏和实时协作工具。
+
+HTTP 和 WebSocket 的另一个重要区别在于它们的协议头。HTTP 的协议头包含 HTTP 方法（如 GET 或 POST）和标头字段（如 Cookie 或 User-Agent）。WebSocket 的协议头包含用于建立 WebSocket 连接的协议升级字段。
+
+因此，HTTP 和 WebSocket 都有各自的优势和适用场景。HTTP 适用于大多数 Web 应用程序，而 WebSocket 适用于需要实时通信和数据推送的应用程序。
 
 #### 即时通讯的实现：短轮询、长轮询、SSE 和 WebSocket 间的区别？
 
