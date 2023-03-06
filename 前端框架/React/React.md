@@ -2,11 +2,40 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:05:27
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 03:09:19
+ * @LastEditTime: 2023-03-06 14:45:00
  * @Description: React 面试题（57题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\React\React.md
 -->
+
+#### React 是什么？有什么优缺点？
+
+React 是一个由 Facebook 开源的 JavaScript 库，用于构建用户界面。React 可以用于构建单页应用程序（SPA）和移动应用程序，以及针对 WebGL 和 Native 应用程序的应用程序。
+
+React 的优点包括：
+
+1. **高效**：通过虚拟 DOM 和 DOM diff 算法，React 可以最小化 DOM 操作，提高应用程序的性能和响应能力。
+1. **可重用性**：React 组件是可重用的，可以在多个应用程序和项目中使用。
+1. **可测试性**：React 应用程序可以很容易地进行单元测试和集成测试。
+1. **灵活性**：React 可以与其他 JavaScript 库和框架集成，例如 Redux，React Router 和 Webpack 等。
+
+React 的缺点包括：
+
+1. **学习曲线**：React 使用了许多新的概念和语法，可能需要一些时间来掌握。
+1. **模板语法**：与其他模板语言不同，React 使用了 JSX 语法，需要学习一些新的语法规则。
+1. **复杂性**：当应用程序变得复杂时，React 的管理和调试可能变得更加困难。
+1. **生态系统的变化**：由于 React 生态系统的不断变化和更新，开发者需要不断跟进新的发展和变化，以保持应用程序的更新和维护。
+
+#### React 有哪些限制？
+
+React 的一些限制包括：
+
+1. **只能使用组件化的开发方式**：在 React 中，所有的内容都是组件化的，这意味着开发者必须使用组件的方式来构建应用程序。这个限制的好处是可以提高代码的可维护性和复用性，但是在一些简单的场景下会显得过于复杂。
+1. **组件之间通信较为复杂**：在 React 中，组件之间的通信需要通过 props 和回调函数等方式实现。这种方式可以保证组件之间的解耦，但是在一些场景下也会导致代码的复杂度增加。
+1. **初学者需要掌握一些特殊的概念**：React 有一些特殊的概念，比如 JSX、虚拟 DOM 等，初学者需要花费一些时间来掌握这些概念。
+1. **难以与其他框架集成**：React 是一个相对独立的框架，与其他框架的集成需要开发者自己实现。
+1. **高阶组件的使用有一定的限制**：高阶组件是 React 中的一种常用模式，但是在使用时需要注意一些细节，否则会导致代码出现一些意外问题。
+1. **对性能有一定的影响**：虽然 React 通过虚拟 DOM 等方式来提高性能，但是在一些特殊场景下，仍然需要开发者自己优化代码来提高性能。
 
 #### React 和 Vue 的异同？
 
@@ -43,6 +72,12 @@ Vue 和 React 是两个流行的前端框架，它们都有着自己的优点和
 
 声明式编程是相对于命令式编程而言的，命令式编程是指告诉计算机如何去执行某个任务，而声明式编程是告诉计算机需要完成什么任务，而不是如何完成任务。在 React 中，声明式渲染指的是通过 JSX 语法描述 UI 组件，React 会根据 JSX 描述生成虚拟 DOM，并通过 DOM diff 算法来更新 DOM 元素，而不是手动操作 DOM 元素。
 
+#### 什么是 JSX？为什么浏览器无法读取 JSX？
+
+JSX 是一种类似于 XML 的 JavaScript 语法扩展，用于在 React 中描述 UI 界面的结构。它是 React 使用的一种模板语言，可以方便地将组件的结构、样式和行为组合在一起。
+
+浏览器无法直接读取 JSX 代码，因为 JSX 并不是标准的 JavaScript 语法。为了让浏览器能够识别和执行 JSX 代码，需要将它们转换为普通的 JavaScript 代码。这个过程需要使用 Babel 等转译工具，将 JSX 代码转换为 React.createElement() 函数调用的形式，然后再通过 React 库解析和渲染出实际的 DOM 元素。
+
 #### React 事件机制？
 
 React 事件机制是 React 库中的事件系统。React 事件系统是基于合成事件的，它是将原生 DOM 事件封装在一个单一的跨浏览器的 API 中，使得开发人员可以用相同的方式处理事件，而不用担心浏览器之间的差异。React 事件与原生事件不完全相同，因为 React 事件是基于合成事件的。合成事件是 React 提供的跨浏览器事件系统，它通过事件委托将所有事件都绑定到文档上，而不是将事件绑定到每个单独的元素上。这样做可以提高性能，并避免在组件卸载时出现内存泄漏的问题。
@@ -52,6 +87,34 @@ React 事件机制是 React 库中的事件系统。React 事件系统是基于�
 React 17 中，onScroll 事件在 React 中不再冒泡。这与浏览器的行为一致，并且避免了当一个嵌套且可滚动的元素在其父元素触发事件时造成混乱。
 
 总之，React 事件机制是基于合成事件的，它提供了跨浏览器的事件处理方式，使得开发人员可以用相同的方式处理事件，并避免了在组件卸载时出现内存泄漏的问题。要注意绑定 this，并使用 preventDefault() 方法来阻止默认行为。在 React 17 中，onScroll 事件不再冒泡。
+
+#### 如何在 React 中创建一个事件？
+
+在 React 中创建一个事件可以通过以下步骤：
+
+1. 在组件中定义一个方法，用于处理事件逻辑，通常命名以 handle 开头，例如 handleClick。
+1. 在组件中定义一个 JSX 元素，并给它添加一个事件处理函数，将方法名作为属性传递给该元素。
+1. 在方法中编写逻辑处理，例如修改组件状态、调用其他方法等。
+
+例如，创建一个点击按钮后弹出提示框的事件可以按照以下步骤实现：
+
+```
+import React from 'react';
+
+class MyComponent extends React.Component {
+  handleClick() {
+    alert('Hello, world!');
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click me!</button>
+    );
+  }
+}
+```
+
+在上述代码中，我们定义了一个名为 handleClick 的方法，在 render 方法中将其传递给按钮元素的 onClick 属性，当用户点击按钮时就会触发该事件，调用 handleClick 方法，并弹出提示框。
 
 #### React.Component 和 React.PureComponent 的区别？
 
@@ -120,6 +183,20 @@ ReactDOM.render(<EnhancedComponent name="World" />, document.getElementById('roo
 ```
 
 在上面的示例中，withLogging 函数是一个高阶组件，它接受一个组件作为参数，并返回一个增强了功能的新组件。EnhancedComponent 是一个增强后的组件，它可以访问 MyComponent 的 props，并且在渲染过程中增加了日志输出的功能。
+
+#### 什么是纯组件？有什么作用？适用场景？
+
+纯组件是指在相同的输入参数下，总是返回相同的结果，且没有副作用的组件。具体而言，在 React 中，纯组件应该遵循以下规则：
+
+1. 不修改传入的 props 和 state，这意味着纯组件应该是无状态的。
+1. 不调用副作用方法，如 setTimeout、setInterval，也不直接操作 DOM。
+
+纯组件的作用是可以提高组件的性能，因为它们在渲染时会避免不必要的计算和重渲染。当组件的 props 或 state 发生变化时，React 会重新计算组件的输出。如果组件是纯组件，那么就可以避免重新计算和重渲染，提高应用性能。
+
+使用场景：
+
+1. 对于不依赖于外部状态的组件，例如按钮、图标等，可以将其实现为纯组件，避免不必要的计算。
+1. 对于依赖于外部状态的组件，例如数据列表等，可以将其实现为纯组件，但需要在父组件中进行优化。具体而言，可以使用 shouldComponentUpdate() 方法来判断组件是否需要重新渲染，从而避免不必要的计算和重渲染。
 
 #### 哪些方法会触发 React 重新渲染？
 
@@ -462,8 +539,8 @@ replaceState() 方法与 setState() 方法的作用相似，都是用于更新�
 
 在 React 中，组件的状态（state）是组件内部数据的一种表现形式，而 setState() 是一种更新组件状态的方式。它们之间有以下区别：
 
-1. this.state 是组件的状态，可以通过 this.state 直接访问和修改，但是不能直接修改 this.state 的值，只能通过 this.setState() 方法来更新状态。而 setState() 是通过 React 提供的方法来更新组件状态的。
-1. this.setState() 方法可以接受一个对象或者一个函数作为参数。当参数是对象时，该对象会和原来的 state 对象合并，然后更新组件状态。当参数是函数时，函数会接收两个参数，第一个参数是上一个状态值，第二个参数是更新状态的回调函数，返回一个新的状态值。
+1. **this.state** 是组件的状态，可以通过 this.state 直接访问和修改，但是不能直接修改 this.state 的值，只能通过 this.setState() 方法来更新状态。而 setState() 是通过 React 提供的方法来更新组件状态的。
+1. **this.setState()** 方法可以接受一个对象或者一个函数作为参数。当参数是对象时，该对象会和原来的 state 对象合并，然后更新组件状态。当参数是函数时，函数会接收两个参数，第一个参数是上一个状态值，第二个参数是更新状态的回调函数，返回一个新的状态值。
 1. this.state 在构造函数中初始化，也可以在其他生命周期方法中更新。而 setState() 可以在组件的任何生命周期中调用，更新组件的状态。
 
 总的来说，this.state 是组件状态的一种表现形式，而 setState() 是一种更新组件状态的方式。使用 setState() 可以让 React 了解组件的状态发生了改变，并且可以触发组件的重新渲染。
@@ -533,28 +610,36 @@ export default connect(mapStateToProps)(Counter);
 
 从使用上来看，state 是组件自己管理的状态，而 props 则是从父组件传递过来的数据。组件的 state 通常用于组件的内部逻辑处理和状态管理，props 通常用于组件之间的数据传递。
 
+#### React 组件生命周期分为几个阶段？
+
+React 组件的生命周期有三个不同的阶段：
+
+1. **初始渲染阶段**：这是组件即将开始其生命之旅并进入 DOM 的阶段。
+1. **更新阶段**：一旦组件被添加到 DOM，它只有在 prop 或状态发生变化时才可能更新和重新渲染。这些只发生在这个阶段。
+1. **卸载阶段**：这是组件生命周期的最后阶段，组件被销毁并从 DOM 中删除。
+
 #### React 的生命周期有哪些？
 
 React 组件的生命周期可以分为三个阶段：
 
 1. **挂载阶段**（Mounting）：组件被创建并插入到 DOM 中，包括以下方法：
 
-- constructor()：组件构造函数，用于初始化 state 和绑定事件处理函数。
-- static getDerivedStateFromProps()：在组件挂载和更新时被调用，返回一个对象来更新 state 或者返回 null 来不更新 state。
-- render()：根据组件的 props 和 state 返回一个 React 元素（描述了在屏幕上显示的内容）。
-- componentDidMount()：组件被插入到 DOM 中后立即调用，通常用于进行网络请求或订阅事件。
+- **constructor()**：组件构造函数，用于初始化 state 和绑定事件处理函数。
+- **static getDerivedStateFromProps()**：在组件挂载和更新时被调用，返回一个对象来更新 state 或者返回 null 来不更新 state。
+- **render()**：根据组件的 props 和 state 返回一个 React 元素（描述了在屏幕上显示的内容）。
+- **componentDidMount()**：组件被插入到 DOM 中后立即调用，通常用于进行网络请求或订阅事件。
 
 1. **更新阶段**（Updating）：组件的 props 或 state 发生改变，导致组件重新渲染，包括以下方法：
 
-- static getDerivedStateFromProps()：在组件挂载和更新时被调用，返回一个对象来更新 state 或者返回 null 来不更新 state。
-- shouldComponentUpdate()：用于判断组件是否需要重新渲染，默认返回 true。
-- render()：根据组件的 props 和 state 返回一个 React 元素（描述了在屏幕上显示的内容）。
-- getSnapshotBeforeUpdate()：在 render() 方法调用后，DOM 更新之前调用，用于获取组件更新前的状态。
-- componentDidUpdate()：在组件更新后立即调用，通常用于更新 DOM 或执行其他副作用。
+- **static getDerivedStateFromProps()**：在组件挂载和更新时被调用，返回一个对象来更新 state 或者返回 null 来不更新 state。
+- **shouldComponentUpdate()**：用于判断组件是否需要重新渲染，默认返回 true。
+- **render()**：根据组件的 props 和 state 返回一个 React 元素（描述了在屏幕上显示的内容）。
+- **getSnapshotBeforeUpdate()**：在 render() 方法调用后，DOM 更新之前调用，用于获取组件更新前的状态。
+- **componentDidUpdate()**：在组件更新后立即调用，通常用于更新 DOM 或执行其他副作用。
 
 1. **卸载阶段**（Unmounting）：组件从 DOM 中被移除，包括以下方法：
 
-- componentWillUnmount()：在组件被移除前调用，通常用于清除组件中使用的定时器、取消网络请求等清理操作。
+- **componentWillUnmount()**：在组件被移除前调用，通常用于清除组件中使用的定时器、取消网络请求等清理操作。
 
 此外，React 还提供了一些钩子函数（如 getDerivedStateFromError() 和 componentDidCatch()）用于处理组件渲染过程中出现的错误。
 
