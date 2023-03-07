@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-07 04:26:17
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-07 04:34:06
+ * @LastEditTime: 2023-03-07 20:51:55
  * @Description: 八股文：DOM 和 BOM（8题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\浏览器\DOM&BOM.md
@@ -33,10 +33,10 @@ DOM 和 BOM 是 Web 浏览器中两个重要的组成部分：
 
 DOM 的类型通常分为以下几种：
 
-1. **元素节点（element node）**：表示 HTML 元素，如&lt;div&gt;、&lt;p&gt;、&lt;ul&gt;等，是 DOM 树中最常见的节点类型。
-1. **文本节点（text node）**：表示 HTML 文本内容，如&lt;p&gt;some text&lt;/p&gt;中的 some text，也是 DOM 树中常见的节点类型。
-1. **属性节点（attribute node）**：表示 HTML 元素的属性，如&lt;div class="wrapper"&gt;中的 class 属性，也是 DOM 树中的节点类型。
-1. **注释节点（comment node）**：表示 HTML 文档中的注释，如&lt;!-- This is a comment --&gt;，在 DOM 树中也是一种节点类型。
+1. **元素节点（element node）**：表示 HTML 元素，如 &lt;div&gt;、&lt;p&gt;、&lt;ul&gt; 等，是 DOM 树中最常见的节点类型。
+1. **文本节点（text node）**：表示 HTML 文本内容，如 &lt;p&gt;some text&lt;/p&gt; 中的 some text，也是 DOM 树中常见的节点类型。
+1. **属性节点（attribute node）**：表示 HTML 元素的属性，如 &lt;div class="wrapper"&gt; 中的 class 属性，也是 DOM 树中的节点类型。
+1. **注释节点（comment node）**：表示 HTML 文档中的注释，如 &lt;!-- This is a comment --&gt;，在 DOM 树中也是一种节点类型。
 1. **文档节点（document node）**：表示整个 HTML 文档，每个文档只有一个文档节点。
 
 #### 创建和插入 DOM 节点有哪些方式？

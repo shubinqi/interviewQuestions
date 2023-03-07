@@ -2,11 +2,37 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-05 23:28:36
+ * @LastEditTime: 2023-03-07 21:17:40
  * @Description: JavaScript 面试题汇总（128题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
 -->
+
+#### JavaScript 是什么？有什么特点？
+
+JavaScript 是一种**动态、弱类型、基于事件驱动**的编程语言。它最初由 Brendan Eich 于 1995 年创建，作为浏览器中实现交互式用户界面的脚本语言。随着互联网的普及和 Web 应用程序的快速发展，JavaScript 已经成为一种重要的客户端脚本语言。
+
+JavaScript 的主要特点包括：
+
+1. **动态类型**：JavaScript 中的变量无需预先声明其类型，可以随时改变变量的类型。
+1. **弱类型**：JavaScript 中的变量不需要进行类型转换即可进行操作，例如将字符串与数字相加。
+1. **基于原型的面向对象**：JavaScript 使用原型继承来实现对象的创建和继承，而不是基于类的继承。
+1. **高阶函数**：JavaScript 函数可以作为参数传递和返回值，这使得函数可以更好地复用和组合。
+1. **事件驱动**：JavaScript 使用事件机制来响应用户的操作和其他浏览器事件，使得开发交互式 Web 应用变得更加容易。
+
+JavaScript 的灵活性和动态性使得它非常适合开发交互式 Web 应用，但也容易导致程序错误。因此，在编写 JavaScript 应用程序时，需要遵循良好的编码规范和最佳实践，以确保程序的正确性和可维护性。
+
+#### JavaScript 和 TypeScript 的区别？
+
+JavaScript 和 TypeScript 都是用于编写 Web 应用程序的编程语言，它们有以下区别：
+
+1. **类型系统**：JavaScript 是一种动态类型语言，而 TypeScript 是一种静态类型语言，意味着 TypeScript 能够在编译时捕获类型错误。
+1. **扩展**：TypeScript 是 JavaScript 的一个超集，它在 JavaScript 的基础上添加了许多新特性，如静态类型、接口、类等。
+1. **编译**：JavaScript 可以直接在浏览器中执行，而 TypeScript 需要在编译之后才能在浏览器中执行，TypeScript 需要转换为 JavaScript 代码。
+1. **开发体验**：TypeScript 能够提供更好的开发体验，如代码补全、类型检查等，这可以提高开发效率和代码质量。
+1. **生态系统**：虽然 TypeScript 是相对较新的语言，但它已经拥有了一个庞大的生态系统和社区支持，这使得它更适合于大型 Web 应用程序的开发。
+
+总的来说，TypeScript 是一种更强大、更健壮、更可维护的语言，它能够提供更好的开发体验和更高的代码质量，尤其是对于大型 Web 应用程序来说。
 
 #### JavaScript 的数据类型有哪些？
 
@@ -29,10 +55,10 @@ JavaScript 共有 8 种数据类型，具体如下：
 
 ① 判断多种数据类型
 
-1. typeof：可以判断除 null 外的 ES5 基本数据类型
-2. instanceof：可以正确判断对象的类型
-3. construter：可以正确判断数据类型（如果创建一个对象并改变他的原型，就不能用 construter 判断类型了）
-4. Object.prototype.toString.call()：可以正确判断对象的类型
+1. **typeof**：可以判断除 null 外的 ES5 基本数据类型（对于函数类型会返回 "function"，而不是 "object"。对于 null 类型的值，typeof 会返回 "object"。）
+2. **instanceof**：instanceof 运算符可以用来判断一个对象是否是某个构造函数（或者其原型链上）创建的实例，其语法为 obj instanceof constructor。如果 obj 是 constructor 的实例，则返回 true，否则返回 false。
+3. **construter**：可以正确判断数据类型（如果创建一个对象并改变他的原型，就不能用 construter 判断类型了）
+4. **Object.prototype.toString.call()**：Object.prototype.toString.call() 可以判断几乎所有 JavaScript 数据类型，包括基本数据类型和引用数据类型。它的原理是通过调用 Object.prototype.toString() 方法，返回一个格式为 [object Type] 的字符串，其中 Type 表示数据类型。
 
 需要注意的是，typeof null 的结果是 "object"，这是 JavaScript 语言本身的一个 bug，可以通过 typeof value === "object" && value === null 的方式来判断一个值是否为 null。
 
@@ -69,6 +95,14 @@ JavaScript 共有 8 种数据类型，具体如下：
 typeof null 的结果是 "object"。这是因为在 JavaScript 的早期版本中，null 被错误地实现为对象类型，而实际上 null 是一个原始值。这个错误的实现在现代 JavaScript 中仍然存在，为了保持向后兼容性，typeof null 返回 "object"。
 
 需要注意的是，null 和 undefined 是不同的类型，typeof undefined 的结果是 "undefined"。
+
+#### instanceof 可以判断哪些数据类型？实现原理？
+
+instanceof 运算符可以用来判断一个对象是否是某个构造函数（或者其原型链上）创建的实例，其语法为 obj instanceof constructor。如果 obj 是 constructor 的实例，则返回 true，否则返回 false。
+
+instanceof 的实现原理是通过检查对象的原型链来确定对象是否是某个构造函数的实例。具体来说，instanceof 会遍历对象的原型链，检查每个原型对象是否与构造函数的 prototype 属性相等，如果找到了相等的原型对象，则说明该对象是构造函数的实例，返回 true，否则返回 false。
+
+需要注意的是，instanceof 只能用来判断对象是否是某个构造函数的实例，而不能用来判断对象的具体类型。此外，instanceof 在处理基本类型（如字符串、数字、布尔值等）时会抛出类型错误，因为基本类型不是对象，无法有原型链。
 
 #### null 和 undefined 的区别是什么？
 
