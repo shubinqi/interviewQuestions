@@ -25,8 +25,7 @@ React 虚拟 DOM 的实现，使得开发者不用关注具体的 DOM 操作，�
 
 React 和 Vue 都使用了虚拟 DOM 技术来实现高效的页面更新，但它们的实现方式略有不同。
 
-React 的虚拟 DOM 是通过 React.createElement() 方法或 JSX 语法创建的 JavaScript 对象，称为 React 元素，包含了组件的名称、属性和子元素等信息。React 将每个组件渲染成一个虚拟 DOM 树，组件的状态发生变化时，React 会比较新旧虚拟 DOM 树的差异，并仅更新需要改变的部分。
-
-Vue 的虚拟 DOM 是通过模板语法和 Vue 组件生成的，称为 VNode（Virtual Node）对象，包含了节点类型、节点属性、节点子元素等信息。当组件状态变化时，Vue 会重新渲染组件，生成一个新的 VNode 树，然后将新的 VNode 树和旧的 VNode 树进行比较，然后再将变化的部分更新到真实 DOM 上。
+1. React 的虚拟 DOM 是通过 React.createElement() 方法或 JSX 语法创建的 JavaScript 对象，称为 React 元素，包含了组件的名称、属性和子元素等信息。React 将每个组件渲染成一个虚拟 DOM 树，组件的状态发生变化时，React 会比较新旧虚拟 DOM 树的差异，并仅更新需要改变的部分。
+2. Vue 的虚拟 DOM 是通过模板语法和 Vue 组件生成的，称为 VNode（Virtual Node）对象，包含了节点类型、节点属性、节点子元素等信息。当组件状态变化时，Vue 会重新渲染组件，生成一个新的 VNode 树，然后将新的 VNode 树和旧的 VNode 树进行比较，然后再将变化的部分更新到真实 DOM 上。
 
 因此，React 的虚拟 DOM 更加轻量级和简单，因为它只包含组件需要渲染的信息，而 Vue 的虚拟 DOM 包含了所有节点的信息，因为 Vue 会在生成 VNode 树时记录所有节点信息，这也使得 Vue 的渲染效率比 React 稍低。但是，Vue 的虚拟 DOM 可以通过使用 key 属性来优化节点的更新，而 React 没有类似的优化手段。
