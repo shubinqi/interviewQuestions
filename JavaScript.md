@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-07 21:17:40
+ * @LastEditTime: 2023-03-09 03:04:53
  * @Description: JavaScript 面试题汇总（128题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
@@ -1641,6 +1641,61 @@ export default {
 函数是一段可执行的代码，它在内存中的存储方式是以函数对象的形式存在。函数对象包含了函数的代码和相关的属性，如函数名、参数列表、作用域链等。当函数被调用时，会创建一个执行上下文（Execution Context），该执行上下文会在内存中分配一块区域，用来保存函数的局部变量、函数参数、函数调用堆栈等信息。
 
 总的来说，数组和函数在内存中的存储方式是不同的，数组是连续的存储方式，而函数是以函数对象的形式存在。这种不同的存储方式也决定了它们在访问、修改时的时间复杂度和操作方式。
+
+#### JS 中的 Generator 是什么？
+
+在 JavaScript 中，Generator 也是一种特殊类型的函数，可以像普通函数一样被调用，但是它可以通过 yield 关键字暂停函数的执行，并在需要时恢复执行。Generator 通常用于生成序列、迭代器或异步编程等场景。
+
+以下是一个简单的 JavaScript 示例，演示如何使用 Generator 生成斐波那契数列：
+
+```
+function* fibonacci() {
+  let a = 0;
+  let b = 1;
+  while (true) {
+    yield a;
+    [a, b] = [b, a + b];
+  }
+}
+
+// 生成斐波那契数列的前 10 个数
+const gen = fibonacci();
+for (let i = 0; i < 10; i++) {
+  console.log(gen.next().value);
+}
+```
+
+输出：
+
+```
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+```
+
+在上面的示例中，Generator 函数 fibonacci() 使用 while 循环生成斐波那契数列。每次循环都使用 yield 语句返回当前的数值，并在下一次调用 next() 方法时恢复执行。使用 next() 方法可以迭代生成器对象，每次调用 next() 方法时，都会返回一个对象，其中的 value 属性表示当前的值，done 属性表示是否已经到达生成器函数的结尾。
+
+Generator 函数还支持将值传递回生成器函数中，通过调用生成器的 next() 方法时传递参数，如下所示：
+
+```
+function* generator() {
+  const value = yield 'Hello';
+  yield value;
+}
+
+const gen = generator();
+console.log(gen.next().value); // 输出 'Hello'
+console.log(gen.next('World').value); // 输出 'World'
+```
+
+在上面的示例中，首先调用生成器的 next() 方法，返回值为 'Hello'，然后通过再次调用 next() 方法并传递参数 'World'，将参数值赋给变量 value，并返回该值。
 
 #### 什么是匿名函数，有什么作用？
 
