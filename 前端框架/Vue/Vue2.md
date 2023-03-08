@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-06 18:18:30
+ * @LastEditTime: 2023-03-08 22:12:20
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue2.md
@@ -645,6 +645,25 @@ params 和 query 都是用于在路由中传递参数的方式。其中，params
 
 总的来说，params 和 query 都是用于在路由中传递参数的方式，但其区别在于传递的数据形式和用途不同。
 
+#### Vue 中的动态路由是什么？
+
+在 Vue 中，动态路由是指可以根据不同参数动态生成的路由。通常情况下，我们会定义一些基本路由，但是有时候需要根据不同的需求和情况，动态地生成一些路由。这时候就可以使用动态路由。
+
+例如，我们可能有一个路由，用于显示不同的用户信息。但是不同的用户数量可能是不确定的，我们无法提前定义所有的路由。这时候，我们可以使用动态路由，根据用户 id 动态地生成路由，实现根据不同的 id 展示不同用户信息的功能。
+
+在 Vue 中，我们可以通过在路由定义中使用冒号（:）来指定动态参数，例如：
+
+```
+{
+  path: '/user/:id',
+  component: User
+}
+```
+
+在这个例子中，:id 是一个动态参数，它可以匹配任何路径以/user/开头的路由。我们可以在组件内通过$route.params.id来获取动态参数的值。例如，在上面的路由中，如果路径是/user/123，则$route.params.id 的值为 123。
+
+动态路由的实现方式和静态路由基本相同，只需要在路由配置中添加动态参数即可。同时，我们还可以使用 Vue Router 提供的其他功能，例如路由守卫和路由元信息等。
+
 #### 怎么实现路由懒加载？
 
 路由懒加载可以提高应用的性能和加载速度，它的实现可以通过异步组件来实现。异步组件是指只有在组件需要被使用时才进行加载和解析的组件。
@@ -664,6 +683,200 @@ const routes = [
 在这个示例代码中，使用箭头函数来定义异步组件，通过 import() 方法来加载组件文件。webpackChunkName 注释用来指定 Webpack 打包后的文件名，可以让我们更清晰地知道每个文件对应的组件。
 
 需要注意的是，使用路由懒加载的同时，也需要使用 webpack 的 Code Splitting 功能来实现代码的分块，以便按需加载。
+
+#### 路由拦截器是什么？怎么实现登录拦截和登陆成功保存 token 到 sessionstorage 中？
+
+路由拦截器是一种在用户访问某些页面时，通过判断用户是否具有相应的权限来进行拦截的技术。在 Vue 中，可以使用 vue-router 提供的钩子函数 beforeEach 来实现路由拦截器。具体实现步骤如下：
+
+1. 定义路由时，可以在 meta 属性中添加一个自定义字段 requireAuth，用于判断该路由的访问是否需要登录。
+
+```
+const routes = [
+    {
+        path: '/',
+        name: '/',
+        component: Index
+    },
+    {
+        path: '/myIndex',
+        name: 'myIndex',
+        meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+        },
+        component: myIndex
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
+    }
+];
+```
+
+2. 在 beforeEach 函数中，通过判断路由的 meta 属性中是否存在 requireAuth 字段，以及当前应用是否存在 token 来决定是否进行拦截。
+
+```
+router.beforeEach((to, from, next) => {
+    // 判断该路由是否需要登录权限
+    if (to.meta.requireAuth) {
+        // 通过sessionStorage获取当前的token是否存在
+        if (sessionStorage.getItem('token')) {
+            next();
+        }
+        else {
+            next({
+                path: '/login',
+                // 将跳转的路由path作为参数，登录成功后跳转到该路由
+                query: {redirect: to.fullPath}
+            })
+        }
+    }
+    else {
+        next();
+    }
+})
+```
+
+3. 登录成功后，可以将 token 保存到 sessionStorage 中。
+
+```
+axios.post('/login', {
+    username: this.username,
+    password: this.password
+}).then(response => {
+    sessionStorage.setItem('token', response.data.token);
+    // 登录成功后跳转到目标路由
+    router.push(this.$route.query.redirect || '/');
+}).catch(error => {
+    console.log(error);
+});
+```
+
+4. 在 http request 拦截器中，可以在每个 http header 中加上 token，以便后端进行身份验证。
+
+```
+axios.interceptors.request.use(
+    config => {
+         // 判断是否存在token，如果存在的话，则每个http header都加上token
+        if (sessionStorage.getItem('token')) {
+            config.headers.Authorization = `Bearer ${sessionStorage.getItem('token')}`;
+        }
+        return config;
+    },
+    err => {
+        return Promise.reject(err);
+    });
+```
+
+5. 在 http response 拦截器中，可以根据返回状态码进行拦截处理，例如在返回 401 状态码时，清除 token 信息并跳转到登录页面。
+
+```
+axios.interceptors.response.use(
+    response => {
+        return response;
+    },
+    error => {
+        if (error.response) {
+            switch (error.response.status) {
+                case 401:
+                    sessionStorage.removeItem('token');
+                    router.replace({
+                        path: 'login',
+                        query: {redirect: router.currentRoute.fullPath}
+                    })
+            }
+        }
+        return Promise.reject(error.response.data)
+    });
+```
+
+#### Vue 路由权限怎么根据后台返回的数据生成？
+
+Vue 路由权限通常是通过在前端获取后端返回的用户信息，根据用户的角色和权限动态生成路由来实现的。
+
+具体实现步骤如下：
+
+1. 登录成功后，前端从后端获取当前用户的角色和权限信息。
+1. 根据获取到的用户信息，前端根据规则动态生成路由配置。
+1. 在 Vue Router 的路由配置中，可以使用动态路由和路由元信息来定义路由权限。
+   - a. 动态路由：可以根据不同的角色和权限，动态生成路由。
+   - b. 路由元信息：可以在路由配置中添加一些元信息，例如当前路由需要的角色和权限等，以供路由守卫进行判断。
+1. 在路由守卫中，根据当前用户的角色和权限，判断用户是否有权限访问当前路由。
+   - a. 如果有权限，继续访问当前路由。
+   - b. 如果没有权限，跳转到登录页面或者提示用户没有权限访问当前页面。
+
+以下是一个示例代码：
+
+```
+// 动态生成路由配置
+const generateRoutes = (roles) => {
+  const routes = []
+  // 根据角色和权限生成路由
+  if (roles.includes('admin')) {
+    routes.push({
+      path: '/admin',
+      name: 'Admin',
+      component: Admin,
+      meta: {
+        requiresAuth: true,
+        roles: ['admin']
+      }
+    })
+  }
+  if (roles.includes('editor')) {
+    routes.push({
+      path: '/editor',
+      name: 'Editor',
+      component: Editor,
+      meta: {
+        requiresAuth: true,
+        roles: ['editor']
+      }
+    })
+  }
+  return routes
+}
+
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      meta: {
+        requiresAuth: true,
+        roles: ['admin', 'editor']
+      }
+    },
+    // 其他静态路由
+  ]
+})
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.meta.requiresAuth
+  if (requiresAuth) {
+    const roles = store.getters.roles
+    const hasRole = roles.some(role => to.meta.roles.includes(role))
+    if (hasRole) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
+})
+
+// 获取用户信息，并生成路由
+getUserInfo().then(response => {
+  const roles = response.data.roles
+  const routes = generateRoutes(roles)
+  router.addRoutes(routes)
+})
+```
+
+在上面的示例代码中，我们使用 generateRoutes 方法根据角色和权限动态生成路由配置，并通过 addRoutes 方法将路由配置添加到 Vue Router 中。在路由守卫中，根据当前用户的角色和权限，判断用户是否有权限访问当前路由，如果没有权限则跳转到登录页面或者提示用户没有权限访问当前页面。同时，在路由配置中添加了 meta 元信息，用于保存当前路由需要的角色和权限信息，以供路由守卫
 
 ### 四、Vue 组件通信
 
