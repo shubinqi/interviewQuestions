@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-08 22:12:20
+ * @LastEditTime: 2023-03-09 14:39:20
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue2.md
@@ -1520,3 +1520,49 @@ Diff 算法的原理如下：
 虚拟 DOM 的原理是将真实 DOM 结构抽象成 JavaScript 对象，每次更新时，先将虚拟 DOM 更新，然后再将新旧虚拟 DOM 进行比对，找出需要更新的部分，并将这些部分更新到真实 DOM 上。在这个过程中，使用一些优化算法，如同层比较（diffing）等，可以减少不必要的 DOM 操作，提高应用程序的性能。
 
 总之，虚拟 DOM 的优点在于它可以通过将 DOM 操作的成本降低到最小来提高性能，同时还可以简化组件之间的通信，使代码更易于维护。
+
+#### Vue 多次点击请求接口，怎么只执行最后一次接口请求？
+
+在 Vue 中，可以使用 lodash 库的 debounce 或者 throttle 方法来实现多次点击时只执行最后一次请求。
+
+其中，debounce 方法会在最后一次调用后延迟一段时间再执行，而 throttle 方法则会在一定时间内只执行一次。
+
+以下是一个使用 debounce 方法的示例代码：
+
+```
+// 引入 lodash 库
+import _ from 'lodash'
+
+export default {
+  data() {
+    return {
+      // 声明一个变量存储请求结果
+      result: null,
+      // 声明一个变量存储上一次请求的 CancelToken
+      prevRequest: null
+    }
+  },
+  methods: {
+    // 使用 debounce 包装请求方法
+    request: _.debounce(function(params) {
+      // 如果上一次请求还未完成，取消上一次请求
+      if (this.prevRequest) {
+        this.prevRequest.cancel()
+      }
+      // 发送请求
+      this.prevRequest = axios.get('/api', { params })
+        .then(res => {
+          // 存储请求结果
+          this.result = res.data
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }, 500) // 延迟 500 毫秒执行请求
+  }
+}
+```
+
+在上面的代码中，我们通过 import 引入了 lodash 库，并在 methods 中声明了一个 request 方法，使用 \_.debounce 包装了实际的请求方法。这样，在多次调用 request 方法时，实际的请求方法只会在最后一次调用后延迟 500 毫秒执行，避免了多次请求的问题。同时，我们在请求方法中添加了一个逻辑，用于在发送新请求前取消上一次请求。这样可以保证只有最后一次请求的结果会被存储到 result 变量中。
+
+如果需要调整执行时间或者使用 throttle 方法，只需要修改 \_.debounce 的参数即可。

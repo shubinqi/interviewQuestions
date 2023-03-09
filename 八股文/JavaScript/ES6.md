@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 22:34:12
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-09 03:06:25
+ * @LastEditTime: 2023-03-09 20:43:25
  * @Description: 八股文：ES6（29题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\八股文\JavaScript\ES6.md
@@ -10,10 +10,26 @@
 
 #### ES6 有哪些新语法？
 
+面试建议说的：
+
+- const 与 let
+- 箭头函数
+- 解构赋值
+- 形参默认值
+- rest/剩余参数
+- 类语法: class / extends / constructor / static /super
+- 展开运算符: ...
+- 模板字符串：``
+- 异步语法: promise / async & await
+- 对象的属性与方法简写
+- set / map
+- 模块化语法: export / default / import / import()
+
 ES6（ECMAScript 2015）引入了许多新的语法和特性，其中一些主要的包括：
 
 1. **块级作用域**：使用 let 和 const 声明变量时可以创建块级作用域。
-1. **箭头函数**：使用 => 语法定义匿名函数。
+1. **let 和 const**：有块作用域；没有变量提升；不会添加到 window 上；不能重复声明；存在暂时性死区。
+1. **箭头函数**：使用 => 语法定义匿名函数。没有自己的 this, 使用外部作用域中的 this, 不能通过 bind 来绑定 this；不能通过 new 来创建实例对象；内部没有 arguments, 可以通过 rest 参数来代替
 1. **解构赋值**：可以从数组和对象中提取值并将其赋给变量。
 1. **模板字符串**：使用反引号 `` 来创建多行字符串，并且可以在字符串中插入表达式。
 1. **默认参数**：定义函数参数的默认值。
@@ -27,6 +43,12 @@ ES6（ECMAScript 2015）引入了许多新的语法和特性，其中一些主�
 1. **迭代器和生成器**：迭代器是一种对象，可以通过 next() 方法按顺序返回值，而生成器是一种函数，可以使用 yield 关键字来定义迭代器。
 1. **for...in**：用于遍历对象中的属性，它会将对象的属性名称作为循环变量来访问对象的每一个属性。
 1. **for...of**：用于遍历可迭代对象（如数组、Map、Set 等），它会将集合中的每一个元素作为循环变量来访问每一个元素。
+1. **Object.keys(obj)**: 得到对象自身可遍历的所有属性名的数组
+1. **Object.is(value1, value2)**: 判断 2 个值是否完全一样
+1. **Object.assign(target, ...sources)**: 将后面任意多个对象合并到 target 对象上
+1. **Array.from()**: 将类数组对象和可遍历对象转为真数组
+1. **Math 添加方法**: parseInt()与 parseFloat() (原本 window 上有)
+1. **代理**(Proxy)与**反射**(Reflect)语法
 
 #### Map 和 Object 的区别？
 
