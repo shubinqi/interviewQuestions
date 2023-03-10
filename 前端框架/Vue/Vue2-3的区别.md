@@ -12,12 +12,12 @@
 
 重要改变总结：
 
-1. **监测机制的改变**：从 Object.defineProperty 改为 Proxy
+1. **监测机制的改变**：从 Object.defineProperty 改为 Proxy。
 2. **根节点的改变**：Vue3 支持碎片(Fragments)，Vue3 中组件的 template 下可以包含多个根节点，而 Vue2 中组件的 template 下只能包含一个根节点。
-3. **API 模式的改变**：Vue2 使用选项式 API（Options API），Vue3 组合式 API（Composition API）
-4. **建立响应式数据的方式**：Vue2 把数据放入 data 属性中，Vue3 引入 ref 或 reactive 实现
-5. **生命周期钩子**：可以用 setup () 替代 beforeCreate 和 created；组件卸载阶段生命周期的变更；增加了 onRenderTracked 和 onRenderTriggred 生命周期
-6. **Diff 算法的改变**：Vue2 是全量 Diff，Vue3 是静态标记 + 非全量 Diff，Vue3 使用最长递增子序列优化了对比流程
+3. **API 模式的改变**：Vue2 使用选项式 API（Options API），Vue3 组合式 API（Composition API）。
+4. **建立响应式数据的方式**：Vue2 把数据放入 data 属性中，Vue3 引入 ref 或 reactive 实现。
+5. **生命周期钩子**：可以用 setup() 替代 beforeCreate() 和 created()；组件卸载阶段生命周期的变更；增加了 onRenderTracked() 和 onRenderTriggred() 生命周期。
+6. **Diff 算法的改变**：Vue2 是全量 Diff，Vue3 是静态标记 + 非全量 Diff，Vue3 使用最长递增子序列优化了对比流程。
 7. **v-if 和 v-for**：在 Vue2 中，v-for 优先于 v-if 生效，每次都要先渲染才会进行条件判断，会带来性能的浪费。最好不要把 v-if 和 v-for 同时用在一个元素上。而在 Vue2 中，v-if 优先于 v-for 生效，把 v-if 和 v-for 同时用在一个元素上 Vue 会给我们报警告。
 8. **去除了过滤器**；Vue 3 中 filter 被去除，我们可以通过 计算属性实现。
 9. **支持 TypeScript**；Vue 3 对 TypeScript 的支持更加友好。
@@ -26,10 +26,10 @@
 
 1. 监测机制的改变
 
-- vue3 中使用了 ES6 的 Proxy API 对数据代理，监测的是整个对象，而不再是某个属性。
+- Vue3 中使用了 ES6 的 Proxy API 对数据代理，监测的是整个对象，而不再是某个属性。
 - 消除了 Vue 2 当中基于 Object.defineProperty 的实现所存在的很多限制
-- vue3 可以监测到对象属性的添加和删除，可以监听数组的变化；
-- vue3 支持 Map、Set、WeakMap 和 WeakSet。
+- Vue3 可以监测到对象属性的添加和删除，可以监听数组的变化；
+- Vue3 支持 Map、Set、WeakMap 和 WeakSet。
 
 2. Vue3 支持碎片(Fragments)
 
@@ -42,7 +42,7 @@ Vue2 与 Vue3 最大的区别：Vue2 使用选项式 API（Options API）对比 
 
 4. 建立数据的方式不同
 
-- 从 vue 引入 ref 或 reactive
+- 从 Vue 引入 ref 或 reactive
 - 简单数据类型使用 ref() 方法处理，复杂类型数据用 reactive() 处理
 - 使用 setup() 方法来返回我们的响应性数据，从而我们的 template 可以获取这些响应性数据
 - Vue2：这里把数据放入 data 属性中
@@ -54,7 +54,6 @@ Vue2 与 Vue3 最大的区别：Vue2 使用选项式 API（Options API）对比 
 
 - onActivated()：被包含在中的组件，会多出两个生命周期钩子函数。被激活时执行 。
 - onDeactivated()：比如从 A 组件，切换到 B 组件，A 组件消失时执行。
-
 - setup()：开始创建组件之前，在 beforeCreate 和 created 之前执行。创建的是 data 和 method
 - onBeforeMount()：组件挂载到节点上之前执行的函数。
 - onMounted()：组件挂载完成后执行的函数。

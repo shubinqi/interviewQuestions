@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 18:48:18
+ * @LastEditTime: 2023-03-10 20:49:33
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue2.md
@@ -1630,3 +1630,38 @@ export default {
 在上面的代码中，我们通过 import 引入了 lodash 库，并在 methods 中声明了一个 request 方法，使用 \_.debounce 包装了实际的请求方法。这样，在多次调用 request 方法时，实际的请求方法只会在最后一次调用后延迟 500 毫秒执行，避免了多次请求的问题。同时，我们在请求方法中添加了一个逻辑，用于在发送新请求前取消上一次请求。这样可以保证只有最后一次请求的结果会被存储到 result 变量中。
 
 如果需要调整执行时间或者使用 throttle 方法，只需要修改 \_.debounce 的参数即可。
+
+#### Vue 路由切换时如何丢弃上个页面未完成的异步请求？
+
+在 Vue 路由切换时，通常情况下上一个页面的异步请求并不会被自动取消或丢弃，因为 Vue 路由切换只是改变了页面的显示，但是之前的组件实例和异步请求仍然存在。如果不手动处理，这些异步请求可能会在后台继续执行，导致资源浪费或者产生错误。
+
+为了避免这种情况，可以在组件实例销毁时手动取消所有未完成的异步请求。可以使用生命周期钩子函数 beforeDestroy 来实现，在该函数中取消所有未完成的异步请求。具体实现方法如下：
+
+在组件中定义一个属性来保存所有的异步请求：
+
+```
+data() {
+  return {
+    requests: []
+  };
+}
+```
+
+在发起异步请求时，将请求添加到 requests 数组中：
+
+```
+let request = axios.get('/api/data');
+this.requests.push(request);
+```
+
+在 beforeDestroy 钩子函数中，取消所有未完成的异步请求：
+
+```
+beforeDestroy() {
+  this.requests.forEach(request => {
+    request.cancel();
+  });
+}
+```
+
+这里的 request.cancel() 是指使用 axios 取消请求的方法，其他的异步请求库可能有不同的实现方式。通过这种方式，可以确保在组件销毁时取消所有未完成的异步请求，从而避免资源浪费和错误的产生。
