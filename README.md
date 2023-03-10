@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 17:22:51
+ * @LastEditTime: 2023-03-10 19:30:26
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -26,7 +26,7 @@
    - **HTTP**（已更新 36 题）
    - **TCP/IP**（已更新 30 题）
    - **DNS**（已更新 5 题）
-   - **前端安全**（已更新 8 题）
+   - **前端安全**（已更新 13 题）
    - **WEB 性能优化**（已更新 24 题）
    - **浏览器原理**（已更新 71 题）
 3. **前端框架**（/前端框架/Vue 或者 /前端框架/React 或者 /前端框架/NodeJS）共 **260** 题
@@ -79,7 +79,7 @@
    - Echarts：/Tool/数据可视化
    - D3.js：/Tool/数据可视化
 9. **扩展知识**（/Tool）共 **146** 题
-   - **Linux**：/前端项目/桌面端（55 题，已更新 5 题）
+   - **Linux**：/前端项目/桌面端（53 题，已更新 31 题）
    - **Nginx**：/前端项目/桌面端（34 题，已更新 0 题）
    - **MongoDB**：/前端框架/NodeJS（42 题，已更新 0 题）
    - MySQL：/前端框架/NodeJS
