@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:10:06
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-04 04:06:56
+ * @LastEditTime: 2023-03-10 18:41:00
  * @Description: Git 面试题（8题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Tool\Version\Git.md
@@ -271,3 +271,16 @@ git config --global http.proxy
 ```
 git config --global --unset http.proxy
 ```
+
+#### github 怎么删除项目？
+要删除 GitHub 上的项目，请按照以下步骤进行操作：
+
+1. 首先进入您的 GitHub 仓库页面。
+1. 在您要删除的仓库页面中，找到仓库名称下方的菜单栏，点击“Settings”（设置）选项。
+1. 滚动页面直到您看到“Danger Zone”（危险区域）部分。
+1. 在“Danger Zone”部分中，找到“Delete this repository”（删除此仓库）选项，点击。
+1. 输入您要删除的仓库名称以确认您的选择，并且点击“I understand the consequences, delete this repository”（我明白后果，删除此仓库）。
+1. 输入您的 GitHub 密码以确认删除操作。
+1. 点击“Verify”（验证）按钮。
+
+此时，您的 GitHub 仓库已经被成功删除。注意，一旦删除，您将无法恢复该仓库及其所有内容，请谨慎操作。

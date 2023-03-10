@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 16:30:00
+ * @LastEditTime: 2023-03-10 18:48:18
  * @Description: Vue 2.X面试题（65题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue2.md
@@ -486,6 +486,55 @@ export default {
 在上面的示例中，我们创建了一个名为 BaseComponent 的组件，并将其作为父组件传递给了一个名为 ExtendedComponent 的子组件。ExtendedComponent 通过 extends 继承了 BaseComponent 的所有选项，并且添加了一个新的数据项 content。
 
 在实际开发中，我们可以使用 extends 来复用和扩展组件，从而提高代码的复用性和灵活性。
+
+#### scoped 是什么？实现原理？
+
+在前端开发中，scoped 是一种 CSS 样式作用域限制的技术，它可以让样式只作用于当前组件或元素，而不会影响其他组件或元素。
+
+实现原理是在 CSS 样式中使用了 scoped 属性，例如在 Vue 组件中：
+
+```
+<template>
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <p>{{ content }}</p>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+h1 {
+  color: #333;
+}
+p {
+  color: #666;
+}
+</style>
+```
+
+在这个例子中，我们在样式标签上添加了 scoped 属性，表示这个样式只作用于当前组件中的元素，而不会影响其他组件。在浏览器中，Vue 会在编译时将组件的样式转换为类似以下的方式：
+
+```
+.container[data-v-xxxxxxx] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+h1[data-v-xxxxxxx] {
+  color: #333;
+}
+p[data-v-xxxxxxx] {
+  color: #666;
+}
+```
+
+在这个样式中，data-v-xxxxxxx 是一个唯一的标识符，用来标记当前组件。这样，只有具有相同标识符的组件才会应用这个样式。
+
+使用 scoped 样式的好处是可以减少样式冲突的问题，保持组件样式的独立性和可维护性。同时，scoped 样式也有一些限制，例如它只作用于当前组件的子元素，不能作用于子组件的元素，需要使用深度选择器或 CSS 变量等技术来实现。
 
 ### 二、Vue 生命周期
 
