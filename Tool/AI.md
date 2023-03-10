@@ -22,24 +22,29 @@ AI 搜索
 
 - AI 搜索：https://phind.com/
 
-AI工具合集
+AI 工具合集
 
 https://17yongai.com/
-（牛逼的中文AI站）
+（牛逼的中文 AI 站）
 
 https://www.futurepedia.io/
-（收录400多种AI工具）
+（收录 400 多种 AI 工具）
 
 https://flowgpt.com/
-（245个ChatGPT的应用）
+（245 个 ChatGPT 的应用）
 
 https://www.mojidoc.com/05dbc-uvhdkr22fjazlowmiihngdoxvq-00b
-（AI工具汇总及操作指南）
+（AI 工具汇总及操作指南）
 
 https://www.creaitives.com/tools
-（800种工具）
+（800 种工具）
 
 https://airadar.getinference.com/
+
+#### AI 写代码
+
+1. CodeGeex：免费
+1. Copilot：收费
 
 #### AI
 
