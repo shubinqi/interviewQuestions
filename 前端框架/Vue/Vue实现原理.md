@@ -2,17 +2,11 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 03:27:18
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-09 23:09:20
- * @Description: Vue 的核心原理解析（20题）
+ * @LastEditTime: 2023-03-10 00:50:37
+ * @Description: Vue 的核心原理解析（19题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\前端框架\Vue\Vue原理解析.md
+ * @FilePath: \interviewQuestions\前端框架\Vue\Vue源码解析.md
 -->
-
-### Vue 2.X 实现原理？
-
-> github 上搜索 mini-vue 可以查看带详细中文注释的 vue 文件
-> Mini-Vue（学习源码）：https://github.com/cuixiaorui/mini-vue
-> Vue 项目面试题：https://www.bilibili.com/video/BV1YM411w7Zc
 
 #### Vue 的核心原理？
 

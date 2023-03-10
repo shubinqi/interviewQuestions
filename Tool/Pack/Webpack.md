@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:09:12
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-07 21:34:09
+ * @LastEditTime: 2023-03-10 16:19:50
  * @Description: Webpack 面试题（13题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Tool\Pack\Webpack.md
@@ -200,6 +200,22 @@ devServer: {
 4. jsonp：在使用 Webpack 进行打包时，可以使用 jsonp 技术解决跨域问题。webpack 提供了 output.jsonpFunction 选项来配置 jsonp 的函数名。在使用 Webpack 打包时，会将生成的 JS 代码通过 jsonp 函数的形式插入到 HTML 文件中，从而实现跨域请求。
 
 以上仅是部分常用的 Webpack 解决跨域问题的方法，具体的实现方式需要根据项目需求和开发环境进行选择和配置。需要注意的是，在生产环境中需要特别注意跨域问题，因为在生产环境中使用了跨域请求可能会存在安全风险。
+
+#### 什么是 Loader 和 Plugin？
+
+在 Webpack 中，Loader 和 Plugin 是两个重要的概念，它们分别用于处理模块和扩展 Webpack 的功能。
+
+1. **Loader**
+
+   - Loader 是 Webpack 的一个核心概念，它用于将各种类型的文件转换成 Webpack 可以处理的模块。在 Webpack 的构建过程中，Loader 会根据配置对指定的文件进行处理，并将处理后的结果传递给下一个 Loader 或 Plugin。
+   - Loader 的作用是将文件转换为模块，它可以将各种类型的文件转换成 JavaScript 模块、CSS 模块、HTML 模块等。常见的 Loader 包括：babel-loader 用于将 ES6+语法转换成 ES5 语法、css-loader 用于处理 CSS 文件、file-loader 用于处理图片和字体等静态资源等。
+
+2. **Plugin**
+
+   - Plugin 是 Webpack 的另一个核心概念，它用于扩展 Webpack 的功能。Plugin 可以在 Webpack 构建过程的不同阶段执行自定义的操作，从而实现各种复杂的功能。
+   - Plugin 的作用是对 Webpack 的构建过程进行干预，它可以在打包、压缩、合并等阶段对代码进行优化，也可以在构建完成后进行其他操作，如生成 HTML 文件、拷贝文件、删除文件等。常见的 Plugin 包括：HtmlWebpackPlugin 用于生成 HTML 文件、CleanWebpackPlugin 用于删除构建目录、UglifyJsPlugin 用于压缩 JavaScript 代码等。
+
+综上所述，Loader 和 Plugin 是 Webpack 中非常重要的概念。Loader 用于将各种类型的文件转换成 Webpack 可以处理的模块，而 Plugin 用于扩展 Webpack 的功能，实现各种复杂的功能。在 Webpack 的配置文件中，Loader 和 Plugin 通常被定义为一个数组，按照顺序依次执行。
 
 #### loader 与 plugin 的区别？
 
