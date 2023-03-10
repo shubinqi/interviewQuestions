@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-27 22:59:57
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 07:54:08
+ * @LastEditTime: 2023-03-10 17:08:55
  * @Description: AI
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Tool\AI.md
@@ -21,6 +21,25 @@ AI 对话
 AI 搜索
 
 - AI 搜索：https://phind.com/
+
+AI工具合集
+
+https://17yongai.com/
+（牛逼的中文AI站）
+
+https://www.futurepedia.io/
+（收录400多种AI工具）
+
+https://flowgpt.com/
+（245个ChatGPT的应用）
+
+https://www.mojidoc.com/05dbc-uvhdkr22fjazlowmiihngdoxvq-00b
+（AI工具汇总及操作指南）
+
+https://www.creaitives.com/tools
+（800种工具）
+
+https://airadar.getinference.com/
 
 #### AI
 
