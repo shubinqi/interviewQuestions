@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-05 23:49:45
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 22:51:30
- * @Description: Nginx 面试题（34题）
+ * @LastEditTime: 2023-03-11 00:39:09
+ * @Description: Nginx 面试题（38题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端项目\桌面端\Nginx.md
 -->
@@ -471,7 +471,7 @@ http {
 
 需要注意的是，使用 Nginx 的访问控制模块时，应该根据具体的需求选择合适的方法来限制 IP 地址的访问，同时还应该注意防止误操作，避免限制了正常的客户端访问。
 
-#### 在 nginx 中，如何使用未定义的服务器名称来阻止处理请求？
+#### 在 Nginx 中，如何使用未定义的服务器名称来阻止处理请求？
 
 在 Nginx 中，可以使用默认服务器来阻止处理请求，当请求中的服务器名称没有在任何服务器块中定义时，Nginx 将会使用默认服务器来处理该请求。
 
@@ -545,16 +545,246 @@ if ($uri = /old/path) {
 
 #### Nginx 如何实现后端服务的健康检查？
 
-#### nginx 如何开启压缩？
+Nginx 默认自带的 ngx_http_proxy_module 模块和 ngx_http_upstream_module 模块中有相关指令可用来完成健康检查，当后端节点出现故障时，自动切换到健康节点来提供访问。这个方法虽然可以实现健康检查，但是不够严格，因为它会把请求转发给故障服务器，然后再转发给别的服务器，这样就需要多一次转发。
+
+Nginx 提供了一个 nginx_upstream_check_module 模块，可以用来实现健康检查，并且可以检查后端服务的 HTTP 响应码和响应时间等指标，从而更加准确地判断后端服务是否健康。
+
+另外，Nginx 也提供了一个 TCP 层默认检查方案，可以定时与后端服务建立一条 TCP 连接，如果连接建立成功，则认为服务节点是健康的。
+
+下面是一个使用 nginx_upstream_check_module 模块实现后端服务健康检查的例子：
+
+```
+http {
+    upstream backend {
+        server backend1.example.com;
+        server backend2.example.com;
+        check interval=3000 rise=2 fall=5 timeout=1000 type=http;
+        check_http_send "GET /health HTTP/1.0\r\n\r\n";
+        check_http_expect_alive http_2xx http_3xx;
+    }
+
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+```
+
+在这个例子中，upstream 指令用来定义后端服务，check 指令用来定义健康检查的参数，包括检查间隔、成功多少次后认为服务节点是健康的、失败多少次后认为服务节点是不健康的、超时时间以及检查类型等。check_http_send 指令用来定义发送到后端服务的 HTTP 请求，check_http_expect_alive 指令用来定义响应码的范围，这里是 http_2xx 和 http_3xx，表示只有在收到 2xx 或 3xx 的响应码时才认为服务节点是健康的。
+
+需要注意的是，nginx_upstream_check_module 模块需要单独编译安装，因为它不是 Nginx 默认自带的模块。另外，健康检查会对后端服务产生额外的负担，因此需要根据实际情况来配置检查参数，以免对后端服务造成过大的压力。
+
+#### Nginx 如何开启压缩？
+
+Nginx 可以通过开启 Gzip 压缩来减小响应体的大小，提高网站的性能。以下是在 Nginx 中开启 Gzip 压缩的步骤：
+
+1. 编辑 Nginx 配置文件
+
+在 Nginx 配置文件中找到 http 部分，添加以下代码：
+
+```
+gzip on;
+gzip_disable "msie6";
+gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 6;
+gzip_buffers 16 8k;
+gzip_http_version 1.1;
+```
+
+2. 保存并重启 Nginx
+
+保存修改后的配置文件并重启 Nginx 以使修改生效。
+
+```
+sudo systemctl restart nginx
+```
+
+开启 Gzip 压缩后，Nginx 将自动压缩支持的 MIME 类型的响应体，并在响应头中添加 Content-Encoding: gzip 字段，告知客户端使用 Gzip 解压缩。
 
 #### Nginx 是否支持将请求压缩到上游？
 
+是的，Nginx 支持将请求压缩到上游。这可以通过在 Nginx 配置中使用 gzip 指令来实现。
+
+默认情况下，gzip 指令只压缩响应，但是您可以使用 gzip_request 指令将请求体压缩到上游。下面是一个示例 Nginx 配置文件，其中请求体被压缩到上游：
+
+```
+http {
+    # 开启 gzip 压缩
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+
+    server {
+        listen 80;
+        server_name example.com;
+
+        location / {
+            # 将请求体压缩到上游
+            gzip_request on;
+
+            # 指定代理服务器
+            proxy_pass http://backend;
+
+            # 传递一些请求头
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+        }
+    }
+
+    upstream backend {
+        server 127.0.0.1:8080;
+    }
+}
+```
+
+在上面的示例中，我们使用 gzip_request 指令将请求体压缩到上游。此外，我们还开启了 gzip 压缩并配置了压缩选项，包括 MIME 类型、压缩等级和缓冲区大小。在 location 块中，我们将请求代理到 backend 上游服务器，并传递一些请求头。
+
+需要注意的是，压缩请求体会增加 CPU 开销，因此如果您的服务器 CPU 资源受限，建议仅压缩响应体。
+
 #### 如何在 Nginx 服务器上添加模块？
 
-#### nginx 状态码？
+要在 Nginx 服务器上添加模块，您需要在编译 Nginx 时包含所需的模块。下面是在 Ubuntu Linux 上编译 Nginx 并添加模块的步骤：
+
+1. 安装编译工具和依赖项：在 Ubuntu Linux 上，您需要安装编译工具和 Nginx 所需的依赖项。您可以使用以下命令安装它们：
+
+```
+sudo apt-get update
+sudo apt-get install build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev
+```
+
+2. 下载和解压 Nginx 源代码：您需要下载并解压 Nginx 源代码。您可以从 Nginx 的官方网站下载源代码，也可以使用以下命令从 GitHub 下载：
+
+```
+wget https://github.com/nginx/nginx/archive/refs/tags/release-1.20.1.tar.gz
+tar -xvf release-1.20.1.tar.gz
+```
+
+3. 下载并解压您需要的模块源代码：您需要下载并解压要添加到 Nginx 的模块的源代码。您可以从该模块的官方网站或 GitHub 上下载源代码。假设您要添加 ngx_http_geoip2_module 模块，您可以使用以下命令从 GitHub 下载：
+
+```
+wget https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/3.3.tar.gz
+tar -xvf 3.3.tar.gz
+```
+
+4. 编译 Nginx 并添加模块：现在，您可以使用以下命令编译 Nginx 并将模块添加到 Nginx 中：
+
+```
+cd nginx-release-1.20.1
+./configure --prefix=/usr/local/nginx --add-module=/path/to/ngx_http_geoip2_module
+make
+sudo make install
+```
+
+在上面的命令中，--prefix 指定将安装 Nginx 的目录，--add-module 指定要添加的模块的路径。请注意，您需要将 /path/to/ngx_http_geoip2_module 替换为您实际下载和解压 ngx_http_geoip2_module 模块的路径。
+
+5. 启动 Nginx：编译和安装完成后，您可以使用以下命令启动 Nginx：
+
+```
+sudo /usr/local/nginx/sbin/nginx
+```
+
+现在，您已经成功地将模块添加到 Nginx 服务器上。
+
+#### Nginx 状态码有哪些？
+
+以下是常见的 Nginx 状态码及其含义：
+
+1. 1xx（信息性状态码）：
+
+- **100 - Continue**：客户端应该继续发送请求体（只有在使用 Expect: 100-continue 时才会出现）。
+- **101 - Switching Protocols**：服务器正在切换到新的协议（如 WebSockets）。
+
+2. 2xx（成功状态码）：
+
+- **200 - OK**：请求已成功处理。
+- **201 - Created**：请求已经被成功处理，并且创建了新的资源。
+- **202 - Accepted**：请求已被接受，但是尚未被处理。
+- **204 - No Content**：请求已成功处理，但是响应中没有返回任何内容。
+
+3. 3xx（重定向状态码）：
+
+- **301 - Moved Permanently**：请求的资源已永久移动到新的 URL。
+- **302 - Found**：请求的资源已临时移动到新的 URL。
+- **304 - Not Modified**：请求的资源未被修改，可以直接使用缓存。
+- **307 - Temporary Redirect**：请求的资源已临时移动到新的 URL，但是应该继续使用原始 URL。
+
+4. 4xx（客户端错误状态码）：
+
+- **400 - Bad Request**：请求无效或无法被服务器理解。
+- **401 - Unauthorized**：需要用户身份验证。
+- **403 - Forbidden**：服务器拒绝请求。
+- **404 - Not Found**：请求的资源不存在。
+- **405 - Method Not Allowed**：请求使用的方法不被允许。
+- **408 - Request Timeout**：请求超时。
+- **413 - Payload Too Large**：请求体过大，超出了服务器可以处理的范围。
+- **414 - URI Too Long**：请求的 URI 过长，超出了服务器可以处理的范围。
+- **429 - Too Many Requests**：客户端发送过多请求，服务器无法处理。
+
+5. 5xx（服务器错误状态码）：
+
+- **500 - Internal Server Error**：服务器内部错误。
+- **501 - Not Implemented**：请求的功能还未被实现。
+- **502 - Bad Gateway**：上游服务器无法响应请求。
+- **503 - Service Unavailable**：服务器暂时无法处理请求。
+- **504 - Gateway Timeout**：上游服务器响应超时。
+- **507 - Insufficient Storage**：服务器无法完成请求，因为存储空间已满。
+
+需要注意的是，Nginx 可能会返回其他非标准状态码（如 418 - I'm a teapot）作为特殊响应。
 
 #### 生产中如何设置 worker 进程的数量呢？
 
+在生产环境中，设置 Nginx worker 进程的数量通常需要根据服务器硬件配置和实际应用负载情况来进行调整。
+
+worker 进程数量的设置可以通过 Nginx 配置文件中的 worker_processes 指令来实现。该指令通常位于 http 段中，可以设置 worker 进程的数量。例如：
+
+```
+worker_processes 4;
+```
+
+在上述例子中，将开启 4 个 worker 进程处理请求。可以根据服务器的 CPU 核心数和内存大小来调整该值。
+
+同时，还可以使用 worker_cpu_affinity 指令来将 worker 进程绑定到特定的 CPU 核心上，以提高性能。例如：
+
+```
+worker_cpu_affinity 0001 0010 0100 1000;
+```
+
+上述例子中，将 worker 进程分别绑定到 CPU 核心 0、1、2、3 上，以提高处理能力。
+
+需要注意的是，过多的 worker 进程数量可能会导致 CPU 使用率过高，因此应该根据实际情况进行调整。另外，如果使用 Nginx 的多进程模式，还需要注意共享内存区的大小，以确保每个 worker 进程可以访问到足够的共享内存空间。
+
 #### Nginx 是如何实现高并发的？
 
+Nginx 之所以能够实现高并发，主要是由于其具备以下特点：
+
+1. **异步非阻塞 IO 模型**：Nginx 使用异步非阻塞 IO 模型，可以同时处理多个客户端请求，从而提高系统并发处理能力。
+1. **多进程/多线程模式**：Nginx 可以通过开启多个 worker 进程/线程来处理请求，从而提高系统处理能力。同时，Nginx 采用 Master-Worker 模式，Master 进程主要负责监控和管理 Worker 进程，从而保证系统的稳定性。
+1. **事件驱动模型**：Nginx 使用事件驱动模型，可以及时地处理客户端请求和其他事件，从而避免了不必要的等待时间和资源浪费。
+1. **高效的内存管理**：Nginx 采用了内存池技术，可以提高内存的使用效率和系统的响应速度。同时，Nginx 还支持共享内存和文件映射等技术，可以方便地实现多进程/多线程间的数据共享和通信。
+1. **动态模块化结构**：Nginx 的模块化结构非常灵活，可以根据需要添加或移除模块，从而提高系统的可定制性和扩展性。
+
+综上所述，Nginx 在实现高并发方面具有很多优势，可以通过合理的配置和优化来进一步提高系统的性能和稳定性。
+
 #### Nginx 常见的优化配置有哪些？
+
+以下是 Nginx 常见的优化配置：
+
+1. **调整 worker 进程数**：适当调整 worker 进程数，可以提高系统的并发处理能力。一般建议设置为 CPU 核心数的倍数。
+1. **启用 sendfile**：使用 sendfile 可以在发送文件时减少内核空间和用户空间之间的数据拷贝，从而提高文件传输的速度。
+1. **启用 TCP_NODELAY**：TCP_NODELAY 可以禁用 Nagle 算法，从而减少小数据包的延迟，提高数据传输的效率。
+1. **启用 TCP_DEFER_ACCEPT**：TCP_DEFER_ACCEPT 可以在建立连接时延迟应用程序的处理，直到客户端发送数据，从而减少不必要的等待时间。
+1. **启用 keepalive**：启用 keepalive 可以在一段时间内保持 TCP 连接的开启状态，从而避免频繁地建立和关闭连接，提高系统性能。
+1. **调整缓冲区大小**：适当调整缓冲区大小，可以减少网络传输过程中的数据拷贝次数，从而提高数据传输的效率。
+1. **启用 Gzip 压缩**：启用 Gzip 压缩可以在传输过程中减少数据的传输量，从而提高数据传输的速度。
+1. **启用 SSL 加速**：启用 SSL 加速可以减少加密解密的计算量，从而提高系统的性能。
+1. **调整日志级别**：适当调整日志级别，可以减少日志记录的数据量，从而提高系统的性能。
+1. **启用缓存**：启用缓存可以在减少磁盘 I/O 的同时，提高数据的访问速度，从而提高系统的性能。
+
+需要根据实际应用场景进行选择和调整，从而进一步提高系统的性能和稳定性。

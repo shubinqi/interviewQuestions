@@ -3,7 +3,7 @@
  * @Date: 2023-03-05 23:49:16
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-10 22:12:48
- * @Description: Linux面试题（10题）
+ * @Description: Linux面试题（53题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端项目\桌面端\Linux.md
 -->

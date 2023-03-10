@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 07:22:55
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 07:45:43
+ * @LastEditTime: 2023-03-10 22:57:21
  * @Description: WebRTC（会议直播）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\PC\WebRTC.md
+ * @FilePath: \interviewQuestions\前端项目\桌面端\WebRTC.md
 -->
 
 #### WebRTC（会议直播）
@@ -20,3 +20,22 @@ WebRTC 是一种实时通信技术，使得浏览器之间可以进行音视频�
 1. **WebRTC 应用开发**：掌握 WebRTC 应用开发的基本流程和技巧，包括实时视频会议、语音聊天、直播、屏幕共享等应用程序的开发。
 
 总之，前端需要学习 WebRTC 的基本概念、JavaScript API、STUN/TURN 服务器、实时音视频编解码、安全机制以及 WebRTC 应用开发技术。
+
+#### WebRTC 是什么？有什么优缺点？
+
+WebRTC（Web Real-Time Communication）是一种用于浏览器之间实时通信的技术标准。它允许网页应用程序通过简单的 JavaScript API 在浏览器之间传输音频、视频和数据，无需插件或其他第三方软件支持。
+
+WebRTC 的优点包括：
+
+1. **实时性**：WebRTC 延迟低，可以实现实时音视频通话和数据传输。
+1. **端到端加密**：WebRTC 提供了端到端加密功能，可以确保数据传输的安全性和隐私性。
+1. **跨平台支持**：WebRTC 可以在支持 WebRTC 的现代浏览器上运行，支持跨平台。
+1. **开放性**：WebRTC 是开放标准，任何人都可以使用。
+
+WebRTC 的缺点包括：
+
+1. **兼容性问题**：WebRTC 还不是所有浏览器和设备都支持，需要在开发中注意浏览器兼容性。
+1. **NAT 穿透问题**：在使用 WebRTC 进行点对点通信时，需要解决 NAT 穿透的问题。
+1. **可扩展性问题**：WebRTC 对于大规模部署和高并发使用的支持尚不完善，需要进一步优化。
+
+总体来说，WebRTC 提供了一种非常方便的实时通信方式，能够轻松实现音视频通话和数据传输，但在开发和部署中需要注意其兼容性、安全性、可扩展性等问题。
