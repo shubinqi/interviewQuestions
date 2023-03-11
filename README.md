@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-11 01:56:44
+ * @LastEditTime: 2023-03-11 14:02:33
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -16,12 +16,12 @@
 
 ### 一、前端知识体系模块划分（面试题，共 1024+ 题，含详细答案）
 
-1. **前端基础**（根目录）共 **246** 题
+1. **前端基础**（根目录）共 **302** 题
    - **HTML**（已更新 26 题）
    - **CSS**（已更新 50 题）
    - **JavaScript**（已更新 136 题）
    - **TypeScript**（已更新 18 题）
-   - **数据结构与算法**（已更新 13 题）
+   - **数据结构与算法**（已更新 59 题）
    - **jQuery**：/Tool/Store（已更新 3 题）
 2. **计算机网络**（/计算机网络）共 **174** 题
    - **HTTP**（已更新 36 题）
