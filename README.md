@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-11 14:02:33
+ * @LastEditTime: 2023-03-12 14:21:06
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -86,10 +86,10 @@
    - **服务器**：/前端项目/大前端架构（已更新 3 题）
    - **数据可视化**：/前端项目/大屏（已更新 2 题）
    - **Echarts**：/Tool/数据可视化（已更新 2 题）
-10. **其他面试题**（/Chinese）共 **32** 题
-    - **非技术题**：/Chinese（已更新 21 题）
+10. **其他面试题**（/Chinese）共 **37** 题
+    - **非技术题**：/Chinese（已更新 25 题）
     - **手写代码**：/Chinese（已更新 10 题）
-    - **代码输出**：/Chinese（已更新 1 题）
+    - **代码输出**：/Chinese（已更新 2 题）
 
 ### 二、前端八股文
 
