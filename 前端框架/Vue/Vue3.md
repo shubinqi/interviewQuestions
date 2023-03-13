@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 21:13:56
+ * @LastEditTime: 2023-03-12 15:02:00
  * @Description: Vue 3.X 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue3.md
@@ -61,6 +61,23 @@ Proxy 的缺点：
 1. **更好的 TypeScript 支持**：Proxy 更符合 TypeScript 的类型推导和类型约束，可以更方便地进行开发和维护。
 
 总的来说，Vue 3 中使用 Proxy 相比于 Vue 2 中使用 Object.defineProperty()，具有更好的性能、语法、扩展性、错误提示和 TypeScript 支持等优势。
+
+#### Vue 3.X 响应式原理 Proxy 具体实现流程？
+
+Vue 3.X 响应式原理的核心是使用了 ES6 中的 Proxy 对象来代理数据，从而实现对数据的响应式监听。
+
+具体实现流程如下：
+
+1. 首先，在 Vue 3.X 中，使用 reactive 函数对数据进行响应式化处理，该函数接收一个普通 JavaScript 对象，并返回一个响应式代理对象。
+1. reactive 函数内部通过 createReactiveObject 函数创建响应式代理对象，该函数接收三个参数：目标对象 target、代理对象的 getter 函数 get 和代理对象的 setter 函数 set。
+1. createReactiveObject 函数内部使用 new Proxy 创建代理对象，将 get 和 set 函数作为参数传入。在 get 函数中，会收集依赖并返回对应的值，在 set 函数中，会触发更新并通知相关的依赖。
+1. 在 get 函数中，会使用 track 函数来收集依赖。track 函数接收两个参数：目标对象 target 和键名 key。在 track 函数内部，会根据当前是否存在活跃的 effect（即当前正在执行的响应式函数）来进行依赖收集。
+1. 如果存在活跃的 effect，会将 effect 存储到一个 Set 集合中，然后将目标对象和键名作为 key，将这个 Set 集合存储到一个名为 targetMap 的 WeakMap 中，以此来建立目标对象和 effect 之间的依赖关系。
+1. 在 set 函数中，会使用 trigger 函数来触发更新并通知相关的依赖。trigger 函数接收两个参数：目标对象 target 和键名 key。在 trigger 函数内部，会根据 targetMap 中是否存在对应的 Set 集合来判断是否需要通知相关的依赖。
+1. 如果存在对应的 Set 集合，会遍历该集合中的所有 effect，并执行这些 effect，从而触发更新。
+1. 在执行 effect 函数时，会使用 reactiveEffect 函数来创建一个响应式函数，该函数内部会调用用户传入的函数，并在函数执行时进行依赖收集。
+1. 在 reactiveEffect 函数内部，会创建一个 runner 函数，并将其保存到 effect 对象中。runner 函数会调用用户传入的函数，并在函数执行时进行依赖收集。
+1. 在执行 runner 函数时，会先将当前的 effect 对象存储到一个全局变量中，然后再调用用户传入的函数。在函数执行时，如果访问了响应式对象的属性，就会触发相应的依赖收集，从而建立起响应式数据和 effect 之间的依赖关
 
 #### Vue 3 的 diff 算法 和 Vue2 的比有什么优势？
 
