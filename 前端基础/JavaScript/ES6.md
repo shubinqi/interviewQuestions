@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 22:02:13
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-02 08:59:27
- * @Description: ES 6 详解
+ * @LastEditTime: 2023-03-14 19:55:05
+ * @Description: ES 6 详解（1题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\JavaScript\ES6.md
+ * @FilePath: \interviewQuestions\前端基础\JavaScript\ES6.md
 -->
 
 #### ES6 新增了哪些内容？

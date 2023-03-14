@@ -3,7 +3,7 @@
  * @Date: 2023-03-01 07:57:15
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-14 19:16:43
- * @Description: Ajax 详解（3题）
+ * @Description: Ajax 详解（6题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\JavaScript\Ajax.md
 -->
@@ -75,3 +75,21 @@ XMLHttpRequest (XHR) 是一种用于在客户端和服务器之间发送 HTTP �
 1. **abort()**：取消请求。
 1. **getAllResponseHeaders()**：获取所有响应头信息。
 1. **getResponseHeader(header)**：获取指定响应头信息。header 表示响应头名称。
+
+#### XHR 和 Fetch 是什么？有什么区别？
+
+XHR（XMLHttpRequest）和 Fetch 是用于在 JavaScript 中发起网络请求的两种技术。
+
+XHR 是较早的一种技术，它使用 XMLHttpRequest 对象来创建异步请求。XHR 可以使用 GET 或 POST 方法发起请求，可以设置请求头和请求体，可以接收服务器返回的响应，并支持进度事件等特性。
+
+Fetch 是一种新的技术，它使用 fetch 函数来发起网络请求。Fetch 可以使用 GET、POST、PUT、DELETE 等方法发起请求，可以设置请求头和请求体，支持 Promise 和 async/await 语法，支持流式响应处理，还可以通过拦截器对请求和响应进行拦截和处理。
+
+XHR 和 Fetch 的区别主要有以下几点：
+
+1. **API 设计上的区别**：XHR 使用 XMLHttpRequest 对象来创建请求和接收响应，而 Fetch 使用 fetch 函数来发起请求和接收响应。
+1. **请求和响应对象的不同**：XHR 返回的是 XMLHttpRequest 对象，而 Fetch 返回的是 Response 对象。
+1. **跨域处理**：XHR 受同源策略限制，只能发起同源请求或使用 CORS 跨域资源共享协议进行跨域请求，而 Fetch 支持跨域请求和跨域资源共享。
+1. **API 的可读性和易用性**：Fetch 使用 Promise 和 async/await 语法，更加简洁易用，而 XHR 使用回调函数来处理异步请求，较为繁琐。
+1. **对请求和响应的拦截和处理**：Fetch 提供了拦截器，可以对请求和响应进行拦截和处理，而 XHR 不支持。
+
+总的来说，Fetch 比 XHR 更加灵活、可读性更高、API 更加简洁易用，并且支持跨域资源共享，是一种更为先进的技术。
