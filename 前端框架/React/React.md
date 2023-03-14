@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:05:27
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 14:12:36
+ * @LastEditTime: 2023-03-14 22:36:57
  * @Description: React 面试题（57题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\React\React.md
@@ -877,6 +877,30 @@ Hook 的实现原理其实很简单，它是通过钩子函数将状态和其他
 
 需要注意的是，Hook 只能在函数组件中使用，不能在类组件中使用。另外，每个 Hook 函数都有自己的作用域和状态，不同的 Hook 之间是相互独立的，它们之间不会产生任何冲突。
 
+#### React 中 hooks 是什么？hooks 存在的意义？
+
+Hooks 是 React 16.8 版本中引入的一种新特性，它使得函数组件具备了类组件的一些特性，例如组件状态、生命周期等。Hooks 是一些特殊的函数，可以让你在函数组件中添加状态、副作用等特性，从而使函数组件更加灵活和可复用。
+
+React Hooks 的存在意义主要有以下几点：
+
+1. **提供了一种新的组件编写方式**
+   使用 React Hooks 可以完全避免类组件的使用，通过函数组件来实现状态管理和副作用的处理，这种方式更加简洁和直观。
+
+2. **使组件更加可复用和可测试**
+   React Hooks 可以让你将组件逻辑拆分为独立的函数，这些函数可以单独测试，也可以在其他组件中复用。这种方式可以让你更好地管理代码复杂性，从而使组件更加易于维护和扩展。
+
+3. **简化了状态管理和副作用处理**
+   在类组件中，状态管理和副作用处理通常需要编写大量的模板代码，并且容易出现各种问题。React Hooks 提供了一种更加简单和灵活的方式来处理这些问题，通过 Hook 函数来处理组件的状态和副作用，可以使代码更加清晰和易于维护。
+
+React Hooks 的常用 Hooks 包括：
+
+1. **useState**：用于在函数组件中添加状态管理功能；
+1. **useEffect**：用于在函数组件中处理副作用操作；
+1. **useContext**：用于在函数组件中访问全局的上下文数据；
+1. **useMemo**：用于在函数组件中缓存计算结果；
+1. **useCallback**：用于在函数组件中缓存函数；
+1. **useRef**：用于在函数组件中保存引用类型的值。
+
 #### 为什么 useState 要使用数组而不是对象？
 
 React 的 useState Hook 使用数组而不是对象的原因是出于性能和可读性的考虑。
@@ -891,11 +915,11 @@ React 的 useState Hook 使用数组而不是对象的原因是出于性能和�
 
 React Hooks 解决了 React 类组件编写中一些常见问题，包括：
 
-1. 在函数组件中使用状态(state)：以前，函数组件无法像类组件一样在组件内部定义和管理状态(state)。Hooks 引入了 useState，让函数组件也能使用状态了。
-1. 在函数组件中使用生命周期钩子：以前，函数组件没有生命周期钩子函数，因此无法在特定时间执行逻辑。Hooks 引入了 useEffect，让函数组件也能模拟生命周期。
-1. 在函数组件中共享状态和逻辑：以前，实现状态共享和逻辑复用需要使用高阶组件(Higher-Order Components)或渲染属性(Render Props)。Hooks 引入了 useContext 和 useReducer，使得共享状态和逻辑变得更加简单。
-1. 在函数组件中使用 Refs：以前，Refs 只能在类组件中使用。Hooks 引入了 useRef，使得在函数组件中使用 Refs 更加方便。
-1. 避免在组件层级过深时的嵌套地狱：以前，组件嵌套层级过深时，会产生嵌套地狱的问题。Hooks 引入了 useCallback 和 useMemo，使得在深层组件中使用回调函数和计算结果变得更加方便。
+1. **在函数组件中使用状态(state)**：以前，函数组件无法像类组件一样在组件内部定义和管理状态(state)。Hooks 引入了 useState，让函数组件也能使用状态了。
+1. **在函数组件中使用生命周期钩子**：以前，函数组件没有生命周期钩子函数，因此无法在特定时间执行逻辑。Hooks 引入了 useEffect，让函数组件也能模拟生命周期。
+1. **在函数组件中共享状态和逻辑**：以前，实现状态共享和逻辑复用需要使用高阶组件(Higher-Order Components)或渲染属性(Render Props)。Hooks 引入了 useContext 和 useReducer，使得共享状态和逻辑变得更加简单。
+1. **在函数组件中使用 Refs**：以前，Refs 只能在类组件中使用。Hooks 引入了 useRef，使得在函数组件中使用 Refs 更加方便。
+1. **避免在组件层级过深时的嵌套地狱**：以前，组件嵌套层级过深时，会产生嵌套地狱的问题。Hooks 引入了 useCallback 和 useMemo，使得在深层组件中使用回调函数和计算结果变得更加方便。
 
 Hooks 的实现原理是使用了 JavaScript 的闭包特性，通过在函数组件中保存一些状态和副作用函数的引用，使得函数组件也能像类组件一样拥有状态和生命周期函数的能力。
 
@@ -910,6 +934,46 @@ React Hook 的使用限制主要包括以下几个方面：
 1. **Hook 的命名必须以 "use" 开头**：React Hook 的命名必须以 "use" 开头，这是为了方便开发者识别和遵循 Hook 的规范。
 
 总之，React Hook 的使用限制主要是为了确保 Hook 的正确性和稳定性，开发者需要在使用 Hook 时严格遵守这些限制。
+
+#### useEffect 是什么？有什么作用和使用场景？
+
+useEffect 是 React 中一个重要的 Hook，它用于处理组件的副作用操作。副作用操作包括但不限于：
+
+1. 发起网络请求
+1. 访问浏览器缓存
+1. 操作 DOM 元素
+1. 订阅或取消订阅事件
+
+副作用操作可能会导致应用程序状态的改变，或者直接影响到应用程序的外部环境。使用 useEffect 可以在组件的生命周期中处理这些操作。
+
+useEffect 接受两个参数，第一个参数是一个函数，这个函数会在组件挂载或更新时执行。第二个参数是一个数组，用于指定该副作用操作所依赖的变量。当数组中的变量发生变化时，useEffect 会重新执行这个函数。
+
+例如，下面的代码使用 useEffect 发起了一个网络请求，并在请求结束后更新了组件的状态：
+
+```
+import { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  return <div>{data}</div>;
+}
+```
+
+上面的代码中，useEffect 传入了一个空数组作为第二个参数，这表示这个副作用操作不依赖任何变量，只需要在组件挂载时执行一次即可。
+
+useEffect 的使用场景非常广泛，可以处理组件的任何副作用操作。例如，在组件中使用第三方库进行地图渲染时，可以使用 useEffect 来初始化地图对象并注册事件回调函数；在组件中使用 WebSocket 与服务器进行通信时，可以使用 useEffect 来建立 WebSocket 连接并订阅事件。
 
 #### useEffect 与 useLayoutEffect 的区别？
 
