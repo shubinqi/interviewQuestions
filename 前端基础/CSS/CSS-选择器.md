@@ -2,13 +2,13 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-14 19:28:56
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:29:11
+ * @LastEditTime: 2023-03-14 20:05:49
  * @Description: CSS 优先级
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\CSS\CSS-优先级.md
 -->
 
-#### 介绍一下 CSS 的优先级规则？
+#### 介绍一下 CSS 的选择器优先级规则？
 
 CSS 的优先级规则是指在样式表中存在多个样式规则时，如何确定应用哪个样式规则。CSS 的优先级由四个级别组成，它们分别是：
 
