@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-09 03:04:53
+ * @LastEditTime: 2023-03-14 19:44:38
  * @Description: JavaScript 面试题汇总（128题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\JavaScript.md
@@ -402,6 +402,66 @@ list.addEventListener('click', function(event) {
 ```
 
 上面的代码中，我们把点击事件绑定到了列表元素 ul 上，并通过 if 语句判断是否点击了按钮。如果点击了按钮，就会执行后续的代码，如打印按钮文本等操作。这样，即使列表中有很多个按钮，我们也只需要绑定一次事件就可以实现对所有按钮的处理。
+
+#### 怎么实现 JavaScript 修改伪元素和伪类样式？
+
+在 JavaScript 中，可以通过操作样式表（CSSStyleSheet）来动态修改伪元素和伪类的样式。具体实现方法如下：
+
+1. 获取样式表对象
+   首先，需要获取包含要修改的样式规则的样式表对象。可以通过以下方式之一来获取：
+   - 通过 document.styleSheets 获取文档中所有的样式表。
+   - 通过 document.querySelector 或 document.querySelectorAll 方法获取包含要修改样式规则的元素，然后使用 element.sheet 获取该元素的样式表对象。
+
+例如，获取文档中第一个样式表对象：
+
+```
+const stylesheet = document.styleSheets[0];
+```
+
+通过 getComputedStyle 方法获取样式
+
+```
+const element = document.querySelector('.my-element');
+const content = window.getComputedStyle(element, '::before').getPropertyValue('content');
+console.log(content); // 打印 ::before 伪元素的 content 属性值
+```
+
+2. 找到要修改的样式规则
+   然后，需要找到包含要修改的伪元素或伪类的样式规则。可以使用以下方法之一来找到：
+   - 遍历样式表对象的 rules 或 cssRules 属性，找到 selectorText 属性与目标选择器相同的规则。
+   - 使用 addRule 或 insertRule 方法添加新的规则，selectorText 属性为目标选择器。
+
+例如，找到包含 .my-element:hover 伪类的样式规则：
+
+```
+const rules = stylesheet.rules || stylesheet.cssRules;
+for (let i = 0; i < rules.length; i++) {
+  const rule = rules[i];
+  if (rule.selectorText === '.my-element:hover') {
+    // 找到了目标规则
+  }
+}
+```
+
+3. 修改样式规则的样式
+   最后，可以使用样式规则的 style 属性来修改伪元素或伪类的样式。例如，将 .my-element:hover 的颜色改为红色：
+
+```
+rule.style.color = 'red';
+```
+
+如果需要修改伪元素的样式，可以通过以下方式之一来找到伪元素对应的样式规则：
+
+- 在目标选择器后加上 ::before 或 ::after，构成伪元素选择器。
+- 使用 addRule 或 insertRule 方法添加新的规则，selectorText 属性为目标选择器和伪元素选择器。
+
+例如，将 .my-element::before 的 content 属性改为 'Hello'：
+
+```
+stylesheet.addRule('.my-element::before', 'content: "Hello"');
+```
+
+需要注意的是，样式表对象的操作会直接影响到文档的样式，因此需要谨慎操作，并考虑兼容性问题。
 
 #### ES6 有哪些新语法？
 
@@ -1472,6 +1532,58 @@ const newObj = _.cloneDeep(obj);
 ```
 
 需要注意的是，在实际使用中，应该根据需求选择合适的深拷贝方法，比如对于需要拷贝函数、循环引用等情况，递归实现可能更适合。同时，深拷贝也可能导致性能问题，应该谨慎使用。
+
+#### 如何判断两个对象是否相等？
+
+在 JavaScript 中，判断两个对象是否相等有多种方式，具体应该根据判断的需求来选择。
+
+1. 使用相等运算符（== 或 ===）
+
+使用相等运算符可以判断两个对象的引用是否相等，也就是它们是否指向同一个内存地址。例如：
+
+```
+const obj1 = { name: 'Alice' };
+const obj2 = { name: 'Alice' };
+const obj3 = obj1;
+
+console.log(obj1 == obj2); // false
+console.log(obj1 === obj2); // false
+console.log(obj1 == obj3); // true
+console.log(obj1 === obj3); // true
+```
+
+上述代码中，obj1 和 obj2 是两个不同的对象，它们的属性值相同，但它们指向的内存地址不同，因此使用相等运算符判断结果为 false。而 obj3 是 obj1 的引用，它们指向同一个内存地址，因此使用相等运算符判断结果为 true。
+
+2. 比较对象属性值
+
+如果要比较两个对象的属性值是否相等，可以逐个比较它们的属性。例如：
+
+```
+function isEqual(obj1, obj2) {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (let key of keys1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const obj1 = { name: 'Alice', age: 18 };
+const obj2 = { name: 'Alice', age: 18 };
+const obj3 = { name: 'Bob', age: 20 };
+
+console.log(isEqual(obj1, obj2)); // true
+console.log(isEqual(obj1, obj3)); // false
+```
+
+上述代码中，isEqual 函数接受两个参数，分别是要比较的两个对象。函数先比较它们的属性个数是否相同，如果不同则返回 false。然后逐个比较它们的属性值，如果有任何一个属性值不相等，则返回 false。最后如果所有属性值都相等，则返回 true。
+
+需要注意的是，上述比较方法只能比较对象的可枚举属性，对于对象的原型链和不可枚举属性，比较方法可能会出现误判。
 
 #### Object.assign 和扩展运算符是深拷贝还是浅拷贝，两者区别？
 
