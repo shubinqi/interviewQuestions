@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-12 14:21:06
+ * @LastEditTime: 2023-03-14 19:39:02
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -180,7 +180,75 @@
 
 - **0310.md**：2023 年 3 月 10 日复习笔记
 
-### 三、其他文件
+### 三、前端基础（主要记录笔记形式）
+
+#### 前端基础知识细分笔记，部分含面试题
+
+1. HTML
+   - Canvas
+   - SVG
+2. CSS
+   - CSS 变量
+   - CSS 浮动
+   - CSS BFC、IFC、GFC、FFC
+   - CSS 媒体查询
+   - CSS3 变形
+   - CSS3 动画
+   - CSS3 过渡
+   - CSS3 渐变
+   - CSS3 滤镜
+   - CSS3 弹性布局
+   - CSS3 网格布局
+3. JavaScript
+   - Ajax
+   - Array
+   - Object
+   - Promise
+   - Reg
+   - ES6
+4. 浏览器
+   - 浏览器渲染
+   - document
+   - AST
+5. 数学
+6. 算法
+
+### 四、前端项目文件夹（/前端项目）
+
+#### 前端项目笔记和面试题
+
+1. 混合应用开发
+   1. 小程序
+      - Wxapp：微信小程序
+      - Uni-app
+   2. Wechat：微信公众号
+   3. Electron
+   4. H5
+2. 原生应用开发
+   1. Flutter
+      - Dart
+      - Flutter
+   2. React Native
+   3. HarmonyOS
+   4. Weex
+3. 大前端架构
+   1. 微前端（已更新 3 题）
+   2. 低代码
+   3. 服务器
+      - Apache
+      - Linux
+      - Nginx
+   4. WebRTC
+4. 大屏
+   - 监控大屏
+   - 数据可视化
+   - 数据可视化大屏
+5. 游戏开发
+   - CocosCreator
+   - Unity
+   - WebGL
+
+### 五、其他文件
 
 #### Chinese 文件夹（/Chinese）
 
@@ -203,35 +271,6 @@
 - 创建 Node 项目
 - 创建小程序项目
 - 创建安卓 APP 项目
-
-#### 前端项目 文件夹（/PC 端）
-
-1. 桌面端
-   - Electron
-   - WebGL
-   - WebRTC
-   - Linux
-   - Nginx
-2. 移动端
-   1. 小程序
-      - Wxapp：微信小程序
-      - Uni-app
-   2. Flutter
-      - Dart
-      - Flutter
-3. H5
-   - H5
-   - Wechat：微信公众号
-4. 后端
-   - Weex
-   - React Native
-5. 大屏
-   - 监控大屏
-   - 数据可视化大屏
-6. 其他
-   - 微前端（已更新 3 题）
-   - 低代码
-   - 服务器
 
 #### JavaScript 文件夹（/JavaScript）
 
@@ -258,7 +297,7 @@
 - LeetCode：LeetCode 测试代码
 - Vue：Vue 测试代码
 
-### 四、案例（/Demo）
+### 六、案例（/Demo）
 
 1. **算法**（/Demo/Algorithm）
    - 数组排序（已更新）
@@ -287,7 +326,7 @@
    - Vue2 单文件组件（已更新）
    - Vue3 单文件组件（已更新）
 
-### 五、扩展（/扩展知识）
+### 七、扩展（/扩展知识）规划中...
 
 1. Java
 
