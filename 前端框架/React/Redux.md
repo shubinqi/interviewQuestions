@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:06:54
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-06 14:57:20
- * @Description: Redux 面试题（9题）
+ * @Description: Redux 面试题（16题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\React\Redux.md
 -->

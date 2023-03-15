@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-10 18:26:43
- * @Description: TypeScript 面试题（17题）
+ * @Description: TypeScript 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
 -->

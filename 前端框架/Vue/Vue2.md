@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:04:28
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-10 20:49:33
- * @Description: Vue 2.X面试题（65题）
+ * @Description: Vue 2.X面试题（95题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue2.md
 -->

@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:10:06
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-10 18:41:00
- * @Description: Git 面试题（8题）
+ * @Description: Git 面试题（11题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\Tool\Version\Git.md
 -->
@@ -273,6 +273,7 @@ git config --global --unset http.proxy
 ```
 
 #### github 怎么删除项目？
+
 要删除 GitHub 上的项目，请按照以下步骤进行操作：
 
 1. 首先进入您的 GitHub 仓库页面。

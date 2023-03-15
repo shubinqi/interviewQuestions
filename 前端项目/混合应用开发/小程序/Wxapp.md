@@ -3,7 +3,7 @@
  * @Date: 2023-02-24 21:09:34
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-04 03:46:24
- * @Description: 微信小程序面试题（22题）
+ * @Description: 微信小程序面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\移动端\Wxapp.md
 -->

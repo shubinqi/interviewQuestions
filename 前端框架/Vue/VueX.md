@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:05:12
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 17:42:53
+ * @LastEditTime: 2023-03-15 20:36:28
  * @Description: VueX 面试题（15题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Vue\VueX.md
+ * @FilePath: \interviewQuestions\前端框架\Vue\VueX.md
 -->
 
 #### VueX 的原理？为什么需要 VueX？
@@ -17,7 +17,6 @@ VueX 的核心概念包括：
 1. **State**：用于保存应用程序的状态数据。
 1. **Mutation**：用于更改状态的函数，必须是同步函数。
 1. **Action**：用于处理异步操作的函数，可以包含任意异步操作。
-1. **Getter**：类似于计算属性，用于从状态中派生出新的数据。
 
 VueX 的核心原理是响应式数据和单向数据流。VueX 将状态存储在一个中央存储库中，状态的更改是通过提交 Mutation 进行的，而不是直接更改状态。Mutation 是同步执行的，所以可以方便地跟踪状态的变化。Action 用于处理异步操作，它可以包含任何异步代码，并在完成操作后提交 Mutation。
 
