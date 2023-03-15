@@ -2,11 +2,25 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 18:26:43
+ * @LastEditTime: 2023-03-15 21:54:45
  * @Description: TypeScript 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
 -->
+
+#### TypeScript 是什么？有什么特点？
+
+TypeScript 是一种由微软开发和维护的编程语言，它是 JavaScript 的一个超集，扩展了 JavaScript 的语法和功能，同时提供了静态类型检查等功能。TypeScript 最终会被编译成 JavaScript 代码，可以在任何支持 JavaScript 的平台上运行。
+
+TypeScript 的特点包括：
+
+- **静态类型检查**：TypeScript 可以通过类型注解来检查变量、函数、参数等的类型，从而减少程序运行时出现类型错误的概率，提高代码的可读性和可维护性。
+- **扩展 JavaScript 语法**：TypeScript 支持类、模块、接口等面向对象编程的概念，可以使得代码的组织和管理更加方便和高效。
+- **语法糖和特性**：TypeScript 提供了一些语法糖和特性，例如可选参数、默认参数、剩余参数、解构、装饰器等，可以提高代码的可读性和可维护性。
+- **增强开发工具**：TypeScript 可以提供更好的开发工具支持，包括自动完成、代码重构、静态分析等功能，可以提高开发效率。
+- **大型项目支持**：TypeScript 适用于大型项目的开发，可以使得代码的组织、管理和维护更加方便和高效。
+
+总之，TypeScript 是一种由微软开发和维护的编程语言，它是 JavaScript 的超集，提供了静态类型检查、扩展 JavaScript 语法、语法糖和特性、增强开发工具、大型项目支持等特点，可以提高代码的可读性、可维护性和开发效率。
 
 #### TypeScript 和 JavaScript 的区别？
 

@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-15 20:42:31
+ * @LastEditTime: 2023-03-15 22:19:29
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -16,12 +16,12 @@
 
 ### 一、前端知识体系模块划分（面试题，共 1024+ 题，含详细答案）
 
-1. **前端基础**（根目录）共 **321** 题
-   - **HTML**（已更新 26 题）
+1. **前端基础**（根目录）共 **326** 题
+   - **HTML**（已更新 28 题）
    - **CSS**（已更新 50 题）
    - **JavaScript**（已更新 139 题）
-   - **TypeScript**（已更新 18 题）
-   - **数据结构与算法**（已更新 59 题）
+   - **TypeScript**（已更新 20 题）
+   - **数据结构与算法**（已更新 60 题）
    - **算法题**（已更新 26 题）
    - **jQuery**：/Tool/Store（已更新 3 题）
 2. **计算机网络**（/计算机网络）共 **185** 题
@@ -39,9 +39,6 @@
    - **React**（已更新 80 题）
    - **Redux**（已更新 16 题）
    - **NodeJS**（已更新 26 题）
-   <!-- - Express.js
-   - Koa.js
-   - NextJS -->
 4. **UI 框架、库**（/前端框架/UI）共 **11** 题
    - **Element-UI**（已更新 3 题）
    - **Vant-UI**（已更新 2 题）
@@ -72,8 +69,6 @@
    - **Webpack**：/Tool/Pack（已更新 17 题）
    - **Vite**：/Tool/Pack（已更新 8 题）
    - **Gulp**：/Tool/Pack（已更新 4 题）
-   <!-- - Grunt：/Tool/Pack
-   - Rullup：/Tool/Pack -->
    - **Lodash**：/Tool/Store（已更新 3 题）
    - **Babel**：/Tool/Store（已更新 2 题）
    - **Markdown**：/Tool（已更新笔记）
@@ -185,12 +180,12 @@
 
 #### 前端基础知识细分笔记，部分含面试题
 
-1. HTML
+1. **HTML**
    - Canvas
    - SVG
    - link
    - 前端布局
-2. CSS
+2. **CSS**
    - CSS 变量 var
    - CSS 定位 position
    - CSS 浮动 float
@@ -205,7 +200,7 @@
    - CSS3 滤镜 filter
    - CSS3 弹性布局 flex
    - CSS3 网格布局 grad
-3. JavaScript
+3. **JavaScript**
    - 闭包 closure
    - Ajax
    - Array
@@ -214,7 +209,7 @@
    - Promise
    - Reg
    - ES6
-4. 浏览器
+4. **浏览器**
    - 浏览器渲染
    - 事件循环 Event Loop
    - document
@@ -222,9 +217,9 @@
    - DOM
    - BOM
    - DOM 树
-5. 数学
+5. **数学**
    - 数学知识
-6. 算法
+6. **算法**
 
 ### 四、前端项目文件夹（/前端项目）
 
