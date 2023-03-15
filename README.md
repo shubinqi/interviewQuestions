@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 22:43:32
+ * @LastEditTime: 2023-03-15 19:39:11
  * @Description: 前端面试题汇总（1024+题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -185,33 +185,45 @@
 
 #### 前端基础知识细分笔记，部分含面试题
 
+
 1. HTML
    - Canvas
    - SVG
+   - link
 2. CSS
-   - CSS 变量
-   - CSS 浮动
+   - CSS 变量 var
+   - CSS 定位 position
+   - CSS 浮动 float
+   - CSS 盒模型 box-sizing
+   - CSS 媒体查询 media
+   - CSS 选择器
    - CSS BFC、IFC、GFC、FFC
-   - CSS 媒体查询
-   - CSS3 变形
-   - CSS3 动画
-   - CSS3 过渡
-   - CSS3 渐变
-   - CSS3 滤镜
-   - CSS3 弹性布局
-   - CSS3 网格布局
+   - CSS3 变形 transform
+   - CSS3 动画 animation
+   - CSS3 过渡 transition
+   - CSS3 渐变 gradient
+   - CSS3 滤镜 filter
+   - CSS3 弹性布局 flex
+   - CSS3 网格布局 grad
 3. JavaScript
+   - 闭包 closure
    - Ajax
    - Array
+   - Function
    - Object
    - Promise
    - Reg
    - ES6
 4. 浏览器
    - 浏览器渲染
+   - 事件循环 Event Loop
    - document
    - AST
+   - DOM
+   - BOM
+   - DOM 树
 5. 数学
+   - 数学知识
 6. 算法
 
 ### 四、前端项目文件夹（/前端项目）
