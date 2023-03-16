@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-15 21:54:45
+ * @LastEditTime: 2023-03-16 20:12:55
  * @Description: TypeScript 面试题（18题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
@@ -530,6 +530,19 @@ function baz(obj: unknown) {
 ```
 
 这样，我们就可以在运行时对一个变量进行类型判断并进行不同的操作了。
+
+#### TS 里的感叹号是什么意思？
+
+在 TypeScript 中，感叹号（!）被称为非空断言操作符（non-null assertion operator）。它用于告诉编译器一个变量一定不为 null 或 undefined，因此可以放心地使用它而不需要进行空值检查。
+
+例如，假设我们有一个可能为 null 或 undefined 的变量 name，我们可以使用感叹号来断言它不为 null 或 undefined：
+
+```
+const name: string | null = getName();
+const message = `Hello, ${name!}`; // name 不为 null 或 undefined，可以放心使用
+```
+
+需要注意的是，非空断言操作符并不能保证变量的值不为 null 或 undefined，它只是告诉编译器我们的确知道这个变量不为 null 或 undefined，如果在运行时变量的值仍然为 null 或 undefined，会导致运行时错误。因此，应该尽可能避免使用非空断言操作符，而是使用更安全的类型检查和空值检查来保证代码的正确性。
 
 #### tsconfig.json 有哪些常用配置？
 
