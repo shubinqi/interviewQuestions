@@ -2,11 +2,13 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-17 20:18:44
+ * @LastEditTime: 2023-03-17 21:01:19
  * @Description: TypeScript 面试题（21题）
- * @Version: 1.0.0
+ * @Version: 1.1.0
  * @FilePath: \interviewQuestions\TypeScript.md
 -->
+
+### 一、TypeScript 基础
 
 #### TypeScript 是什么？有什么特点？
 
@@ -54,6 +56,8 @@ JavaScript 相比于 TypeScript 的优势：
 - **更加灵活**：由于 JavaScript 是一种动态语言，因此它更加灵活，可以在运行时进行类型转换。这种灵活性对于需要快速迭代的项目非常有用。
 - **更广泛的支持**：由于 JavaScript 是一种广泛使用的语言，因此它有大量的第三方库和工具，这使得开发人员可以更快速地开发和部署应用程序。
 - **更好的可读性**：由于 JavaScript 没有类型注释，因此代码可以更加简洁，易于阅读和理解。这对于小型项目非常有用，因为它可以加快开发速度。
+
+### 二、TypeScript 类型
 
 #### TypeScript 中的类型有哪些？
 
@@ -235,6 +239,64 @@ const student: Student = {
 ```
 
 一般来说，如果要定义一个对象类型，建议使用 interface；如果要定义其他类型，例如联合类型、交叉类型等，建议使用 type。不过这只是一种通用的规则，具体还要根据实际情况来选择。
+
+#### 如何检查 TS 中的 null 和 undefiend？
+
+在 TypeScript 中，可以使用类型联合（Union Types）来检查 null 和 undefined。
+
+例如，一个字符串类型的变量可能是一个字符串，也可能是 null 或 undefined，可以使用类型联合来声明这个变量的类型：
+
+```
+let str: string | null | undefined;
+```
+
+这样，当使用这个变量时，就需要进行 null 或 undefined 的检查：
+
+```
+if (str !== null && str !== undefined) {
+  // 进行操作
+}
+```
+
+也可以使用非空断言操作符（!）来告诉 TypeScript 这个变量一定有值：
+
+```
+let str: string | null | undefined;
+// 假设已经确定 str 不为 null 或 undefined
+console.log(str!.length); // 非空断言操作符
+```
+
+需要注意的是，在使用非空断言操作符时，如果这个变量确实为 null 或 undefined，就会导致运行时错误，因此要慎重使用。
+
+#### TypeScript 中 const 和 readonly 的区别是什么？
+
+在 TypeScript 中，const 和 readonly 都用于定义不可变的变量，但它们的作用略有不同。
+
+const 声明的变量是常量，不仅值不能改变，而且类型也不能改变。常量一般在声明时就要被初始化，因为之后就不能再改变它们的值。
+
+readonly 声明的变量是只读的，值只能在声明时或构造函数内赋值，之后不能再修改。与 const 不同的是，readonly 可以在对象属性上使用，表示该属性只读，不能被修改。
+
+下面是一个例子，说明 const 和 readonly 的区别：
+
+```
+const foo = "bar";
+foo = "baz"; // 报错，const 变量的值不能改变
+
+class Person {
+  readonly name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+const person = new Person("Alice");
+person.name = "Bob"; // 报错，readonly 变量的值不能改变
+```
+
+总之，const 用于声明常量，readonly 用于声明只读的变量或属性。
+
+### 三、TypeScript 其他面试题
 
 #### TS 中 命名空间与模块的理解和区别？
 
@@ -425,62 +487,6 @@ const reversedWords = reverse(words); // ['orange', 'banana', 'apple']
 在上面的例子中，reverse 函数使用了一个类型参数 T 来表示一个未知的类型，然后在参数中使用了 T[] 表示一个元素类型为 T 的数组，函数返回值也是一个元素类型为 T 的数组。在调用 reverse 函数时，我们可以传入任何类型的数组，并且返回的结果也是一个相同类型的数组。
 
 除了在函数中使用泛型，我们还可以在类、接口、类型别名等中使用泛型，这样可以使代码更加通用和灵活。
-
-#### 如何检查 TS 中的 null 和 undefiend？
-
-在 TypeScript 中，可以使用类型联合（Union Types）来检查 null 和 undefined。
-
-例如，一个字符串类型的变量可能是一个字符串，也可能是 null 或 undefined，可以使用类型联合来声明这个变量的类型：
-
-```
-let str: string | null | undefined;
-```
-
-这样，当使用这个变量时，就需要进行 null 或 undefined 的检查：
-
-```
-if (str !== null && str !== undefined) {
-  // 进行操作
-}
-```
-
-也可以使用非空断言操作符（!）来告诉 TypeScript 这个变量一定有值：
-
-```
-let str: string | null | undefined;
-// 假设已经确定 str 不为 null 或 undefined
-console.log(str!.length); // 非空断言操作符
-```
-
-需要注意的是，在使用非空断言操作符时，如果这个变量确实为 null 或 undefined，就会导致运行时错误，因此要慎重使用。
-
-#### TypeScript 中 const 和 readonly 的区别是什么？
-
-在 TypeScript 中，const 和 readonly 都用于定义不可变的变量，但它们的作用略有不同。
-
-const 声明的变量是常量，不仅值不能改变，而且类型也不能改变。常量一般在声明时就要被初始化，因为之后就不能再改变它们的值。
-
-readonly 声明的变量是只读的，值只能在声明时或构造函数内赋值，之后不能再修改。与 const 不同的是，readonly 可以在对象属性上使用，表示该属性只读，不能被修改。
-
-下面是一个例子，说明 const 和 readonly 的区别：
-
-```
-const foo = "bar";
-foo = "baz"; // 报错，const 变量的值不能改变
-
-class Person {
-  readonly name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-const person = new Person("Alice");
-person.name = "Bob"; // 报错，readonly 变量的值不能改变
-```
-
-总之，const 用于声明常量，readonly 用于声明只读的变量或属性。
 
 #### TS 类型断言 in typeof instanecof 语法的区别？
 
