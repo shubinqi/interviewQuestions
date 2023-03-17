@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-16 20:12:55
- * @Description: TypeScript 面试题（18题）
+ * @LastEditTime: 2023-03-17 20:18:44
+ * @Description: TypeScript 面试题（21题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\TypeScript.md
 -->
