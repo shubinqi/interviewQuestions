@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-12 15:02:00
+ * @LastEditTime: 2023-03-18 16:11:05
  * @Description: Vue 3.X 面试题（31题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端框架\Vue\Vue3.md
@@ -249,7 +249,7 @@ setup 函数可以返回一个对象，也可以是一个函数，由函数来�
 
 watch 和 watchEffect 都是 Vue 3.x 中的响应式 API，用于观察数据变化并执行相应的副作用。它们的主要区别如下：
 
-1. 使用方式不同：watch 通过传递要监听的数据和回调函数来实现，而 watchEffect 直接接收一个回调函数。
+1. **使用方式不同**：watch 通过传递要监听的数据和回调函数来实现，而 watchEffect 直接接收一个回调函数。
 1. watchEffect 是一个立即执行的副作用，当其所依赖的响应式数据变化时会重新执行回调函数，而 watch 可以设置 immediate 选项来指定是否在初始渲染时立即执行回调函数。
 1. watch 可以对多个数据进行监听，可以使用数组的形式，也可以使用对象的形式；而 watchEffect 只能对一个数据进行监听。
 1. watch 可以手动停止监听，而 watchEffect 不支持手动停止。
