@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-15 09:05:18
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-15 19:08:07
+ * @LastEditTime: 2023-03-19 20:41:23
  * @Description: CSS 弹性布局 Flex
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\CSS\CSS3-弹性布局-flex.md
@@ -63,6 +63,10 @@ Flex 布局中有很多属性，以下是一些常用的属性及其取值：
    - 说明：用于设置 flex 项的三个属性的缩写。
 
 以上是一些常用的 Flex 属性及其取值，使用这些属性可以方便地控制 Flex 布局中容器和项的排列方式和大小。
+
+1. **flex-grow**：放大比例，默认为 0 ，即如果有多余空间，也不放大
+1. **flex-shrink**：缩小比例，默认为 1，即如果空间不足，该项目将缩小
+1. **flex-basies**：项目占据的主轴空间，默认值为 auto，即项目本身的大小，可以设置成跟 width 和 height 相同的值，则将占据固定空间
 
 #### 写一个 Flex 使用示例？
 

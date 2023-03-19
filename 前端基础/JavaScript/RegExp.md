@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-06 22:05:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 18:00:46
- * @Description: Reg 正则表达式（3题）
+ * @LastEditTime: 2023-03-19 19:26:59
+ * @Description: RegExp 正则表达式（3题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\JavaScript\Reg.md
+ * @FilePath: \interviewQuestions\前端基础\JavaScript\RegExp.md
 -->
 
 ### 一、正则表达式 Reg
