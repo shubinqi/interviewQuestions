@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-18 16:26:17
- * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不统计总数）
+ * @LastEditTime: 2023-03-19 21:13:14
+ * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
 -->
@@ -216,6 +216,7 @@
    - Promise
    - Reg
    - ES6
+   - JS 扫盲
 4. **浏览器**
    - 浏览器渲染
    - 事件循环 Event Loop
@@ -250,6 +251,13 @@
    3. JS 数据结构与算法
 6. **数学**
    - 数学知识
+   - 数学扫盲
+   - 离散数学
+7. **计算机**
+   1. HTTP
+      - HTTP
+   1. TCP/IP
+      - TCP/IP
 
 ### 四、前端项目文件夹（/前端项目）
 
