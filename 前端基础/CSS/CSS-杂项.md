@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-14 19:42:00
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:42:03
+ * @LastEditTime: 2023-03-20 19:36:49
  * @Description: CSS 零散知识
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\CSS\CSS-杂项.md
@@ -10,7 +10,7 @@
 
 #### 层叠上下文和层叠顺序？
 
-层叠上下文（Stacking Context）是指在页面中某个元素形成的一个独立的渲染空间，该空间内的元素在渲染时不会影响到外部元素，同时内部元素也具有自己的层叠顺序。层叠上下文可以理解为一种三维空间，其中每个元素都位于一个不同的层次之上或之下。
+**层叠上下文**（Stacking Context）是指在页面中某个元素形成的一个独立的渲染空间，该空间内的元素在渲染时不会影响到外部元素，同时内部元素也具有自己的层叠顺序。层叠上下文可以理解为一种三维空间，其中每个元素都位于一个不同的层次之上或之下。
 
 在 CSS 中，一些属性（如 z-index）可以创建一个新的层叠上下文，而一些元素（如 position 为 fixed 或 absolute 的元素、opacity 小于 1 的元素等）会自动成为层叠上下文。
 

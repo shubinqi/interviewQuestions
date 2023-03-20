@@ -2,15 +2,15 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-15 13:50:37
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-15 16:26:01
+ * @LastEditTime: 2023-03-20 19:39:18
  * @Description: CSS 定位 position
  * @Version: 1.0.0
- * @FilePath: \pcc-webd:\BaiduSyncdisk\Git\CSS-定位-position.md
+ * @FilePath: \interviewQuestions\前端基础\CSS\CSS-定位-position.md
 -->
 
 #### CSS 定位是什么？有什么作用和使用场景？
 
-CSS 定位是指通过 CSS 样式来控制 HTML 元素的布局位置，包括相对定位、绝对定位和固定定位等方式。
+**CSS 定位**是指通过 CSS 样式来控制 HTML 元素的布局位置，包括相对定位、绝对定位和固定定位等方式。
 
 CSS 定位的主要作用是实现对 HTML 元素的准确布局和定位，使网页具有更好的可读性、可用性和美观性。
 

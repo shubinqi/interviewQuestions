@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-19 21:13:14
+ * @LastEditTime: 2023-03-20 19:26:49
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -191,6 +191,7 @@
    - Canvas
    - SVG
    - link
+   - HTML 标签
    - 前端布局
 2. **CSS**
    - CSS 变量 var

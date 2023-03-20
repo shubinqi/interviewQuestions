@@ -12,7 +12,7 @@
 
 #### Promise
 
-Promise 是 ES6 中引入的一种异步编程解决方案，用于解决回调地狱等问题。前端开发中，掌握 Promise 是必须的。下面是前端需要学习的 Promise 内容：
+**Promise** 是 ES6 中引入的一种异步编程解决方案，用于解决回调地狱等问题。前端开发中，掌握 Promise 是必须的。下面是前端需要学习的 Promise 内容：
 
 1. **Promise 的概念和用法**：Promise 是一个对象，表示异步操作的最终完成或失败，Promise 对象可以将异步操作的结果以回调函数的方式传递给调用方。
 1. **Promise 的状态和转换**：Promise 有三种状态，分别是 Pending（进行中）、Fulfilled（已成功）和 Rejected（已失败），状态一旦改变就不能再变化。
@@ -24,7 +24,7 @@ Promise 是 ES6 中引入的一种异步编程解决方案，用于解决回调�
 
 #### Fetch 是什么？有什么优缺点？
 
-Fetch 是 JavaScript 中的一个 API，用于在浏览器中发送网络请求，以获取数据或资源。它提供了一种现代化的方式来代替旧的 XMLHttpRequest （XHR）方式，以更加简单、灵活、可读性强的方式进行网络请求。
+**Fetch** 是 JavaScript 中的一个 API，用于在浏览器中发送网络请求，以获取数据或资源。它提供了一种现代化的方式来代替旧的 XMLHttpRequest （XHR）方式，以更加简单、灵活、可读性强的方式进行网络请求。
 
 Fetch API 具有以下优点：
 
@@ -95,7 +95,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
 
 #### Promise 是什么？有什么优缺点？
 
-Promise 是一种异步编程解决方案，它是 ES6 中新增的一种对象类型。Promise 用于处理异步操作，可以将异步操作的结果以 Promise 对象的形式返回，方便进行链式调用和错误处理。
+**Promise** 是一种异步编程解决方案，它是 ES6 中新增的一种对象类型。Promise 用于处理异步操作，可以将异步操作的结果以 Promise 对象的形式返回，方便进行链式调用和错误处理。
 
 Promise 对象有三种状态：pending、fulfilled 和 rejected。当 Promise 对象处于 pending 状态时，表示异步操作正在进行中；当 Promise 对象处于 fulfilled 状态时，表示异步操作已成功完成并返回了一个值；当 Promise 对象处于 rejected 状态时，表示异步操作发生了错误并返回了一个错误对象。Promise 对象状态一旦改变，就会一直保持这个状态，不会再次发生变化。
 
@@ -146,13 +146,13 @@ Promise 对象有三种状态，分别是 pending（进行中）、fulfilled（�
 
 下面分别介绍一下 Promise 对象的三种状态：
 
-1. pending
+1. **pending**
    Promise 对象初始状态为 pending，表示异步操作正在进行中。此时，Promise 对象还没有得到异步操作的结果，无法进行后续操作。Promise 对象处于 pending 状态时，可以使用 then() 方法指定异步操作成功后的回调函数和 catch() 方法指定异步操作失败后的回调函数。
 
-2. fulfilled
+2. **fulfilled**
    当异步操作成功完成并返回一个值时，Promise 对象的状态会从 pending 转变为 fulfilled。此时，Promise 对象的 then() 方法会被触发，将异步操作的结果传递给 then() 方法的回调函数。在 then() 方法中，可以对异步操作的结果进行处理，或者继续返回一个新的 Promise 对象进行链式调用。
 
-3. rejected
+3. **rejected**
    当异步操作发生错误并返回一个错误对象时，Promise 对象的状态会从 pending 转变为 rejected。此时，Promise 对象的 catch() 方法会被触发，将错误对象传递给 catch() 方法的回调函数。在 catch() 方法中，可以对错误对象进行处理，或者继续返回一个新的 Promise 对象进行链式调用。
 
 需要注意的是，一旦 Promise 对象的状态发生改变，就不会再次发生变化。例如，如果 Promise 对象的状态从 pending 转变为 fulfilled，那么它就会一直保持在 fulfilled 状态，直到调用 then() 方法进行处理。同样，如果 Promise 对象的状态从 pending 转变为 rejected，那么它就会一直保持在 rejected 状态，直到调用 catch() 方法进行处理。

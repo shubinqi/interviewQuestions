@@ -2,15 +2,15 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-06 22:05:27
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-10 00:22:56
+ * @LastEditTime: 2023-03-20 19:40:34
  * @Description: SVG（5题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Tool\Others\SVG.md
+ * @FilePath: \interviewQuestions\前端基础\HTML\SVG.md
 -->
 
 #### SVG 是什么？有什么作用？
 
-SVG（Scalable Vector Graphics，可缩放矢量图形）是一种用于描述二维图形的 XML 标记语言。与传统的图像格式（如 JPG、PNG、GIF）不同，SVG 是一种基于矢量的图形格式，它可以缩放而不会失真，并且可以被搜索、索引、脚本化和压缩。
+**SVG**（Scalable Vector Graphics，**可缩放矢量图形**）是一种用于描述二维图形的 XML 标记语言。与传统的图像格式（如 JPG、PNG、GIF）不同，SVG 是一种基于矢量的图形格式，它可以缩放而不会失真，并且可以被搜索、索引、脚本化和压缩。
 
 SVG 的主要作用如下：
 

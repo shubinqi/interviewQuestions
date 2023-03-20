@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-14 19:47:50
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:47:52
+ * @LastEditTime: 2023-03-20 19:44:18
  * @Description: DOM 树
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\浏览器\DOM树.md
@@ -10,7 +10,7 @@
 
 #### DOM 树是怎么生成的？
 
-DOM（Document Object Model）树是表示 HTML 文档的树形结构，通过将 HTML 文档解析成一个由节点和对象组成的树形结构来表示文档。
+**DOM**（Document Object Model）树是表示 HTML 文档的树形结构，通过将 HTML 文档解析成一个由节点和对象组成的树形结构来表示文档。
 
 当浏览器请求一个 HTML 页面时，它会根据 HTML 标签的结构和内容创建一个 DOM 树。DOM 树包括以下类型的节点：
 

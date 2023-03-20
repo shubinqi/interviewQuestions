@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-06 22:05:19
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:18:02
+ * @LastEditTime: 2023-03-20 19:40:20
  * @Description: Canvas（6题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\HTML\Canvas.md
@@ -10,7 +10,7 @@
 
 #### Canvas 是什么？有什么作用？
 
-Canvas 是 HTML5 中新增的元素之一，它是一个画布，可以通过 JavaScript 在画布上绘制图形、动画、游戏等。Canvas 可以让开发人员使用 JavaScript 代码来创建和操作图形，而不需要使用其他插件或技术。
+**Canvas** 是 HTML5 中新增的元素之一，它是一个画布，可以通过 JavaScript 在画布上绘制图形、动画、游戏等。Canvas 可以让开发人员使用 JavaScript 代码来创建和操作图形，而不需要使用其他插件或技术。
 
 Canvas 的主要作用如下：
 

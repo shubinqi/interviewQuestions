@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-06 22:05:46
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-19 19:26:59
+ * @LastEditTime: 2023-03-20 19:42:08
  * @Description: RegExp 正则表达式（3题）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\JavaScript\RegExp.md
@@ -12,7 +12,7 @@
 
 #### Reg 是什么？有什么作用？
 
-Reg 是一个 JavaScript 库，用于处理正则表达式。它提供了许多内置方法，用于对字符串进行模式匹配、搜索和替换等操作。使用 Reg，开发人员可以轻松地进行复杂的字符串操作，包括从字符串中提取信息、验证输入等等。
+**Reg** 是一个 JavaScript 库，用于处理正则表达式。它提供了许多内置方法，用于对字符串进行模式匹配、搜索和替换等操作。使用 Reg，开发人员可以轻松地进行复杂的字符串操作，包括从字符串中提取信息、验证输入等等。
 
 Reg 提供了以下常用的方法：
 

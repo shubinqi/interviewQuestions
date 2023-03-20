@@ -10,7 +10,7 @@
 
 #### Ajax 是什么？有什么优缺点？
 
-Ajax（Asynchronous JavaScript and XML）是一种在 Web 页面中创建异步请求的技术，通过 JavaScript 和 XML 实现数据的异步传输和更新。Ajax 可以使 Web 应用程序实现异步加载数据，从而提高页面的响应速度和用户体验。
+**Ajax**（Asynchronous JavaScript and XML）是一种在 Web 页面中创建异步请求的技术，通过 JavaScript 和 XML 实现数据的异步传输和更新。Ajax 可以使 Web 应用程序实现异步加载数据，从而提高页面的响应速度和用户体验。
 
 优点：
 

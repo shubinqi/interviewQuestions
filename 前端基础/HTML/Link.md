@@ -3,12 +3,12 @@
  * @Date: 2023-03-14 21:09:31
  * @LastEditors: Shu Binqi
  * @LastEditTime: 2023-03-14 21:13:09
- * @Description: HTML 标签
+ * @Description: Link 和 src
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\HTML\Link.md
 -->
 
-#### media 属性定义媒体查询？
+#### link 使用 media 属性定义媒体查询？
 
 可以在 &lt;style&gt;、&lt;link&gt;、&lt;source&gt; 等标签的 media 属性中来定义媒体查询
 

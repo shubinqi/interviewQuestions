@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-14 19:13:05
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:13:20
+ * @LastEditTime: 2023-03-20 19:37:55
  * @Description: CSS3 渐变 Gradient
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\CSS\CSS3-渐变-gradient.md
@@ -10,7 +10,7 @@
 
 #### 介绍一下 CSS 渐变？
 
-CSS 渐变（Gradient）是指通过指定起始颜色和结束颜色，在两者之间生成一系列颜色过渡的效果。渐变通常应用于背景色、边框、文本颜色等元素的样式中。
+**CSS 渐变**（Gradient）是指通过指定起始颜色和结束颜色，在两者之间生成一系列颜色过渡的效果。渐变通常应用于背景色、边框、文本颜色等元素的样式中。
 
 CSS 渐变分为线性渐变和径向渐变两种。
 
