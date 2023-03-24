@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-19 21:12:26
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-23 20:27:12
+ * @LastEditTime: 2023-03-23 21:52:46
  * @Description: HTTP
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端基础\计算机\HTTP\HTTP.md
