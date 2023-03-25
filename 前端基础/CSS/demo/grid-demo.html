@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      grid-gap: 10px;
+    }
+
+    .item1 {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+      background: #f1f1f1;
+    }
+
+    .item2 {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      background: #f5f5f5;
+    }
+
+    .item3 {
+      grid-column: 3;
+      grid-row: 1;
+      background: #f9f9f9;
+    }
+  </style>
+  <title>Grid Demo</title>
+</head>
+
+<body>
+  <div class="grid-container">
+    <div class="item item1">Item 1</div>
+    <div class="item item2">Item 2</div>
+    <div class="item item3">Item 3</div>
+  </div>
+</body>
+
+</html>
