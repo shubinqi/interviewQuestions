@@ -15,6 +15,8 @@ AI 对话
 - **OpenAI**：https://openai.com/
 - **ChatGPT**：https://chat.openai.com/
   1. 1 小时：100 个问题
+  1. 官网注册地址：https://beta.openai.com/signup（邮箱或者谷歌账号）
+  1. 注册短信代收：https://sms-activate.org/（大概需要充值 1 美元）
 - **文心大模型**：https://wenxin.baidu.com/
 - **文心一言**：https://wenxin.baidu.com/ernie3
 
