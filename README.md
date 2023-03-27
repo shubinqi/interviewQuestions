@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-20 19:26:49
+ * @LastEditTime: 2023-03-27 19:51:56
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -267,21 +267,21 @@
 
 #### 前端项目笔记和面试题
 
-1. 混合应用开发
+1. 混合应用开发文件夹
    1. 小程序
       - Wxapp：微信小程序
       - Uni-app
    2. Wechat：微信公众号
    3. Electron
    4. H5
-2. 原生应用开发
+2. 原生应用开发文件夹
    1. Flutter
       - Dart
       - Flutter
    2. React Native
    3. HarmonyOS
    4. Weex
-3. 大前端架构
+3. 大前端架构文件夹
    1. 微前端（已更新 3 题）
    2. 低代码
    3. 服务器
@@ -289,14 +289,20 @@
       - Linux
       - Nginx
    4. WebRTC
-4. 大屏
+4. 数据可视化文件夹
    - 监控大屏
    - 数据可视化
    - 数据可视化大屏
-5. 游戏开发
+5. 游戏开发文件夹
    - CocosCreator
    - Unity
    - WebGL
+6. 前端项目封装
+   - 登录注册校验
+   - 封装支付
+   - 封装 Axios
+7. 前端项目
+8. 项目优化
 
 ### 五、其他文件夹
 
@@ -368,9 +374,11 @@
 ### 七、扩展（/扩展知识）规划中...
 
 1. Java
-
+   - SpringBoot
 2. PHP
-
+   - PHP 基础
 3. Python
-
+   - Python 基础
 4. Go
+   - Go 语言
+   - Golang
