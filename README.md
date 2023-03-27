@@ -220,12 +220,14 @@
    - JS 扫盲
 4. **浏览器**
    - 浏览器渲染
+   - 浏览器调试
    - 事件循环 Event Loop
    - document
    - AST
    - DOM
    - BOM
    - DOM 树
+   - Performance
 5. **数据结构与算法**
    1. 数据结构
       - 数组-Array
