@@ -72,6 +72,10 @@ animation 方法
 }
 ```
 
+#### GSAP 动画库
+
+GSAP 是 GreenSock Animation Platform 的缩写，是一个 JavaScript 动画库，用于创建高性能、复杂的动画效果。它提供了一组强大的 API，包括 TweenMax、TimelineMax 等，可以使开发者轻松地创建流畅、快速、交互性强的动画效果。GSAP 被广泛用于 Web 开发、游戏开发、移动应用程序等多个领域，可以用于创建平滑的页面过渡、动态网页效果、响应式设计动画等。
+
 #### 淡入淡出
 
 ```
