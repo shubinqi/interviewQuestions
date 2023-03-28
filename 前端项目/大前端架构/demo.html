@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>前端低代码示例</title>
+  <!-- 引入 Element UI 样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="editor">
+      <!-- 左侧 Element UI 组件 -->
+      <div class="components">
+        <el-button draggable="true" @dragstart="onDragStart">按钮</el-button>
+        <el-input draggable="true" @dragstart="onDragStart">输入框</el-input>
+        <el-checkbox draggable="true" @dragstart="onDragStart">复选框</el-checkbox>
+      </div>
+      <!-- 右侧渲染页面 -->
+      <div class="render">
+        <div class="placeholder" v-if="!components.length">
+          拖拽左侧组件至此处
+        </div>
+        <component v-for="(item, index) in components" :key="index" :is="item.component" :props="item.props">
+        </component>
+      </div>
+    </div>
+  </div>
+  <!-- 引入 Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 引入 Element UI -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        components: [] // 右侧渲染的组件列表
+      },
+      methods: {
+        // 拖拽开始，获取拖拽的组件信息
+        onDragStart (event) {
+          const component = event.target.tagName.toLowerCase()
+          const props = {}
+          // 遍历属性，提取出组件的 props
+          for (const prop in event.target) {
+            if (prop.indexOf('data-') === 0) {
+              props[prop.slice(5)] = event.target.getAttribute(prop)
+            }
+          }
+          // 将组件信息添加到列表中
+          this.components.push({
+            component,
+            props
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
