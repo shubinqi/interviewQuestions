@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:04:58
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-02-28 17:39:40
- * @Description: Pinia 状态管理模式（7题）
+ * @LastEditTime: 2023-03-30 22:02:03
+ * @Description: Pinia 状态管理模式（8题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\Vue\Pinia.md
+ * @FilePath: \interviewQuestions\前端框架\Vue\Pinia.md
 -->
 
 #### 讲一下 Pinia 的核心属性？
@@ -18,6 +18,22 @@ Pinia 是一个状态管理库，它的核心属性包括以下几个：
 1. **actions**: 表示异步操作。它们通常用来执行一些异步的操作，例如获取数据等等。在执行异步操作之前，我们可以在 action 中执行一些同步操作，例如修改 state 中的数据。
 
 这些核心属性使得 Pinia 成为了一个非常方便的状态管理库，它可以让我们更加容易地管理应用中的状态。
+
+#### Pinia 有哪些函数？
+
+Pinia 中有以下常用的函数：
+
+1. **createPinia()**: 用于创建一个 Pinia 实例，可以在应用程序的根级别调用，以便在整个应用程序中使用。
+1. **defineStore()**: 用于定义一个新的 store 模块，该模块包含了状态、操作和 getter。
+1. **useStore()**: 用于在组件中使用 store 模块，它会返回一个 store 实例，可以用来获取和修改状态。
+1. **store.$state**: 用于获取 store 模块的状态，它是一个响应式对象。
+1. **store.$on(eventName, callback)**: 用于监听 store 模块的事件，当模块中的状态发生变化时，会触发回调函数。
+1. **store.$reset()**: 用于重置 store 模块的状态，将状态恢复到初始值。
+1. **store.$patch()**: 用于部分更新 store 模块的状态，可以只更新状态中的某些属性。
+1. **store.$subscribe(callback)**: 用于订阅 store 模块的状态，当状态发生变化时，会触发回调函数。
+1. **store.$fetch()**: 用于获取 store 模块的状态，可以用来初始化组件中的状态。
+
+总之，Pinia 中的函数主要用于创建、定义、使用和管理 store 模块，以及获取和修改状态。
 
 #### 为什么 Pinia 没有 mutations？
 

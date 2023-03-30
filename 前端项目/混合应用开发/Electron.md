@@ -2,13 +2,13 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-01 07:22:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-01 07:43:00
+ * @LastEditTime: 2023-03-30 22:18:16
  * @Description: Electron （桌面端应用开发）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\PC\Electron.md
+ * @FilePath: \interviewQuestions\前端项目\混合应用开发\Electron.md
 -->
 
-#### Electron
+#### Electron 是什么？
 
 Electron 是一款基于 Chromium 和 Node.js 的跨平台桌面应用程序开发框架。如果想学习 Electron，需要掌握以下内容：
 
@@ -21,3 +21,15 @@ Electron 是一款基于 Chromium 和 Node.js 的跨平台桌面应用程序开�
 1. **Electron 应用程序的调试和测试**：掌握 Electron 应用程序的调试和测试技术，包括使用 Chrome DevTools 进行调试、使用 Spectron 进行自动化测试等。
 
 除了上述内容，还可以学习 Electron 生态系统中丰富的第三方模块和工具，如打包工具 electron-builder、调试工具 devtron、UI 库 Electron-React 等，以提高开发效率和应用程序的质量。
+
+#### Electron 可以做什么？有什么特点？
+
+Electron 是一个跨平台的开源框架，可以使用 HTML、CSS 和 JavaScript 构建桌面应用程序。它的特点包括：
+
+1. **跨平台**：Electron 可以在 Windows、Mac 和 Linux 等多个平台上运行。
+1. **基于 Web 技术**：使用 Electron 可以使用熟悉的 Web 技术构建桌面应用程序。
+1. **开源**：Electron 是一个开源框架，拥有庞大的社区支持。
+1. **强大的功能**：Electron 提供了大量的 API，支持多窗口、系统托盘、菜单、剪贴板等常用功能。
+1. **容易使用**：使用 Electron 可以快速构建出漂亮、功能强大的桌面应用程序。
+
+Electron 可以用于构建各种类型的桌面应用程序，包括文本编辑器、音乐播放器、聊天应用程序、开发工具等。
