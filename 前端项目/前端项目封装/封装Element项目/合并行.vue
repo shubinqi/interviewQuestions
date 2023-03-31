@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-31 20:16:09
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-31 21:32:26
+ * @LastEditTime: 2023-03-31 21:42:07
  * @Description: 合并行演示页面
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端项目\前端项目封装\封装Element项目\合并行.vue
@@ -64,7 +64,7 @@ export default {
         { id: 5, name: '5Alice', age: 19, gender: 'Female' },
         { id: 6, name: '6Alice', age: 19, gender: 'Female' },
         { id: 6, name: '6Alice', age: 19, gender: 'Female' },
-        { id: 6, name: '6Alice', age: 19, gender: 'Female' },
+        { id: 6, name: '6Alice', age: 19, gender: 'Female' }
       ],
       tableDatas: [
         { id: 1, name: '1John', age: 18, gender: 'Male' },
@@ -78,11 +78,11 @@ export default {
         { id: 5, name: '5Alice', age: 19, gender: 'Female' },
         { id: 6, name: '6Alice', age: 19, gender: 'Female' },
         { id: 6, name: '6Alice', age: 19, gender: 'Female' },
-        { id: 7, name: '6Alice', age: 19, gender: 'Female' },
+        { id: 7, name: '6Alice', age: 19, gender: 'Female' }
       ],
       spanArrOrd: null, // 第一组数据
       spanArrRus: null // 第二组数据
-    };
+    }
   },
   created () {
     this.getSpanArr(this.tableData, 'id', 'spanArrOrd')
@@ -119,19 +119,19 @@ export default {
     },
     /**
      * @description: 合并行
-     * @param {*} rowIndex
-     * @param {*} columnIndex
+     * @param {Number} rowIndex 行号
+     * @param {Number} columnIndex 列号
      * @return {*}
      */
     objectSpanMethod ({ rowIndex, columnIndex }) {
       // 使用多个if可以给不同区域进行合并
       if (columnIndex === 0) {
-        const _row = this.spanArrOrd[rowIndex];
-        const _col = _row > 0 ? 1 : 0;
+        const _row = this.spanArrOrd[rowIndex]
+        const _col = _row > 0 ? 1 : 0
         return {
           rowspan: _row,
-          colspan: _col,
-        };
+          colspan: _col
+        }
       }
     },
     /**
@@ -142,14 +142,14 @@ export default {
      */
     objectSpanMethods ({ rowIndex, columnIndex }) {
       if (columnIndex === 0) {
-        const _row = this.spanArrRus[rowIndex];
-        const _col = _row > 0 ? 1 : 0;
+        const _row = this.spanArrRus[rowIndex]
+        const _col = _row > 0 ? 1 : 0
         return {
           rowspan: _row,
-          colspan: _col,
-        };
+          colspan: _col
+        }
       }
     }
   }
-};
+}
 </script>
