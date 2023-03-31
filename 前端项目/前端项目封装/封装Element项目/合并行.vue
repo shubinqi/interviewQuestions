@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-31 20:16:09
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-31 21:26:14
+ * @LastEditTime: 2023-03-31 21:32:26
  * @Description: 合并行演示页面
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\前端项目\前端项目封装\封装Element项目\合并行.vue
@@ -100,19 +100,20 @@ export default {
       // 存放合并行的数据
       this[list] = []
       data.forEach((element, index) => {
-        if (index === 0) { // 第一个
-          this.posOrd = 0
+        // 第一个
+        if (index === 0) {
+          this.listIndex = 0
           this[list].push(1)
           return
         }
-        // 根据某个 id 进行判断
-        if (element[columeName] === data[index - 1][columeName]) { // 与前一个比较
-          this[list][this.posOrd] += 1
+        // 根据某个 id 进行判断，与前一个比较
+        if (element[columeName] === data[index - 1][columeName]) {
+          this[list][this.listIndex] += 1
           this[list].push(0)
           return
         }
         // 中断视为新数据
-        this.posOrd = index
+        this.listIndex = index
         this[list].push(1)
       })
     },
