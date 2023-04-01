@@ -2,15 +2,15 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-27 22:46:08
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-03 02:00:36
+ * @LastEditTime: 2023-04-01 22:37:13
  * @Description: DNS 面试题（5题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\ComputerNetwork\DNS.md
+ * @FilePath: \interviewQuestions\计算机网络\DNS.md
 -->
 
 #### DNS 协议是什么？
 
-DNS（Domain Name System）协议是一种将域名（例如“example.com”）转换为与之关联的 IP 地址（例如“192.0.2.1”）的系统。DNS 协议提供了一个分布式的数据库系统，它将域名映射到相应的 IP 地址，以便在互联网上正确地路由和寻址网络数据。
+**DNS**（Domain Name System）协议是一种将域名（例如“example.com”）转换为与之关联的 IP 地址（例如“192.0.2.1”）的系统。DNS 协议提供了一个分布式的数据库系统，它将域名映射到相应的 IP 地址，以便在互联网上正确地路由和寻址网络数据。
 
 DNS 协议通常使用 UDP 协议进行通信，但也可以使用 TCP 协议。基本的 DNS 协议包含两种类型的信息：查询和响应。查询信息由客户端发出，请求解析特定的域名。响应信息包含该域名所对应的 IP 地址。
 
