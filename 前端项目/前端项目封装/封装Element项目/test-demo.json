@@ -1,0 +1,236 @@
+{
+  "list": [
+    {
+      "type": "table",
+      "label": "表格",
+      "columeName": "searchTable",
+      "width": "100%",
+      "showIndex": true,
+      "indexFixed": false,
+      "show-single-selection": false,
+      "singleSelectionFixed": true,
+      "show-multiple-selection": false,
+      "multipleSelectionFixed": true,
+      "tableColumns": [
+        {
+          "label": "出借方",
+          "columnName": "lender",
+          "type": "text",
+          "align": "center",
+          "fixed": false,
+          "width": "120",
+          "min-width": "",
+          "canEdit": false,
+          "tooltip": true,
+          "show": true,
+          "rules": [],
+          "list": [
+            {
+              "label": "证券代码",
+              "columnName": "securitiesCode",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "证券简称",
+              "columnName": "securitiesShortName",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "期限",
+              "columnName": "term",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "意向数量",
+              "columnName": "intentionQuantity",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "意向费率",
+              "columnName": "intentionRate",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            }
+          ]
+        },
+        {
+          "label": "借入方",
+          "columnName": "borrower",
+          "type": "text",
+          "align": "center",
+          "fixed": false,
+          "width": "120",
+          "min-width": "",
+          "canEdit": false,
+          "tooltip": true,
+          "show": true,
+          "rules": [],
+          "list": [
+            {
+              "label": "机构",
+              "columnName": "institution",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "费率",
+              "columnName": "rate",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "数量",
+              "columnName": "quantity",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "120",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            }
+          ]
+        },
+        {
+          "label": "分配结果",
+          "columnName": "allocationResult",
+          "type": "text",
+          "align": "center",
+          "fixed": "right",
+          "width": "400",
+          "min-width": "",
+          "canEdit": false,
+          "tooltip": true,
+          "show": true,
+          "rules": [],
+          "list": [
+            {
+              "label": "证券账号",
+              "columnName": "securityAccount",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "100",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "交易单元",
+              "columnName": "tradeUnit",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "100",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "数量",
+              "columnName": "quantity",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "100",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            },
+            {
+              "label": "操作",
+              "columnName": "quantity",
+              "type": "text",
+              "align": "center",
+              "fixed": false,
+              "width": "100",
+              "min-width": "",
+              "canEdit": false,
+              "tooltip": true,
+              "show": true,
+              "rules": [],
+              "list": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "model": {
+    "name": "",
+    "age": "",
+    "sex": ""
+  }
+}
