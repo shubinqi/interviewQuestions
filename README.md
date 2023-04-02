@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-01 21:12:04
+ * @LastEditTime: 2023-04-01 23:17:19
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestions\README.md
@@ -62,6 +62,7 @@
    - **MySQL**：/前端框架/NodeJS（已更新 3 题）
    - **微前端**：/前端项目/大前端架构（已更新 10 题）
    - **低代码**：/前端项目/大前端架构（已更新 3 题）
+   - **组件库**：/前端项目/大前端架构（已更新 2 题）
    - **数据可视化**：/前端项目/数据可视化（已更新 2 题）
    - **Echarts**：/Tool/数据可视化（已更新 2 题）
 6. **软件工程**（/软件工程）共 **118** 题
@@ -387,11 +388,81 @@
 ### 七、扩展（/扩展知识）规划中...
 
 1. Java
+   - Java 核心基础
+   - 面向对象编程
+   - MySQL 数据库
+   - JDBC 技术
+   - 连接池技术
+   - XML 与 Tomcat 中间件
+   - Servlet 与 JSP
+   - Maven
+   - MyBatis 使用和源码
+   - Spring 使用和源码
+   - SpringMVC 使用和源码
    - SpringBoot
+   - 安全验证框架
+   - Linux 系统常用操作
+   - Nginx 技术
+   - Docker
+   - Redis
+   - SpringCloud
+   - Mycat/Sharding-Sphere
+   - 微服务架构
+   - 分布式全局 ID
+   - MySQL 优化
+   - JVM 优化
 2. PHP
    - PHP 基础
 3. Python
    - Python 基础
+   - Python 网络数据采集
+   - 关系型数据库
+   - 商业智能（BI）工具
+   - Python 数据分析
+   - 机器学习数学基础
+   - 机器学习算法
+   - 深度学习
+   - 神经网络
+   - 数据仓库
+   - 大数据部署运维：Cloudera Manager
 4. Go
    - Go 语言
    - Golang
+5. 测试
+   - 测试需求分析
+   - 测试计划文档编写
+   - 测试用例设计及开发
+   - 测试手工执行
+   - 禅道系统提交
+   - 跟踪缺陷
+   - 回归测试
+   - 测试报告编写
+   - 小程序测试
+   - airtest 工具
+   - appium 工具
+   - 移动端测试
+   - 稳定性测试
+   - 兼容性测试
+   - 自动化测试
+   - 接口测试
+   - unittest 框架
+   - requests 工具
+   - jmeter 工具
+   - fiddler 工具
+   - postman 工具
+   - selenium 工具
+   - python 语言
+   - logging 日志模块
+   - 邮件模块
+   - ddt 数据驱动模块
+   - pom 设计模式
+   - 关键字驱动模式
+   - pymysql 模块实现场景还原
+6. 产品经理
+   - 认识产品经理
+   - 项目立项
+   - 问题思考维度
+   - 产品解决方案
+   - 思维导图
+   - 原型设计
+   - 需求收集和需求分析
