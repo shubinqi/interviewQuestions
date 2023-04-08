@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-04-06 22:39:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-08 15:06:36
+ * @LastEditTime: 2023-04-08 18:32:37
  * @Description: Vue 项目目录结构与常见文件
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端项目\前端项目封装\常见配置文件\Vue项目目录介绍.md
@@ -150,14 +150,13 @@ Vue 项目常见的配置文件有以下几种：
 
 ```
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/my-vue-project/'
-    : '/',
+  publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   productionSourceMap: false,
   devServer: {
     port: 8080,
+    open: true,
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
@@ -167,19 +166,71 @@ module.exports = {
         }
       }
     }
+  },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    }
+  },
+  chainWebpack: config => {
+    config.plugins.delete('preload')
+    config.plugins.delete('prefetch')
+    config.optimization.splitChunks({
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+            return `npm.${packageName.replace('@', '')}`
+          }
+        }
+      }
+    })
+  },
+  css: {
+    extract: true,
+    sourceMap: false,
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "@/styles/_variables.scss";
+          @import "@/styles/_mixins.scss";
+        `
+      }
+    }
+  },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: [
+        resolve('src/styles/_variables.scss'),
+        resolve('src/styles/_mixins.scss')
+      ]
+    }
   }
+}
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
 }
 ```
 
 下面是每个配置项的详细说明：
 
-1. **publicPath**: 静态资源的公共路径，用于在不同的部署环境下指定不同的 CDN 域名或路径前缀。在生产环境中，这个值需要设置为实际的部署路径，如示例中的"/my-vue-project/"。
+1. **publicPath**: 静态资源的公共路径，用于在不同的部署环境下指定不同的 CDN 域名或路径前缀。在生产环境中，这个值需要设置为实际的部署路径。
 1. **outputDir**: 打包输出目录的名称，默认为"dist"。
 1. **assetsDir**: 静态资源目录的名称，默认为"static"。在输出目录中，所有的静态资源都会被复制到该目录下。
 1. **productionSourceMap**: 是否在生产环境中生成 Source Map 文件，用于调试和错误追踪。默认为 false，即不生成 Source Map 文件。
-1. **devServer**: 开发服务器的配置，用于启动和管理本地开发环境。
-1. **port**: 开发服务器的监听端口号，默认为 8080。
-1. **proxy**: 设置代理服务器，用于解决前后端分离时的跨域问题。示例中的配置表示，所有以"/api"开头的请求都会被代理到"http://localhost:3000"这个地址下，并将"/api"前缀删除。
+1. **devServer**: 开发服务器配置，指定了开发服务器的端口、是否自动打开浏览器、代理等配置。
+   - **port**: 开发服务器的监听端口号，默认为 8080。
+   - **proxy**: 设置代理服务器，用于解决前后端分离时的跨域问题。示例中的配置表示，所有以"/api"开头的请求都会被代理到"http://localhost:3000"这个地址下，并将"/api"前缀删除。
+1. **configureWebpack**: Webpack 配置，指定了 Webpack 的一些配置，例如别名等。
+1. **chainWebpack**: 链式 Webpack 配置，指定了一些链式操作，例如删除预加载和预取、代码分割等。
+1. **css**: CSS 相关配置，指定了是否提取 CSS、是否生成 source map、CSS loader 的配置等。
+1. **pluginOptions**: 插件相关配置，指定了一些插件的配置，例如 style-resources-loader 插件的配置。
 
 除了以上列出的配置项，vue.config.js 还可以包含其他配置项，比如 configureWebpack、chainWebpack、lintOnSave 等。下面是这些配置项的说明：
 
