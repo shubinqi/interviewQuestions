@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-04-06 22:44:45
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-06 22:47:43
+ * @LastEditTime: 2023-04-08 14:01:39
  * @Description: React 项目目录结构
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端项目\前端项目封装\常见配置文件\React项目目录介绍.md
@@ -13,7 +13,7 @@
 React 项目的目录结构一般如下：
 
 ```
-├── public
+┌── public
 │   ├── index.html          // 入口 HTML
 │   └── favicon.ico         // 网站图标
 ├── src

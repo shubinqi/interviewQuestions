@@ -2,8 +2,8 @@
  * @Author: Shu Binqi
  * @Date: 2023-04-06 22:39:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-07 22:38:34
- * @Description: Vue 项目
+ * @LastEditTime: 2023-04-08 14:01:50
+ * @Description: Vue 项目目录结构与常见文件
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端项目\前端项目封装\常见配置文件\Vue项目目录介绍.md
 -->
@@ -13,7 +13,7 @@
 Vue 项目目录结构
 
 ```
-├── public
+┌── public
 │   ├── index.html          // 入口 HTML
 │   └── favicon.ico         // 网站图标
 ├── src
@@ -291,6 +291,125 @@ module.exports = {
 
 需要注意的是，Babel 的配置选项是非常丰富的，除了上述示例中列举的预设选项和插件选项外，还有许多其他的选项可以用于配置 Babel 的转译行为。可以根据项目需求选择合适的选项来配置 Babel。
 
+#### Vue 项目 tsconfig.json 文件示例
+
+以下是一个基本的 Vue 项目的 tsconfig.json 文件示例：
+
+```
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "types": [
+      "webpack-env",
+      "mocha",
+      "chai",
+      "node",
+      "vue-types",
+      "vue-router",
+      "vuex",
+      "vuetify"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+```
+
+下面对每个配置项进行解释：
+
+1. **target**: 指定了编译后代码的目标 ECMAScript 版本，默认为 ES3。在 Vue 项目中，通常需要指定为 ESNext。
+1. **module**: 指定了编译后的模块格式，默认为 CommonJS。在 Vue 项目中，通常需要指定为 ESNext。
+1. **moduleResolution**: 指定了模块解析策略，默认为 Node.js 风格。在 Vue 项目中，通常需要指定为 Node.js 风格。
+1. **strict**: 启用所有严格的类型检查选项，包括 noImplicitAny、noImplicitThis、noImplicitReturns、noUnusedLocals 和 noUnusedParameters。在 Vue 项目中，通常需要启用严格模式。
+1. **jsx**: 指定了在编译时如何处理 JSX，默认为 preserve。在 Vue 项目中，通常需要指定为 preserve。
+1. **importHelpers**: 启用辅助函数导入，以减小生成的代码体积。在 Vue 项目中，通常需要启用此选项。
+1. **sourceMap**: 生成源代码映射以方便调试，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **esModuleInterop**: 启用默认导入的兼容性。在 Vue 项目中，通常需要启用此选项。
+1. **allowSyntheticDefaultImports**: 允许导入没有默认导出的模块作为默认导出使用。在 Vue 项目中，通常需要启用此选项。
+1. **noImplicitAny**: 禁止使用隐式的 any 类型，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **noImplicitReturns**: 禁止函数缺少返回语句，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **noImplicitThis**: 禁止在没有显式类型声明的情况下使用 this，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **noUnusedLocals**: 禁止声明未使用的局部变量，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **noUnusedParameters**: 禁止声明未使用的函数参数，默认为 false。在 Vue 项目中，通常需要启用此选项。
+1. **resolveJsonModule**: 允许导入 JSON 模块。在 Vue 项目中，通常需要启用此选项。
+1. **types**: 指定了应该包含在编译中的类型声明文件列表。在 Vue 项目中，需要包含一些常用的类型声明文件，例如 vue-router、vuex、vuetify 等。
+1. **include**: 指定了应该包含在编译中的文件列表，支持通配符。在 Vue 项目中，通常包括 src 目录下的所有文件。
+1. **exclude**: 指定了应该排除在编译中的文件列表，支持通配符。在 Vue 项目中，通常排除 node_modules 目录。
+
+这些配置项主要用于控制 TypeScript 编译器的行为，以及告诉编译器如何编译 TypeScript 代码。在 Vue 项目中，这些配置项需要针对 Vue 的特性进行适当的调整，以便让 TypeScript 编译器能够正确地处理 Vue 的组件、路由、状态管理等方面的代码。
+
+#### Vue 项目 tslint.json 文件示例
+
+以下是一个基本的 Vue 项目的 tslint.json 文件示例：
+
+```
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-console": false,
+    "no-debugger": false,
+    "no-unused-variable": true,
+    "no-unused-expression": true,
+    "no-empty": true,
+    "no-empty-interface": true,
+    "no-implicit-dependencies": true,
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "prefer-const": true,
+    "trailing-comma": [true, {
+      "multiline": "always",
+      "singleline": "never"
+    }]
+  }
+}
+```
+
+下面对每个配置项进行解释：
+
+1. **defaultSeverity**: 指定了默认的检查等级，默认为 "error"。在 Vue 项目中，通常将其设为 "error"。
+1. **extends**: 指定了继承的规则集，可以是一个或多个规则集。在 Vue 项目中，通常需要继承 "tslint:recommended" 和 "tslint-config-prettier"。
+1. **rules**: 指定了自定义的规则，可以是一个或多个规则。在 Vue 项目中，通常需要针对 Vue 的特性进行一些自定义规则的配置。
+
+下面对一些常用规则进行解释：
+
+1. **no-console**: 禁止使用 console 语句，默认为 false。在 Vue 项目中，通常需要将其禁止。
+1. **no-debugger**: 禁止使用 debugger 语句，默认为 false。在 Vue 项目中，通常需要将其禁止。
+1. **no-unused-variable**: 禁止声明未使用的变量，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **no-unused-expression**: 禁止使用没有副作用的表达式，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **no-empty**: 禁止空的代码块，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **no-empty-interface**: 禁止定义空的接口，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **no-implicit-dependencies**: 禁止隐式依赖项，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **interface-name**: 指定了接口名称的命名规则，默认为 "always-prefix"。在 Vue 项目中，通常需要将其设为 "never-prefix"。
+1. **object-literal-sort-keys**: 禁止对象字面量属性的无序声明，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **ordered-imports**: 强制按字母顺序排序导入语句，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **prefer-const**: 强制使用 const 声明不会被重新赋值的变量，默认为 false。在 Vue 项目中，通常需要启用此规则。
+1. **trailing-comma**: 强制在多行对象和数组字面量中使用尾随逗号，默认为 false。在 Vue 项目中，通常需要启用此规则，以避免在添加或删除元素时破坏代码格式。
+
+除了上述规则外，还有很多其他的规则可以在 tslint.json 中配置，可以根据具体情况进行选择。在实际开发中，通常需要根据项目的特点和开发团队的要求进行一些自定义的规则配置，以保证代码的质量和一致性。
+
 #### Vue 项目的 .eslintrc 示例
 
 ESLint 是一个非常流行的 JavaScript 代码静态分析工具，它可以帮助我们在开发过程中发现一些常见的代码问题和错误，并且可以通过配置文件进行定制化的配置。下面是一个 Vue 项目中的.eslintrc.js 文件的示例：
@@ -333,7 +452,25 @@ module.exports = {
 
 需要注意的是，ESLint 的配置非常灵活和复杂，每个项目的 ESLint 配置都可能有所不同。上述示例只是一个通用的 ESLint 配置示例，实际应用中可能需要根据具体情况进行调整。同时，ESLint 也提供了丰富的文档和示例，可以帮助开发者更好地了解和使用 ESLint。
 
-#### Vue 项目的 .babelrc 示例
+#### Vue 项目 .eslintignore 文件示例
+
+以下是一个 Vue 项目的.eslintignore 文件示例：
+
+```
+node_modules
+/dist
+/*.config.js
+```
+
+.eslintignore 文件用于指定哪些文件或文件夹不需要被 eslint 检查。在上述示例中，指定了以下三个文件夹和文件：
+
+1. **node_modules**: 通常不需要被 eslint 检查的第三方库和依赖项。
+1. **/dist**: 通常是项目打包后生成的文件夹，不需要被 eslint 检查。
+1. **/\*.config.js**: 通常是配置文件，不需要被 eslint 检查。
+
+在实际开发中，根据项目的具体情况，可能还需要指定其他的文件或文件夹，如测试文件、数据文件等。通常情况下，应将不需要被 eslint 检查的文件或文件夹添加到.eslintignore 文件中，以避免在运行 eslint 时浪费时间和资源。
+
+#### Vue 项目的 .babelrc 文件示例
 
 .babelrc 是 Babel 的配置文件，用于指定 Babel 转换代码时的选项和规则。下面是一个 Vue 项目中的.babelrc 文件的示例：
 
@@ -357,7 +494,7 @@ module.exports = {
 
 需要注意的是，Babel 的配置也非常灵活和复杂，每个项目的 Babel 配置都可能有所不同。上述示例只是一个通用的 Babel 配置示例，实际应用中可能需要根据具体情况进行调整。同时，Babel 也提供了丰富的文档和示例，可以帮助开发者更好地了解和使用 Babel。
 
-#### Vue 项目的 .prettier 示例
+#### Vue 项目的 .prettierrc 文件示例
 
 .prettierrc 是用于配置 Prettier 代码格式化工具的配置文件，它可以帮助我们规范化代码风格，提高代码可读性和可维护性。在 Vue 项目中，.prettierrc 文件通常包含以下配置项：
 
@@ -385,7 +522,25 @@ module.exports = {
 
 需要注意的是，.prettierrc 配置文件是可选的，如果不配置也可以使用 Prettier 进行代码格式化。同时，在使用 Prettier 的过程中，也可以通过在编辑器中安装 Prettier 插件，实现自动格式化代码的效果。
 
-#### Vue 项目的 .gitignore 示例
+#### Vue 项目 .prettierignore 文件示例
+
+以下是一个 Vue 项目的.prettierignore 文件示例：
+
+```
+node_modules
+/dist
+/.git
+```
+
+.prettierignore 文件用于指定哪些文件或文件夹不需要使用 Prettier 格式化。在上述示例中，指定了以下三个文件夹：
+
+1. **node_modules**: 通常不需要使用 Prettier 格式化的第三方库和依赖项。
+1. **/dist**: 通常是项目打包后生成的文件夹，不需要使用 Prettier 格式化。
+1. **/.git**: 通常是 Git 版本控制的文件夹，不需要使用 Prettier 格式化。
+
+在实际开发中，根据项目的具体情况，可能还需要指定其他的文件或文件夹，如测试文件、配置文件等。通常情况下，应将不需要使用 Prettier 格式化的文件或文件夹添加到.prettierignore 文件中，以避免在运行 Prettier 时浪费时间和资源。
+
+#### Vue 项目的 .gitignore 文件示例
 
 .gitignore 是 Git 的一个配置文件，用于指定需要忽略的文件和目录，防止它们被提交到 Git 仓库中。下面是一个 Vue 项目中的.gitignore 文件的示例：
 
@@ -425,7 +580,7 @@ yarn-error.log*
 
 需要注意的是，每个项目的.gitignore 文件都可能有所不同，具体需要忽略哪些文件和目录取决于项目的具体情况。通常可以参考一些开源项目的.gitignore 文件进行配置。同时，Git 也提供了丰富的文档和示例，可以帮助开发者更好地了解和使用.gitignore 文件。
 
-#### Vue 项目的 .env 示例
+#### Vue 项目的 .env 文件示例
 
 在 Vue 项目中，可以使用.env 文件或者.env 文件的变种来配置环境变量。这些文件会在不同的环境下加载不同的变量值，例如在开发环境、测试环境和生产环境下，可以分别设置不同的 API 地址、数据库连接信息等。
 
@@ -454,7 +609,7 @@ VUE_APP_AUTH_ENABLED=true
 
 其中，[mode]是当前构建的模式，例如 development 或 production。这种加载顺序可以确保在本地开发环境中可以方便地设置环境变量的值，并且在生产环境下也可以使用不同的变量值。
 
-#### Vue 项目的 .npmrc 示例
+#### Vue 项目的 .npmrc 文件示例
 
 在 Vue 项目中，可以使用.npmrc 文件来配置 npm 的行为。.npmrc 文件是一个纯文本文件，用于指定 npm 的配置选项。
 
@@ -476,7 +631,7 @@ prefix=~/.npm-global
 
 在 Vue 项目中，可以通过在.npmrc 文件中指定合适的配置项，来优化 npm 的使用体验。比如，使用淘宝镜像的注册表地址可以加速 npm 安装依赖的速度，设置全局安装目录可以减少 npm 安装包对系统的影响等。
 
-#### Vue 项目的 README.md 示例
+#### Vue 项目的 README.md 文件示例
 
 README.md 文件是一个项目的说明文件，用于介绍项目的特性、用法、贡献指南等信息。在 Vue 项目中，README.md 文件通常包含以下内容：
 
@@ -523,7 +678,7 @@ README.md 文件是一个项目的说明文件，用于介绍项目的特性、�
 
 需要注意的是，README.md 文件应该尽可能详细地介绍项目的特性、用法和贡献指南等信息，以便用户了解和使用项目。同时，为了提高可读性，可以使用 Markdown 语法来格式化文本，并添加代码块、链接和图片等元素。
 
-#### 写一个 vue 项目的 main.js 示例，尽可能详细的介绍下每个配置项
+#### Vue 项目的 main.js 文件示例
 
 在 Vue 项目中，main.js 是整个应用的入口文件，用于配置 Vue 实例并挂载到 DOM 上。下面是一个 Vue 项目中 main.js 的示例代码，注释中介绍了各个配置项的作用。
 
@@ -553,7 +708,7 @@ new Vue({
 1. render: h => h(App)：指定要渲染的组件，这里渲染的是 App 组件。
 1. .$mount('#app')：将 Vue 实例挂载到#app 元素上，即将 App 组件渲染到页面中。
 
-#### 写一个 vue 项目的 app.vue 示例，尽可能详细的介绍下每个配置项
+#### Vue 项目的 app.vue 文件示例
 
 App.vue 是 Vue 项目中的根组件，它包含了整个应用的基本布局和结构。下面是一个 Vue 项目中 App.vue 的示例代码，注释中介绍了各个配置项的作用。
 
@@ -603,7 +758,7 @@ export default {
 1. data() { return { message: 'Hello Vue!' } }：组件的数据对象，可以在模板中使用。
 1. &lt;style&gt;：样式标签，用于定义组件的样式。
 
-#### 写一个 vue 项目的 router.js 示例，尽可能详细的介绍下每个配置项
+#### Vue 项目的 router.js 文件示例
 
 router.js 是 Vue 项目中路由配置文件，用于管理页面之间的路由跳转。下面是一个 Vue 项目中 router.js 的示例代码，注释中介绍了各个配置项的作用。
 
@@ -653,7 +808,7 @@ export default router
 1. children: [ ... ]：嵌套子路由。
 1. beforeEnter: (to, from, next) => { ... }：路由独享的导航守卫。
 
-#### 写一个 vue 项目的 request.js 示例，尽可能详细的介绍下每个配置项
+#### Vue 项目的 request.js 文件示例
 
 在 Vue 项目中，通常会用到一个 request.js 文件，用于封装 Axios 或其他 HTTP 请求库，方便进行 API 请求。以下是一个 request.js 的示例代码，同时对其中的每个配置项进行了详细的介绍：
 
@@ -708,7 +863,7 @@ export default instance;
 1. **config.headers.Authorization**：设置请求头的 Authorization 字段，用于添加 token 等认证信息。
 1. **Promise.reject()**：抛出一个错误，并返回一个 rejected 状态的 Promise。可以用于在请求拦截器和响应拦截器中处理错误。
 
-#### 写一个 vue 项目的 axios.js 示例，尽可能详细的介绍下每个配置项
+#### Vue 项目的 axios.js 文件示例
 
 下面是一个简单的 axios.js 示例，注释中对每个配置项进行了详细介绍：
 
@@ -764,7 +919,7 @@ export default instance;
 1. **interceptors.request**：请求拦截器，用于在请求发送前对请求进行处理，例如添加 token、设置语言等。拦截器可以对请求进行一些公共的处理，避免在每个请求中都写相同的代码。
 1. **interceptors.response**：响应拦截器，用于对响应数据进行处理。在这个示例中，我们没有对响应数据做任何处理，但在实际开发中，我们可能需要对响应数据进行统一的处理，例如格式化返回数据或处理错误信息。拦截器还可以用来统一处理一些错误信息，例如 token 过期或未登录等情况。
 
-#### 写一个 vue 项目的 store.js 示例，尽可能详细的介绍下每个配置项
+#### 写一个 vue 项目的 store.js 示例，尽可能详细的介绍下每个配置项 Vue 项目的 store.js 示例
 
 以下是一个 Vue 项目的示例 store.js 文件，其中包含了一些基本的配置项和方法：
 
@@ -809,3 +964,326 @@ export default new Vuex.Store({
 1. **modules**：modules 是一个对象，包含了一些子模块，每个子模块可以有自己的 state、getters、mutations 和 actions。在组件中，可以通过 this.$store.state.moduleName 和 this.$store.getters['moduleName/getterName'] 来访问子模块的状态和计算属性。同时，也可以通过 this.$store.commit('moduleName/mutationName', payload) 和 this.$store.dispatch('moduleName/actionName', payload) 来触发子模块的 mutation 和 action。
 
 这是一个简单的 Vuex store 示例，实际项目中可能会更加复杂和灵活。
+
+#### 写一个 Vue 项目 index.html 文件示例，详细介绍下每个配置项功能
+
+以下是一个 Vue 项目的 index.html 文件示例：
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script&gt;：引用Vue.js的CDN资源，用于在页面中使用Vue相关的API。&gt;：引用应用程序的入口文件main.js，用于初始化Vue实例和注册组件等操作。 src="./main.js"></script>
+  </body>
+</html>
+```
+
+index.html 文件是 Vue 项目的主要入口文件，它包含了以下几个配置项：
+
+1. &lt;!DOCTYPE html&gt;：HTML 文档类型声明。
+1. &lt;html lang="en"&gt;：HTML 页面的根元素，指定页面使用的语言类型为英语。
+1. &lt;head&gt;：HTML 页面的头部，通常包含了一些 meta 信息、CSS 和 JavaScript 文件的引用等。
+1. &lt;meta charset="UTF-8" /&gt;：指定页面使用的字符集为 UTF-8，确保页面能够正确地显示各种语言的文本。
+1. &lt;title&gt;Vue App&lt;/title&gt;：页面的标题，通常用于显示在浏览器的标签页上。
+1. &lt;body&gt;：HTML 页面的主体，包含了所有的页面内容。
+1. &lt;div id="app"&gt;&lt;/div&gt;：Vue 应用的根元素，通常用于挂载 Vue 实例。
+1. &lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;：引用Vue.js的CDN资源，用于在页面中使用Vue相关的API。
+1. &lt;script src="./main.js"&gt;&lt;/script&gt;：引用应用程序的入口文件 main.js，用于初始化 Vue 实例和注册组件等操作。
+
+在实际开发中，可以根据项目的具体需求和特点对 index.html 文件进行修改和优化，以提高页面的性能和用户体验。
+
+#### 写一个 vue 项目 utils.js 文件示例，详细介绍下每个方法功能
+
+以下是一个 Vue 项目中常见的 utils.js 文件示例，每个方法的功能都有详细介绍：
+
+```
+// 生成一个随机字符串
+export function randomString(length = 16) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+// 判断是否为对象
+export function isObject(value) {
+  return value !== null && typeof value === 'object';
+}
+
+// 判断是否为数组
+export function isArray(value) {
+  return Array.isArray(value);
+}
+
+// 判断是否为函数
+export function isFunction(value) {
+  return typeof value === 'function';
+}
+
+// 判断是否为空
+export function isEmpty(value) {
+  if (value === null || value === undefined) {
+    return true;
+  } else if (isArray(value) || isString(value)) {
+    return value.length === 0;
+  } else if (isObject(value)) {
+    return Object.keys(value).length === 0;
+  }
+  return false;
+}
+
+// 获取URL参数
+export function getQueryParams(url) {
+  const params = {};
+  const regex = /[?&]([^=#]+)=([^&#]*)/g;
+  let match;
+  while (match = regex.exec(url)) {
+    params[match[1]] = decodeURIComponent(match[2]);
+  }
+  return params;
+}
+
+// 深度合并对象
+export function deepMerge(target, ...sources) {
+  if (!sources.length) {
+    return target;
+  }
+  const source = sources.shift();
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) {
+          Object.assign(target, { [key]: {} });
+        }
+        deepMerge(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+  return deepMerge(target, ...sources);
+}
+```
+
+1. **randomString(length)**：生成一个指定长度的随机字符串。
+1. **isObject(value)**：判断一个值是否为对象。
+1. **isArray(value)**：判断一个值是否为数组。
+1. **isFunction(value)**：判断一个值是否为函数。
+1. **isEmpty(value)**：判断一个值是否为空，支持判断 null、undefined、空字符串、空数组、空对象。
+1. **getQueryParams(url)**：从 URL 中获取所有的查询参数并返回一个对象。
+1. **deepMerge(target, ...sources)**：深度合并多个对象，返回一个新的合并后的对象。该方法会递归合并对象中的所有属性，如果属性值也是一个对象，则会递归合并。
+
+#### 写一个 vue 项目使用 lodash 示例
+
+以下是一个 Vue 项目中使用 Lodash 的示例：
+
+1. 安装 Lodash
+
+```
+npm install lodash --save
+```
+
+2. 在需要使用 Lodash 的组件中引入
+
+```
+import _ from 'lodash';
+```
+
+3. 使用 Lodash 提供的方法
+
+```
+// 比较两个对象是否相等
+const obj1 = { name: 'John', age: 30 };
+const obj2 = { name: 'John', age: 30 };
+const isEqual = _.isEqual(obj1, obj2); // true
+
+// 过滤数组中的偶数
+const numbers = [1, 2, 3, 4, 5, 6];
+const filteredNumbers = _.filter(numbers, (n) => n % 2 === 0); // [2, 4, 6]
+
+// 计算数组中的总和
+const numbers = [1, 2, 3, 4, 5];
+const sum = _.sum(numbers); // 15
+
+// 将数组按照指定的属性进行分组
+const users = [
+  { name: 'John', age: 30 },
+  { name: 'Mary', age: 25 },
+  { name: 'Peter', age: 30 },
+];
+const groupedUsers = _.groupBy(users, 'age'); // { '25': [{ name: 'Mary', age: 25 }], '30': [{ name: 'John', age: 30 }, { name: 'Peter', age: 30 }] }
+```
+
+Lodash 提供了非常多的实用方法，可以大大简化我们的开发工作，避免重复造轮子。需要注意的是，在使用 Lodash 的方法时，我们需要根据具体的需求引入相应的方法，以避免不必要的代码冗余。
+
+#### 写一个 vue 项目实现国际化 示例
+
+以下是一个 Vue 项目中实现国际化的示例：
+
+1. 安装 vue-i18n
+
+```
+npm install vue-i18n --save
+```
+
+2. 在 main.js 中引入并配置 vue-i18n
+
+```
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import App from './App.vue';
+
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: 'en', // 默认语言为英文
+  messages: {
+    en: {
+      hello: 'Hello',
+      world: 'World',
+    },
+    zh: {
+      hello: '你好',
+      world: '世界',
+    },
+  },
+});
+
+new Vue({
+  el: '#app',
+  i18n,
+  render: (h) => h(App),
+});
+```
+
+3. 在组件中使用 i18n
+
+在组件中使用 i18n 实现国际化的步骤如下：
+
+(1) 在 template 中使用
+
+```
+<template>
+  <div>
+    <p>{{ $t('hello') }}, {{ $t('world') }}!</p>
+  </div>
+</template>
+```
+
+(2) 在 script 中使用
+
+```
+export default {
+  name: 'HelloWorld',
+  computed: {
+    greeting() {
+      return this.$t('hello') + ', ' + this.$t('world') + '!';
+    },
+  },
+};
+```
+
+在以上示例中，我们使用了 VueI18n 提供的$t 方法来获取当前语言环境下的翻译文本。我们在 main.js 中配置了两种语言：英文和中文，当我们需要切换语言时，只需要将 i18n 实例的 locale 属性修改为相应的语言代码即可。
+
+以上就是一个简单的 Vue 项目实现国际化的示例，当然实际项目中可能需要更加复杂的配置和使用，但原理是类似的。
+
+#### 写一个 vue 项目实现 elementui 的主题切换示例
+
+以下是一个 Vue 项目中实现 element-ui 主题切换的示例：
+
+1. 安装 element-ui
+
+```
+npm install element-ui --save
+```
+
+2. 引入 element-ui
+
+在 main.js 中引入并注册 element-ui：
+
+```
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+```
+
+3. 配置主题
+
+在 vue.config.js 文件中配置 webpack 的样式相关 loader，以支持动态切换主题。我们使用 less-loader 来处理样式文件，并使用 css-loader 和 postcss-loader 来处理 css 文件。
+
+```
+module.exports = {
+  css: {
+    loaderOptions: {
+      less: {
+        modifyVars: {
+          // 主题色变量
+          'primary-color': '#1890ff',
+        },
+        javascriptEnabled: true,
+      },
+      css: {
+        // 将less变量覆盖到css中
+        importLoaders: 1,
+      },
+      postcss: {
+        // 自动添加浏览器前缀
+        plugins: [require('autoprefixer')],
+      },
+    },
+  },
+};
+```
+
+4. 实现主题切换
+
+我们可以通过修改全局的样式变量来实现主题切换。这里我们使用 localStorage 来保存当前主题，并在应用初始化时从 localStorage 中读取主题。
+
+```
+// App.vue
+
+<template>
+  <div id="app">
+    <el-button type="primary" @click="changeTheme">切换主题</el-button>
+    <router-view />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  methods: {
+    changeTheme() {
+      const theme = localStorage.getItem('theme') || 'default';
+      if (theme === 'default') {
+        localStorage.setItem('theme', 'dark');
+        this.$message.success('切换为暗黑主题');
+      } else {
+        localStorage.setItem('theme', 'default');
+        this.$message.success('切换为默认主题');
+      }
+      window.location.reload();
+    },
+  },
+  created() {
+    const theme = localStorage.getItem('theme') || 'default';
+    document.body.setAttribute('data-theme', theme);
+  },
+};
+</script>
+```
+
+在以上示例中，我们使用了 document.body.setAttribute 来动态设置 data-theme 属性，然后在 vue.config.js 中使用[data-theme]来覆盖全局样式变量。这样就可以实现主题切换了。
+
+以上就是一个简单的 Vue 项目实现 element-ui 主题切换的示例，当然实际项目中可能需要更加复杂的配置和使用，但原理是类似的。
