@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-04-06 22:39:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-08 14:01:50
+ * @LastEditTime: 2023-04-08 15:06:36
  * @Description: Vue 项目目录结构与常见文件
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端项目\前端项目封装\常见配置文件\Vue项目目录介绍.md
@@ -14,22 +14,30 @@ Vue 项目目录结构
 
 ```
 ┌── public
-│   ├── index.html          // 入口 HTML
-│   └── favicon.ico         // 网站图标
-├── src
-|   ├── api                 // 项目接口
-│   ├── assets              // 静态资源
-│   ├── components          // 组件
-│   ├── views               // 页面
-│   ├── router              // 路由
-│   ├── store               // Vuex状态管理
-│   ├── utils               // 工具类
-│   ├── App.vue             // 根组件
-│   └── main.js             // 入口 JS
-├── node_modules            // 依赖包
-├── .gitignore              // Git忽略文件
-├── package.json            // 依赖包配置
-└── README.md               // 项目文档
+├── build                      # webpack 配置文件
+├── config                     # 项目配置文件
+│   ├── dev.env.js             # 开发环境配置
+│   ├── index.js               # 通用配置
+│   └── prod.env.js            # 生产环境配置
+├── src                        # 源码目录
+│   ├── assets                 # 静态资源文件
+│   ├── components             # 组件目录
+│   ├── router                 # 路由配置
+│   ├── store                  # Vuex 状态管理
+│   ├── utils                  # 工具函数目录
+│   ├── views                  # 页面目录
+│   ├── App.vue                # 根组件
+│   └── main.js                # 入口文件
+├── static                     # 静态资源目录
+├── test                       # 测试文件目录
+├── .babelrc                   # Babel 配置文件
+├── .editorconfig              # 编辑器配置文件
+├── .eslintignore              # ESLint 忽略文件配置
+├── .eslintrc.js               # ESLint 配置文件
+├── .gitignore                 # Git 忽略文件配置
+├── index.html                 # HTML 模板文件
+├── package.json               # 项目依赖配置文件
+└── README.md                  # 项目说明文件
 ```
 
 其中，public 目录下是一些静态资源，如入口 HTML、网站图标等；src 目录下是项目的主要代码，包括组件、页面、路由、状态管理、工具类等；node_modules 目录下是项目依赖的第三方包；.gitignore 文件是 Git 忽略文件，用于定义哪些文件或文件夹不需要被 Git 管理；package.json 文件是依赖包配置文件，用于定义项目依赖、脚本、版本等信息；README.md 文件是项目文档，用于描述项目的功能、使用方法等。
