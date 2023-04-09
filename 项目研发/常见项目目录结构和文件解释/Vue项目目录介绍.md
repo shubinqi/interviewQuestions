@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-04-06 22:39:15
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-08 18:32:37
+ * @LastEditTime: 2023-04-08 19:36:43
  * @Description: Vue 项目目录结构与常见文件
  * @Version: 1.0.0
- * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端项目\前端项目封装\常见配置文件\Vue项目目录介绍.md
+ * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\项目研发\常见项目目录结构和文件解释\Vue项目目录介绍.md
 -->
 
 #### Vue 项目目录结构与常见文件
@@ -1346,3 +1346,150 @@ export default {
 在以上示例中，我们使用了 document.body.setAttribute 来动态设置 data-theme 属性，然后在 vue.config.js 中使用[data-theme]来覆盖全局样式变量。这样就可以实现主题切换了。
 
 以上就是一个简单的 Vue 项目实现 element-ui 主题切换的示例，当然实际项目中可能需要更加复杂的配置和使用，但原理是类似的。
+
+#### Vue 项目的 nginx.conf 文件示例
+
+以下是一个全面的 Vue 项目的 nginx.conf 文件示例，注释中介绍了每个配置项的作用：
+
+```
+# 设置工作进程数
+worker_processes  1;
+
+# 设置进程文件的存放位置
+pid /var/run/nginx.pid;
+
+# events块用于配置nginx的事件模型，这里使用epoll模型
+events {
+    worker_connections  1024;
+    use epoll;
+}
+
+# http块用于配置HTTP服务器，包括HTTP代理和负载均衡等
+http {
+    # 设置MIME类型，用于区别文件类型
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 设置日志文件的存放路径和格式
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  /var/log/nginx/access.log  main;
+
+    # 设置HTTP服务器的相关参数，如超时时间、缓存等
+    sendfile        on;
+    tcp_nopush      on;
+    tcp_nodelay     on;
+    keepalive_timeout  65;
+    types_hash_max_size 2048;
+
+    # 设置虚拟主机，用于区分不同的域名
+    server {
+        listen       80;
+        server_name  example.com;
+
+        # 配置根目录和默认文件
+        root   /usr/share/nginx/html;
+        index  index.html;
+
+        # 配置请求的缓存和HTTP头
+        expires 1h;
+        add_header Cache-Control "public";
+
+        # 配置代理服务器，将请求转发到后端的Node.js服务器
+        location /api/ {
+            proxy_pass http://localhost:3000/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        # 配置静态文件的缓存和HTTP头
+        location /static/ {
+            expires 1h;
+            add_header Cache-Control "public";
+        }
+
+        # 配置路由，将所有请求都转发到index.html
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+}
+```
+
+以上是一个全面的 Vue 项目的 nginx.conf 文件示例，其中包含了常用的配置项，如工作进程数、事件模型、MIME 类型、日志文件、虚拟主机、代理服务器、静态文件缓存等。需要根据实际情况进行调整和补充。
+
+#### Vue 项目的 apache 环境文件示例
+
+以下是一个全面的 Vue 项目的 Apache 环境文件示例，注释中介绍了每个配置项的作用：
+
+```
+# 设置服务器信息
+ServerSignature Off
+ServerTokens Prod
+
+# 禁止目录浏览
+Options -Indexes
+
+# 设置默认首页
+DirectoryIndex index.html
+
+# 设置字符集
+AddDefaultCharset UTF-8
+
+# 设置缓存
+<IfModule mod_headers.c>
+    # 配置静态文件的缓存
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+
+    # 配置HTML文件的缓存
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=7200, public"
+    </FilesMatch>
+
+    # 配置脚本文件的缓存
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "max-age=7200, public"
+    </FilesMatch>
+
+    # 配置样式文件的缓存
+    <FilesMatch "\.(css)$">
+        Header set Cache-Control "max-age=7200, public"
+    </FilesMatch>
+
+    # 配置字体文件的缓存
+    <FilesMatch "\.(woff|woff2|ttf|otf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+</IfModule>
+
+# 配置虚拟主机，用于区分不同的域名
+<VirtualHost *:80>
+    ServerName example.com
+
+    # 配置根目录和默认文件
+    DocumentRoot /var/www/html
+    DirectoryIndex index.html
+
+    # 配置路由，将所有请求都转发到index.html
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+
+        RewriteEngine on
+        RewriteBase /
+        RewriteRule ^([^.]+)$ /index.html [L]
+    </Directory>
+
+    # 配置代理服务器，将请求转发到后端的Node.js服务器
+    ProxyPass /api/ http://localhost:3000/
+    ProxyPassReverse /api/ http://localhost:3000/
+</VirtualHost>
+```
+
+以上是一个全面的 Vue 项目的 Apache 环境文件示例，其中包含了常用的配置项，如服务器信息、禁止目录浏览、默认首页、字符集、缓存、虚拟主机、代理服务器等。需要根据实际情况进行调整和补充。
