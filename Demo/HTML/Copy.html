@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <pre>
+    <code>
+      console.log("Hello, World!");
+    </code>
+    <button class="copy-btn">Copy</button>
+  </pre>
+
+  <pre>
+    <code>
+      function addNumbers(a, b) {
+        return a + b;
+      }
+    </code>
+    <button class="copy-btn">Copy</button>
+  </pre>
+  <script>
+    // 获取所有的copy按钮
+    const copyBtns = document.querySelectorAll(".copy-btn");
+
+    // 给每个copy按钮添加点击事件
+    copyBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // 获取当前按钮所在的pre标签
+        const pre = btn.parentNode;
+        // 获取pre标签内的code代码
+        const code = pre.querySelector("code");
+        // 创建一个textarea元素，用于复制代码
+        const textarea = document.createElement("textarea");
+        // 将textarea元素的值设置为代码内容
+        textarea.value = code.textContent;
+        // 将textarea元素添加到页面中
+        document.body.appendChild(textarea);
+        // 选中textarea元素内的文本
+        textarea.select();
+        // 复制选中的文本
+        document.execCommand("copy");
+        // 移除textarea元素
+        document.body.removeChild(textarea);
+      });
+    });
+  </script>
+</body>
+
+</html>
