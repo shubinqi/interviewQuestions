@@ -5,11 +5,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <style>
+    .triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid #ccc;
+    }
+
+    .triangle-down {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 50px solid #ccc;
+    }
+
+    .triangle-left {
+      width: 0;
+      height: 0;
+      border-top: 25px solid transparent;
+      border-right: 50px solid #ccc;
+      border-bottom: 25px solid transparent;
+    }
+
+    .triangle-right {
+      width: 0;
+      height: 0;
+      border-top: 25px solid transparent;
+      border-left: 50px solid #ccc;
+      border-bottom: 25px solid transparent;
+    }
+  </style>
+  <title>实现不同方向的三角形</title>
 </head>
 
 <body>
-
+  <div class="triangle-up"></div>
+  <div class="triangle-down"></div>
+  <div class="triangle-left"></div>
+  <div class="triangle-right"></div>
 </body>
 
 </html>
