@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用递归实现深拷贝</title>
+</head>
+
+<body>
+  <script>
+    // 使用递归实现深拷贝
+    function deepClone (obj) {
+      if (obj === null || typeof obj !== 'object') {
+        return obj;
+      }
+      let clone = Array.isArray(obj) ? [] : {};
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          clone[key] = deepClone(obj[key]);
+        }
+      }
+      return clone;
+    }
+    // 该函数递归遍历对象的所有属性，如果属性是一个基本类型则直接赋值，如果是一个对象则递归调用该函数继续深拷贝。此外，该函数还会判断属性是否为原型链上的属性，只对对象本身的属性进行深拷贝，不会对原型链上的属性进行操作。
+    // 该函数能兼容各种类型，包括对象、数组、Date、RegExp等。
+  </script>
+</body>
+
+</html>

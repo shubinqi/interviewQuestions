@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统计字符串中出现次数最多的字母及其次数</title>
+</head>
+
+<body>
+
+  <script>
+    function maxChar (str) {
+      let charCount = {};
+      let maxChar = '';
+      let maxCount = 0;
+      for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        if (charCount[char]) {
+          charCount[char]++;
+        } else {
+          charCount[char] = 1;
+        }
+        if (charCount[char] > maxCount) {
+          maxChar = char;
+          maxCount = charCount[char];
+        }
+      }
+      return { char: maxChar, count: maxCount };
+    }
+
+    console.log(maxChar("hello world")); // { char: "l", count: 3 }
+
+    // 该函数的时间复杂度为 O(n)，其中 n 为字符串的长度。
+  </script>
+
+</body>
+
+</html>
