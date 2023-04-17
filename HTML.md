@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 21:03:48
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-15 21:48:30
- * @Description: HTML 面试题（26题）
+ * @LastEditTime: 2023-04-16 06:45:02
+ * @Description: HTML 面试题（27题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\HTML.md
+ * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\HTML.md
 -->
 
 ### 一、HTML 基础
@@ -23,6 +23,28 @@ HTML 的特点包括：
 1. **可访问性**：HTML 支持许多辅助功能，如屏幕阅读器和语音识别，可以帮助视觉障碍者和其他残障人士访问 Web 内容。
 
 总之，HTML 是一种用于创建 Web 页面的标记语言，具有结构化、跨平台、可扩展和可访问的特性。
+
+#### HTML 有哪些版本？
+
+HTML 是指超文本标记语言（HyperText Markup Language），是用于创建网页的标准标记语言。HTML 有以下版本：
+
+1. **HTML 1.0**：1993 年发布，只包含最基本的标记，如标题、段落、列表等。
+1. **HTML 2.0**：1995 年发布，增加了表格、图像、表单等标记。
+1. **HTML 3.2**：1997 年发布，增加了框架、样式表等标记。
+1. **HTML 4.01**：1999 年发布，增加了层、脚本等标记。
+1. **XHTML 1.0**：2000 年发布，是 HTML 向 XML 的过渡，更加严格的语法规则，强制使用小写字母、闭合标签等。
+1. **HTML5**：2014 年发布，增加了新的标记和 API，如视频、音频、画布等标记，以及 Web Storage、Web Workers 等 API。
+
+HTML 不同版本的特点和区别如下：
+
+1. **HTML 1.0**：1993 年发布，只包含最基本的标记，如标题、段落、列表等。HTML 1.0 使用的标记比较简单，没有图片、表格、表单等功能，网页的样式和布局也比较单一。
+1. **HTML 2.0**：1995 年发布，增加了表格、图像、表单等标记。HTML 2.0 增加了一些新的标记，使得网页的布局和样式更加丰富，但是标记还是比较简单，没有太多的语义化标签。
+1. **HTML 3.2**：1997 年发布，增加了框架、样式表等标记。HTML 3.2 增加了一些新的标记，如框架、样式表等，使得网页的布局和样式更加丰富，同时还引入了一些语义化标签，如 &lt;address&gt;、&lt;blockquote&gt;、&lt;cite&gt; 等。
+1. **HTML 4.01**：1999 年发布，增加了层、脚本等标记。HTML 4.01 增加了一些新的标记，如层、脚本等，同时还引入了一些新的语义化标签，如 &lt;header&gt;、&lt;footer&gt;、&lt;nav&gt; 等。HTML 4.01 还支持 CSS 样式表和 JavaScript 脚本，使得网页的样式和交互性更加丰富。
+1. **XHTML 1.0**：2000 年发布，是 HTML 向 XML 的过渡，更加严格的语法规则，强制使用小写字母、闭合标签等。XHTML 1.0 基于 XML 语法，强制使用小写字母、闭合标签等，使得网页的结构更加规范和严格。同时，XHTML 1.0 还引入了一些新的语义化标签，如 &lt;article&gt;、&lt;section&gt;、&lt;aside&gt; 等。
+1. **HTML5**：2014 年发布，增加了新的标记和 API，如视频、音频、画布等标记，以及 Web Storage、Web Workers 等 API。HTML5 引入了一些新的标记和 API，如 &lt;video&gt;、&lt;audio&gt;、&lt;canvas&gt; 等标记，以及 Web Storage、Web Workers 等 API，使得网页的功能和交互性更加丰富，同时还引入了一些新的语义化标签，如 &lt;header&gt;、&lt;footer&gt;、&lt;nav&gt; 等。
+
+总的来说，随着 HTML 的不断发展，标记的数量和复杂度不断增加，同时还引入了一些新的 API 和技术，使得网页的功能、样式和交互性更加丰富和复杂。
 
 #### HTML 5 有哪些新标签？
 
@@ -217,7 +239,7 @@ HTML 中的语义化标签是指在网页结构中使用具有语义意义的标
 
 title 与 h1 的区别：
 
-1. **title** 标签是 HTML 文档的元数据之一，用于定义网页的标题，一般在 <head> 中使用。
+1. **title** 标签是 HTML 文档的元数据之一，用于定义网页的标题，一般在 &lt;head&gt; 中使用。
 1. **h1** 标签用于表示页面的主标题，一般作为页面结构的顶层元素，每个页面只应出现一次。
 
 b 与 strong 的区别：

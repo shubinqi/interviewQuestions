@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-08 19:14:53
+ * @LastEditTime: 2023-04-16 06:59:24
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -95,7 +95,7 @@
     - **手写代码**：/Chinese（已更新 11 题）
     - **代码输出**：/Chinese（已更新 2 题）
 
-### 二、前端八股文
+### 二、前端八股文（熟记、熟背、重点）
 
 #### 八股文文件夹说明（/八股文，共 62 篇）
 
@@ -189,26 +189,27 @@
 #### 前端基础知识细分笔记，部分含面试题
 
 1. **HTML**
-   - Canvas
-   - SVG
-   - link
-   - HTML 标签
-   - 前端布局
+   - Canvas（已更新）
+   - SVG（已更新）
+   - Link（已更新）
+   - HTML 标签（已更新）
+   - 前端布局（已更新）
 2. **CSS**
-   - CSS 变量 var
-   - CSS 定位 position
-   - CSS 浮动 float
-   - CSS 盒模型 box-sizing
+   - CSS 变量 var（已更新）
+   - CSS 定位 position（已更新）
+   - CSS 浮动 float（已更新）
+   - CSS 盒模型 box-sizing（已更新）
    - CSS 媒体查询 media
-   - CSS 选择器
-   - CSS BFC、IFC、GFC、FFC
-   - CSS3 变形 transform
-   - CSS3 动画 animation
-   - CSS3 过渡 transition
-   - CSS3 渐变 gradient
-   - CSS3 滤镜 filter
-   - CSS3 弹性布局 flex
-   - CSS3 网格布局 grad
+   - CSS 选择器（已更新）
+   - CSS BFC、IFC、GFC、FFC（已更新）
+   - CSS 鼠标样式 cursor（已更新）
+   - CSS3 变形 transform（已更新）
+   - CSS3 动画 animation（已更新）
+   - CSS3 过渡 transition（已更新）
+   - CSS3 渐变 gradient（已更新）
+   - CSS3 滤镜 filter（已更新）
+   - CSS3 弹性布局 flex（已更新）
+   - CSS3 网格布局 grad（已更新）
 3. **JavaScript**
    - 闭包 closure
    - Ajax

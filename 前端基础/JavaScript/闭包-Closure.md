@@ -2,10 +2,10 @@
  * @Author: Shu Binqi
  * @Date: 2023-03-14 19:54:21
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:54:34
+ * @LastEditTime: 2023-04-16 07:00:10
  * @Description: 闭包（Closure）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\前端基础\JavaScript\闭包-Closure.md
+ * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端基础\JavaScript\闭包-Closure.md
 -->
 
 #### 解释下闭包（Closure）的概念，以及应用场景？
@@ -23,3 +23,28 @@
 1. **模块化**：通过闭包，我们可以将一些相关的变量和方法封装在一个函数内部，创建一个简单的模块系统。
 
 需要注意的是，闭包也可能会导致内存泄漏的问题，因为闭包中引用的外部变量不会被垃圾回收，除非闭包本身被销毁。因此，在使用闭包时，需要注意避免内存泄漏的问题。
+
+#### 写一个 JS 闭包示例？
+
+以下是一个使用 JavaScript 闭包的示例：
+
+```
+function counter() {
+  let count = 0;
+  return function() {
+    count++;
+    console.log(count);
+  }
+}
+
+let increment = counter();
+increment(); // 1
+increment(); // 2
+increment(); // 3
+```
+
+该代码定义了一个函数 counter，该函数返回一个内部函数，内部函数可以访问外部函数的变量 count。使用 let increment = counter(); 调用 counter 函数，返回内部函数并将其赋值给 increment 变量。然后使用 increment() 调用内部函数，每次调用都会将 count 变量加 1，并将其值输出到控制台。
+
+这里的内部函数形成了闭包，可以访问外部函数的变量 count，并且可以持续存在，不会被垃圾回收机制清除。通过不断调用内部函数，可以实现一个计数器的功能。
+
+闭包是 JavaScript 中一个重要的概念，可以用于实现许多有用的功能，如封装私有变量、实现模块化等。
