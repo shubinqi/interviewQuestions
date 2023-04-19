@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-16 06:59:24
+ * @LastEditTime: 2023-04-19 21:05:15
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -199,7 +199,7 @@
    - CSS 定位 position（已更新）
    - CSS 浮动 float（已更新）
    - CSS 盒模型 box-sizing（已更新）
-   - CSS 媒体查询 media
+   - CSS 媒体查询 media（已更新）
    - CSS 选择器（已更新）
    - CSS BFC、IFC、GFC、FFC（已更新）
    - CSS 鼠标样式 cursor（已更新）
@@ -210,11 +210,12 @@
    - CSS3 滤镜 filter（已更新）
    - CSS3 弹性布局 flex（已更新）
    - CSS3 网格布局 grad（已更新）
+   - CSS 骚操作合集（更新中...）
 3. **JavaScript**
-   - 闭包 closure
-   - Ajax
-   - Array
-   - Function
+   - 闭包 closure（更新中...）
+   - Ajax（已更新）
+   - Array（已更新）
+   - Function（已更新）
    - Object
    - Promise
    - Reg
