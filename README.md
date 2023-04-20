@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-19 21:05:15
+ * @LastEditTime: 2023-04-20 20:21:12
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -216,11 +216,11 @@
    - Ajax（已更新）
    - Array（已更新）
    - Function（已更新）
-   - Object
-   - Promise
-   - Reg
-   - ES6
-   - JS 扫盲
+   - Object（更新中...）
+   - Promise（更新中...）
+   - RegExp（已更新）
+   - ES6（更新中...）
+   - JS 扫盲（更新中...）
 4. **浏览器**
    - 浏览器渲染
    - 浏览器调试

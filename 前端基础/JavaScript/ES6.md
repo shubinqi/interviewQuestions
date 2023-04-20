@@ -2,11 +2,19 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-24 22:02:13
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-03-14 19:55:05
+ * @LastEditTime: 2023-04-20 20:22:45
  * @Description: ES 6 详解（1题）
  * @Version: 1.0.0
- * @FilePath: \interviewQuestions\前端基础\JavaScript\ES6.md
+ * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\前端基础\JavaScript\ES6.md
 -->
+
+#### ES6 是什么
+
+ES6（ECMAScript 6），也称为 ECMAScript 2015，是 JavaScript 语言的一个重要更新版本，于 2015 年 6 月发布。
+
+ES6 引入了许多新的语言特性和语法，包括 let 和 const 声明变量的关键字、箭头函数、类、模板字符串、解构赋值、默认参数、展开运算符、Promise、Generator、module 等等。这些新特性使得 JavaScript 语言更加现代化和强大，也更易于阅读和维护。
+
+ES6 的引入对于 JavaScript 开发者来说是一件好事，因为它提供了更多的工具和语法来编写更易于理解和维护的代码。同时，ES6 也为 JavaScript 的进一步发展奠定了基础，为未来的版本提供了更多的可能性。
 
 #### ES6 新增了哪些内容？
 
