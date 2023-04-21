@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-20 20:21:12
+ * @LastEditTime: 2023-04-21 22:50:58
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -222,9 +222,10 @@
    - ES6（更新中...）
    - JS 扫盲（更新中...）
 4. **浏览器**
-   - 浏览器渲染
-   - 浏览器调试
-   - 事件循环 Event Loop
+   - 浏览器渲染（更新中...）
+   - 浏览器调试（已更新）
+   - 事件循环 Event Loop（更新中...）
+   - 跨域（更新中...）
    - document
    - AST
    - DOM

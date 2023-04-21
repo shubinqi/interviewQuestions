@@ -1,3 +1,13 @@
+<!--
+ * @Author: Shu Binqi
+ * @Date: 2023-04-04 22:33:35
+ * @LastEditors: Shu Binqi
+ * @LastEditTime: 2023-04-21 22:44:59
+ * @Description: 原生 JS 实现日历组件
+ * @Version: 1.0.0
+ * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\Chinese\原生JS实现日历组件.md
+-->
+
 #### 原生 JS 实现日历组件？
 
 下面是一个基于原生 JavaScript 实现的日历组件，包含月份选择和日期选择两种模式，可以用于在网页中选择日期。
