@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-21 22:50:58
+ * @LastEditTime: 2023-04-22 23:22:01
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -228,8 +228,8 @@
    - 跨域（更新中...）
    - document
    - AST
-   - DOM
-   - BOM
+   - DOM（更新中...）
+   - BOM（更新中...）
    - DOM 树
    - Performance
 5. **数据结构与算法**
