@@ -2,7 +2,7 @@
  * @Author: Shu Binqi
  * @Date: 2023-02-28 18:37:33
  * @LastEditors: Shu Binqi
- * @LastEditTime: 2023-04-22 23:22:01
+ * @LastEditTime: 2023-04-23 19:21:07
  * @Description: 前端面试题汇总（1024+ 题，已远远超过，目前暂不更新总数）
  * @Version: 1.0.0
  * @FilePath: \interviewQuestionsc:\Git\interviewQuestions\README.md
@@ -226,12 +226,12 @@
    - 浏览器调试（已更新）
    - 事件循环 Event Loop（更新中...）
    - 跨域（更新中...）
-   - document
-   - AST
+   - document（更新中...）
+   - AST（更新中...）
    - DOM（更新中...）
    - BOM（更新中...）
-   - DOM 树
-   - Performance
+   - DOM 树（更新中...）
+   - Performance（更新中...）
 5. **数据结构与算法**
    1. 数据结构
       - 数组-Array
